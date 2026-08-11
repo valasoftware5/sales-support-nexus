@@ -79,7 +79,7 @@ const SupportTeamModule = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Support Team Management</h2>
-          <p className="text-slate-400">Manage agents, roles, shifts and workload distribution</p>
+          <p className="text-muted-foreground">Manage agents, roles, shifts and workload distribution</p>
         </div>
         <Button onClick={handleAddAgent} className="bg-cyan-500 hover:bg-cyan-600 text-white">
           <Plus className="w-4 h-4 mr-2" />
@@ -92,28 +92,28 @@ const SupportTeamModule = () => {
           <CardContent className="p-4 text-center">
             <Users className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{agents.filter((a) => a.status === "online").length}</div>
-            <div className="text-xs text-slate-400">Online Agents</div>
+            <div className="text-xs text-muted-foreground">Online Agents</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{agents.reduce((sum, a) => sum + (a.tickets_handled ?? 0), 0)}</div>
-            <div className="text-xs text-slate-400">Active Tickets</div>
+            <div className="text-xs text-muted-foreground">Active Tickets</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <CheckCircle className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{agents.reduce((sum, a) => sum + (a.tickets_handled ?? 0), 0)}</div>
-            <div className="text-xs text-slate-400">Resolved Today</div>
+            <div className="text-xs text-muted-foreground">Resolved Today</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <UserCog className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{agents.length}</div>
-            <div className="text-xs text-slate-400">Total Agents</div>
+            <div className="text-xs text-muted-foreground">Total Agents</div>
           </CardContent>
         </Card>
       </div>
@@ -124,9 +124,9 @@ const SupportTeamModule = () => {
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <div className="text-slate-400 text-sm py-6 text-center">Loading agents…</div>
+            <div className="text-muted-foreground text-sm py-6 text-center">Loading agents…</div>
           ) : agents.length === 0 ? (
-            <div className="text-slate-400 text-sm py-6 text-center">No agents yet.</div>
+            <div className="text-muted-foreground text-sm py-6 text-center">No agents yet.</div>
           ) : (
             <div className="space-y-3">
               {agents.map((agent, index) => (
@@ -147,14 +147,14 @@ const SupportTeamModule = () => {
                         <span className="font-medium text-slate-100">{agent.full_name}</span>
                         <Badge className={getStatusColor(agent.status)}>{agent.status}</Badge>
                       </div>
-                      <div className="text-sm text-slate-400">{agent.email} • {agent.role_title} • {agent.shift} Shift</div>
+                      <div className="text-sm text-muted-foreground">{agent.email} • {agent.role_title} • {agent.shift} Shift</div>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-4">
                     <div className="text-right mr-4">
                       <div className="text-sm text-slate-300">{agent.tickets_handled} tickets • CSAT {agent.csat}%</div>
-                      <div className="text-xs text-slate-500">Avg: {agent.avg_response_minutes} min</div>
+                      <div className="text-xs text-muted-foreground">Avg: {agent.avg_response_minutes} min</div>
                     </div>
 
                     <Select value={agent.role_title} onValueChange={(v) => handleAssignRole(agent.id, v)}>

@@ -70,7 +70,7 @@ const SalesPerformanceDashboard = () => {
   const behaviorScore = Math.round((avgCsat / 5) * 100);
 
   if (loading) {
-    return <div className="text-slate-400">Loading performance data…</div>;
+    return <div className="text-muted-foreground">Loading performance data…</div>;
   }
 
   return (
@@ -78,7 +78,7 @@ const SalesPerformanceDashboard = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Performance Dashboard</h2>
-          <p className="text-slate-400">Track your sales metrics and ranking</p>
+          <p className="text-muted-foreground">Track your sales metrics and ranking</p>
         </div>
         <Badge className="bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 text-emerald-300 border border-emerald-500/30 px-4 py-2">
           <Award className="w-4 h-4 mr-2" />
@@ -108,9 +108,9 @@ const SalesPerformanceDashboard = () => {
                   <div className="text-2xl font-bold text-slate-100">
                     {metric.unit === "$" ? `$${metric.value.toLocaleString()}` : `${metric.value}${metric.unit}`}
                   </div>
-                  <div className="text-xs text-slate-400">{metric.label}</div>
+                  <div className="text-xs text-muted-foreground">{metric.label}</div>
                   <Progress value={Math.min(percentage, 100)} className="h-1.5 mt-2 bg-slate-800" />
-                  <div className="text-xs text-slate-500 mt-1">
+                  <div className="text-xs text-muted-foreground mt-1">
                     Target: {metric.unit === "$" ? `$${metric.target.toLocaleString()}` : `${metric.target}${metric.unit}`}
                   </div>
                 </CardContent>
@@ -138,7 +138,7 @@ const SalesPerformanceDashboard = () => {
                   transition={{ delay: index * 0.1 }}
                   className="flex items-center gap-4"
                 >
-                  <span className="w-10 text-slate-400 text-sm">{day.day}</span>
+                  <span className="w-10 text-muted-foreground text-sm">{day.day}</span>
                   <div className="flex-1 flex gap-2">
                     <div className="flex-1 bg-slate-800 rounded-full h-6 overflow-hidden">
                       <motion.div
@@ -152,8 +152,8 @@ const SalesPerformanceDashboard = () => {
                     </div>
                   </div>
                   <div className="flex gap-4 text-xs">
-                    <span className="text-slate-500">{day.calls} calls</span>
-                    <span className="text-slate-500">{day.demos} demos</span>
+                    <span className="text-muted-foreground">{day.calls} calls</span>
+                    <span className="text-muted-foreground">{day.demos} demos</span>
                   </div>
                 </motion.div>
               ))}
@@ -170,7 +170,7 @@ const SalesPerformanceDashboard = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {leaderboard.length === 0 && <p className="text-sm text-slate-500">No sales team members yet.</p>}
+              {leaderboard.length === 0 && <p className="text-sm text-muted-foreground">No sales team members yet.</p>}
               {leaderboard.map((member, index) => (
                 <motion.div
                   key={member.name}
@@ -201,7 +201,7 @@ const SalesPerformanceDashboard = () => {
                   </div>
                   <div className="text-right">
                     <div className="font-bold text-emerald-400">{member.revenue}</div>
-                    <div className="text-xs text-slate-500">{member.conversions} conversions</div>
+                    <div className="text-xs text-muted-foreground">{member.conversions} conversions</div>
                   </div>
                 </motion.div>
               ))}
@@ -219,12 +219,12 @@ const SalesPerformanceDashboard = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-purple-100">Behavior Score</h3>
-                <p className="text-slate-400">Based on response time, quality, and customer feedback</p>
+                <p className="text-muted-foreground">Based on response time, quality, and customer feedback</p>
               </div>
             </div>
             <div className="text-right">
               <div className="text-4xl font-bold text-purple-300">{behaviorScore}</div>
-              <div className="text-sm text-slate-400">
+              <div className="text-sm text-muted-foreground">
                 {behaviorScore >= 90 ? "Excellent" : behaviorScore >= 70 ? "Good" : "Needs Improvement"}
               </div>
             </div>

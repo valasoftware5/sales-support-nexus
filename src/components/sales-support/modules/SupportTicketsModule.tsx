@@ -110,7 +110,7 @@ const SupportTicketsModule = () => {
       case "in_progress": return "bg-amber-500/20 text-amber-300";
       case "waiting": return "bg-slate-500/20 text-slate-300";
       case "resolved": return "bg-emerald-500/20 text-emerald-300";
-      case "closed": return "bg-slate-500/20 text-slate-400";
+      case "closed": return "bg-slate-500/20 text-muted-foreground";
       default: return "bg-slate-500/20 text-slate-300";
     }
   };
@@ -124,7 +124,7 @@ const SupportTicketsModule = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Support Tickets</h2>
-          <p className="text-slate-400">Manage ticket lifecycle with SLA tracking</p>
+          <p className="text-muted-foreground">Manage ticket lifecycle with SLA tracking</p>
         </div>
         <Button onClick={handleCreateTicket} className="bg-cyan-500 hover:bg-cyan-600 text-white">
           <Plus className="w-4 h-4 mr-2" />
@@ -137,28 +137,28 @@ const SupportTicketsModule = () => {
           <CardContent className="p-4 text-center">
             <Ticket className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{openTickets.length}</div>
-            <div className="text-xs text-slate-400">Open Tickets</div>
+            <div className="text-xs text-muted-foreground">Open Tickets</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{criticalCount}</div>
-            <div className="text-xs text-slate-400">Critical</div>
+            <div className="text-xs text-muted-foreground">Critical</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{slaBreach}</div>
-            <div className="text-xs text-slate-400">SLA Risk</div>
+            <div className="text-xs text-muted-foreground">SLA Risk</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <CheckCircle className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{tickets.filter((t) => t.status === "resolved").length}</div>
-            <div className="text-xs text-slate-400">Resolved Today</div>
+            <div className="text-xs text-muted-foreground">Resolved Today</div>
           </CardContent>
         </Card>
       </div>
@@ -169,9 +169,9 @@ const SupportTicketsModule = () => {
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <div className="text-slate-400 text-sm py-6 text-center">Loading tickets…</div>
+            <div className="text-muted-foreground text-sm py-6 text-center">Loading tickets…</div>
           ) : tickets.length === 0 ? (
-            <div className="text-slate-400 text-sm py-6 text-center">No tickets yet.</div>
+            <div className="text-muted-foreground text-sm py-6 text-center">No tickets yet.</div>
           ) : (
             <div className="space-y-3">
               {tickets.map((ticket, index) => (
@@ -187,7 +187,7 @@ const SupportTicketsModule = () => {
                       <span className="font-mono text-cyan-400 text-sm">{ticket.reference}</span>
                       <Badge className={getPriorityColor(ticket.priority)}>{ticket.priority}</Badge>
                       <Badge className={getStatusColor(ticket.status)}>{ticket.status.replace('_', ' ')}</Badge>
-                      <Badge variant="outline" className="text-slate-400">{ticket.category}</Badge>
+                      <Badge variant="outline" className="text-muted-foreground">{ticket.category}</Badge>
                     </div>
                     {ticket.status !== "resolved" && ticket.status !== "closed" && (
                       <div className="flex items-center gap-2">
@@ -200,7 +200,7 @@ const SupportTicketsModule = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <h4 className="font-medium text-slate-100">{ticket.subject}</h4>
-                      <p className="text-sm text-slate-400">{ticket.customer_name} • {relativeTime(ticket.created_at)} • {memberName(agents, ticket.assigned_to) || "Unassigned"}</p>
+                      <p className="text-sm text-muted-foreground">{ticket.customer_name} • {relativeTime(ticket.created_at)} • {memberName(agents, ticket.assigned_to) || "Unassigned"}</p>
                     </div>
 
                     <div className="flex items-center gap-2">

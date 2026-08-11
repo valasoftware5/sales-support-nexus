@@ -42,8 +42,8 @@ export const CBAndroidIntegration: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Android App Integration</h1>
-          <p className="text-slate-500 text-sm mt-1">Configure chat widget for your Android app</p>
+          <h1 className="text-2xl font-bold text-foreground">Android App Integration</h1>
+          <p className="text-muted-foreground text-sm mt-1">Configure chat widget for your Android app</p>
         </div>
         <Button className="bg-blue-600 hover:bg-blue-700">
           <Download className="w-4 h-4 mr-2" />
@@ -69,7 +69,7 @@ export const CBAndroidIntegration: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Widget Settings */}
-        <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+        <Card className="bg-card border-border shadow-sm rounded-xl">
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
               <MessageCircle className="w-5 h-5 text-blue-600" />
@@ -78,14 +78,14 @@ export const CBAndroidIntegration: React.FC = () => {
             <CardDescription>Control how the chat appears in your app</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+            <div className="flex items-center justify-between p-4 bg-surface rounded-xl">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
                   <MessageCircle className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-slate-800">Chat Widget</p>
-                  <p className="text-xs text-slate-500">Enable in-app chat support</p>
+                  <p className="font-medium text-foreground">Chat Widget</p>
+                  <p className="text-xs text-muted-foreground">Enable in-app chat support</p>
                 </div>
               </div>
               <Switch
@@ -94,14 +94,14 @@ export const CBAndroidIntegration: React.FC = () => {
               />
             </div>
 
-            <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+            <div className="flex items-center justify-between p-4 bg-surface rounded-xl">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center">
                   <Move className="w-5 h-5 text-violet-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-slate-800">Floating Button</p>
-                  <p className="text-xs text-slate-500">Show floating chat button</p>
+                  <p className="font-medium text-foreground">Floating Button</p>
+                  <p className="text-xs text-muted-foreground">Show floating chat button</p>
                 </div>
               </div>
               <Switch
@@ -111,7 +111,7 @@ export const CBAndroidIntegration: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-700">Button Position</label>
+              <label className="text-sm font-medium text-foreground">Button Position</label>
               <Select 
                 value={settings.position} 
                 onValueChange={(v) => updateSetting('position', v)}
@@ -128,7 +128,7 @@ export const CBAndroidIntegration: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-700 flex items-center gap-2">
+              <label className="text-sm font-medium text-foreground flex items-center gap-2">
                 <Palette className="w-4 h-4" />
                 Theme
               </label>
@@ -150,7 +150,7 @@ export const CBAndroidIntegration: React.FC = () => {
         </Card>
 
         {/* Notifications & Offline */}
-        <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+        <Card className="bg-card border-border shadow-sm rounded-xl">
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
               <Bell className="w-5 h-5 text-blue-600" />
@@ -159,14 +159,14 @@ export const CBAndroidIntegration: React.FC = () => {
             <CardDescription>Push notifications and offline behavior</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+            <div className="flex items-center justify-between p-4 bg-surface rounded-xl">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center">
                   <Bell className="w-5 h-5 text-orange-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-slate-800">Push Notifications</p>
-                  <p className="text-xs text-slate-500">Notify users of new messages</p>
+                  <p className="font-medium text-foreground">Push Notifications</p>
+                  <p className="text-xs text-muted-foreground">Notify users of new messages</p>
                 </div>
               </div>
               <Switch
@@ -175,14 +175,14 @@ export const CBAndroidIntegration: React.FC = () => {
               />
             </div>
 
-            <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+            <div className="flex items-center justify-between p-4 bg-surface rounded-xl">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
                   <WifiOff className="w-5 h-5 text-emerald-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-slate-800">Offline Messages</p>
-                  <p className="text-xs text-slate-500">Queue messages when offline</p>
+                  <p className="font-medium text-foreground">Offline Messages</p>
+                  <p className="text-xs text-muted-foreground">Queue messages when offline</p>
                 </div>
               </div>
               <Switch
@@ -202,7 +202,7 @@ export const CBAndroidIntegration: React.FC = () => {
         </Card>
 
         {/* Preview Card */}
-        <Card className="lg:col-span-2 bg-white border-slate-200 shadow-sm rounded-xl">
+        <Card className="lg:col-span-2 bg-card border-border shadow-sm rounded-xl">
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
               <Smartphone className="w-5 h-5 text-blue-600" />
@@ -211,20 +211,20 @@ export const CBAndroidIntegration: React.FC = () => {
           </CardHeader>
           <CardContent>
             <div className="flex justify-center">
-              <div className="relative w-64 h-[480px] bg-slate-100 rounded-[2.5rem] border-4 border-slate-800 overflow-hidden shadow-xl">
+              <div className="relative w-64 h-[480px] bg-surface-2 rounded-[2.5rem] border-4 border-slate-800 overflow-hidden shadow-xl">
                 {/* Phone screen */}
-                <div className="absolute inset-2 bg-white rounded-[2rem] overflow-hidden">
+                <div className="absolute inset-2 bg-card rounded-[2rem] overflow-hidden">
                   {/* Status bar */}
                   <div className="h-6 bg-slate-800 flex items-center justify-center">
                     <div className="w-16 h-1 bg-slate-600 rounded-full"></div>
                   </div>
                   
                   {/* App content */}
-                  <div className="p-4 h-full bg-slate-50">
-                    <div className="w-full h-4 bg-slate-200 rounded mb-3"></div>
-                    <div className="w-3/4 h-4 bg-slate-200 rounded mb-6"></div>
-                    <div className="w-full h-20 bg-slate-200 rounded mb-3"></div>
-                    <div className="w-full h-20 bg-slate-200 rounded"></div>
+                  <div className="p-4 h-full bg-surface">
+                    <div className="w-full h-4 bg-surface-3 rounded mb-3"></div>
+                    <div className="w-3/4 h-4 bg-surface-3 rounded mb-6"></div>
+                    <div className="w-full h-20 bg-surface-3 rounded mb-3"></div>
+                    <div className="w-full h-20 bg-surface-3 rounded"></div>
                   </div>
 
                   {/* Floating button */}

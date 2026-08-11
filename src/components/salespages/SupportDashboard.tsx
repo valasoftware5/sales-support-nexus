@@ -10,7 +10,6 @@ import {
 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
-import SupportTopBar from '@/components/support/SupportTopBar';
 import SupportMetrics from '@/components/support/SupportMetrics';
 import TicketInbox from '@/components/support/TicketInbox';
 import PriorityQueue from '@/components/support/PriorityQueue';
@@ -131,15 +130,10 @@ const SupportDashboard = () => {
         ))}
       </div>
 
-      {/* Top Bar */}
-      <SupportTopBar 
-        onNotificationClick={() => setShowNotifications(true)}
-        onAIClick={() => setShowAIPanel(true)}
-      />
 
       <div className="flex">
         {/* Main Content */}
-        <main className="flex-1 p-8 min-h-screen">
+        <main className="mx-auto w-full max-w-[1600px] flex-1 px-4 py-6 sm:px-6">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSection}

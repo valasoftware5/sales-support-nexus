@@ -29,7 +29,7 @@ const SalesScriptConsole = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Sales Script Console</h2>
-          <p className="text-slate-400">Ready-made pitch scripts with AI improvements</p>
+          <p className="text-muted-foreground">Ready-made pitch scripts with AI improvements</p>
         </div>
         <div className="flex items-center gap-3">
           <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
@@ -80,12 +80,12 @@ const SalesScriptConsole = () => {
                           <Badge className="bg-slate-700 text-slate-300 mt-1">{script.category}</Badge>
                         </div>
                       </div>
-                      <Button size="sm" variant="ghost" className="text-slate-400 hover:text-cyan-300">
+                      <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-cyan-300">
                         <Copy className="w-4 h-4" />
                       </Button>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-slate-400">Used {script.usage} times</span>
+                      <span className="text-muted-foreground">Used {script.usage} times</span>
                       <span className="text-emerald-400">{script.success}% success</span>
                     </div>
                   </CardContent>
@@ -160,7 +160,7 @@ const SalesScriptConsole = () => {
             <CardContent className="p-8 text-center">
               <FileText className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-cyan-100 mb-2">Email & Message Templates</h3>
-              <p className="text-slate-400 mb-4">Pre-written templates for follow-ups, introductions, and more</p>
+              <p className="text-muted-foreground mb-4">Pre-written templates for follow-ups, introductions, and more</p>
               <Button className="bg-cyan-500 hover:bg-cyan-600 text-white">
                 Browse Templates
                 <ChevronRight className="w-4 h-4 ml-2" />

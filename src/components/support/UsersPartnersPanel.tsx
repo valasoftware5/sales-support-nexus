@@ -63,7 +63,7 @@ const UsersPartnersPanel = () => {
       case 'client': return { icon: User, color: 'bg-blue-500/20 text-blue-400 border-blue-500/30', label: 'Client' };
       case 'franchise': return { icon: Building2, color: 'bg-purple-500/20 text-purple-400 border-purple-500/30', label: 'Franchise' };
       case 'reseller': return { icon: Store, color: 'bg-teal-500/20 text-teal-400 border-teal-500/30', label: 'Reseller' };
-      default: return { icon: User, color: 'bg-slate-500/20 text-slate-400', label: 'Unknown' };
+      default: return { icon: User, color: 'bg-slate-500/20 text-muted-foreground', label: 'Unknown' };
     }
   };
 
@@ -72,7 +72,7 @@ const UsersPartnersPanel = () => {
       case 'low': return { color: 'bg-emerald-500/20 text-emerald-400', icon: CheckCircle };
       case 'medium': return { color: 'bg-amber-500/20 text-amber-400', icon: AlertTriangle };
       case 'high': return { color: 'bg-red-500/20 text-red-400', icon: XCircle };
-      default: return { color: 'bg-slate-500/20 text-slate-400', icon: CheckCircle };
+      default: return { color: 'bg-slate-500/20 text-muted-foreground', icon: CheckCircle };
     }
   };
 
@@ -101,7 +101,7 @@ const UsersPartnersPanel = () => {
             <Users className="w-6 h-6 text-teal-400" />
             Users & Partners
           </h2>
-          <p className="text-slate-400 text-sm">Manage clients, franchises, and resellers</p>
+          <p className="text-muted-foreground text-sm">Manage clients, franchises, and resellers</p>
         </div>
       </div>
 
@@ -111,35 +111,35 @@ const UsersPartnersPanel = () => {
           <CardContent className="p-4 text-center">
             <Users className="w-6 h-6 text-teal-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-teal-100">{stats.total}</div>
-            <div className="text-xs text-slate-400">Total</div>
+            <div className="text-xs text-muted-foreground">Total</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-blue-500/20">
           <CardContent className="p-4 text-center">
             <User className="w-6 h-6 text-blue-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-blue-100">{stats.clients}</div>
-            <div className="text-xs text-slate-400">Clients</div>
+            <div className="text-xs text-muted-foreground">Clients</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <Building2 className="w-6 h-6 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{stats.franchises}</div>
-            <div className="text-xs text-slate-400">Franchises</div>
+            <div className="text-xs text-muted-foreground">Franchises</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-teal-500/20">
           <CardContent className="p-4 text-center">
             <Store className="w-6 h-6 text-teal-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-teal-100">{stats.resellers}</div>
-            <div className="text-xs text-slate-400">Resellers</div>
+            <div className="text-xs text-muted-foreground">Resellers</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-6 h-6 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{stats.highRisk}</div>
-            <div className="text-xs text-slate-400">High Risk</div>
+            <div className="text-xs text-muted-foreground">High Risk</div>
           </CardContent>
         </Card>
       </div>
@@ -157,7 +157,7 @@ const UsersPartnersPanel = () => {
 
         <div className="flex items-center gap-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -213,7 +213,7 @@ const UsersPartnersPanel = () => {
                             {customer.riskScore}
                           </Badge>
                         </div>
-                        <div className="flex items-center gap-4 text-xs text-slate-400 mt-1">
+                        <div className="flex items-center gap-4 text-xs text-muted-foreground mt-1">
                           <span>{customer.email}</span>
                           <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{customer.country}</span>
                           <span>Last: {customer.lastContact}</span>
@@ -223,11 +223,11 @@ const UsersPartnersPanel = () => {
                     <div className="flex items-center gap-6">
                       <div className="text-center">
                         <div className="text-lg font-bold text-white">{customer.totalTickets}</div>
-                        <div className="text-xs text-slate-400">Total Tickets</div>
+                        <div className="text-xs text-muted-foreground">Total Tickets</div>
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-amber-400">{customer.openTickets}</div>
-                        <div className="text-xs text-slate-400">Open</div>
+                        <div className="text-xs text-muted-foreground">Open</div>
                       </div>
                       <div className="text-center flex items-center gap-1">
                         <Star className="w-4 h-4 text-amber-400" />
@@ -246,7 +246,7 @@ const UsersPartnersPanel = () => {
                           size="sm" 
                           variant="ghost" 
                           onClick={(e) => { e.stopPropagation(); handleViewHistory(customer.id); }}
-                          className="text-slate-400 hover:text-white"
+                          className="text-muted-foreground hover:text-white"
                         >
                           <History className="w-4 h-4" />
                         </Button>
@@ -261,7 +261,7 @@ const UsersPartnersPanel = () => {
                       className="mt-4 pt-4 border-t border-slate-800"
                     >
                       <div className="flex flex-wrap gap-2">
-                        <span className="text-xs text-slate-400 mr-2">Products:</span>
+                        <span className="text-xs text-muted-foreground mr-2">Products:</span>
                         {customer.products.map(product => (
                           <Badge key={product} variant="outline" className="text-xs text-teal-400 border-teal-500/30">
                             {product}

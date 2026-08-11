@@ -78,13 +78,13 @@ const AITroubleshooter = ({ isOpen, onClose }: AITroubleshooterProps) => {
           onClick={onClose}
           className="p-2 rounded-lg hover:bg-slate-800/50 transition-colors"
         >
-          <X className="w-5 h-5 text-slate-400" />
+          <X className="w-5 h-5 text-muted-foreground" />
         </button>
       </div>
 
       {/* Tone Control */}
       <div className="p-4 border-b border-slate-700/20">
-        <p className="text-xs text-slate-500 mb-2">Response Tone:</p>
+        <p className="text-xs text-muted-foreground mb-2">Response Tone:</p>
         <div className="flex gap-2">
           {[
             { id: 'calm', label: 'Be Calm', icon: Smile },
@@ -97,7 +97,7 @@ const AITroubleshooter = ({ isOpen, onClose }: AITroubleshooterProps) => {
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs transition-all ${
                 toneMode === mode.id
                   ? 'bg-teal-500/20 text-teal-400 border border-teal-500/30'
-                  : 'bg-slate-800/30 text-slate-400 border border-slate-700/30 hover:border-slate-600/30'
+                  : 'bg-slate-800/30 text-muted-foreground border border-slate-700/30 hover:border-slate-600/30'
               }`}
             >
               <mode.icon className="w-3 h-3" />
@@ -109,13 +109,13 @@ const AITroubleshooter = ({ isOpen, onClose }: AITroubleshooterProps) => {
 
       {/* Quick Actions */}
       <div className="p-4 border-b border-slate-700/20">
-        <p className="text-xs text-slate-500 mb-2">Quick actions:</p>
+        <p className="text-xs text-muted-foreground mb-2">Quick actions:</p>
         <div className="flex flex-wrap gap-2">
           {quickActions.map((action, i) => (
             <button
               key={i}
               onClick={() => setInput(action)}
-              className="px-3 py-1.5 rounded-lg bg-slate-800/30 border border-slate-700/30 text-xs text-slate-400 hover:border-teal-500/20 hover:text-teal-400 transition-all"
+              className="px-3 py-1.5 rounded-lg bg-slate-800/30 border border-slate-700/30 text-xs text-muted-foreground hover:border-teal-500/20 hover:text-teal-400 transition-all"
             >
               {action}
             </button>
@@ -215,7 +215,7 @@ const AITroubleshooter = ({ isOpen, onClose }: AITroubleshooterProps) => {
             <Send className="w-5 h-5" />
           </motion.button>
         </div>
-        <p className="text-xs text-slate-500 mt-2 text-center">
+        <p className="text-xs text-muted-foreground mt-2 text-center">
           Remember: Always respond with empathy and patience 💙
         </p>
       </div>

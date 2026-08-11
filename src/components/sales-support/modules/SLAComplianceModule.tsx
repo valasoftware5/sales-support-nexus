@@ -73,7 +73,7 @@ const SLAComplianceModule = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">SLA & Compliance</h2>
-          <p className="text-slate-400">Live SLA compliance derived from ticket data</p>
+          <p className="text-muted-foreground">Live SLA compliance derived from ticket data</p>
         </div>
         <Button onClick={handleGenerateReport} className="bg-cyan-500 hover:bg-cyan-600 text-white">
           <FileText className="w-4 h-4 mr-2" />
@@ -87,28 +87,28 @@ const SLAComplianceModule = () => {
           <CardContent className="p-4 text-center">
             <TrendingUp className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className={`text-2xl font-bold ${getComplianceColor(overallCompliance)}`}>{overallCompliance}%</div>
-            <div className="text-xs text-slate-400">Overall Compliance</div>
+            <div className="text-xs text-muted-foreground">Overall Compliance</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <Shield className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{atRisk.length}</div>
-            <div className="text-xs text-slate-400">At-Risk Tickets</div>
+            <div className="text-xs text-muted-foreground">At-Risk Tickets</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{totalBreaches}</div>
-            <div className="text-xs text-slate-400">Total Breaches</div>
+            <div className="text-xs text-muted-foreground">Total Breaches</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{tickets.length}</div>
-            <div className="text-xs text-slate-400">Total Tickets Tracked</div>
+            <div className="text-xs text-muted-foreground">Total Tickets Tracked</div>
           </CardContent>
         </Card>
       </div>
@@ -120,7 +120,7 @@ const SLAComplianceModule = () => {
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
-            {isLoading && <p className="text-slate-400 text-sm">Loading tickets…</p>}
+            {isLoading && <p className="text-muted-foreground text-sm">Loading tickets…</p>}
             {!isLoading && rules.map((rule, index) => (
               <motion.div
                 key={rule.priority}
@@ -138,11 +138,11 @@ const SLAComplianceModule = () => {
 
                 <div className="grid grid-cols-3 gap-4 text-sm">
                   <div>
-                    <span className="text-slate-500">Compliance</span>
+                    <span className="text-muted-foreground">Compliance</span>
                     <div className={`font-medium ${getComplianceColor(rule.compliance)}`}>{rule.compliance}%</div>
                   </div>
                   <div>
-                    <span className="text-slate-500">Breaches / Total</span>
+                    <span className="text-muted-foreground">Breaches / Total</span>
                     <div className="text-slate-300">{rule.breaches} / {rule.total}</div>
                   </div>
                 </div>
@@ -163,13 +163,13 @@ const SLAComplianceModule = () => {
         </CardHeader>
         <CardContent>
           <div className="space-y-2">
-            {atRisk.length === 0 && <p className="text-slate-400 text-sm">No tickets currently at risk.</p>}
+            {atRisk.length === 0 && <p className="text-muted-foreground text-sm">No tickets currently at risk.</p>}
             {atRisk.map((t) => (
               <div key={t.id} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg text-sm">
                 <div>
                   <span className="font-mono text-cyan-400">{t.reference}</span>
                   <span className="text-slate-300 ml-2">{t.subject}</span>
-                  <span className="text-slate-500 ml-2">• {t.customer_name}</span>
+                  <span className="text-muted-foreground ml-2">• {t.customer_name}</span>
                 </div>
                 <Badge className="bg-red-500/20 text-red-300">{t.sla_minutes_remaining} min left</Badge>
               </div>
@@ -186,7 +186,7 @@ const SLAComplianceModule = () => {
               <AlertTriangle className="w-6 h-6 text-red-400" />
               <div>
                 <h3 className="font-medium text-red-100">SLA Breach Alert</h3>
-                <p className="text-sm text-slate-400">{totalBreaches} SLA breaches detected. Review critical tickets immediately.</p>
+                <p className="text-sm text-muted-foreground">{totalBreaches} SLA breaches detected. Review critical tickets immediately.</p>
               </div>
             </div>
           </CardContent>

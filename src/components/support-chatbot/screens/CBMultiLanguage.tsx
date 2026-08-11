@@ -48,8 +48,8 @@ export const CBMultiLanguage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Language Support</h1>
-          <p className="text-slate-500 text-sm mt-1">Configure multi-language chatbot responses</p>
+          <h1 className="text-2xl font-bold text-foreground">Language Support</h1>
+          <p className="text-muted-foreground text-sm mt-1">Configure multi-language chatbot responses</p>
         </div>
         <Button className="bg-blue-600 hover:bg-blue-700" onClick={handleAddLanguage}>
           <Plus className="w-4 h-4 mr-2" />
@@ -69,7 +69,7 @@ export const CBMultiLanguage: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Settings Panel */}
-        <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+        <Card className="bg-card border-border shadow-sm rounded-xl">
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-blue-600" />
@@ -78,7 +78,7 @@ export const CBMultiLanguage: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="text-sm font-medium text-slate-700 mb-2 block">
+              <label className="text-sm font-medium text-foreground mb-2 block">
                 Fallback Language
               </label>
               <Select value={fallbackLang} onValueChange={setFallbackLang}>
@@ -93,7 +93,7 @@ export const CBMultiLanguage: React.FC = () => {
                   ))}
                 </SelectContent>
               </Select>
-              <p className="text-xs text-slate-500 mt-1.5">
+              <p className="text-xs text-muted-foreground mt-1.5">
                 Used when language detection fails
               </p>
             </div>
@@ -107,7 +107,7 @@ export const CBMultiLanguage: React.FC = () => {
         </Card>
 
         {/* Languages List */}
-        <Card className="lg:col-span-2 bg-white border-slate-200 shadow-sm rounded-xl">
+        <Card className="lg:col-span-2 bg-card border-border shadow-sm rounded-xl">
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
               <Languages className="w-5 h-5 text-blue-600" />
@@ -117,9 +117,9 @@ export const CBMultiLanguage: React.FC = () => {
           </CardHeader>
           <CardContent>
             {isLoading ? (
-              <p className="text-sm text-slate-400 py-6 text-center">Loading languages…</p>
+              <p className="text-sm text-muted-foreground py-6 text-center">Loading languages…</p>
             ) : languagesList.length === 0 ? (
-              <p className="text-sm text-slate-400 py-6 text-center">No languages configured yet.</p>
+              <p className="text-sm text-muted-foreground py-6 text-center">No languages configured yet.</p>
             ) : (
               <div className="space-y-2">
                 {languagesList.map((lang) => (
@@ -127,21 +127,21 @@ export const CBMultiLanguage: React.FC = () => {
                     key={lang.id}
                     className={`flex items-center justify-between p-4 rounded-xl border ${
                       lang.is_enabled
-                        ? 'bg-white border-slate-200'
-                        : 'bg-slate-50 border-slate-100 opacity-75'
+                        ? 'bg-card border-border'
+                        : 'bg-surface border-border opacity-75'
                     }`}
                   >
                     <div className="flex items-center gap-4">
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="font-medium text-slate-800">{lang.name}</span>
+                          <span className="font-medium text-foreground">{lang.name}</span>
                           <Badge variant="outline" className="text-[10px]">{lang.code.toUpperCase()}</Badge>
                           {lang.code === fallbackLang && (
                             <Badge className="bg-violet-100 text-violet-700 text-[10px]">Fallback</Badge>
                           )}
                         </div>
                         <div className="flex items-center gap-2 mt-1">
-                          <div className="w-20 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+                          <div className="w-20 h-1.5 bg-surface-3 rounded-full overflow-hidden">
                             <div
                               className={`h-full rounded-full ${
                                 lang.coverage >= 90 ? 'bg-emerald-500' :
@@ -150,15 +150,15 @@ export const CBMultiLanguage: React.FC = () => {
                               style={{ width: `${lang.coverage}%` }}
                             />
                           </div>
-                          <span className="text-[10px] text-slate-500">{lang.coverage}% coverage</span>
-                          <span className="text-[10px] text-slate-400">• {lang.conversations} chats</span>
+                          <span className="text-[10px] text-muted-foreground">{lang.coverage}% coverage</span>
+                          <span className="text-[10px] text-muted-foreground">• {lang.conversations} chats</span>
                         </div>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-6">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-slate-500">Enabled</span>
+                        <span className="text-xs text-muted-foreground">Enabled</span>
                         <Switch
                           checked={lang.is_enabled}
                           onCheckedChange={() => toggleLanguage(lang.id, lang.is_enabled)}

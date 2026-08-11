@@ -138,8 +138,8 @@ const TasksFollowups = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Tasks & Follow-ups</h1>
-          <p className="text-slate-500 mt-1">Stay on top of your activities</p>
+          <h1 className="text-2xl font-bold text-foreground">Tasks & Follow-ups</h1>
+          <p className="text-muted-foreground mt-1">Stay on top of your activities</p>
         </div>
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
@@ -211,54 +211,54 @@ const TasksFollowups = () => {
 
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Card className="border-slate-200 cursor-pointer hover:shadow-md" onClick={() => setFilter("all")}>
+        <Card className="border-border cursor-pointer hover:shadow-md" onClick={() => setFilter("all")}>
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               <div className="p-2 rounded-lg bg-blue-100">
                 <Circle className="w-5 h-5 text-blue-600" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-slate-800">{allTasks.length}</p>
-                <p className="text-sm text-slate-500">Total Tasks</p>
+                <p className="text-2xl font-bold text-foreground">{allTasks.length}</p>
+                <p className="text-sm text-muted-foreground">Total Tasks</p>
               </div>
             </div>
           </CardContent>
         </Card>
-        <Card className="border-slate-200 cursor-pointer hover:shadow-md" onClick={() => setFilter("pending")}>
+        <Card className="border-border cursor-pointer hover:shadow-md" onClick={() => setFilter("pending")}>
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               <div className="p-2 rounded-lg bg-yellow-100">
                 <Clock className="w-5 h-5 text-yellow-600" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-slate-800">{todayTasks.length}</p>
-                <p className="text-sm text-slate-500">Due Today</p>
+                <p className="text-2xl font-bold text-foreground">{todayTasks.length}</p>
+                <p className="text-sm text-muted-foreground">Due Today</p>
               </div>
             </div>
           </CardContent>
         </Card>
-        <Card className="border-slate-200 cursor-pointer hover:shadow-md" onClick={() => setFilter("overdue")}>
+        <Card className="border-border cursor-pointer hover:shadow-md" onClick={() => setFilter("overdue")}>
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               <div className="p-2 rounded-lg bg-red-100">
                 <AlertCircle className="w-5 h-5 text-red-600" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-slate-800">{overdueTasks.length}</p>
-                <p className="text-sm text-slate-500">Overdue</p>
+                <p className="text-2xl font-bold text-foreground">{overdueTasks.length}</p>
+                <p className="text-sm text-muted-foreground">Overdue</p>
               </div>
             </div>
           </CardContent>
         </Card>
-        <Card className="border-slate-200 cursor-pointer hover:shadow-md" onClick={() => setFilter("completed")}>
+        <Card className="border-border cursor-pointer hover:shadow-md" onClick={() => setFilter("completed")}>
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               <div className="p-2 rounded-lg bg-green-100">
                 <CheckCircle2 className="w-5 h-5 text-green-600" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-slate-800">{completedTasks.length}</p>
-                <p className="text-sm text-slate-500">Completed</p>
+                <p className="text-2xl font-bold text-foreground">{completedTasks.length}</p>
+                <p className="text-sm text-muted-foreground">Completed</p>
               </div>
             </div>
           </CardContent>
@@ -276,8 +276,8 @@ const TasksFollowups = () => {
             <Bell className="w-5 h-5 text-white" />
           </div>
           <div className="flex-1">
-            <p className="font-medium text-slate-800">You have {todayTasks.length} tasks due today</p>
-            <p className="text-sm text-slate-600">Don't forget to complete your pending follow-ups</p>
+            <p className="font-medium text-foreground">You have {todayTasks.length} tasks due today</p>
+            <p className="text-sm text-muted-foreground">Don't forget to complete your pending follow-ups</p>
           </div>
           <Button variant="outline" className="border-blue-300 text-blue-600 hover:bg-blue-50" onClick={() => setFilter("pending")}>
             View All
@@ -286,10 +286,10 @@ const TasksFollowups = () => {
       )}
 
       {/* Task List */}
-      <Card className="border-slate-200">
+      <Card className="border-border">
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle className="text-slate-800">
+            <CardTitle className="text-foreground">
               {filter === "all" ? "All Tasks" :
                filter === "pending" ? "Pending Tasks" :
                filter === "completed" ? "Completed Tasks" : "Overdue Tasks"}
@@ -309,9 +309,9 @@ const TasksFollowups = () => {
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <p className="text-slate-500 text-sm py-6 text-center">Loading tasks...</p>
+            <p className="text-muted-foreground text-sm py-6 text-center">Loading tasks...</p>
           ) : filteredTasks.length === 0 ? (
-            <p className="text-slate-500 text-sm py-6 text-center">No tasks found.</p>
+            <p className="text-muted-foreground text-sm py-6 text-center">No tasks found.</p>
           ) : (
             <div className="space-y-3">
               {filteredTasks.map((task, index) => {
@@ -326,10 +326,10 @@ const TasksFollowups = () => {
                     transition={{ delay: index * 0.05 }}
                     className={`flex items-center gap-4 p-4 rounded-xl transition-colors ${
                       completed
-                        ? 'bg-slate-50 opacity-60'
+                        ? 'bg-surface opacity-60'
                         : overdue
                         ? 'bg-red-50 border border-red-200'
-                        : 'bg-slate-50 hover:bg-slate-100'
+                        : 'bg-surface hover:bg-surface-2'
                     }`}
                   >
                     <Checkbox
@@ -349,10 +349,10 @@ const TasksFollowups = () => {
                     </div>
 
                     <div className="flex-1">
-                      <p className={`font-medium ${completed ? 'line-through text-slate-400' : 'text-slate-800'}`}>
+                      <p className={`font-medium ${completed ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
                         {task.title}
                       </p>
-                      <div className="flex items-center gap-3 mt-1 text-sm text-slate-500">
+                      <div className="flex items-center gap-3 mt-1 text-sm text-muted-foreground">
                         <span className="flex items-center gap-1">
                           <User className="w-3 h-3" />
                           {customerName(task.customer_id)}
@@ -363,13 +363,13 @@ const TasksFollowups = () => {
                     <Badge className={`${
                       task.priority === 'high' ? 'bg-red-100 text-red-700' :
                       task.priority === 'medium' ? 'bg-yellow-100 text-yellow-700' :
-                      'bg-slate-100 text-slate-600'
+                      'bg-surface-2 text-muted-foreground'
                     }`}>
                       {task.priority}
                     </Badge>
 
                     <div className={`flex items-center gap-2 text-sm ${
-                      overdue && !completed ? 'text-red-600 font-medium' : 'text-slate-500'
+                      overdue && !completed ? 'text-red-600 font-medium' : 'text-muted-foreground'
                     }`}>
                       <Calendar className="w-4 h-4" />
                       {formatDue(task.due_at)}
@@ -378,7 +378,7 @@ const TasksFollowups = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="text-slate-400 hover:text-red-500"
+                      className="text-muted-foreground hover:text-red-500"
                       onClick={async () => {
                         try {
                           await deleteTask.mutateAsync(task.id);

@@ -127,12 +127,12 @@ export const CBOverview: React.FC = () => {
             <h1 className="text-2xl font-bold">Welcome back! 👋</h1>
             <p className="text-blue-100 mt-1">Here's what's happening with your chatbots today</p>
           </div>
-          <div className="hidden md:flex items-center gap-4 bg-white/10 rounded-xl px-4 py-3">
+          <div className="hidden md:flex items-center gap-4 bg-card/10 rounded-xl px-4 py-3">
             <div className="text-center">
               <p className="text-2xl font-bold">{allSessions.length}</p>
               <p className="text-xs text-blue-200">Total chats</p>
             </div>
-            <div className="w-px h-10 bg-white/20"></div>
+            <div className="w-px h-10 bg-card/20"></div>
             <div className="text-center">
               <p className="text-2xl font-bold">{resolutionRate}%</p>
               <p className="text-xs text-blue-200">Resolved by bot</p>
@@ -142,7 +142,7 @@ export const CBOverview: React.FC = () => {
       </div>
 
       {isLoading ? (
-        <p className="text-sm text-slate-400 py-8 text-center">Loading dashboard…</p>
+        <p className="text-sm text-muted-foreground py-8 text-center">Loading dashboard…</p>
       ) : (
         <>
           {/* Stats Grid */}
@@ -150,16 +150,16 @@ export const CBOverview: React.FC = () => {
             {statsCards.map((stat, index) => {
               const Icon = stat.icon;
               return (
-                <Card key={index} className="bg-white border-slate-200 shadow-sm hover:shadow-md transition-all rounded-xl">
+                <Card key={index} className="bg-card border-border shadow-sm hover:shadow-md transition-all rounded-xl">
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between mb-3">
                       <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center`}>
                         <Icon className="w-5 h-5 text-white" />
                       </div>
                     </div>
-                    <p className="text-2xl font-bold text-slate-800">{stat.value}</p>
-                    <p className="text-sm font-medium text-slate-700 mt-0.5">{stat.title}</p>
-                    <p className="text-xs text-slate-500 mt-1">{stat.subtitle}</p>
+                    <p className="text-2xl font-bold text-foreground">{stat.value}</p>
+                    <p className="text-sm font-medium text-foreground mt-0.5">{stat.title}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{stat.subtitle}</p>
                   </CardContent>
                 </Card>
               );
@@ -169,12 +169,12 @@ export const CBOverview: React.FC = () => {
           {/* Charts Row */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Conversations Chart */}
-            <Card className="bg-white border-slate-200 shadow-sm rounded-xl lg:col-span-2">
+            <Card className="bg-card border-border shadow-sm rounded-xl lg:col-span-2">
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="text-base font-semibold text-slate-800">Conversations This Week</CardTitle>
-                    <p className="text-xs text-slate-500 mt-1">Daily chat volume across all channels</p>
+                    <CardTitle className="text-base font-semibold text-foreground">Conversations This Week</CardTitle>
+                    <p className="text-xs text-muted-foreground mt-1">Daily chat volume across all channels</p>
                   </div>
                   <Badge variant="outline" className="text-xs">Last 7 days</Badge>
                 </div>
@@ -210,10 +210,10 @@ export const CBOverview: React.FC = () => {
             </Card>
 
             {/* Resolution Pie Chart */}
-            <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+            <Card className="bg-card border-border shadow-sm rounded-xl">
               <CardHeader className="pb-2">
-                <CardTitle className="text-base font-semibold text-slate-800">Who Resolves Chats?</CardTitle>
-                <p className="text-xs text-slate-500 mt-1">Bot vs human agent resolution</p>
+                <CardTitle className="text-base font-semibold text-foreground">Who Resolves Chats?</CardTitle>
+                <p className="text-xs text-muted-foreground mt-1">Bot vs human agent resolution</p>
               </CardHeader>
               <CardContent className="pt-0">
                 <div className="h-48">
@@ -247,7 +247,7 @@ export const CBOverview: React.FC = () => {
                   {resolutionData.map((item, idx) => (
                     <div key={idx} className="flex items-center gap-2">
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }}></div>
-                      <span className="text-xs text-slate-600">{item.name} ({item.value}%)</span>
+                      <span className="text-xs text-muted-foreground">{item.name} ({item.value}%)</span>
                     </div>
                   ))}
                 </div>
@@ -256,14 +256,14 @@ export const CBOverview: React.FC = () => {
           </div>
 
           {/* Channel Stats */}
-          <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+          <Card className="bg-card border-border shadow-sm rounded-xl">
             <CardHeader className="pb-2">
-              <CardTitle className="text-base font-semibold text-slate-800">Chats by Channel</CardTitle>
-              <p className="text-xs text-slate-500 mt-1">Where your customers are chatting from</p>
+              <CardTitle className="text-base font-semibold text-foreground">Chats by Channel</CardTitle>
+              <p className="text-xs text-muted-foreground mt-1">Where your customers are chatting from</p>
             </CardHeader>
             <CardContent>
               {channelData.length === 0 ? (
-                <p className="text-sm text-slate-400 py-8 text-center">No chat sessions yet.</p>
+                <p className="text-sm text-muted-foreground py-8 text-center">No chat sessions yet.</p>
               ) : (
                 <div className="h-48">
                   <ResponsiveContainer width="100%" height="100%">

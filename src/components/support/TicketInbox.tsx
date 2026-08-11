@@ -31,10 +31,10 @@ const TicketInbox = () => {
   };
 
   const getSentimentIcon = (csat: number | null) => {
-    if (csat == null) return <Meh className="w-4 h-4 text-slate-400" />;
+    if (csat == null) return <Meh className="w-4 h-4 text-muted-foreground" />;
     if (csat >= 4) return <Smile className="w-4 h-4 text-emerald-400" />;
     if (csat <= 2) return <Frown className="w-4 h-4 text-rose-400" />;
-    return <Meh className="w-4 h-4 text-slate-400" />;
+    return <Meh className="w-4 h-4 text-muted-foreground" />;
   };
 
   const handleReply = async (ticketId: string) => {
@@ -67,7 +67,7 @@ const TicketInbox = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-semibold text-white">Ticket Inbox</h2>
-          <p className="text-slate-400 mt-1">Manage and respond to support requests</p>
+          <p className="text-muted-foreground mt-1">Manage and respond to support requests</p>
         </div>
         <div className="flex gap-2">
           <span className="px-3 py-1.5 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-400 text-sm">
@@ -82,7 +82,7 @@ const TicketInbox = () => {
       {/* Tickets List */}
       <div className="space-y-4">
         {!isLoading && openTickets.length === 0 && (
-          <div className="p-8 text-center text-slate-500 rounded-2xl border border-slate-700/30 bg-slate-900/40">
+          <div className="p-8 text-center text-muted-foreground rounded-2xl border border-slate-700/30 bg-slate-900/40">
             No open tickets right now.
           </div>
         )}
@@ -107,19 +107,19 @@ const TicketInbox = () => {
                 className="p-5 cursor-pointer"
                 onClick={() => setSelectedTicket(isSelected ? null : ticket.id)}
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-sm font-mono text-slate-400">{ticket.reference}</span>
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-3 mb-2">
+                      <span className="text-sm font-mono text-muted-foreground">{ticket.reference}</span>
                       <span className={`px-2 py-0.5 rounded text-xs font-medium bg-${urgencyConfig.color}-500/10 text-${urgencyConfig.color}-400 border border-${urgencyConfig.color}-500/20`}>
                         {urgencyConfig.label}
                       </span>
-                      <span className="px-2 py-0.5 rounded text-xs bg-slate-700/30 text-slate-400">
+                      <span className="px-2 py-0.5 rounded text-xs bg-slate-700/30 text-muted-foreground">
                         {ticket.category}
                       </span>
                     </div>
-                    <p className="text-white font-medium mb-2">{ticket.subject}</p>
-                    <div className="flex items-center gap-4 text-sm text-slate-500">
+                    <p className="text-foreground font-medium mb-2">{ticket.subject}</p>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
                       <span className="flex items-center gap-1.5">
                         <User className="w-3.5 h-3.5" />
                         {ticket.customer_name}
@@ -145,7 +145,7 @@ const TicketInbox = () => {
                   <div className="flex flex-col items-end gap-2">
                     <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/30">
                       {getSentimentIcon(ticket.csat)}
-                      <span className="text-xs text-slate-400 capitalize">{ticket.status}</span>
+                      <span className="text-xs text-muted-foreground capitalize">{ticket.status}</span>
                     </div>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ const TicketInbox = () => {
                   <div className="pt-4 space-y-4">
                     {/* Canned Responses */}
                     <div>
-                      <p className="text-xs text-slate-500 mb-2">Quick Responses:</p>
+                      <p className="text-xs text-muted-foreground mb-2">Quick Responses:</p>
                       <div className="flex flex-wrap gap-2">
                         {(cannedResponses ?? []).slice(0, 4).map((response) => (
                           <motion.button
@@ -176,13 +176,13 @@ const TicketInbox = () => {
                           </motion.button>
                         ))}
                         {(cannedResponses ?? []).length === 0 && (
-                          <span className="text-xs text-slate-600">No canned responses saved yet.</span>
+                          <span className="text-xs text-muted-foreground">No canned responses saved yet.</span>
                         )}
                       </div>
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex items-center gap-3 pt-2">
+                    <div className="flex flex-wrap items-center gap-3 pt-2">
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}

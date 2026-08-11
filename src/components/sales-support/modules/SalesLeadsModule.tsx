@@ -82,7 +82,7 @@ const SalesLeadsModule = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Sales Leads Pipeline</h2>
-          <p className="text-slate-400">Track leads through stages with AI win probability</p>
+          <p className="text-muted-foreground">Track leads through stages with AI win probability</p>
         </div>
       </div>
 
@@ -91,28 +91,28 @@ const SalesLeadsModule = () => {
           <CardContent className="p-4 text-center">
             <Inbox className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{activeLeads.length}</div>
-            <div className="text-xs text-slate-400">Active Leads</div>
+            <div className="text-xs text-muted-foreground">Active Leads</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-red-500/20">
           <CardContent className="p-4 text-center">
             <Flame className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{hotLeads}</div>
-            <div className="text-xs text-slate-400">Hot Leads</div>
+            <div className="text-xs text-muted-foreground">Hot Leads</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <DollarSign className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">${(totalPipeline / 1000).toFixed(0)}K</div>
-            <div className="text-xs text-slate-400">Pipeline Value</div>
+            <div className="text-xs text-muted-foreground">Pipeline Value</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <TrendingUp className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{avgWinProb}%</div>
-            <div className="text-xs text-slate-400">Avg Win Prob</div>
+            <div className="text-xs text-muted-foreground">Avg Win Prob</div>
           </CardContent>
         </Card>
       </div>
@@ -123,9 +123,9 @@ const SalesLeadsModule = () => {
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <div className="text-slate-400 text-sm py-6 text-center">Loading leads…</div>
+            <div className="text-muted-foreground text-sm py-6 text-center">Loading leads…</div>
           ) : leads.length === 0 ? (
-            <div className="text-slate-400 text-sm py-6 text-center">No leads yet.</div>
+            <div className="text-muted-foreground text-sm py-6 text-center">No leads yet.</div>
           ) : (
             <div className="space-y-3">
               {leads.map((lead, index) => {
@@ -158,7 +158,7 @@ const SalesLeadsModule = () => {
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-medium text-slate-100">{lead.company}</h4>
-                        <p className="text-sm text-slate-400">{lead.contact_name} • {lead.email ?? "—"} • {lead.source} • {relativeTime(lead.created_at)}</p>
+                        <p className="text-sm text-muted-foreground">{lead.contact_name} • {lead.email ?? "—"} • {lead.source} • {relativeTime(lead.created_at)}</p>
                         {assignedName && <p className="text-sm text-cyan-400">Assigned: {assignedName}</p>}
                       </div>
 

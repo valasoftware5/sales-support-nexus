@@ -65,8 +65,8 @@ export const CBBotTraining: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Train Your Bot</h1>
-          <p className="text-slate-500 text-sm mt-1">Teach your chatbot to answer questions better</p>
+          <h1 className="text-2xl font-bold text-foreground">Train Your Bot</h1>
+          <p className="text-muted-foreground text-sm mt-1">Teach your chatbot to answer questions better</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" onClick={handleRetrain}>
@@ -114,7 +114,7 @@ export const CBBotTraining: React.FC = () => {
       </Card>
 
       <Tabs defaultValue="upload" className="space-y-4">
-        <TabsList className="bg-slate-100">
+        <TabsList className="bg-surface-2">
           <TabsTrigger value="upload">📄 Upload Content</TabsTrigger>
           <TabsTrigger value="versions">📜 Chatbots</TabsTrigger>
         </TabsList>
@@ -123,7 +123,7 @@ export const CBBotTraining: React.FC = () => {
         <TabsContent value="upload" className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Upload FAQ */}
-            <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+            <Card className="bg-card border-border shadow-sm rounded-xl">
               <CardHeader>
                 <CardTitle className="text-base flex items-center gap-2">
                   <FileText className="w-5 h-5 text-blue-600" />
@@ -133,18 +133,18 @@ export const CBBotTraining: React.FC = () => {
               </CardHeader>
               <CardContent>
                 <div
-                  className="border-2 border-dashed border-slate-200 rounded-xl p-6 text-center hover:border-blue-400 hover:bg-blue-50/50 transition-all cursor-pointer"
+                  className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:border-blue-400 hover:bg-blue-50/50 transition-all cursor-pointer"
                   onClick={handleUpload}
                 >
-                  <Upload className="w-10 h-10 text-slate-400 mx-auto mb-3" />
-                  <p className="text-sm text-slate-600 font-medium">Drop files here or click to upload</p>
-                  <p className="text-xs text-slate-400 mt-1">Max 10MB per file</p>
+                  <Upload className="w-10 h-10 text-muted-foreground mx-auto mb-3" />
+                  <p className="text-sm text-muted-foreground font-medium">Drop files here or click to upload</p>
+                  <p className="text-xs text-muted-foreground mt-1">Max 10MB per file</p>
                 </div>
               </CardContent>
             </Card>
 
             {/* Import from URL */}
-            <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+            <Card className="bg-card border-border shadow-sm rounded-xl">
               <CardHeader>
                 <CardTitle className="text-base flex items-center gap-2">
                   <Link className="w-5 h-5 text-blue-600" />
@@ -153,7 +153,7 @@ export const CBBotTraining: React.FC = () => {
                 <CardDescription>Crawl website content</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Input placeholder="https://yoursite.com/faq" className="bg-slate-50" />
+                <Input placeholder="https://yoursite.com/faq" className="bg-surface" />
                 <Button className="w-full" variant="outline" onClick={handleUpload}>
                   <Database className="w-4 h-4 mr-2" />
                   Fetch & Import
@@ -162,7 +162,7 @@ export const CBBotTraining: React.FC = () => {
             </Card>
 
             {/* Training Progress */}
-            <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+            <Card className="bg-card border-border shadow-sm rounded-xl">
               <CardHeader>
                 <CardTitle className="text-base flex items-center gap-2">
                   <Brain className="w-5 h-5 text-blue-600" />
@@ -173,12 +173,12 @@ export const CBBotTraining: React.FC = () => {
               <CardContent className="space-y-4">
                 <div>
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="text-slate-600">Model Accuracy</span>
+                    <span className="text-muted-foreground">Model Accuracy</span>
                     <span className="font-semibold text-emerald-600">{avgAccuracy}%</span>
                   </div>
                   <Progress value={avgAccuracy} className="h-2" />
                 </div>
-                <div className="flex items-center gap-2 text-sm text-slate-500">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Clock className="w-4 h-4" />
                   <span>Last trained: {relativeTime(lastTrained)}</span>
                 </div>
@@ -187,22 +187,22 @@ export const CBBotTraining: React.FC = () => {
           </div>
 
           {/* Uploaded Documents */}
-          <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+          <Card className="bg-card border-border shadow-sm rounded-xl">
             <CardHeader>
               <CardTitle className="text-base">Uploaded Documents</CardTitle>
             </CardHeader>
             <CardContent>
               {isLoading ? (
-                <p className="text-sm text-slate-400 py-6 text-center">Loading documents…</p>
+                <p className="text-sm text-muted-foreground py-6 text-center">Loading documents…</p>
               ) : docs.length === 0 ? (
-                <p className="text-sm text-slate-400 py-6 text-center">No documents uploaded yet.</p>
+                <p className="text-sm text-muted-foreground py-6 text-center">No documents uploaded yet.</p>
               ) : (
                 <div className="space-y-2">
                   {docs.map((doc) => (
-                    <div key={doc.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                    <div key={doc.id} className="flex items-center justify-between p-3 bg-surface rounded-lg">
                       <div className="flex items-center gap-3">
                         <FileText className="w-5 h-5 text-blue-600" />
-                        <span className="font-medium text-slate-700">{doc.title}</span>
+                        <span className="font-medium text-foreground">{doc.title}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge
@@ -218,7 +218,7 @@ export const CBBotTraining: React.FC = () => {
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="h-8 w-8 text-slate-400 hover:text-red-600"
+                          className="h-8 w-8 text-muted-foreground hover:text-red-600"
                           onClick={() => handleDelete(doc.id)}
                         >
                           <Trash2 className="w-4 h-4" />
@@ -234,7 +234,7 @@ export const CBBotTraining: React.FC = () => {
 
         {/* Chatbots Tab */}
         <TabsContent value="versions">
-          <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+          <Card className="bg-card border-border shadow-sm rounded-xl">
             <CardHeader>
               <CardTitle className="text-base flex items-center gap-2">
                 <History className="w-5 h-5 text-blue-600" />
@@ -244,39 +244,39 @@ export const CBBotTraining: React.FC = () => {
             </CardHeader>
             <CardContent>
               {isLoading ? (
-                <p className="text-sm text-slate-400 py-6 text-center">Loading chatbots…</p>
+                <p className="text-sm text-muted-foreground py-6 text-center">Loading chatbots…</p>
               ) : !chatbots || chatbots.length === 0 ? (
-                <p className="text-sm text-slate-400 py-6 text-center">No chatbots configured yet.</p>
+                <p className="text-sm text-muted-foreground py-6 text-center">No chatbots configured yet.</p>
               ) : (
                 <div className="space-y-3">
                   {chatbots.map((bot) => (
-                    <div key={bot.id} className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+                    <div key={bot.id} className="flex items-center justify-between p-4 bg-surface rounded-xl">
                       <div className="flex items-center gap-4">
                         <div
                           className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                            bot.status === 'active' ? 'bg-emerald-100' : 'bg-slate-200'
+                            bot.status === 'active' ? 'bg-emerald-100' : 'bg-surface-3'
                           }`}
                         >
                           {bot.status === 'active' ? (
                             <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                           ) : (
-                            <History className="w-5 h-5 text-slate-500" />
+                            <History className="w-5 h-5 text-muted-foreground" />
                           )}
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="font-semibold text-slate-800">{bot.name}</span>
+                            <span className="font-semibold text-foreground">{bot.name}</span>
                             {bot.status === 'active' && (
                               <Badge className="bg-emerald-100 text-emerald-700 text-xs">Active</Badge>
                             )}
                           </div>
-                          <p className="text-sm text-slate-500">{bot.channel} • {bot.language}</p>
+                          <p className="text-sm text-muted-foreground">{bot.channel} • {bot.language}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-4">
                         <div className="text-right">
-                          <p className="font-semibold text-slate-800">{bot.resolution_rate}%</p>
-                          <p className="text-xs text-slate-500">Resolution</p>
+                          <p className="font-semibold text-foreground">{bot.resolution_rate}%</p>
+                          <p className="text-xs text-muted-foreground">Resolution</p>
                         </div>
                       </div>
                     </div>

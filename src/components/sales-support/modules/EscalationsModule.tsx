@@ -80,7 +80,7 @@ const EscalationsModule = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Escalation Management</h2>
-          <p className="text-slate-400">Track and manage escalated issues with SLA enforcement</p>
+          <p className="text-muted-foreground">Track and manage escalated issues with SLA enforcement</p>
         </div>
       </div>
 
@@ -90,28 +90,28 @@ const EscalationsModule = () => {
           <CardContent className="p-4 text-center">
             <AlertCircle className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{escalations.filter(e => e.status !== "resolved").length}</div>
-            <div className="text-xs text-slate-400">Active Escalations</div>
+            <div className="text-xs text-muted-foreground">Active Escalations</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{pendingCount}</div>
-            <div className="text-xs text-slate-400">Pending Assignment</div>
+            <div className="text-xs text-muted-foreground">Pending Assignment</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{criticalCount}</div>
-            <div className="text-xs text-slate-400">Critical</div>
+            <div className="text-xs text-muted-foreground">Critical</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <Shield className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{level3Count}</div>
-            <div className="text-xs text-slate-400">Level 3 (Management)</div>
+            <div className="text-xs text-muted-foreground">Level 3 (Management)</div>
           </CardContent>
         </Card>
       </div>
@@ -123,8 +123,8 @@ const EscalationsModule = () => {
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
-            {isLoading && <p className="text-slate-400 text-sm">Loading escalations…</p>}
-            {!isLoading && escalations.length === 0 && <p className="text-slate-400 text-sm">No escalations.</p>}
+            {isLoading && <p className="text-muted-foreground text-sm">Loading escalations…</p>}
+            {!isLoading && escalations.length === 0 && <p className="text-muted-foreground text-sm">No escalations.</p>}
             {escalations.map((esc, index) => {
               const priority = priorityFromLevel(esc.level);
               const ticket = ticketFor(esc.ticket_id);
@@ -142,13 +142,13 @@ const EscalationsModule = () => {
                       <span className="font-mono text-cyan-400 text-sm">{esc.reference}</span>
                       <Badge className={getLevelColor(esc.level)}>Level {esc.level}</Badge>
                       <Badge className={getPriorityColor(priority)}>{priority}</Badge>
-                      {ticket && <Badge variant="outline" className="text-slate-400">TICKET: {ticket.reference}</Badge>}
+                      {ticket && <Badge variant="outline" className="text-muted-foreground">TICKET: {ticket.reference}</Badge>}
                     </div>
                   </div>
 
                   <div className="mb-3">
                     <h4 className="font-medium text-slate-100">{ticket?.subject ?? esc.reason}</h4>
-                    <p className="text-sm text-slate-400">{ticket?.customer_name ?? "-"} • {relativeTime(esc.created_at)} • {assignedName || "Unassigned"}</p>
+                    <p className="text-sm text-muted-foreground">{ticket?.customer_name ?? "-"} • {relativeTime(esc.created_at)} • {assignedName || "Unassigned"}</p>
                     <p className="text-sm text-amber-400/80 mt-1">Reason: {esc.reason}</p>
                   </div>
 
@@ -200,7 +200,7 @@ const EscalationsModule = () => {
             <AlertTriangle className="w-6 h-6 text-amber-400" />
             <div>
               <h3 className="font-medium text-amber-100">Auto-Escalation Rules Active</h3>
-              <p className="text-sm text-slate-400">Issues unresolved past SLA automatically escalate. Level 3 notifies management.</p>
+              <p className="text-sm text-muted-foreground">Issues unresolved past SLA automatically escalate. Level 3 notifies management.</p>
             </div>
           </div>
         </CardContent>

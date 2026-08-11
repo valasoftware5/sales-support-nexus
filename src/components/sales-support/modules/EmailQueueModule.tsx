@@ -75,7 +75,7 @@ const EmailQueueModule = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Email Queue</h2>
-          <p className="text-slate-400">Unified inbox with AI suggestions and SLA tracking</p>
+          <p className="text-muted-foreground">Unified inbox with AI suggestions and SLA tracking</p>
         </div>
       </div>
 
@@ -85,28 +85,28 @@ const EmailQueueModule = () => {
           <CardContent className="p-4 text-center">
             <Mail className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{emails.length}</div>
-            <div className="text-xs text-slate-400">Total Emails</div>
+            <div className="text-xs text-muted-foreground">Total Emails</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <MailOpen className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{unreadCount}</div>
-            <div className="text-xs text-slate-400">Unread</div>
+            <div className="text-xs text-muted-foreground">Unread</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-red-500/20">
           <CardContent className="p-4 text-center">
             <Tag className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{urgentCount}</div>
-            <div className="text-xs text-slate-400">Urgent</div>
+            <div className="text-xs text-muted-foreground">Urgent</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{slaRisk}</div>
-            <div className="text-xs text-slate-400">SLA Risk</div>
+            <div className="text-xs text-muted-foreground">SLA Risk</div>
           </CardContent>
         </Card>
       </div>
@@ -118,8 +118,8 @@ const EmailQueueModule = () => {
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
-            {isLoading && <p className="text-slate-400 text-sm">Loading emails…</p>}
-            {!isLoading && emails.length === 0 && <p className="text-slate-400 text-sm">No emails in queue.</p>}
+            {isLoading && <p className="text-muted-foreground text-sm">Loading emails…</p>}
+            {!isLoading && emails.length === 0 && <p className="text-muted-foreground text-sm">No emails in queue.</p>}
             {emails.map((email, index) => {
               const StatusIcon = getStatusIcon(email.status);
               const assignedName = memberName(agents, email.assigned_to);
@@ -133,22 +133,22 @@ const EmailQueueModule = () => {
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
-                      <StatusIcon className={`w-5 h-5 ${email.status === "unread" ? "text-cyan-400" : "text-slate-500"}`} />
+                      <StatusIcon className={`w-5 h-5 ${email.status === "unread" ? "text-cyan-400" : "text-muted-foreground"}`} />
                       <span className="font-mono text-cyan-400 text-sm">{email.id.slice(0, 8)}</span>
                       <Badge className={getPriorityColor(email.priority)}>{email.priority}</Badge>
                       {email.category && (
-                        <Badge variant="outline" className="text-slate-400 text-xs">{email.category}</Badge>
+                        <Badge variant="outline" className="text-muted-foreground text-xs">{email.category}</Badge>
                       )}
                     </div>
                     <div className="flex items-center gap-2 text-sm">
-                      <span className="text-slate-500">{relativeTime(email.received_at)}</span>
+                      <span className="text-muted-foreground">{relativeTime(email.received_at)}</span>
                     </div>
                   </div>
 
                   <div className="mb-2">
                     <h4 className="font-medium text-slate-100">{email.subject}</h4>
-                    <p className="text-sm text-slate-400">{email.from_name ?? email.from_email} &lt;{email.from_email}&gt; {assignedName && `• Assigned: ${assignedName}`}</p>
-                    {email.preview && <p className="text-sm text-slate-500 truncate">{email.preview}</p>}
+                    <p className="text-sm text-muted-foreground">{email.from_name ?? email.from_email} &lt;{email.from_email}&gt; {assignedName && `• Assigned: ${assignedName}`}</p>
+                    {email.preview && <p className="text-sm text-muted-foreground truncate">{email.preview}</p>}
                   </div>
 
                   <div className="flex items-center justify-between">

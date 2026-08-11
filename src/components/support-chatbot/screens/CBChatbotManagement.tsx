@@ -49,8 +49,8 @@ export const CBChatbotManagement: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">My Chatbots</h1>
-          <p className="text-slate-500 text-sm mt-1">Create and manage your AI chatbots</p>
+          <h1 className="text-2xl font-bold text-foreground">My Chatbots</h1>
+          <p className="text-muted-foreground text-sm mt-1">Create and manage your AI chatbots</p>
         </div>
         <Button className="bg-blue-600 hover:bg-blue-700" onClick={handleCreate}>
           <Bot className="w-4 h-4 mr-2" />
@@ -64,7 +64,7 @@ export const CBChatbotManagement: React.FC = () => {
           <div className="w-2 h-2 rounded-full bg-emerald-500 mr-2 animate-pulse"></div>
           {allBots.filter(b => b.status === 'live').length} Live Bots
         </Badge>
-        <Badge variant="outline" className="bg-slate-50 text-slate-600 border-slate-200 px-3 py-1">
+        <Badge variant="outline" className="bg-surface text-muted-foreground border-border px-3 py-1">
           {allBots.filter(b => b.status === 'paused').length} Paused
         </Badge>
         <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 px-3 py-1">
@@ -74,7 +74,7 @@ export const CBChatbotManagement: React.FC = () => {
 
       {/* Bot Cards */}
       {isLoading ? (
-        <div className="text-center py-8 text-slate-500">Loading chatbots...</div>
+        <div className="text-center py-8 text-muted-foreground">Loading chatbots...</div>
       ) : (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {allBots.map((bot) => {
@@ -84,7 +84,7 @@ export const CBChatbotManagement: React.FC = () => {
           return (
             <Card 
               key={bot.id} 
-              className={`bg-white border-slate-200 shadow-sm hover:shadow-md transition-all rounded-xl ${
+              className={`bg-card border-border shadow-sm hover:shadow-md transition-all rounded-xl ${
                 bot.status === 'paused' ? 'opacity-80' : ''
               }`}
             >
@@ -97,12 +97,12 @@ export const CBChatbotManagement: React.FC = () => {
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-slate-800">{bot.name}</h3>
+                        <h3 className="font-semibold text-foreground">{bot.name}</h3>
                         {bot.status === 'live' && (
                           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                         )}
                       </div>
-                      <p className="text-xs text-slate-500 mt-0.5">{bot.purpose ?? '—'}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{bot.purpose ?? '—'}</p>
                     </div>
                   </div>
                   <DropdownMenu>
@@ -127,31 +127,31 @@ export const CBChatbotManagement: React.FC = () => {
                     <ChannelIcon className="w-3 h-3 mr-1" />
                     {channel.label}
                   </Badge>
-                  <Badge variant="outline" className="text-xs bg-slate-50 text-slate-600 border-slate-200">
+                  <Badge variant="outline" className="text-xs bg-surface text-muted-foreground border-border">
                     🌐 {bot.language}
                   </Badge>
                 </div>
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-3 mb-4">
-                  <div className="bg-slate-50 rounded-lg p-3 text-center">
-                    <p className="text-lg font-bold text-slate-800">{bot.conversations.toLocaleString()}</p>
-                    <p className="text-[10px] text-slate-500 uppercase tracking-wide">Conversations</p>
+                  <div className="bg-surface rounded-lg p-3 text-center">
+                    <p className="text-lg font-bold text-foreground">{bot.conversations.toLocaleString()}</p>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Conversations</p>
                   </div>
-                  <div className="bg-slate-50 rounded-lg p-3 text-center">
+                  <div className="bg-surface rounded-lg p-3 text-center">
                     <p className="text-lg font-bold text-emerald-600">{bot.resolution_rate}%</p>
-                    <p className="text-[10px] text-slate-500 uppercase tracking-wide">Resolution Rate</p>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Resolution Rate</p>
                   </div>
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+                <div className="flex items-center justify-between pt-3 border-t border-border">
                   <div className="flex items-center gap-2">
                     <Switch
                       checked={bot.status === 'live'}
                       onCheckedChange={() => handleToggle(bot)}
                     />
-                    <span className={`text-sm font-medium ${bot.status === 'live' ? 'text-emerald-600' : 'text-slate-500'}`}>
+                    <span className={`text-sm font-medium ${bot.status === 'live' ? 'text-emerald-600' : 'text-muted-foreground'}`}>
                       {bot.status === 'live' ? 'Live' : 'Paused'}
                     </span>
                   </div>

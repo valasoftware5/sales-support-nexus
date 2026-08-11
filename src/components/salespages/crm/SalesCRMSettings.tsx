@@ -29,12 +29,12 @@ const SalesCRMSettings = () => {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-slate-800">Settings</h1>
-        <p className="text-slate-500 mt-1">Manage your CRM preferences</p>
+        <h1 className="text-2xl font-bold text-foreground">Settings</h1>
+        <p className="text-muted-foreground mt-1">Manage your CRM preferences</p>
       </div>
 
       <Tabs defaultValue="profile" className="space-y-6">
-        <TabsList className="bg-slate-100">
+        <TabsList className="bg-surface-2">
           <TabsTrigger value="profile" className="gap-2">
             <User className="w-4 h-4" />
             Profile
@@ -55,7 +55,7 @@ const SalesCRMSettings = () => {
 
         {/* Profile Settings */}
         <TabsContent value="profile">
-          <Card className="border-slate-200">
+          <Card className="border-border">
             <CardHeader>
               <CardTitle>Profile Information</CardTitle>
               <CardDescription>Update your personal details</CardDescription>
@@ -67,7 +67,7 @@ const SalesCRMSettings = () => {
                 </div>
                 <div>
                   <Button variant="outline">Change Photo</Button>
-                  <p className="text-sm text-slate-500 mt-2">JPG, GIF or PNG. Max size 2MB</p>
+                  <p className="text-sm text-muted-foreground mt-2">JPG, GIF or PNG. Max size 2MB</p>
                 </div>
               </div>
 
@@ -127,7 +127,7 @@ const SalesCRMSettings = () => {
 
         {/* Company Settings */}
         <TabsContent value="company">
-          <Card className="border-slate-200">
+          <Card className="border-border">
             <CardHeader>
               <CardTitle>Company Information</CardTitle>
               <CardDescription>Manage your company details</CardDescription>
@@ -195,60 +195,60 @@ const SalesCRMSettings = () => {
 
         {/* Notification Settings */}
         <TabsContent value="notifications">
-          <Card className="border-slate-200">
+          <Card className="border-border">
             <CardHeader>
               <CardTitle>Notification Preferences</CardTitle>
               <CardDescription>Choose how you want to be notified</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 rounded-xl bg-slate-50">
+                <div className="flex items-center justify-between p-4 rounded-xl bg-surface">
                   <div className="flex items-center gap-4">
                     <div className="p-2 rounded-lg bg-blue-100">
                       <Mail className="w-5 h-5 text-blue-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-slate-800">Email Notifications</p>
-                      <p className="text-sm text-slate-500">Receive email for new leads and updates</p>
+                      <p className="font-medium text-foreground">Email Notifications</p>
+                      <p className="text-sm text-muted-foreground">Receive email for new leads and updates</p>
                     </div>
                   </div>
                   <Switch defaultChecked />
                 </div>
 
-                <div className="flex items-center justify-between p-4 rounded-xl bg-slate-50">
+                <div className="flex items-center justify-between p-4 rounded-xl bg-surface">
                   <div className="flex items-center gap-4">
                     <div className="p-2 rounded-lg bg-green-100">
                       <Bell className="w-5 h-5 text-green-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-slate-800">Task Reminders</p>
-                      <p className="text-sm text-slate-500">Get reminded about upcoming tasks</p>
+                      <p className="font-medium text-foreground">Task Reminders</p>
+                      <p className="text-sm text-muted-foreground">Get reminded about upcoming tasks</p>
                     </div>
                   </div>
                   <Switch defaultChecked />
                 </div>
 
-                <div className="flex items-center justify-between p-4 rounded-xl bg-slate-50">
+                <div className="flex items-center justify-between p-4 rounded-xl bg-surface">
                   <div className="flex items-center gap-4">
                     <div className="p-2 rounded-lg bg-purple-100">
                       <Database className="w-5 h-5 text-purple-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-slate-800">Deal Updates</p>
-                      <p className="text-sm text-slate-500">Notifications when deals progress</p>
+                      <p className="font-medium text-foreground">Deal Updates</p>
+                      <p className="text-sm text-muted-foreground">Notifications when deals progress</p>
                     </div>
                   </div>
                   <Switch defaultChecked />
                 </div>
 
-                <div className="flex items-center justify-between p-4 rounded-xl bg-slate-50">
+                <div className="flex items-center justify-between p-4 rounded-xl bg-surface">
                   <div className="flex items-center gap-4">
                     <div className="p-2 rounded-lg bg-orange-100">
                       <Globe className="w-5 h-5 text-orange-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-slate-800">Weekly Reports</p>
-                      <p className="text-sm text-slate-500">Receive weekly performance summary</p>
+                      <p className="font-medium text-foreground">Weekly Reports</p>
+                      <p className="text-sm text-muted-foreground">Receive weekly performance summary</p>
                     </div>
                   </div>
                   <Switch />
@@ -265,7 +265,7 @@ const SalesCRMSettings = () => {
 
         {/* Security Settings */}
         <TabsContent value="security">
-          <Card className="border-slate-200">
+          <Card className="border-border">
             <CardHeader>
               <CardTitle>Security Settings</CardTitle>
               <CardDescription>Manage your account security</CardDescription>
@@ -286,15 +286,15 @@ const SalesCRMSettings = () => {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-200">
-                <div className="flex items-center justify-between p-4 rounded-xl bg-slate-50">
+              <div className="pt-4 border-t border-border">
+                <div className="flex items-center justify-between p-4 rounded-xl bg-surface">
                   <div className="flex items-center gap-4">
                     <div className="p-2 rounded-lg bg-green-100">
                       <Lock className="w-5 h-5 text-green-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-slate-800">Two-Factor Authentication</p>
-                      <p className="text-sm text-slate-500">Add an extra layer of security</p>
+                      <p className="font-medium text-foreground">Two-Factor Authentication</p>
+                      <p className="text-sm text-muted-foreground">Add an extra layer of security</p>
                     </div>
                   </div>
                   <Switch />
@@ -311,8 +311,8 @@ const SalesCRMSettings = () => {
       </Tabs>
 
       {/* Powered By Footer */}
-      <div className="text-center py-6 border-t border-slate-200">
-        <p className="text-sm text-slate-500">
+      <div className="text-center py-6 border-t border-border">
+        <p className="text-sm text-muted-foreground">
           Powered by <span className="font-semibold text-blue-600">Software Vala</span>
         </p>
       </div>

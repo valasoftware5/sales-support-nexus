@@ -58,7 +58,7 @@ const LeadInbox = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Lead Inbox</h2>
-          <p className="text-slate-400">Incoming leads queue with qualification tags</p>
+          <p className="text-muted-foreground">Incoming leads queue with qualification tags</p>
         </div>
         <div className="flex gap-2">
           <Badge className="bg-red-500/20 text-red-300">{hotCount} Hot</Badge>
@@ -72,28 +72,28 @@ const LeadInbox = () => {
           <CardContent className="p-4 text-center">
             <Inbox className="w-8 h-8 text-cyan-400 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-cyan-100">{rows.length}</div>
-            <div className="text-xs text-slate-400">Total Leads</div>
+            <div className="text-xs text-muted-foreground">Total Leads</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <User className="w-8 h-8 text-emerald-400 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-emerald-100">{qualifiedCount}</div>
-            <div className="text-xs text-slate-400">Qualified</div>
+            <div className="text-xs text-muted-foreground">Qualified</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-amber-100">{avgWinProbability}%</div>
-            <div className="text-xs text-slate-400">Avg Win Probability</div>
+            <div className="text-xs text-muted-foreground">Avg Win Probability</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <Flame className="w-8 h-8 text-purple-400 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-purple-100">{conversionRate}%</div>
-            <div className="text-xs text-slate-400">Conversion Rate</div>
+            <div className="text-xs text-muted-foreground">Conversion Rate</div>
           </CardContent>
         </Card>
       </div>
@@ -114,7 +114,7 @@ const LeadInbox = () => {
               Could not load leads: {error instanceof Error ? error.message : "unknown error"}
             </p>
           ) : rows.length === 0 ? (
-            <p className="text-sm text-slate-400">No leads in the queue yet.</p>
+            <p className="text-sm text-muted-foreground">No leads in the queue yet.</p>
           ) : (
             <ul className="space-y-3">
               {rows.map((lead, index) => {
@@ -145,7 +145,7 @@ const LeadInbox = () => {
                             <Badge className="bg-emerald-500/20 text-emerald-300">Qualified</Badge>
                           )}
                         </div>
-                        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-400 mt-1">
+                        <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground mt-1">
                           <span>{lead.contact_name}</span>
                           <span aria-hidden="true">•</span>
                           <span>{lead.category ?? "Uncategorised"}</span>
@@ -161,7 +161,7 @@ const LeadInbox = () => {
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-xs text-slate-500">{relativeTime(lead.created_at)}</span>
+                      <span className="text-xs text-muted-foreground">{relativeTime(lead.created_at)}</span>
                       <Button
                         size="sm"
                         variant="ghost"

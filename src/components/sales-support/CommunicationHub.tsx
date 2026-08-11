@@ -86,7 +86,7 @@ const CommunicationHub = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Communication Hub</h2>
-          <p className="text-slate-400">Masked client chat with auto-translation</p>
+          <p className="text-muted-foreground">Masked client chat with auto-translation</p>
         </div>
         <div className="flex items-center gap-2">
           <Badge className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
@@ -109,7 +109,7 @@ const CommunicationHub = () => {
             <ScrollArea className="h-[500px]">
               <div className="p-2 space-y-2">
                 {conversations.length === 0 && (
-                  <p className="text-xs text-slate-500 p-3">No conversations yet.</p>
+                  <p className="text-xs text-muted-foreground p-3">No conversations yet.</p>
                 )}
                 {conversations.map((conv) => (
                   <motion.div
@@ -135,9 +135,9 @@ const CommunicationHub = () => {
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-slate-400 truncate">{conv.lastMessage}</p>
+                    <p className="text-xs text-muted-foreground truncate">{conv.lastMessage}</p>
                     <div className="flex items-center justify-between mt-1">
-                      <span className="text-xs text-slate-500">{conv.time}</span>
+                      <span className="text-xs text-muted-foreground">{conv.time}</span>
                       <Badge className={conv.status === "active" ? "bg-emerald-500/20 text-emerald-300 text-xs" : "bg-amber-500/20 text-amber-300 text-xs"}>
                         {conv.status}
                       </Badge>
@@ -158,7 +158,7 @@ const CommunicationHub = () => {
                 </div>
                 <div>
                   <CardTitle className="text-cyan-100">{active?.client ?? "No conversation selected"}</CardTitle>
-                  <p className="text-xs text-slate-400">{active ? `${active.company} • ${active.status}` : ""}</p>
+                  <p className="text-xs text-muted-foreground">{active ? `${active.company} • ${active.status}` : ""}</p>
                 </div>
               </div>
               {active && (
@@ -174,7 +174,7 @@ const CommunicationHub = () => {
             <div className="space-y-4">
               {active?.source === "chat" ? (
                 chatMessages.length === 0 ? (
-                  <p className="text-sm text-slate-500">No messages yet in this session.</p>
+                  <p className="text-sm text-muted-foreground">No messages yet in this session.</p>
                 ) : (
                   chatMessages.map((msg) => (
                     <motion.div
@@ -185,7 +185,7 @@ const CommunicationHub = () => {
                     >
                       <div className={`max-w-[70%] ${msg.sender_type === "visitor" ? "bg-slate-800 border-slate-700" : "bg-cyan-500/20 border-cyan-500/30"} border rounded-lg p-3`}>
                         <p className={`text-sm ${msg.sender_type === "visitor" ? "text-slate-200" : "text-cyan-100"}`}>{msg.body}</p>
-                        <span className="text-xs text-slate-500 mt-1 block">{relativeTime(msg.created_at)}</span>
+                        <span className="text-xs text-muted-foreground mt-1 block">{relativeTime(msg.created_at)}</span>
                       </div>
                     </motion.div>
                   ))
@@ -193,10 +193,10 @@ const CommunicationHub = () => {
               ) : active ? (
                 <div className="bg-slate-800 border border-slate-700 rounded-lg p-3">
                   <p className="text-sm text-slate-200">{active.lastMessage}</p>
-                  <span className="text-xs text-slate-500 mt-1 block">{active.time}</span>
+                  <span className="text-xs text-muted-foreground mt-1 block">{active.time}</span>
                 </div>
               ) : (
-                <p className="text-sm text-slate-500">Select a conversation to view details.</p>
+                <p className="text-sm text-muted-foreground">Select a conversation to view details.</p>
               )}
             </div>
           </ScrollArea>
@@ -207,7 +207,7 @@ const CommunicationHub = () => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Type your message..."
-                className="bg-slate-800 border-slate-700 text-slate-100 placeholder:text-slate-500"
+                className="bg-slate-800 border-slate-700 text-slate-100 placeholder:text-muted-foreground"
               />
               <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
                 <Send className="w-4 h-4" />
@@ -226,14 +226,14 @@ const CommunicationHub = () => {
             </CardHeader>
             <CardContent className="space-y-2">
               {cannedResponses.length === 0 && (
-                <p className="text-xs text-slate-500">No canned responses configured.</p>
+                <p className="text-xs text-muted-foreground">No canned responses configured.</p>
               )}
               {cannedResponses.slice(0, 4).map((reply) => (
                 <Button
                   key={reply.id}
                   variant="ghost"
                   size="sm"
-                  className="w-full justify-start text-left text-xs text-slate-400 hover:text-cyan-300 hover:bg-cyan-500/10 h-auto py-2"
+                  className="w-full justify-start text-left text-xs text-muted-foreground hover:text-cyan-300 hover:bg-cyan-500/10 h-auto py-2"
                   onClick={() => setMessage(reply.body)}
                 >
                   {reply.body.substring(0, 40)}...
@@ -267,7 +267,7 @@ const CommunicationHub = () => {
           <Card className="bg-gradient-to-br from-emerald-900/30 to-cyan-900/30 border-emerald-500/30">
             <CardContent className="p-4 text-center">
               <div className="text-2xl font-bold text-emerald-300">{conversionLikelihood}%</div>
-              <div className="text-xs text-slate-400">Likely to Convert</div>
+              <div className="text-xs text-muted-foreground">Likely to Convert</div>
               <div className="text-xs text-emerald-400 mt-1">
                 {conversionLikelihood >= 60 ? "High Priority Lead" : "Needs Nurturing"}
               </div>

@@ -71,7 +71,7 @@ const EnhancedSupportMetrics = ({ onMetricClick }: EnhancedSupportMetricsProps) 
       {/* Header */}
       <div>
         <h2 className="text-2xl font-semibold text-white">Support Dashboard</h2>
-        <p className="text-slate-400 mt-1">Real-time overview • Click any metric to filter</p>
+        <p className="text-muted-foreground mt-1">Real-time overview • Click any metric to filter</p>
       </div>
 
       {/* Metrics Grid - 5 columns, 2 rows */}
@@ -92,7 +92,7 @@ const EnhancedSupportMetrics = ({ onMetricClick }: EnhancedSupportMetricsProps) 
               <div className={`w-10 h-10 rounded-xl ${colorClasses.bg} flex items-center justify-center mb-4`}>
                 <metric.icon className={`w-5 h-5 ${colorClasses.text}`} />
               </div>
-              <p className="text-sm text-slate-500 mb-1">{metric.label}</p>
+              <p className="text-sm text-muted-foreground mb-1">{metric.label}</p>
               <div className="flex items-end gap-2">
                 <span className="text-2xl font-bold text-white">{metric.value}</span>
                 {metric.trend === 'up' && (
@@ -137,7 +137,7 @@ const EnhancedSupportMetrics = ({ onMetricClick }: EnhancedSupportMetricsProps) 
                   activity.type === 'ai' ? 'bg-purple-400' : 'bg-sky-400'
                 }`} />
                 <span className="text-sm text-slate-300 flex-1">{activity.action}</span>
-                <span className="text-xs text-slate-500">{activity.time}</span>
+                <span className="text-xs text-muted-foreground">{activity.time}</span>
               </motion.div>
             ))}
           </div>
@@ -177,7 +177,7 @@ const EnhancedSupportMetrics = ({ onMetricClick }: EnhancedSupportMetricsProps) 
 
           {/* Response Time Chart */}
           <div className="mt-6 pt-6 border-t border-slate-700/30">
-            <p className="text-sm text-slate-400 mb-3">Hourly Ticket Volume</p>
+            <p className="text-sm text-muted-foreground mb-3">Hourly Ticket Volume</p>
             <div className="flex items-end gap-1 h-16">
               {[35, 45, 30, 60, 40, 55, 25, 50, 35, 45, 30, 40].map((height, i) => (
                 <motion.div
@@ -189,7 +189,7 @@ const EnhancedSupportMetrics = ({ onMetricClick }: EnhancedSupportMetricsProps) 
                 />
               ))}
             </div>
-            <div className="flex justify-between text-xs text-slate-500 mt-2">
+            <div className="flex justify-between text-xs text-muted-foreground mt-2">
               <span>8 AM</span>
               <span>Now</span>
             </div>
@@ -211,21 +211,21 @@ const EnhancedSupportMetrics = ({ onMetricClick }: EnhancedSupportMetricsProps) 
             </div>
             <div>
               <h3 className="font-semibold text-white">AI Insights</h3>
-              <p className="text-sm text-slate-400">3 actionable suggestions available</p>
+              <p className="text-sm text-muted-foreground">3 actionable suggestions available</p>
             </div>
           </div>
           <div className="flex gap-4">
             <div className="text-center">
               <div className="text-xl font-bold text-purple-400">12</div>
-              <div className="text-xs text-slate-400">Auto-resolved</div>
+              <div className="text-xs text-muted-foreground">Auto-resolved</div>
             </div>
             <div className="text-center">
               <div className="text-xl font-bold text-teal-400">94%</div>
-              <div className="text-xs text-slate-400">Accuracy</div>
+              <div className="text-xs text-muted-foreground">Accuracy</div>
             </div>
             <div className="text-center">
               <div className="text-xl font-bold text-amber-400">2.1h</div>
-              <div className="text-xs text-slate-400">Time saved</div>
+              <div className="text-xs text-muted-foreground">Time saved</div>
             </div>
           </div>
         </div>

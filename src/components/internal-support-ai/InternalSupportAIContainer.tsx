@@ -6,7 +6,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useSearch } from '@tanstack/react-router';
-import { InternalSupportAIHeader } from './InternalSupportAIHeader';
 import { SupportDashboard } from './sections/SupportDashboard';
 import { AutoIssueDetection } from './sections/AutoIssueDetection';
 import { AutoFixEngine } from './sections/AutoFixEngine';
@@ -52,8 +51,7 @@ export const InternalSupportAIContainer: React.FC<InternalSupportAIContainerProp
 
   return (
     <div 
-      className="min-h-screen w-full flex"
-      style={{ background: 'linear-gradient(135deg, #0B0F1A 0%, #0F172A 50%, #0B1628 100%)' }}
+      className="flex min-h-full w-full"
       onContextMenu={(e) => e.preventDefault()}
       onCopy={(e) => e.preventDefault()}
       onCut={(e) => e.preventDefault()}
@@ -62,16 +60,9 @@ export const InternalSupportAIContainer: React.FC<InternalSupportAIContainerProp
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Header */}
-        <InternalSupportAIHeader
-          systemStatus="LIVE"
-          pendingIssues={12}
-          autoFixSuccessRate={91.3}
-          escalationQueue={3}
-          userRole="SUPER_ADMIN"
-        />
 
         {/* Content */}
-        <main className="flex-1 p-4 overflow-auto">
+        <main className="mx-auto w-full max-w-[1600px] flex-1 overflow-auto px-4 py-6 sm:px-6">
           <motion.div
             key={activeSection}
             initial={{ opacity: 0, y: 20 }}

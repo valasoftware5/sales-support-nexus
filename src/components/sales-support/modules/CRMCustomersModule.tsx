@@ -116,7 +116,7 @@ const CRMCustomersModule = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">CRM / Customer Management</h2>
-          <p className="text-slate-400">Full customer profiles with history and support scores</p>
+          <p className="text-muted-foreground">Full customer profiles with history and support scores</p>
         </div>
         <Input
           placeholder="Search customers..."
@@ -131,28 +131,28 @@ const CRMCustomersModule = () => {
           <CardContent className="p-4 text-center">
             <Users className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{customers.length}</div>
-            <div className="text-xs text-slate-400">Total Customers</div>
+            <div className="text-xs text-muted-foreground">Total Customers</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <Star className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{activeCustomers}</div>
-            <div className="text-xs text-slate-400">Active</div>
+            <div className="text-xs text-muted-foreground">Active</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <DollarSign className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">${(totalRevenue / 1000).toFixed(0)}K</div>
-            <div className="text-xs text-slate-400">Total Revenue</div>
+            <div className="text-xs text-muted-foreground">Total Revenue</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-red-500/20">
           <CardContent className="p-4 text-center">
             <History className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{atRiskCount}</div>
-            <div className="text-xs text-slate-400">At Risk</div>
+            <div className="text-xs text-muted-foreground">At Risk</div>
           </CardContent>
         </Card>
       </div>
@@ -163,9 +163,9 @@ const CRMCustomersModule = () => {
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <div className="text-slate-400 text-sm py-6 text-center">Loading customers…</div>
+            <div className="text-muted-foreground text-sm py-6 text-center">Loading customers…</div>
           ) : filteredCustomers.length === 0 ? (
-            <div className="text-slate-400 text-sm py-6 text-center">No customers found.</div>
+            <div className="text-muted-foreground text-sm py-6 text-center">No customers found.</div>
           ) : (
             <div className="space-y-3">
               {filteredCustomers.map((customer, index) => (
@@ -186,10 +186,10 @@ const CRMCustomersModule = () => {
                           <span className="font-mono text-cyan-400 text-sm">{customer.id.slice(0, 8)}</span>
                           <span className="font-medium text-slate-100">{customer.company_name}</span>
                           <Badge className={getStatusColor(customer.status)}>{customer.status.replace('_', ' ')}</Badge>
-                          <Badge variant="outline" className="text-slate-400">{customer.industry ?? "—"}</Badge>
+                          <Badge variant="outline" className="text-muted-foreground">{customer.industry ?? "—"}</Badge>
                         </div>
-                        <p className="text-sm text-slate-400">{customer.contact_name} • {customer.email} • {customer.phone ?? "—"}</p>
-                        <div className="flex items-center gap-4 mt-1 text-xs text-slate-500">
+                        <p className="text-sm text-muted-foreground">{customer.contact_name} • {customer.email} • {customer.phone ?? "—"}</p>
+                        <div className="flex items-center gap-4 mt-1 text-xs text-muted-foreground">
                           <span>Purchases: {currency(customer.lifetime_value)}</span>
                           <span>Tickets: {customer.open_tickets}</span>
                           <span className={getScoreColor(customer.health_score)}>Score: {customer.health_score}%</span>
@@ -231,7 +231,7 @@ const CRMCustomersModule = () => {
         <SheetContent className="bg-slate-900 border-slate-700">
           <SheetHeader>
             <SheetTitle className="text-cyan-100">Edit Customer Profile</SheetTitle>
-            <SheetDescription className="text-slate-400">
+            <SheetDescription className="text-muted-foreground">
               Update customer information for {selectedCustomer?.company_name}
             </SheetDescription>
           </SheetHeader>
@@ -287,7 +287,7 @@ const CRMCustomersModule = () => {
         <SheetContent className="bg-slate-900 border-slate-700">
           <SheetHeader>
             <SheetTitle className="text-cyan-100">Customer History</SheetTitle>
-            <SheetDescription className="text-slate-400">
+            <SheetDescription className="text-muted-foreground">
               Purchase and ticket history for {selectedCustomer?.company_name}
             </SheetDescription>
           </SheetHeader>
@@ -298,13 +298,13 @@ const CRMCustomersModule = () => {
                   <CardContent className="p-4">
                     <h4 className="text-cyan-300 font-medium mb-2">Summary</h4>
                     <div className="grid grid-cols-2 gap-2 text-sm">
-                      <div className="text-slate-400">Total Purchases:</div>
+                      <div className="text-muted-foreground">Total Purchases:</div>
                       <div className="text-slate-100">{currency(selectedCustomer.lifetime_value)}</div>
-                      <div className="text-slate-400">Support Tickets:</div>
+                      <div className="text-muted-foreground">Support Tickets:</div>
                       <div className="text-slate-100">{selectedCustomer.open_tickets}</div>
-                      <div className="text-slate-400">Support Score:</div>
+                      <div className="text-muted-foreground">Support Score:</div>
                       <div className="text-slate-100">{selectedCustomer.health_score}%</div>
-                      <div className="text-slate-400">Last Contact:</div>
+                      <div className="text-muted-foreground">Last Contact:</div>
                       <div className="text-slate-100">{relativeTime(selectedCustomer.last_contact_at)}</div>
                     </div>
                   </CardContent>
@@ -312,7 +312,7 @@ const CRMCustomersModule = () => {
                 <Card className="bg-slate-800/50 border-slate-700">
                   <CardContent className="p-4">
                     <h4 className="text-cyan-300 font-medium mb-2">Recent Activity</h4>
-                    <div className="space-y-2 text-sm text-slate-400">
+                    <div className="space-y-2 text-sm text-muted-foreground">
                       <p>• Plan: {selectedCustomer.plan}</p>
                       <p>• Support ticket opened: {relativeTime(selectedCustomer.last_contact_at)}</p>
                       <p>• Customer since: {relativeTime(selectedCustomer.created_at)}</p>

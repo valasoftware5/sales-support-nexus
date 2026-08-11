@@ -67,8 +67,8 @@ export const CBAnalyticsLogs: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Analytics & Logs</h1>
-          <p className="text-slate-500 text-sm mt-1">Review conversations and monitor performance</p>
+          <h1 className="text-2xl font-bold text-foreground">Analytics & Logs</h1>
+          <p className="text-muted-foreground text-sm mt-1">Review conversations and monitor performance</p>
         </div>
         <Button variant="outline">
           <Download className="w-4 h-4 mr-2" />
@@ -81,14 +81,14 @@ export const CBAnalyticsLogs: React.FC = () => {
         {stats.map((stat, idx) => {
           const Icon = stat.icon;
           return (
-            <Card key={idx} className="bg-white border-slate-200 shadow-sm rounded-xl">
+            <Card key={idx} className="bg-card border-border shadow-sm rounded-xl">
               <CardContent className="p-4 flex items-center gap-3">
                 <div className={`w-10 h-10 rounded-lg bg-${stat.color}-100 flex items-center justify-center`}>
                   <Icon className={`w-5 h-5 text-${stat.color}-600`} />
                 </div>
                 <div>
-                  <p className="text-xl font-bold text-slate-800">{stat.value}</p>
-                  <p className="text-xs text-slate-500">{stat.label}</p>
+                  <p className="text-xl font-bold text-foreground">{stat.value}</p>
+                  <p className="text-xs text-muted-foreground">{stat.label}</p>
                 </div>
               </CardContent>
             </Card>
@@ -98,7 +98,7 @@ export const CBAnalyticsLogs: React.FC = () => {
 
       <Tabs defaultValue="transcripts" className="space-y-4">
         <div className="flex flex-col sm:flex-row gap-4 justify-between">
-          <TabsList className="bg-slate-100">
+          <TabsList className="bg-surface-2">
             <TabsTrigger value="transcripts">💬 Conversation Logs</TabsTrigger>
             <TabsTrigger value="ai-logs">🤖 AI Confidence</TabsTrigger>
             <TabsTrigger value="errors">⚠️ Error Logs</TabsTrigger>
@@ -106,31 +106,31 @@ export const CBAnalyticsLogs: React.FC = () => {
           </TabsList>
 
           <div className="relative w-full sm:w-64">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               placeholder="Search logs..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 bg-white"
+              className="pl-9 bg-card"
             />
           </div>
         </div>
 
         {/* Transcripts Tab */}
         <TabsContent value="transcripts">
-          <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+          <Card className="bg-card border-border shadow-sm rounded-xl">
             <CardContent className="p-0">
               {isLoading ? (
-                <p className="text-sm text-slate-400 py-8 text-center">Loading conversation logs…</p>
+                <p className="text-sm text-muted-foreground py-8 text-center">Loading conversation logs…</p>
               ) : filteredLogs.length === 0 ? (
-                <p className="text-sm text-slate-400 py-8 text-center">No conversation logs found.</p>
+                <p className="text-sm text-muted-foreground py-8 text-center">No conversation logs found.</p>
               ) : (
                 <div className="divide-y divide-slate-100">
                   {filteredLogs.map((log) => {
                     const session = log.session_id ? sessionMap.get(log.session_id) : undefined;
                     const resolvedByHuman = session?.handled_by === 'human';
                     return (
-                      <div key={log.id} className="p-4 hover:bg-slate-50 transition-colors">
+                      <div key={log.id} className="p-4 hover:bg-surface transition-colors">
                         <div className="flex items-start justify-between">
                           <div className="flex items-start gap-3">
                             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-medium text-sm">
@@ -138,7 +138,7 @@ export const CBAnalyticsLogs: React.FC = () => {
                             </div>
                             <div>
                               <div className="flex items-center gap-2 mb-1">
-                                <span className="font-medium text-slate-800">{session?.visitor_name ?? 'Unknown visitor'}</span>
+                                <span className="font-medium text-foreground">{session?.visitor_name ?? 'Unknown visitor'}</span>
                                 <Badge
                                   variant="outline"
                                   className={`text-[10px] ${
@@ -149,8 +149,8 @@ export const CBAnalyticsLogs: React.FC = () => {
                                   {resolvedByHuman ? 'human' : 'bot'}
                                 </Badge>
                               </div>
-                              <p className="text-sm text-slate-600">{log.intent ?? 'Unclassified'} — {log.outcome}</p>
-                              <div className="flex items-center gap-3 mt-2 text-xs text-slate-400">
+                              <p className="text-sm text-muted-foreground">{log.intent ?? 'Unclassified'} — {log.outcome}</p>
+                              <div className="flex items-center gap-3 mt-2 text-xs text-muted-foreground">
                                 <span className="flex items-center gap-1">
                                   <Clock className="w-3 h-3" /> {relativeTime(log.created_at)}
                                 </span>
@@ -170,12 +170,12 @@ export const CBAnalyticsLogs: React.FC = () => {
 
         {/* AI Logs Tab */}
         <TabsContent value="ai-logs">
-          <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+          <Card className="bg-card border-border shadow-sm rounded-xl">
             <CardContent className="p-0">
               {isLoading ? (
-                <p className="text-sm text-slate-400 py-8 text-center">Loading logs…</p>
+                <p className="text-sm text-muted-foreground py-8 text-center">Loading logs…</p>
               ) : filteredLogs.length === 0 ? (
-                <p className="text-sm text-slate-400 py-8 text-center">No logs found.</p>
+                <p className="text-sm text-muted-foreground py-8 text-center">No logs found.</p>
               ) : (
                 <div className="divide-y divide-slate-100">
                   {filteredLogs.map((log) => {
@@ -184,9 +184,9 @@ export const CBAnalyticsLogs: React.FC = () => {
                       <div key={log.id} className="p-4">
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
-                            <p className="font-medium text-slate-800">{log.intent ?? 'Unclassified intent'}</p>
-                            <p className="text-sm text-slate-500 mt-1">→ {log.outcome}</p>
-                            <span className="text-xs text-slate-400 mt-2 block">{relativeTime(log.created_at)}</span>
+                            <p className="font-medium text-foreground">{log.intent ?? 'Unclassified intent'}</p>
+                            <p className="text-sm text-muted-foreground mt-1">→ {log.outcome}</p>
+                            <span className="text-xs text-muted-foreground mt-2 block">{relativeTime(log.created_at)}</span>
                           </div>
                           <div className="ml-4">
                             <div className={`text-center px-3 py-2 rounded-lg ${
@@ -197,7 +197,7 @@ export const CBAnalyticsLogs: React.FC = () => {
                                 confidence >= 90 ? 'text-emerald-600' :
                                 confidence >= 60 ? 'text-amber-600' : 'text-red-600'
                               }`}>{confidence}%</p>
-                              <p className="text-[10px] text-slate-500">confidence</p>
+                              <p className="text-[10px] text-muted-foreground">confidence</p>
                             </div>
                           </div>
                         </div>
@@ -212,10 +212,10 @@ export const CBAnalyticsLogs: React.FC = () => {
 
         {/* Errors Tab */}
         <TabsContent value="errors">
-          <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+          <Card className="bg-card border-border shadow-sm rounded-xl">
             <CardContent className="p-0">
               {errorLogs.length === 0 ? (
-                <p className="text-sm text-slate-400 py-8 text-center">No errors recorded.</p>
+                <p className="text-sm text-muted-foreground py-8 text-center">No errors recorded.</p>
               ) : (
                 <div className="divide-y divide-slate-100">
                   {errorLogs.map((err) => (
@@ -226,11 +226,11 @@ export const CBAnalyticsLogs: React.FC = () => {
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="font-medium text-slate-800">{err.outcome}</span>
+                            <span className="font-medium text-foreground">{err.outcome}</span>
                             <Badge variant="outline" className="text-[10px] bg-red-50 text-red-700">Active</Badge>
                           </div>
-                          <p className="text-sm text-slate-500">{err.intent ?? 'No intent detected'}</p>
-                          <span className="text-xs text-slate-400">{relativeTime(err.created_at)}</span>
+                          <p className="text-sm text-muted-foreground">{err.intent ?? 'No intent detected'}</p>
+                          <span className="text-xs text-muted-foreground">{relativeTime(err.created_at)}</span>
                         </div>
                       </div>
                     </div>
@@ -245,14 +245,14 @@ export const CBAnalyticsLogs: React.FC = () => {
         <TabsContent value="bots">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {(chatbots ?? []).map((bot) => (
-              <Card key={bot.id} className="bg-white border-slate-200 shadow-sm rounded-xl">
+              <Card key={bot.id} className="bg-card border-border shadow-sm rounded-xl">
                 <CardHeader>
                   <CardTitle className="text-base flex items-center gap-2">
                     <Bot className="w-5 h-5 text-blue-600" />
                     {bot.name}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-2 text-sm text-slate-600">
+                <CardContent className="space-y-2 text-sm text-muted-foreground">
                   <p>Channel: {bot.channel}</p>
                   <p>Conversations: {bot.conversations}</p>
                   <p>Resolution rate: {bot.resolution_rate}%</p>
@@ -261,7 +261,7 @@ export const CBAnalyticsLogs: React.FC = () => {
               </Card>
             ))}
             {(!chatbots || chatbots.length === 0) && (
-              <p className="text-sm text-slate-400 py-8 text-center col-span-2">No chatbots configured.</p>
+              <p className="text-sm text-muted-foreground py-8 text-center col-span-2">No chatbots configured.</p>
             )}
           </div>
         </TabsContent>

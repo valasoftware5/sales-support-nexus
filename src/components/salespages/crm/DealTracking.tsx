@@ -117,16 +117,16 @@ const DealTracking = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Deal Tracking</h1>
-          <p className="text-slate-500 mt-1">Track and manage your sales deals</p>
+          <h1 className="text-2xl font-bold text-foreground">Deal Tracking</h1>
+          <p className="text-muted-foreground mt-1">Track and manage your sales deals</p>
         </div>
         <div className="flex gap-3">
-          <div className="flex bg-slate-100 rounded-lg p-1">
+          <div className="flex bg-surface-2 rounded-lg p-1">
             <Button
               variant={viewMode === 'list' ? 'default' : 'ghost'}
               size="sm"
               onClick={() => setViewMode('list')}
-              className={viewMode === 'list' ? 'bg-white shadow-sm' : ''}
+              className={viewMode === 'list' ? 'bg-card shadow-sm' : ''}
             >
               List
             </Button>
@@ -134,7 +134,7 @@ const DealTracking = () => {
               variant={viewMode === 'kanban' ? 'default' : 'ghost'}
               size="sm"
               onClick={() => setViewMode('kanban')}
-              className={viewMode === 'kanban' ? 'bg-white shadow-sm' : ''}
+              className={viewMode === 'kanban' ? 'bg-card shadow-sm' : ''}
             >
               Kanban
             </Button>
@@ -207,14 +207,14 @@ const DealTracking = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
           >
-            <Card className="border-slate-200">
+            <Card className="border-border">
               <CardContent className="p-4">
                 <div className="flex items-center gap-2 mb-2">
                   <div className={`w-3 h-3 rounded-full ${stage.color}`} />
-                  <span className="text-sm font-medium text-slate-600">{stage.label}</span>
+                  <span className="text-sm font-medium text-muted-foreground">{stage.label}</span>
                 </div>
-                <p className="text-2xl font-bold text-slate-800">{getStageDeals(stage.id).length}</p>
-                <p className="text-sm text-slate-500">{currency(getStageTotal(stage.id))}</p>
+                <p className="text-2xl font-bold text-foreground">{getStageDeals(stage.id).length}</p>
+                <p className="text-sm text-muted-foreground">{currency(getStageTotal(stage.id))}</p>
               </CardContent>
             </Card>
           </motion.div>
@@ -222,22 +222,22 @@ const DealTracking = () => {
       </div>
 
       {isLoading ? (
-        <p className="text-slate-500 text-sm py-6 text-center">Loading deals...</p>
+        <p className="text-muted-foreground text-sm py-6 text-center">Loading deals...</p>
       ) : viewMode === 'list' ? (
         /* List View */
-        <Card className="border-slate-200">
+        <Card className="border-border">
           <CardHeader>
             <div className="flex items-center justify-between">
-              <CardTitle className="text-slate-800">All Deals</CardTitle>
+              <CardTitle className="text-foreground">All Deals</CardTitle>
               <div className="relative w-64">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <Input placeholder="Search deals..." className="pl-10" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
               </div>
             </div>
           </CardHeader>
           <CardContent>
             {searchedDeals.length === 0 ? (
-              <p className="text-slate-500 text-sm py-6 text-center">No deals found.</p>
+              <p className="text-muted-foreground text-sm py-6 text-center">No deals found.</p>
             ) : (
               <div className="space-y-3">
                 {searchedDeals.map((deal, index) => {
@@ -251,13 +251,13 @@ const DealTracking = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors cursor-pointer"
+                      className="flex items-center gap-4 p-4 rounded-xl bg-surface hover:bg-surface-2 transition-colors cursor-pointer"
                     >
                       <div className={`w-1 h-16 rounded-full ${stageInfo?.color ?? "bg-slate-400"}`} />
 
                       <div className="flex-1">
-                        <p className="font-semibold text-slate-800">{deal.title}</p>
-                        <div className="flex items-center gap-4 mt-1 text-sm text-slate-500">
+                        <p className="font-semibold text-foreground">{deal.title}</p>
+                        <div className="flex items-center gap-4 mt-1 text-sm text-muted-foreground">
                           <span className="flex items-center gap-1">
                             <Building className="w-3 h-3" />
                             {customer?.company_name ?? "—"}
@@ -271,8 +271,8 @@ const DealTracking = () => {
 
                       <div className="w-32">
                         <div className="flex items-center justify-between text-sm mb-1">
-                          <span className="text-slate-500">Probability</span>
-                          <span className="font-medium text-slate-700">{deal.probability}%</span>
+                          <span className="text-muted-foreground">Probability</span>
+                          <span className="font-medium text-foreground">{deal.probability}%</span>
                         </div>
                         <Progress value={deal.probability} className="h-2" />
                       </div>
@@ -289,8 +289,8 @@ const DealTracking = () => {
                       </Select>
 
                       <div className="text-right">
-                        <p className="font-bold text-slate-800">{currency(deal.value)}</p>
-                        <p className="text-xs text-slate-500 flex items-center gap-1">
+                        <p className="font-bold text-foreground">{currency(deal.value)}</p>
+                        <p className="text-xs text-muted-foreground flex items-center gap-1">
                           <Clock className="w-3 h-3" />
                           {deal.stage !== 'closed' ? (daysLeft > 0 ? `${daysLeft} days left` : 'Due') : 'Closed'}
                         </p>
@@ -310,12 +310,12 @@ const DealTracking = () => {
         /* Kanban View */
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {stages.map((stage) => (
-            <Card key={stage.id} className="border-slate-200">
+            <Card key={stage.id} className="border-border">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className={`w-3 h-3 rounded-full ${stage.color}`} />
-                    <span className="font-medium text-slate-700">{stage.label}</span>
+                    <span className="font-medium text-foreground">{stage.label}</span>
                   </div>
                   <Badge variant="outline">{getStageDeals(stage.id).length}</Badge>
                 </div>
@@ -327,13 +327,13 @@ const DealTracking = () => {
                     <motion.div
                       key={deal.id}
                       whileHover={{ scale: 1.02 }}
-                      className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm cursor-pointer hover:shadow-md transition-shadow"
+                      className="p-4 rounded-xl bg-card border border-border shadow-sm cursor-pointer hover:shadow-md transition-shadow"
                     >
-                      <p className="font-medium text-slate-800 text-sm">{deal.title}</p>
-                      <p className="text-xs text-slate-500 mt-1">{customer?.company_name ?? "—"}</p>
+                      <p className="font-medium text-foreground text-sm">{deal.title}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{customer?.company_name ?? "—"}</p>
                       <div className="flex items-center justify-between mt-3">
                         <span className="font-bold text-blue-600">{currency(deal.value)}</span>
-                        <span className="text-xs text-slate-500">{deal.probability}%</span>
+                        <span className="text-xs text-muted-foreground">{deal.probability}%</span>
                       </div>
                       <Progress value={deal.probability} className="h-1.5 mt-2" />
                     </motion.div>

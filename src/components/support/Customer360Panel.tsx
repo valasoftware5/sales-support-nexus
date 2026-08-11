@@ -102,7 +102,7 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold text-white">{customerData.name}</h3>
-                  <p className="text-sm text-slate-400">{customerData.email}</p>
+                  <p className="text-sm text-muted-foreground">{customerData.email}</p>
                   <div className="flex items-center gap-2 mt-2">
                     <Badge className="bg-teal-500/20 text-teal-300">{customerData.segment}</Badge>
                     <Badge className={getRiskColor(customerData.riskScore)}>
@@ -119,17 +119,17 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
               <div className="text-center p-3 rounded-lg bg-slate-800/50">
                 <TrendingUp className="w-5 h-5 text-emerald-400 mx-auto mb-1" />
                 <div className="text-lg font-bold text-white">${(customerData.lifetimeValue / 1000).toFixed(0)}K</div>
-                <div className="text-xs text-slate-400">LTV</div>
+                <div className="text-xs text-muted-foreground">LTV</div>
               </div>
               <div className="text-center p-3 rounded-lg bg-slate-800/50">
                 <Ticket className="w-5 h-5 text-cyan-400 mx-auto mb-1" />
                 <div className="text-lg font-bold text-white">{pastTickets.length}</div>
-                <div className="text-xs text-slate-400">Total Tickets</div>
+                <div className="text-xs text-muted-foreground">Total Tickets</div>
               </div>
               <div className="text-center p-3 rounded-lg bg-slate-800/50">
                 <Star className="w-5 h-5 text-amber-400 mx-auto mb-1" />
                 <div className="text-lg font-bold text-white">4.8</div>
-                <div className="text-xs text-slate-400">Avg CSAT</div>
+                <div className="text-xs text-muted-foreground">Avg CSAT</div>
               </div>
             </div>
 
@@ -152,19 +152,19 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
                     </CardHeader>
                     <CardContent className="space-y-2">
                       <div className="flex items-center gap-2 text-sm">
-                        <Mail className="w-4 h-4 text-slate-400" />
+                        <Mail className="w-4 h-4 text-muted-foreground" />
                         <span className="text-slate-300">{customerData.email}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm">
-                        <Phone className="w-4 h-4 text-slate-400" />
+                        <Phone className="w-4 h-4 text-muted-foreground" />
                         <span className="text-slate-300">{customerData.phone}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm">
-                        <Building className="w-4 h-4 text-slate-400" />
+                        <Building className="w-4 h-4 text-muted-foreground" />
                         <span className="text-slate-300">{customerData.company}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm">
-                        <MapPin className="w-4 h-4 text-slate-400" />
+                        <MapPin className="w-4 h-4 text-muted-foreground" />
                         <span className="text-slate-300">{customerData.location}</span>
                       </div>
                     </CardContent>
@@ -177,15 +177,15 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
                     </CardHeader>
                     <CardContent className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-slate-400">Status</span>
+                        <span className="text-muted-foreground">Status</span>
                         <Badge className="bg-emerald-500/20 text-emerald-300">{customerData.accountStatus}</Badge>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-slate-400">Customer Since</span>
+                        <span className="text-muted-foreground">Customer Since</span>
                         <span className="text-slate-300">{customerData.joinedDate}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-slate-400">Last Activity</span>
+                        <span className="text-muted-foreground">Last Activity</span>
                         <span className="text-slate-300">{customerData.lastActivity}</span>
                       </div>
                     </CardContent>
@@ -219,7 +219,7 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
                           </Badge>
                         </div>
                         <p className="text-sm text-slate-300 mb-2">{ticket.subject}</p>
-                        <div className="flex items-center justify-between text-xs text-slate-400">
+                        <div className="flex items-center justify-between text-xs text-muted-foreground">
                           <span>{ticket.date}</span>
                           <div className="flex items-center gap-1">
                             <Star className="w-3 h-3 text-amber-400" />
@@ -241,7 +241,7 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
                             {product.status}
                           </Badge>
                         </div>
-                        <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
+                        <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
                           <span>Since: {product.since}</span>
                           <span>Usage: {product.usage}%</span>
                         </div>
@@ -262,9 +262,9 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
                       <CardContent className="p-4">
                         <div className="flex items-center justify-between">
                           <div>
-                            <span className="font-mono text-slate-400 text-sm">{payment.id}</span>
+                            <span className="font-mono text-muted-foreground text-sm">{payment.id}</span>
                             <p className="text-lg font-semibold text-white">${payment.amount.toLocaleString()}</p>
-                            <span className="text-xs text-slate-400">{payment.date}</span>
+                            <span className="text-xs text-muted-foreground">{payment.date}</span>
                           </div>
                           <Badge className="bg-emerald-500/20 text-emerald-300">{payment.status}</Badge>
                         </div>
@@ -279,13 +279,13 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
                       <CardContent className="p-4">
                         <div className="flex items-center justify-between mb-2">
                           <span className="font-medium text-teal-400">{note.author}</span>
-                          <span className="text-xs text-slate-400">{note.date}</span>
+                          <span className="text-xs text-muted-foreground">{note.date}</span>
                         </div>
                         <p className="text-sm text-slate-300">{note.note}</p>
                       </CardContent>
                     </Card>
                   ))}
-                  <Button variant="outline" className="w-full border-dashed border-slate-600 text-slate-400">
+                  <Button variant="outline" className="w-full border-dashed border-slate-600 text-muted-foreground">
                     + Add Internal Note
                   </Button>
                 </TabsContent>

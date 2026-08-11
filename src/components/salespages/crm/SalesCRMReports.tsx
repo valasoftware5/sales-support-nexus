@@ -58,8 +58,8 @@ const SalesCRMReports = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Reports & Analytics</h1>
-          <p className="text-slate-500 mt-1">Track your sales performance</p>
+          <h1 className="text-2xl font-bold text-foreground">Reports & Analytics</h1>
+          <p className="text-muted-foreground mt-1">Track your sales performance</p>
         </div>
         <div className="flex gap-3">
           <Select defaultValue="thisMonth">
@@ -83,12 +83,12 @@ const SalesCRMReports = () => {
 
       {/* Summary Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Card className="border-slate-200">
+        <Card className="border-border">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-500">Total Sales</p>
-                <p className="text-2xl font-bold text-slate-800 mt-1">₹84.0L</p>
+                <p className="text-sm text-muted-foreground">Total Sales</p>
+                <p className="text-2xl font-bold text-foreground mt-1">₹84.0L</p>
               </div>
               <div className="flex items-center text-green-600 text-sm font-medium">
                 <TrendingUp className="w-4 h-4 mr-1" />
@@ -97,12 +97,12 @@ const SalesCRMReports = () => {
             </div>
           </CardContent>
         </Card>
-        <Card className="border-slate-200">
+        <Card className="border-border">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-500">Deals Closed</p>
-                <p className="text-2xl font-bold text-slate-800 mt-1">48</p>
+                <p className="text-sm text-muted-foreground">Deals Closed</p>
+                <p className="text-2xl font-bold text-foreground mt-1">48</p>
               </div>
               <div className="flex items-center text-green-600 text-sm font-medium">
                 <TrendingUp className="w-4 h-4 mr-1" />
@@ -111,12 +111,12 @@ const SalesCRMReports = () => {
             </div>
           </CardContent>
         </Card>
-        <Card className="border-slate-200">
+        <Card className="border-border">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-500">Avg Deal Size</p>
-                <p className="text-2xl font-bold text-slate-800 mt-1">₹1.75L</p>
+                <p className="text-sm text-muted-foreground">Avg Deal Size</p>
+                <p className="text-2xl font-bold text-foreground mt-1">₹1.75L</p>
               </div>
               <div className="flex items-center text-red-600 text-sm font-medium">
                 <TrendingDown className="w-4 h-4 mr-1" />
@@ -125,12 +125,12 @@ const SalesCRMReports = () => {
             </div>
           </CardContent>
         </Card>
-        <Card className="border-slate-200">
+        <Card className="border-border">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-500">Win Rate</p>
-                <p className="text-2xl font-bold text-slate-800 mt-1">24.5%</p>
+                <p className="text-sm text-muted-foreground">Win Rate</p>
+                <p className="text-2xl font-bold text-foreground mt-1">24.5%</p>
               </div>
               <div className="flex items-center text-green-600 text-sm font-medium">
                 <TrendingUp className="w-4 h-4 mr-1" />
@@ -143,9 +143,9 @@ const SalesCRMReports = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Sales by Month */}
-        <Card className="border-slate-200">
+        <Card className="border-border">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-slate-800">
+            <CardTitle className="flex items-center gap-2 text-foreground">
               <BarChart3 className="w-5 h-5 text-blue-500" />
               Sales vs Target
             </CardTitle>
@@ -161,19 +161,19 @@ const SalesCRMReports = () => {
                   className="space-y-2"
                 >
                   <div className="flex items-center justify-between text-sm">
-                    <span className="font-medium text-slate-700">{data.month}</span>
+                    <span className="font-medium text-foreground">{data.month}</span>
                     <div className="flex items-center gap-4">
                       <span className="text-blue-600">₹{(data.sales/100000).toFixed(1)}L</span>
-                      <span className="text-slate-400">/</span>
-                      <span className="text-slate-500">₹{(data.target/100000).toFixed(1)}L</span>
+                      <span className="text-muted-foreground">/</span>
+                      <span className="text-muted-foreground">₹{(data.target/100000).toFixed(1)}L</span>
                     </div>
                   </div>
-                  <div className="relative h-6 bg-slate-100 rounded-lg overflow-hidden">
+                  <div className="relative h-6 bg-surface-2 rounded-lg overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${(data.target / maxSales) * 100}%` }}
                       transition={{ duration: 0.8, delay: index * 0.1 }}
-                      className="absolute h-full bg-slate-200"
+                      className="absolute h-full bg-surface-3"
                     />
                     <motion.div
                       initial={{ width: 0 }}
@@ -187,23 +187,23 @@ const SalesCRMReports = () => {
                 </motion.div>
               ))}
             </div>
-            <div className="flex items-center gap-6 mt-6 pt-4 border-t border-slate-100">
+            <div className="flex items-center gap-6 mt-6 pt-4 border-t border-border">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded bg-blue-500" />
-                <span className="text-sm text-slate-600">Actual Sales</span>
+                <span className="text-sm text-muted-foreground">Actual Sales</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded bg-slate-200" />
-                <span className="text-sm text-slate-600">Target</span>
+                <div className="w-3 h-3 rounded bg-surface-3" />
+                <span className="text-sm text-muted-foreground">Target</span>
               </div>
             </div>
           </CardContent>
         </Card>
 
         {/* Conversion Rates */}
-        <Card className="border-slate-200">
+        <Card className="border-border">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-slate-800">
+            <CardTitle className="flex items-center gap-2 text-foreground">
               <Target className="w-5 h-5 text-blue-500" />
               Conversion Rates
             </CardTitle>
@@ -218,8 +218,8 @@ const SalesCRMReports = () => {
                   transition={{ delay: index * 0.1 }}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-medium text-slate-700">{data.stage}</span>
-                    <span className="text-lg font-bold text-slate-800">{data.rate}%</span>
+                    <span className="font-medium text-foreground">{data.stage}</span>
+                    <span className="text-lg font-bold text-foreground">{data.rate}%</span>
                   </div>
                   <Progress value={data.rate} className="h-3" />
                 </motion.div>
@@ -236,9 +236,9 @@ const SalesCRMReports = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Top Performers */}
-        <Card className="border-slate-200">
+        <Card className="border-border">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-slate-800">
+            <CardTitle className="flex items-center gap-2 text-foreground">
               <Users className="w-5 h-5 text-blue-500" />
               Top Performers
             </CardTitle>
@@ -251,7 +251,7 @@ const SalesCRMReports = () => {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-slate-50"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-surface"
                 >
                   <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold text-sm">
                     {index + 1}
@@ -260,8 +260,8 @@ const SalesCRMReports = () => {
                     {performer.avatar}
                   </div>
                   <div className="flex-1">
-                    <p className="font-medium text-slate-800">{performer.name}</p>
-                    <p className="text-sm text-slate-500">{performer.deals} deals closed</p>
+                    <p className="font-medium text-foreground">{performer.name}</p>
+                    <p className="text-sm text-muted-foreground">{performer.deals} deals closed</p>
                   </div>
                   <p className="font-bold text-green-600">{performer.value}</p>
                 </motion.div>
@@ -271,9 +271,9 @@ const SalesCRMReports = () => {
         </Card>
 
         {/* Lead Source Analysis */}
-        <Card className="border-slate-200">
+        <Card className="border-border">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-slate-800">
+            <CardTitle className="flex items-center gap-2 text-foreground">
               <PieChart className="w-5 h-5 text-blue-500" />
               Lead Source Analysis
             </CardTitle>
@@ -286,15 +286,15 @@ const SalesCRMReports = () => {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="p-4 rounded-xl bg-slate-50"
+                  className="p-4 rounded-xl bg-surface"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-medium text-slate-800">{source.source}</span>
+                    <span className="font-medium text-foreground">{source.source}</span>
                     <span className="text-sm px-2 py-1 rounded-full bg-green-100 text-green-700 font-medium">
                       {source.rate}% conversion
                     </span>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-slate-500">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <span>{source.leads} leads</span>
                     <span>•</span>
                     <span>{source.converted} converted</span>

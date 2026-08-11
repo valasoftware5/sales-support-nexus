@@ -71,8 +71,8 @@ const SalesCRMDashboard = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Sales Dashboard</h1>
-          <p className="text-slate-500 mt-1">Welcome back! Here's your sales overview.</p>
+          <h1 className="text-2xl font-bold text-foreground">Sales Dashboard</h1>
+          <p className="text-muted-foreground mt-1">Welcome back! Here's your sales overview.</p>
         </div>
         <div className="flex gap-3">
           <Button variant="outline" className="gap-2">
@@ -95,7 +95,7 @@ const SalesCRMDashboard = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
           >
-            <Card className="border-slate-200 hover:shadow-lg transition-shadow">
+            <Card className="border-border hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
                   <div className={`p-3 rounded-xl ${
@@ -111,8 +111,8 @@ const SalesCRMDashboard = () => {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <p className="text-3xl font-bold text-slate-800">{stat.value}</p>
-                  <p className="text-sm text-slate-500 mt-1">{stat.label}</p>
+                  <p className="text-3xl font-bold text-foreground">{stat.value}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
                 </div>
               </CardContent>
             </Card>
@@ -122,9 +122,9 @@ const SalesCRMDashboard = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Sales Funnel */}
-        <Card className="lg:col-span-2 border-slate-200">
+        <Card className="lg:col-span-2 border-border">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-slate-800">
+            <CardTitle className="flex items-center gap-2 text-foreground">
               <Target className="w-5 h-5 text-blue-500" />
               Sales Funnel
             </CardTitle>
@@ -142,10 +142,10 @@ const SalesCRMDashboard = () => {
                     className="space-y-2"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-medium text-slate-700">{item.stage}</span>
-                      <span className="text-sm text-slate-500">{item.count} ({pct}%)</span>
+                      <span className="font-medium text-foreground">{item.stage}</span>
+                      <span className="text-sm text-muted-foreground">{item.count} ({pct}%)</span>
                     </div>
-                    <div className="h-8 bg-slate-100 rounded-lg overflow-hidden">
+                    <div className="h-8 bg-surface-2 rounded-lg overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${pct}%` }}
@@ -163,9 +163,9 @@ const SalesCRMDashboard = () => {
         </Card>
 
         {/* Recent Leads */}
-        <Card className="border-slate-200">
+        <Card className="border-border">
           <CardHeader>
-            <CardTitle className="flex items-center justify-between text-slate-800">
+            <CardTitle className="flex items-center justify-between text-foreground">
               <span className="flex items-center gap-2">
                 <Users className="w-5 h-5 text-blue-500" />
                 Recent Leads
@@ -176,21 +176,21 @@ const SalesCRMDashboard = () => {
           <CardContent>
             <div className="space-y-4">
               {recentLeads.length === 0 ? (
-                <p className="text-slate-500 text-sm py-4 text-center">No leads yet.</p>
+                <p className="text-muted-foreground text-sm py-4 text-center">No leads yet.</p>
               ) : recentLeads.map((lead, index) => (
                 <motion.div
                   key={lead.id}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors cursor-pointer"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-surface hover:bg-surface-2 transition-colors cursor-pointer"
                 >
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-white font-medium">
                     {lead.contact_name.charAt(0)}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-medium text-slate-800 truncate">{lead.contact_name}</p>
-                    <p className="text-xs text-slate-500">{lead.source} • {relativeTime(lead.created_at)}</p>
+                    <p className="font-medium text-foreground truncate">{lead.contact_name}</p>
+                    <p className="text-xs text-muted-foreground">{lead.source} • {relativeTime(lead.created_at)}</p>
                   </div>
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                     lead.stage === 'new' ? 'bg-blue-100 text-blue-600' :
@@ -207,9 +207,9 @@ const SalesCRMDashboard = () => {
       </div>
 
       {/* Monthly Target */}
-      <Card className="border-slate-200">
+      <Card className="border-border">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-slate-800">
+          <CardTitle className="flex items-center gap-2 text-foreground">
             <TrendingUp className="w-5 h-5 text-blue-500" />
             Monthly Sales Target
           </CardTitle>
@@ -218,15 +218,15 @@ const SalesCRMDashboard = () => {
           <div className="flex items-center gap-8">
             <div className="flex-1">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-slate-600">Progress</span>
-                <span className="text-sm font-medium text-slate-800">{currency(achieved)} / {currency(totalTarget)}</span>
+                <span className="text-sm text-muted-foreground">Progress</span>
+                <span className="text-sm font-medium text-foreground">{currency(achieved)} / {currency(totalTarget)}</span>
               </div>
-              <Progress value={progressPct} className="h-4 bg-slate-200" />
-              <p className="text-sm text-slate-500 mt-2">{progressPct}% achieved</p>
+              <Progress value={progressPct} className="h-4 bg-surface-3" />
+              <p className="text-sm text-muted-foreground mt-2">{progressPct}% achieved</p>
             </div>
-            <div className="text-center px-8 border-l border-slate-200">
+            <div className="text-center px-8 border-l border-border">
               <p className="text-4xl font-bold text-green-600">{currency(achieved)}</p>
-              <p className="text-sm text-slate-500 mt-1">Sales This Period</p>
+              <p className="text-sm text-muted-foreground mt-1">Sales This Period</p>
             </div>
           </div>
         </CardContent>

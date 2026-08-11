@@ -34,7 +34,7 @@ const AISalesCopilot = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">AI Sales Copilot</h2>
-          <p className="text-slate-400">Intelligent sales assistance and lead scoring</p>
+          <p className="text-muted-foreground">Intelligent sales assistance and lead scoring</p>
         </div>
         <Badge className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-4 py-2">
           <Bot className="w-4 h-4 mr-2" />
@@ -55,7 +55,7 @@ const AISalesCopilot = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask anything... e.g., 'How should I handle this pricing objection?' or 'What's the best approach for Tech Solutions Ltd?'"
-              className="min-h-[100px] bg-slate-800 border-slate-700 text-slate-100 placeholder:text-slate-500"
+              className="min-h-[100px] bg-slate-800 border-slate-700 text-slate-100 placeholder:text-muted-foreground"
             />
             <Button 
               onClick={handleAskCopilot}
@@ -76,7 +76,7 @@ const AISalesCopilot = () => {
             </Button>
 
             <div className="space-y-3 mt-6">
-              <h4 className="text-sm font-medium text-slate-400">Recent Suggestions</h4>
+              <h4 className="text-sm font-medium text-muted-foreground">Recent Suggestions</h4>
               {suggestions.map((suggestion, index) => (
                 <motion.div
                   key={index}
@@ -144,7 +144,7 @@ const AISalesCopilot = () => {
                     </div>
                   </div>
                   <Progress value={lead.score} className="h-2 bg-slate-800" />
-                  <p className="text-xs text-slate-500">{lead.recommendation}</p>
+                  <p className="text-xs text-muted-foreground">{lead.recommendation}</p>
                 </motion.div>
               ))}
             </CardContent>
@@ -156,11 +156,11 @@ const AISalesCopilot = () => {
                 <CheckCircle className="w-6 h-6 text-emerald-400" />
                 <div>
                   <div className="font-medium text-emerald-300">Conversion Prediction</div>
-                  <div className="text-xs text-slate-400">Based on current pipeline</div>
+                  <div className="text-xs text-muted-foreground">Based on current pipeline</div>
                 </div>
               </div>
               <div className="text-3xl font-bold text-cyan-100 mb-1">68%</div>
-              <p className="text-sm text-slate-400">Predicted close rate this week</p>
+              <p className="text-sm text-muted-foreground">Predicted close rate this week</p>
               <div className="mt-3 text-xs text-cyan-400">
                 <Sparkles className="w-3 h-3 inline mr-1" />
                 3 leads ready for closing call

@@ -91,7 +91,7 @@ const AIInsightsModule = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">AI Insights</h2>
-          <p className="text-slate-400">AI-powered predictions, alerts, and suggestions</p>
+          <p className="text-muted-foreground">AI-powered predictions, alerts, and suggestions</p>
         </div>
         <Badge className="bg-purple-500/20 text-purple-300 text-sm px-3 py-1">
           <Bot className="w-4 h-4 mr-2" />
@@ -105,28 +105,28 @@ const AIInsightsModule = () => {
           <CardContent className="p-4 text-center">
             <Bot className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{insights.length}</div>
-            <div className="text-xs text-slate-400">Total Insights</div>
+            <div className="text-xs text-muted-foreground">Total Insights</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{criticalInsights}</div>
-            <div className="text-xs text-slate-400">Critical Unread</div>
+            <div className="text-xs text-muted-foreground">Critical Unread</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <Lightbulb className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{actionableInsights}</div>
-            <div className="text-xs text-slate-400">Actionable</div>
+            <div className="text-xs text-muted-foreground">Actionable</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <Target className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{avgConfidence}%</div>
-            <div className="text-xs text-slate-400">Avg Confidence</div>
+            <div className="text-xs text-muted-foreground">Avg Confidence</div>
           </CardContent>
         </Card>
       </div>
@@ -163,7 +163,7 @@ const AIInsightsModule = () => {
                         {insight.acknowledged && <Badge className="ml-1 bg-emerald-500/20 text-emerald-300">Reviewed</Badge>}
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-500">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Clock className="w-4 h-4" />
                       {insight.timestamp}
                     </div>
@@ -171,10 +171,10 @@ const AIInsightsModule = () => {
 
                   <div className="mb-3">
                     <h4 className="font-medium text-slate-100">{insight.title}</h4>
-                    <p className="text-sm text-slate-400">{insight.description}</p>
+                    <p className="text-sm text-muted-foreground">{insight.description}</p>
                     <div className="flex items-center gap-4 mt-2">
-                      <span className="text-sm text-slate-500">Related: <span className="text-cyan-400">{insight.relatedEntity}</span></span>
-                      <span className="text-sm text-slate-500">Confidence: <span className="text-purple-400">{insight.confidence}%</span></span>
+                      <span className="text-sm text-muted-foreground">Related: <span className="text-cyan-400">{insight.relatedEntity}</span></span>
+                      <span className="text-sm text-muted-foreground">Confidence: <span className="text-purple-400">{insight.confidence}%</span></span>
                     </div>
                   </div>
 
@@ -190,7 +190,7 @@ const AIInsightsModule = () => {
 
                     {!insight.acknowledged && (
                       <div className="flex items-center gap-2">
-                        <Button size="sm" variant="ghost" onClick={() => handleDismiss(insight.id)} className="text-slate-400">
+                        <Button size="sm" variant="ghost" onClick={() => handleDismiss(insight.id)} className="text-muted-foreground">
                           Dismiss
                         </Button>
                         <Button size="sm" variant="outline" onClick={() => handleAcknowledge(insight.id)} className="border-slate-600">
@@ -219,7 +219,7 @@ const AIInsightsModule = () => {
             <Bot className="w-6 h-6 text-purple-400" />
             <div>
               <h3 className="font-medium text-purple-100">AI Advisor Mode</h3>
-              <p className="text-sm text-slate-400">AI provides suggestions only. Manager retains final decision authority on all actions.</p>
+              <p className="text-sm text-muted-foreground">AI provides suggestions only. Manager retains final decision authority on all actions.</p>
             </div>
           </div>
         </CardContent>

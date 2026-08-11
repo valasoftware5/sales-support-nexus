@@ -121,7 +121,7 @@ const QualityAudit = () => {
       case 'critical': return 'bg-red-500/20 text-red-400';
       case 'warning': return 'bg-yellow-500/20 text-yellow-400';
       case 'info': return 'bg-blue-500/20 text-blue-400';
-      default: return 'bg-slate-500/20 text-slate-400';
+      default: return 'bg-slate-500/20 text-muted-foreground';
     }
   };
 
@@ -134,7 +134,7 @@ const QualityAudit = () => {
             <Shield className="w-6 h-6 text-teal-400" />
             Quality & Audit
           </h2>
-          <p className="text-slate-400 text-sm">Supervisor-level quality assurance and compliance</p>
+          <p className="text-muted-foreground text-sm">Supervisor-level quality assurance and compliance</p>
         </div>
         <div className="flex items-center gap-3">
           <Button onClick={handleTriggerSampling} variant="outline" className="border-slate-700">
@@ -155,11 +155,11 @@ const QualityAudit = () => {
         className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4"
       >
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm text-slate-400">Daily Sampling Progress</span>
+          <span className="text-sm text-muted-foreground">Daily Sampling Progress</span>
           <span className="text-sm text-teal-400">{samplingConfig.completed}/{samplingConfig.dailyTarget} tickets</span>
         </div>
         <Progress value={(samplingConfig.completed / samplingConfig.dailyTarget) * 100} className="h-2" />
-        <p className="text-xs text-slate-500 mt-2">Last sampled: {samplingConfig.lastSampled}</p>
+        <p className="text-xs text-muted-foreground mt-2">Last sampled: {samplingConfig.lastSampled}</p>
       </motion.div>
 
       {/* Agent Quality Scores */}
@@ -186,11 +186,11 @@ const QualityAudit = () => {
                 </div>
                 <div className="flex-1">
                   <p className="font-semibold text-white">{agent.agentName}</p>
-                  <p className="text-xs text-slate-400">{agent.ticketsAudited} tickets audited</p>
+                  <p className="text-xs text-muted-foreground">{agent.ticketsAudited} tickets audited</p>
                 </div>
                 <div className="text-right">
                   <p className={`text-2xl font-bold ${getScoreColor(agent.overallScore)}`}>{agent.overallScore}%</p>
-                  <p className="text-xs text-slate-400">Overall</p>
+                  <p className="text-xs text-muted-foreground">Overall</p>
                 </div>
               </div>
               <div className="grid grid-cols-4 gap-2">
@@ -202,7 +202,7 @@ const QualityAudit = () => {
                 ].map((metric) => (
                   <div key={metric.label} className="text-center p-2 rounded-lg bg-slate-900/50">
                     <p className={`text-lg font-bold ${getScoreColor(metric.value)}`}>{metric.value}%</p>
-                    <p className="text-xs text-slate-500">{metric.label}</p>
+                    <p className="text-xs text-muted-foreground">{metric.label}</p>
                   </div>
                 ))}
               </div>
@@ -252,7 +252,7 @@ const QualityAudit = () => {
                       <Badge className="bg-slate-700/50 text-slate-300">{item.category}</Badge>
                     </div>
                     <p className="text-sm text-white mb-1">{item.finding}</p>
-                    <p className="text-xs text-slate-400">Agent: {item.agentName} • {item.auditedAt}</p>
+                    <p className="text-xs text-muted-foreground">Agent: {item.agentName} • {item.auditedAt}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -306,15 +306,15 @@ const QualityAudit = () => {
                 <div className="flex items-center gap-2 mb-1">
                   <span className="font-mono text-sm text-teal-400">{item.ticketId}</span>
                   <Badge className="bg-red-500/20 text-red-400">{item.aiPrediction}</Badge>
-                  <span className="text-slate-400">→</span>
+                  <span className="text-muted-foreground">→</span>
                   <Badge className="bg-emerald-500/20 text-emerald-400">{item.actualCategory}</Badge>
                 </div>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-muted-foreground">
                   AI confidence: {item.confidence}% • Corrected by: {item.correctedBy}
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-xs text-slate-500">Used for AI learning</p>
+                <p className="text-xs text-muted-foreground">Used for AI learning</p>
                 <Star className="w-4 h-4 text-yellow-400 inline-block" />
               </div>
             </div>

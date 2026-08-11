@@ -66,7 +66,7 @@ const EscalationTree = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Escalation Tree</h2>
-          <p className="text-slate-400">Multi-level support escalation with auto-timers</p>
+          <p className="text-muted-foreground">Multi-level support escalation with auto-timers</p>
         </div>
       </div>
 
@@ -86,7 +86,7 @@ const EscalationTree = () => {
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-3">
                     <Badge className={`bg-${level.color}-500/20 text-${level.color}-300`}>Level {level.level}</Badge>
-                    <span className="text-xs text-slate-500">{countAtLevel} active</span>
+                    <span className="text-xs text-muted-foreground">{countAtLevel} active</span>
                   </div>
                   <div className="flex items-center gap-3 mb-2">
                     <div className={`w-10 h-10 rounded-lg bg-${level.color}-500/20 flex items-center justify-center`}>
@@ -94,10 +94,10 @@ const EscalationTree = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-slate-100">{level.name}</h3>
-                      <p className="text-xs text-slate-400">{level.handler}</p>
+                      <p className="text-xs text-muted-foreground">{level.handler}</p>
                     </div>
                   </div>
-                  <div className="text-sm text-slate-400">
+                  <div className="text-sm text-muted-foreground">
                     Response Time: <span className={`text-${level.color}-400`}>{level.responseTime}</span>
                   </div>
                 </CardContent>
@@ -116,8 +116,8 @@ const EscalationTree = () => {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {isLoading && <p className="text-slate-400 text-sm">Loading escalations…</p>}
-            {!isLoading && escalations.length === 0 && <p className="text-slate-400 text-sm">No escalations recorded.</p>}
+            {isLoading && <p className="text-muted-foreground text-sm">Loading escalations…</p>}
+            {!isLoading && escalations.length === 0 && <p className="text-muted-foreground text-sm">No escalations recorded.</p>}
             {escalations.map((escalation, index) => {
               const ticket = ticketFor(escalation.ticket_id);
               return (
@@ -183,7 +183,7 @@ const EscalationTree = () => {
             <AlertTriangle className="w-6 h-6 text-amber-400" />
             <div>
               <h3 className="font-medium text-amber-100">Auto-Escalation Rules</h3>
-              <p className="text-sm text-slate-400">Issues unresolved after 15 minutes will automatically escalate to the next level</p>
+              <p className="text-sm text-muted-foreground">Issues unresolved after 15 minutes will automatically escalate to the next level</p>
             </div>
           </div>
         </CardContent>

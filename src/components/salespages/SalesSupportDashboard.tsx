@@ -1,6 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate, useSearch } from "@tanstack/react-router";
-import SalesSupportTopBar from "@/components/sales-support/SalesSupportTopBar";
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertTriangle, Ticket, Phone, TrendingUp } from "lucide-react";
 import { useLeads, useTickets, useEscalations, useCallLogs } from "@/hooks/useSalesSupportData";
@@ -126,11 +125,10 @@ const SalesSupportDashboard = () => {
       initial={reduceMotion ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={reduceMotion ? { duration: 0 } : { duration: 0.5 }}
-      className="min-h-dvh bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950/20 flex"
+      className="flex min-h-full w-full"
     >
       <div className="flex-1 flex flex-col min-w-0">
-        <SalesSupportTopBar />
-        <main className="flex-1 p-6 overflow-auto">
+        <main className="mx-auto w-full max-w-[1600px] flex-1 overflow-auto px-4 py-6 sm:px-6">
           <motion.div
             key={activeSection}
             initial={reduceMotion ? false : { opacity: 0, y: 20 }}

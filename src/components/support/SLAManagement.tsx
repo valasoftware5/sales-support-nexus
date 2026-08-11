@@ -110,7 +110,7 @@ const SLAManagement = () => {
       case 'high': return 'text-orange-400 bg-orange-500/10 border-orange-500/30';
       case 'medium': return 'text-yellow-400 bg-yellow-500/10 border-yellow-500/30';
       case 'low': return 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30';
-      default: return 'text-slate-400 bg-slate-500/10 border-slate-500/30';
+      default: return 'text-muted-foreground bg-slate-500/10 border-slate-500/30';
     }
   };
 
@@ -120,7 +120,7 @@ const SLAManagement = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-white">SLA Management</h2>
-          <p className="text-slate-400 text-sm">Configure SLA templates, escalation rules, and breach alerts</p>
+          <p className="text-muted-foreground text-sm">Configure SLA templates, escalation rules, and breach alerts</p>
         </div>
         <Button onClick={handleCreateTemplate} className="bg-teal-500/20 text-teal-400 border border-teal-500/30 hover:bg-teal-500/30">
           <Plus className="w-4 h-4 mr-2" />
@@ -163,7 +163,7 @@ const SLAManagement = () => {
                       {alert.type === 'breach' ? 'BREACHED' : 'WARNING'}
                     </Badge>
                   </div>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-muted-foreground">
                     {alert.slaType} SLA • Assigned to {alert.assignedTo}
                   </p>
                 </div>
@@ -225,15 +225,15 @@ const SLAManagement = () => {
               </div>
               <div className="grid grid-cols-3 gap-2 text-xs">
                 <div className="bg-slate-800/50 rounded-lg p-2 text-center">
-                  <p className="text-slate-400">Response</p>
+                  <p className="text-muted-foreground">Response</p>
                   <p className="text-white font-mono">{template.responseTime}m</p>
                 </div>
                 <div className="bg-slate-800/50 rounded-lg p-2 text-center">
-                  <p className="text-slate-400">Resolution</p>
+                  <p className="text-muted-foreground">Resolution</p>
                   <p className="text-white font-mono">{template.resolutionTime}m</p>
                 </div>
                 <div className="bg-slate-800/50 rounded-lg p-2 text-center">
-                  <p className="text-slate-400">Levels</p>
+                  <p className="text-muted-foreground">Levels</p>
                   <p className="text-white font-mono">L{template.escalationLevels}</p>
                 </div>
               </div>
@@ -276,23 +276,23 @@ const SLAManagement = () => {
             >
               <div className="flex items-center gap-4">
                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                  rule.isAutomatic ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-700/50 text-slate-400'
+                  rule.isAutomatic ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-700/50 text-muted-foreground'
                 }`}>
                   L{rule.level}
                 </div>
                 <div>
                   <p className="font-medium text-white">{rule.name}</p>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-muted-foreground">
                     Trigger: {rule.trigger} → {rule.action}
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <Badge className={rule.isAutomatic ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-700/50 text-slate-400'}>
+                <Badge className={rule.isAutomatic ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-700/50 text-muted-foreground'}>
                   {rule.isAutomatic ? 'Auto' : 'Manual'}
                 </Badge>
                 <Switch checked={rule.isAutomatic} />
-                <Button size="sm" variant="ghost" className="text-slate-400 hover:text-white">
+                <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-white">
                   <Settings className="w-4 h-4" />
                 </Button>
               </div>

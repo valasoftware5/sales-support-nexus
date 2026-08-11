@@ -14,7 +14,10 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider } from "@/hooks/useAuth";
 import { NotificationProvider } from "@/contexts/NotificationContext";
-import { AppSidebar } from "@/components/shared/AppSidebar";
+import { AppSidebar, useSidebarState } from "@/components/shared/AppSidebar";
+import { AppTopBar } from "@/components/shared/AppTopBar";
+import { PageBanner } from "@/components/layout/PageBanner";
+
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -127,6 +130,29 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function AppShell() {
+  const { collapsed, toggleCollapsed, mobileOpen, setMobileOpen } = useSidebarState();
+
+  return (
+    <div className="flex min-h-screen w-full bg-background">
+      <AppSidebar
+        collapsed={collapsed}
+        onToggleCollapsed={toggleCollapsed}
+        mobileOpen={mobileOpen}
+        onCloseMobile={() => setMobileOpen(false)}
+      />
+      <div className="flex min-w-0 flex-1 flex-col">
+        <AppTopBar onOpenMobileNav={() => setMobileOpen(true)} />
+        <PageBanner />
+        <main className="min-w-0 flex-1">
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
@@ -135,13 +161,7 @@ function RootComponent() {
       <AuthProvider>
         <NotificationProvider>
           <TooltipProvider>
-            <div className="flex min-h-screen w-full bg-background">
-              <AppSidebar />
-              <div className="min-w-0 flex-1">
-                {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-                <Outlet />
-              </div>
-            </div>
+            <AppShell />
             <Toaster />
           </TooltipProvider>
         </NotificationProvider>
@@ -149,3 +169,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+

@@ -6,7 +6,6 @@
 import React from 'react';
 import type { ChatbotSection } from './types';
 import { useSearch } from '@tanstack/react-router';
-import { ChatbotCommandBar } from './ChatbotCommandBar';
 import { CBOverview } from './screens/CBOverview';
 import { CBChatbotManagement } from './screens/CBChatbotManagement';
 import { CBLiveChatInbox } from './screens/CBLiveChatInbox';
@@ -44,10 +43,9 @@ export const SupportChatbotDashboard: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen w-full bg-slate-50">
+    <div className="flex min-h-full w-full">
       <div className="flex-1 flex flex-col overflow-hidden">
-        <ChatbotCommandBar />
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className="mx-auto w-full max-w-[1600px] flex-1 overflow-y-auto px-4 py-6 sm:px-6">
           {renderContent()}
         </main>
       </div>

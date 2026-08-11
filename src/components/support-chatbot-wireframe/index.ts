@@ -2,7 +2,6 @@
  * Support Chatbot Wireframe Components
  */
 export { SupportChatbotWireframe } from './SupportChatbotWireframe';
-export { ChatbotTopBar } from './ChatbotTopBar';
 
 // Screens
 export { SCDashboard } from './screens/SCDashboard';

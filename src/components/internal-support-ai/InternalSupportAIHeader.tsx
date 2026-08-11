@@ -78,7 +78,7 @@ export const InternalSupportAIHeader: React.FC<InternalSupportAIHeaderProps> = (
     <motion.header
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="h-14 bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-cyan-900/20 backdrop-blur-xl border-b border-cyan-500/20 flex items-center justify-between px-4 fixed top-0 left-64 right-0 z-40"
+      className="h-14 bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-cyan-900/20 backdrop-blur-xl border-b border-cyan-500/20 flex items-center justify-between px-4 sticky top-0 z-40"
     >
       {/* Left Section - System Status */}
       <div className="flex items-center gap-4">

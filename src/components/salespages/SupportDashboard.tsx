@@ -137,7 +137,7 @@ const SupportDashboard = () => {
         onAIClick={() => setShowAIPanel(true)}
       />
 
-      <div className="flex pt-16">
+      <div className="flex">
         {/* Main Content */}
         <main className="flex-1 p-8 min-h-screen">
           <AnimatePresence mode="wait">

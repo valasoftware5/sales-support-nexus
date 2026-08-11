@@ -71,7 +71,7 @@ export const InternalSupportAIContainer: React.FC<InternalSupportAIContainerProp
         />
 
         {/* Content */}
-        <main className="flex-1 p-4 overflow-auto mt-14">
+        <main className="flex-1 p-4 overflow-auto">
           <motion.div
             key={activeSection}
             initial={{ opacity: 0, y: 20 }}

@@ -896,6 +896,14 @@
   }
 }
 
+@utility icon3d--accent {
+  background-image:
+    linear-gradient(180deg, hsl(0 0% 100% / 0.2), hsl(0 0% 100% / 0.02) 55%, hsl(0 0% 0% / 0.12)),
+    linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
+  border-color: hsl(var(--primary) / 0.55);
+}
+
+
 @utility bento-card {
   position: relative;
   background-image:

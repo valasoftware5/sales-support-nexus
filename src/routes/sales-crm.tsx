@@ -4,6 +4,9 @@ import SalesCRMDemo from "@/components/salespages/crm/SalesCRMDemo";
 export const Route = createFileRoute("/sales-crm")({
   // Dashboard UI is live/interactive; skip SSR so timers and live data hydrate cleanly.
   ssr: false,
+  validateSearch: (search: Record<string, unknown>) => ({
+    section: typeof search.section === "string" ? search.section : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Sales CRM | Software Vala" },

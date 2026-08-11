@@ -4,6 +4,9 @@ import InternalSupportAIPage from "@/components/salespages/InternalSupportAIPage
 export const Route = createFileRoute("/internal-support-ai")({
   // Dashboard UI is live/interactive; skip SSR so timers and live data hydrate cleanly.
   ssr: false,
+  validateSearch: (search: Record<string, unknown>) => ({
+    section: typeof search.section === "string" ? search.section : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Internal Support AI | Software Vala" },

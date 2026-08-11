@@ -9,7 +9,16 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
-import { SalesSupportSection } from "./SalesSupportSidebar";
+export type SalesSupportSection =
+  | "overview"
+  | "live_tickets"
+  | "team_members"
+  | "leads_inbox"
+  | "customer_chats"
+  | "followups"
+  | "escalations"
+  | "performance_reports"
+  | "activity_log";
 import {
   useTeamMembers,
   useTickets,

@@ -1,24 +1,27 @@
 import { createFileRoute } from "@tanstack/react-router";
+import SalesSupportDashboard from "@/components/salespages/SalesSupportDashboard";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  // Dashboard UI is live/interactive; skip SSR so timers and live data hydrate cleanly.
+  ssr: false,
+  validateSearch: (search: Record<string, unknown>) => ({
+    section: typeof search.section === "string" ? search.section : undefined,
+  }),
+  head: () => ({
+    meta: [
+      { title: "Sales & Support Command Center | Software Vala" },
+      {
+        name: "description",
+        content:
+          "Software Vala Sales & Support command center: lead inbox, pipeline, tickets, SLA compliance, escalations and AI insights in one console.",
+      },
+      { property: "og:title", content: "Sales & Support Command Center | Software Vala" },
+      {
+        property: "og:description",
+        content:
+          "Unified sales and support operations console with leads, pipeline, tickets, SLA and AI insights.",
+      },
+    ],
+  }),
+  component: SalesSupportDashboard,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}

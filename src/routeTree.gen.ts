@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InternalSupportAiRouteImport } from './routes/internal-support-ai'
+import { Route as SalesCrmRouteImport } from './routes/sales-crm'
+import { Route as SalesSupportManagerRouteImport } from './routes/sales-support-manager'
+import { Route as SupportRouteImport } from './routes/support'
+import { Route as SupportAgentRouteImport } from './routes/support-agent'
+import { Route as SupportChatbotRouteImport } from './routes/support-chatbot'
+import { Route as SupportChatbotBlueprintRouteImport } from './routes/support-chatbot-blueprint'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InternalSupportAiRoute = InternalSupportAiRouteImport.update({
+  id: '/internal-support-ai',
+  path: '/internal-support-ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesCrmRoute = SalesCrmRouteImport.update({
+  id: '/sales-crm',
+  path: '/sales-crm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesSupportManagerRoute = SalesSupportManagerRouteImport.update({
+  id: '/sales-support-manager',
+  path: '/sales-support-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportAgentRoute = SupportAgentRouteImport.update({
+  id: '/support-agent',
+  path: '/support-agent',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportChatbotRoute = SupportChatbotRouteImport.update({
+  id: '/support-chatbot',
+  path: '/support-chatbot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportChatbotBlueprintRoute = SupportChatbotBlueprintRouteImport.update({
+  id: '/support-chatbot-blueprint',
+  path: '/support-chatbot-blueprint',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/internal-support-ai': typeof InternalSupportAiRoute
+  '/sales-crm': typeof SalesCrmRoute
+  '/sales-support-manager': typeof SalesSupportManagerRoute
+  '/support': typeof SupportRoute
+  '/support-agent': typeof SupportAgentRoute
+  '/support-chatbot': typeof SupportChatbotRoute
+  '/support-chatbot-blueprint': typeof SupportChatbotBlueprintRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/internal-support-ai': typeof InternalSupportAiRoute
+  '/sales-crm': typeof SalesCrmRoute
+  '/sales-support-manager': typeof SalesSupportManagerRoute
+  '/support': typeof SupportRoute
+  '/support-agent': typeof SupportAgentRoute
+  '/support-chatbot': typeof SupportChatbotRoute
+  '/support-chatbot-blueprint': typeof SupportChatbotBlueprintRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/internal-support-ai': typeof InternalSupportAiRoute
+  '/sales-crm': typeof SalesCrmRoute
+  '/sales-support-manager': typeof SalesSupportManagerRoute
+  '/support': typeof SupportRoute
+  '/support-agent': typeof SupportAgentRoute
+  '/support-chatbot': typeof SupportChatbotRoute
+  '/support-chatbot-blueprint': typeof SupportChatbotBlueprintRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/internal-support-ai'
+    | '/sales-crm'
+    | '/sales-support-manager'
+    | '/support'
+    | '/support-agent'
+    | '/support-chatbot'
+    | '/support-chatbot-blueprint'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/internal-support-ai'
+    | '/sales-crm'
+    | '/sales-support-manager'
+    | '/support'
+    | '/support-agent'
+    | '/support-chatbot'
+    | '/support-chatbot-blueprint'
+  id:
+    | '__root__'
+    | '/'
+    | '/internal-support-ai'
+    | '/sales-crm'
+    | '/sales-support-manager'
+    | '/support'
+    | '/support-agent'
+    | '/support-chatbot'
+    | '/support-chatbot-blueprint'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  InternalSupportAiRoute: typeof InternalSupportAiRoute
+  SalesCrmRoute: typeof SalesCrmRoute
+  SalesSupportManagerRoute: typeof SalesSupportManagerRoute
+  SupportRoute: typeof SupportRoute
+  SupportAgentRoute: typeof SupportAgentRoute
+  SupportChatbotRoute: typeof SupportChatbotRoute
+  SupportChatbotBlueprintRoute: typeof SupportChatbotBlueprintRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +143,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/internal-support-ai': {
+      id: '/internal-support-ai'
+      path: '/internal-support-ai'
+      fullPath: '/internal-support-ai'
+      preLoaderRoute: typeof InternalSupportAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-crm': {
+      id: '/sales-crm'
+      path: '/sales-crm'
+      fullPath: '/sales-crm'
+      preLoaderRoute: typeof SalesCrmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-support-manager': {
+      id: '/sales-support-manager'
+      path: '/sales-support-manager'
+      fullPath: '/sales-support-manager'
+      preLoaderRoute: typeof SalesSupportManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support-agent': {
+      id: '/support-agent'
+      path: '/support-agent'
+      fullPath: '/support-agent'
+      preLoaderRoute: typeof SupportAgentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support-chatbot': {
+      id: '/support-chatbot'
+      path: '/support-chatbot'
+      fullPath: '/support-chatbot'
+      preLoaderRoute: typeof SupportChatbotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support-chatbot-blueprint': {
+      id: '/support-chatbot-blueprint'
+      path: '/support-chatbot-blueprint'
+      fullPath: '/support-chatbot-blueprint'
+      preLoaderRoute: typeof SupportChatbotBlueprintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  InternalSupportAiRoute: InternalSupportAiRoute,
+  SalesCrmRoute: SalesCrmRoute,
+  SalesSupportManagerRoute: SalesSupportManagerRoute,
+  SupportRoute: SupportRoute,
+  SupportAgentRoute: SupportAgentRoute,
+  SupportChatbotRoute: SupportChatbotRoute,
+  SupportChatbotBlueprintRoute: SupportChatbotBlueprintRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

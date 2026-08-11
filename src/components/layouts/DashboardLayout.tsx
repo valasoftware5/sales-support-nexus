@@ -1,0 +1,33 @@
+import { memo, type ReactNode } from "react";
+import { cn } from "@/lib/utils";
+
+interface DashboardLayoutProps {
+  children: ReactNode;
+  title?: string;
+  subtitle?: string;
+  roleOverride?: string;
+  className?: string;
+}
+
+/**
+ * Content wrapper for ported dashboards. The Software Vala module shell
+ * (sidebar + top bar) is provided by the route layout, so this only handles
+ * page padding — it intentionally renders no navigation chrome.
+ */
+const DashboardLayout = memo(
+  ({ children, title, subtitle, className }: DashboardLayoutProps) => (
+    <div className={cn("space-y-6", className)}>
+      {(title || subtitle) && (
+        <header>
+          {title && <h1 className="font-display text-2xl font-bold text-foreground">{title}</h1>}
+          {subtitle && <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>}
+        </header>
+      )}
+      {children}
+    </div>
+  ),
+);
+
+DashboardLayout.displayName = "DashboardLayout";
+
+export default DashboardLayout;

@@ -10,6 +10,11 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { AuthProvider } from "@/hooks/useAuth";
+import { NotificationProvider } from "@/contexts/NotificationContext";
+import { AppSidebar } from "@/components/shared/AppSidebar";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -24,6 +29,7 @@ function NotFoundComponent() {
         <div className="mt-6">
           <Link
             to="/"
+            search={{ section: undefined }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Go home
@@ -77,11 +83,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Software Vala — Sales & Support" },
+      {
+        name: "description",
+        content:
+          "Software Vala Sales & Support module: leads, pipeline, CRM, tickets, SLA, escalations and AI support.",
+      },
+      { name: "author", content: "Software Vala" },
+      { property: "og:title", content: "Software Vala — Sales & Support" },
+      {
+        property: "og:description",
+        content: "Leads, pipeline, CRM, tickets, SLA, escalations and AI support in one console.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
@@ -119,8 +132,20 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <AuthProvider>
+        <NotificationProvider>
+          <TooltipProvider>
+            <div className="flex min-h-screen w-full bg-background">
+              <AppSidebar />
+              <div className="min-w-0 flex-1">
+                {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+                <Outlet />
+              </div>
+            </div>
+            <Toaster />
+          </TooltipProvider>
+        </NotificationProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }

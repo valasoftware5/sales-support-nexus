@@ -5,7 +5,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useSearch } from '@tanstack/react-router';
-import { ChatbotTopBar } from './ChatbotTopBar';
 import { SCDashboard } from './screens/SCDashboard';
 import { SCChatbotList } from './screens/SCChatbotList';
 import { SCLiveChatInbox } from './screens/SCLiveChatInbox';
@@ -64,11 +63,10 @@ export const SupportChatbotWireframe: React.FC<SupportChatbotWireframeProps> = (
   };
 
   return (
-    <div className="min-h-screen bg-muted/30 flex">
+    <div className="flex min-h-full w-full">
       <div className="flex-1 flex flex-col min-w-0">
-        <ChatbotTopBar />
 
-        <main className="flex-1 p-6 overflow-auto">
+        <main className="mx-auto w-full max-w-[1600px] flex-1 overflow-auto px-4 py-6 sm:px-6">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeScreen}

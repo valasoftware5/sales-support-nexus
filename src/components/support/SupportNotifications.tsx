@@ -92,7 +92,7 @@ const SupportNotifications = ({ onClose }: SupportNotificationsProps) => {
           onClick={onClose}
           className="p-2 rounded-lg hover:bg-slate-800/50 transition-colors"
         >
-          <X className="w-5 h-5 text-slate-400" />
+          <X className="w-5 h-5 text-muted-foreground" />
         </button>
       </div>
 
@@ -100,8 +100,8 @@ const SupportNotifications = ({ onClose }: SupportNotificationsProps) => {
       <div className="p-4 border-b border-slate-700/20 bg-slate-800/20">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Volume2 className="w-4 h-4 text-slate-500" />
-            <span className="text-sm text-slate-400">Notification sounds</span>
+            <Volume2 className="w-4 h-4 text-muted-foreground" />
+            <span className="text-sm text-muted-foreground">Notification sounds</span>
           </div>
           <span className="text-xs text-teal-400">Calm mode enabled</span>
         </div>
@@ -140,8 +140,8 @@ const SupportNotifications = ({ onClose }: SupportNotificationsProps) => {
                       />
                     )}
                   </div>
-                  <p className="text-sm text-slate-500 mt-1">{notification.message}</p>
-                  <p className="text-xs text-slate-600 mt-2">{notification.time}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{notification.message}</p>
+                  <p className="text-xs text-muted-foreground mt-2">{notification.time}</p>
                 </div>
               </div>
             </motion.div>
@@ -151,7 +151,7 @@ const SupportNotifications = ({ onClose }: SupportNotificationsProps) => {
 
       {/* Footer */}
       <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-slate-700/20 bg-slate-900/95">
-        <button className="w-full py-2.5 rounded-xl bg-slate-800/30 border border-slate-700/30 text-slate-400 text-sm hover:border-teal-500/20 hover:text-teal-400 transition-all">
+        <button className="w-full py-2.5 rounded-xl bg-slate-800/30 border border-slate-700/30 text-muted-foreground text-sm hover:border-teal-500/20 hover:text-teal-400 transition-all">
           Mark all as read
         </button>
       </div>

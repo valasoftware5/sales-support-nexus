@@ -120,8 +120,8 @@ const LeadManagement = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Lead Management</h1>
-          <p className="text-slate-500 mt-1">Manage and track all your leads</p>
+          <h1 className="text-2xl font-bold text-foreground">Lead Management</h1>
+          <p className="text-muted-foreground mt-1">Manage and track all your leads</p>
         </div>
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
@@ -227,10 +227,10 @@ const LeadManagement = () => {
                 <div className="flex items-center gap-3">
                   <div className={`w-3 h-3 rounded-full ${status.color}`} />
                   <div>
-                    <p className="text-2xl font-bold text-slate-800">
+                    <p className="text-2xl font-bold text-foreground">
                       {allLeads.filter((l) => l.stage === status.id).length}
                     </p>
-                    <p className="text-sm text-slate-500">{status.label}</p>
+                    <p className="text-sm text-muted-foreground">{status.label}</p>
                   </div>
                 </div>
               </CardContent>
@@ -240,11 +240,11 @@ const LeadManagement = () => {
       </div>
 
       {/* Search and Filter */}
-      <Card className="border-slate-200">
+      <Card className="border-border">
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
                 placeholder="Search leads by name or email..."
                 className="pl-10"
@@ -274,15 +274,15 @@ const LeadManagement = () => {
       </Card>
 
       {/* Leads List */}
-      <Card className="border-slate-200">
+      <Card className="border-border">
         <CardHeader>
-          <CardTitle className="text-slate-800">All Leads ({filteredLeads.length})</CardTitle>
+          <CardTitle className="text-foreground">All Leads ({filteredLeads.length})</CardTitle>
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <p className="text-slate-500 text-sm py-6 text-center">Loading leads...</p>
+            <p className="text-muted-foreground text-sm py-6 text-center">Loading leads...</p>
           ) : filteredLeads.length === 0 ? (
-            <p className="text-slate-500 text-sm py-6 text-center">No leads found.</p>
+            <p className="text-muted-foreground text-sm py-6 text-center">No leads found.</p>
           ) : (
             <div className="space-y-3">
               {filteredLeads.map((lead, index) => {
@@ -296,7 +296,7 @@ const LeadManagement = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className="flex items-center gap-4 p-4 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors cursor-pointer group"
+                    className="flex items-center gap-4 p-4 rounded-xl bg-surface hover:bg-surface-2 transition-colors cursor-pointer group"
                   >
                     <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-white font-bold text-lg">
                       {lead.contact_name.charAt(0)}
@@ -304,13 +304,13 @@ const LeadManagement = () => {
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <p className="font-semibold text-slate-800">{lead.contact_name}</p>
+                        <p className="font-semibold text-foreground">{lead.contact_name}</p>
                         <Badge className={`${statusInfo?.color ?? "bg-slate-400"} text-white`}>
                           {statusInfo?.label ?? lead.stage}
                         </Badge>
-                        {owner && <span className="text-xs text-slate-400">• {owner}</span>}
+                        {owner && <span className="text-xs text-muted-foreground">• {owner}</span>}
                       </div>
-                      <div className="flex items-center gap-4 mt-1 text-sm text-slate-500">
+                      <div className="flex items-center gap-4 mt-1 text-sm text-muted-foreground">
                         {lead.email && (
                           <span className="flex items-center gap-1">
                             <Mail className="w-3 h-3" />
@@ -326,14 +326,14 @@ const LeadManagement = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200">
-                      <SourceIcon className="w-4 h-4 text-slate-500" />
-                      <span className="text-sm text-slate-600">{lead.source}</span>
+                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-card border border-border">
+                      <SourceIcon className="w-4 h-4 text-muted-foreground" />
+                      <span className="text-sm text-muted-foreground">{lead.source}</span>
                     </div>
 
                     <div className="text-right">
-                      <p className="font-bold text-slate-800">{currency(lead.value)}</p>
-                      <p className="text-xs text-slate-500">{relativeTime(lead.created_at)}</p>
+                      <p className="font-bold text-foreground">{currency(lead.value)}</p>
+                      <p className="text-xs text-muted-foreground">{relativeTime(lead.created_at)}</p>
                     </div>
 
                     <Select

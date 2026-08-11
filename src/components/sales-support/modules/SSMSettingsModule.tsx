@@ -59,7 +59,7 @@ const SSMSettingsModule = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Settings</h2>
-          <p className="text-slate-400">Configure notifications, SLA, working hours, and escalation rules</p>
+          <p className="text-muted-foreground">Configure notifications, SLA, working hours, and escalation rules</p>
         </div>
         <div className="flex gap-2">
           <Button variant="outline" onClick={handleReset} className="border-slate-600">
@@ -157,7 +157,7 @@ const SSMSettingsModule = () => {
                 {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(day => (
                   <Badge 
                     key={day}
-                    className={`cursor-pointer ${settings.workDays.includes(day) ? "bg-cyan-500/20 text-cyan-300" : "bg-slate-700 text-slate-400"}`}
+                    className={`cursor-pointer ${settings.workDays.includes(day) ? "bg-cyan-500/20 text-cyan-300" : "bg-slate-700 text-muted-foreground"}`}
                     onClick={() => {
                       const newDays = settings.workDays.includes(day) 
                         ? settings.workDays.filter(d => d !== day)

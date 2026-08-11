@@ -107,7 +107,7 @@ const ApprovalWorkflow = () => {
       case 'deletion': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
       case 'priority_override': return 'bg-purple-500/20 text-purple-400 border-purple-500/30';
       case 'sla_reset': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
-      default: return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-muted-foreground border-slate-500/30';
     }
   };
 
@@ -117,7 +117,7 @@ const ApprovalWorkflow = () => {
       case 'approved': return <Badge className="bg-emerald-500/20 text-emerald-400"><CheckCircle className="w-3 h-3 mr-1" />Approved</Badge>;
       case 'rejected': return <Badge className="bg-red-500/20 text-red-400"><XCircle className="w-3 h-3 mr-1" />Rejected</Badge>;
       case 'escalated': return <Badge className="bg-purple-500/20 text-purple-400"><ArrowUpRight className="w-3 h-3 mr-1" />Escalated</Badge>;
-      default: return <Badge className="bg-slate-500/20 text-slate-400">Unknown</Badge>;
+      default: return <Badge className="bg-slate-500/20 text-muted-foreground">Unknown</Badge>;
     }
   };
 
@@ -134,7 +134,7 @@ const ApprovalWorkflow = () => {
             <Shield className="w-6 h-6 text-teal-400" />
             Approval Workflow
           </h2>
-          <p className="text-slate-400 text-sm">Critical action approvals requiring supervisor authorization</p>
+          <p className="text-muted-foreground text-sm">Critical action approvals requiring supervisor authorization</p>
         </div>
         <div className="flex items-center gap-3">
           <Badge className="bg-yellow-500/20 text-yellow-400 text-lg px-4 py-1">
@@ -180,7 +180,7 @@ const ApprovalWorkflow = () => {
                         )}
                       </div>
                       <p className="text-sm text-slate-300 mb-2">{request.reason}</p>
-                      <div className="flex items-center gap-4 text-xs text-slate-400">
+                      <div className="flex items-center gap-4 text-xs text-muted-foreground">
                         <span>Customer: {request.customerName}</span>
                         <span>Requested by: {request.requestedBy} ({request.requestedByRole})</span>
                         <span>{request.createdAt}</span>
@@ -196,7 +196,7 @@ const ApprovalWorkflow = () => {
                         size="sm" 
                         onClick={() => handleViewDetails(request.id, request.ticketId)}
                         variant="ghost" 
-                        className="text-slate-400 hover:text-white"
+                        className="text-muted-foreground hover:text-white"
                       >
                         <Eye className="w-4 h-4" />
                       </Button>
@@ -251,7 +251,7 @@ const ApprovalWorkflow = () => {
             );
           })}
           {pendingRequests.length === 0 && (
-            <div className="text-center py-8 text-slate-400">
+            <div className="text-center py-8 text-muted-foreground">
               <CheckCircle className="w-12 h-12 mx-auto mb-2 text-emerald-400" />
               <p>No pending approvals</p>
             </div>
@@ -280,8 +280,8 @@ const ApprovalWorkflow = () => {
                     <TypeIcon className="w-5 h-5 text-purple-400" />
                     <div>
                       <span className="font-medium text-white capitalize">{request.type.replace('_', ' ')}</span>
-                      <span className="text-slate-400 ml-2">{request.ticketId}</span>
-                      <p className="text-xs text-slate-500">{request.reason}</p>
+                      <span className="text-muted-foreground ml-2">{request.ticketId}</span>
+                      <p className="text-xs text-muted-foreground">{request.reason}</p>
                     </div>
                   </div>
                   {getStatusBadge(request.status)}
@@ -309,12 +309,12 @@ const ApprovalWorkflow = () => {
             return (
               <div key={request.id} className="p-3 rounded-xl bg-slate-800/30 border border-slate-700/50 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <TypeIcon className="w-4 h-4 text-slate-400" />
+                  <TypeIcon className="w-4 h-4 text-muted-foreground" />
                   <span className="text-sm text-white capitalize">{request.type.replace('_', ' ')}</span>
-                  <span className="text-xs text-slate-400">{request.ticketId}</span>
+                  <span className="text-xs text-muted-foreground">{request.ticketId}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-slate-500">{request.createdAt}</span>
+                  <span className="text-xs text-muted-foreground">{request.createdAt}</span>
                   {getStatusBadge(request.status)}
                 </div>
               </div>

@@ -111,7 +111,7 @@ const OmniChannelInbox = () => {
       case 'chat': return 'text-emerald-400 bg-emerald-500/20';
       case 'call': return 'text-amber-400 bg-amber-500/20';
       case 'ticket': return 'text-purple-400 bg-purple-500/20';
-      default: return 'text-slate-400 bg-slate-500/20';
+      default: return 'text-muted-foreground bg-slate-500/20';
     }
   };
 
@@ -168,7 +168,7 @@ const OmniChannelInbox = () => {
             <MessageSquare className="w-6 h-6 text-teal-400" />
             Omni-Channel Inbox
           </h2>
-          <p className="text-slate-400 mt-1">Unified messaging across all channels</p>
+          <p className="text-muted-foreground mt-1">Unified messaging across all channels</p>
         </div>
         <div className="flex items-center gap-2">
           <Badge className="bg-red-500/20 text-red-300">
@@ -208,7 +208,7 @@ const OmniChannelInbox = () => {
           <CardHeader className="border-b border-slate-700/50">
             <div className="flex items-center gap-3">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <Input
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -225,7 +225,7 @@ const OmniChannelInbox = () => {
             <ScrollArea className="h-[500px]">
               <div className="divide-y divide-slate-700/30">
                 {!loadingTickets && filteredMessages.length === 0 && (
-                  <div className="p-6 text-center text-sm text-slate-500">No messages found.</div>
+                  <div className="p-6 text-center text-sm text-muted-foreground">No messages found.</div>
                 )}
                 {filteredMessages.map((msg) => (
                   <motion.div
@@ -248,16 +248,16 @@ const OmniChannelInbox = () => {
                           <span className={`font-medium ${msg.unread ? 'text-white' : 'text-slate-300'}`}>
                             {msg.customer}
                           </span>
-                          <span className="text-xs text-slate-400">{msg.time}</span>
+                          <span className="text-xs text-muted-foreground">{msg.time}</span>
                         </div>
-                        <p className={`text-sm truncate ${msg.unread ? 'text-slate-200' : 'text-slate-400'}`}>
+                        <p className={`text-sm truncate ${msg.unread ? 'text-slate-200' : 'text-muted-foreground'}`}>
                           {msg.preview}
                         </p>
                         <div className="flex items-center gap-2 mt-2">
                           <Badge className={getPriorityColor(msg.priority)} variant="outline">
                             {msg.priority}
                           </Badge>
-                          <Badge variant="outline" className="text-slate-400 capitalize">
+                          <Badge variant="outline" className="text-muted-foreground capitalize">
                             {msg.status}
                           </Badge>
                         </div>
@@ -282,7 +282,7 @@ const OmniChannelInbox = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-white">{selectedMessage.customer}</h3>
-                      <p className="text-xs text-slate-400">via {selectedMessage.channel} • {selectedMessage.time}</p>
+                      <p className="text-xs text-muted-foreground">via {selectedMessage.channel} • {selectedMessage.time}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
@@ -312,7 +312,7 @@ const OmniChannelInbox = () => {
                               : 'bg-slate-800 text-slate-200 rounded-bl-sm'
                           }`}>
                             <p className="text-sm">{msg.body}</p>
-                            <p className="text-xs text-slate-400 mt-1">{relativeTime(msg.created_at)}</p>
+                            <p className="text-xs text-muted-foreground mt-1">{relativeTime(msg.created_at)}</p>
                           </div>
                         </div>
                       ))
@@ -336,10 +336,10 @@ const OmniChannelInbox = () => {
                       />
                       <div className="absolute bottom-2 right-2 flex items-center gap-1">
                         <Button variant="ghost" size="icon" className="h-8 w-8">
-                          <Paperclip className="w-4 h-4 text-slate-400" />
+                          <Paperclip className="w-4 h-4 text-muted-foreground" />
                         </Button>
                         <Button variant="ghost" size="icon" className="h-8 w-8">
-                          <Smile className="w-4 h-4 text-slate-400" />
+                          <Smile className="w-4 h-4 text-muted-foreground" />
                         </Button>
                       </div>
                     </div>
@@ -356,7 +356,7 @@ const OmniChannelInbox = () => {
             </>
           ) : (
             <CardContent className="h-[500px] flex items-center justify-center">
-              <div className="text-center text-slate-400">
+              <div className="text-center text-muted-foreground">
                 <MessageSquare className="w-12 h-12 mx-auto mb-3 opacity-50" />
                 <p>Select a message to view conversation</p>
               </div>

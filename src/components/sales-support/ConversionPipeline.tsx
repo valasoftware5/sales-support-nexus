@@ -67,7 +67,7 @@ const ConversionPipeline = () => {
   if (loading) {
     return (
       <div className="space-y-6">
-        <p className="text-slate-400">Loading pipeline…</p>
+        <p className="text-muted-foreground">Loading pipeline…</p>
       </div>
     );
   }
@@ -77,12 +77,12 @@ const ConversionPipeline = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Conversion Pipeline</h2>
-          <p className="text-slate-400">Visual sales funnel with drag-and-drop stages</p>
+          <p className="text-muted-foreground">Visual sales funnel with drag-and-drop stages</p>
         </div>
         <div className="flex items-center gap-4">
           <div className="text-right">
             <div className="text-2xl font-bold text-cyan-100">{currency(totalPipelineValue)}</div>
-            <div className="text-xs text-slate-400">Total Pipeline Value</div>
+            <div className="text-xs text-muted-foreground">Total Pipeline Value</div>
           </div>
           <Badge className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-3 py-1.5">
             <TrendingUp className="w-4 h-4 mr-1" />
@@ -111,7 +111,7 @@ const ConversionPipeline = () => {
                 </CardHeader>
                 <CardContent className="space-y-2">
                   {stage.leads.length === 0 && (
-                    <div className="text-xs text-slate-500 italic">No leads in this stage</div>
+                    <div className="text-xs text-muted-foreground italic">No leads in this stage</div>
                   )}
                   {stage.leads.map((lead, leadIndex) => (
                     <motion.div
@@ -131,7 +131,7 @@ const ConversionPipeline = () => {
                           <DollarSign className="w-3 h-3 inline" />
                           {lead.value}
                         </span>
-                        <span className="text-slate-500">
+                        <span className="text-muted-foreground">
                           <Clock className="w-3 h-3 inline mr-1" />
                           {lead.time}
                         </span>
@@ -140,7 +140,7 @@ const ConversionPipeline = () => {
                   ))}
                   {stageIndex < stages.length - 1 && (
                     <div className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10">
-                      <ArrowRight className="w-6 h-6 text-slate-600" />
+                      <ArrowRight className="w-6 h-6 text-muted-foreground" />
                     </div>
                   )}
                 </CardContent>
@@ -157,7 +157,7 @@ const ConversionPipeline = () => {
               <GitBranch className="w-8 h-8 text-cyan-400" />
               <div>
                 <div className="text-2xl font-bold text-cyan-100">{totalInPipeline}</div>
-                <div className="text-xs text-slate-400">Total in Pipeline</div>
+                <div className="text-xs text-muted-foreground">Total in Pipeline</div>
               </div>
             </div>
           </CardContent>
@@ -168,7 +168,7 @@ const ConversionPipeline = () => {
               <TrendingUp className="w-8 h-8 text-emerald-400" />
               <div>
                 <div className="text-2xl font-bold text-emerald-100">{conversionRate}%</div>
-                <div className="text-xs text-slate-400">Conversion Rate</div>
+                <div className="text-xs text-muted-foreground">Conversion Rate</div>
               </div>
             </div>
           </CardContent>
@@ -179,7 +179,7 @@ const ConversionPipeline = () => {
               <Clock className="w-8 h-8 text-amber-400" />
               <div>
                 <div className="text-2xl font-bold text-amber-100">{avgCycleDays} days</div>
-                <div className="text-xs text-slate-400">Avg. Sales Cycle</div>
+                <div className="text-xs text-muted-foreground">Avg. Sales Cycle</div>
               </div>
             </div>
           </CardContent>
@@ -190,7 +190,7 @@ const ConversionPipeline = () => {
               <DollarSign className="w-8 h-8 text-purple-400" />
               <div>
                 <div className="text-2xl font-bold text-purple-100">{currency(avgDealSize)}</div>
-                <div className="text-xs text-slate-400">Avg. Deal Size</div>
+                <div className="text-xs text-muted-foreground">Avg. Deal Size</div>
               </div>
             </div>
           </CardContent>

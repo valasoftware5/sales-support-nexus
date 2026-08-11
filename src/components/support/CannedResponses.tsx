@@ -102,7 +102,7 @@ const CannedResponses = () => {
             <MessageSquare className="w-6 h-6 text-teal-400" />
             Canned Responses
           </h2>
-          <p className="text-slate-400 text-sm">Pre-written templates for faster replies</p>
+          <p className="text-muted-foreground text-sm">Pre-written templates for faster replies</p>
         </div>
         <Button onClick={handleCreate} className="bg-teal-500/20 text-teal-400 border border-teal-500/30 hover:bg-teal-500/30">
           <Plus className="w-4 h-4 mr-2" />
@@ -113,7 +113,7 @@ const CannedResponses = () => {
       {/* Search and Filters */}
       <div className="flex items-center gap-4">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input 
             placeholder="Search responses..." 
             value={searchQuery}
@@ -130,7 +130,7 @@ const CannedResponses = () => {
               onClick={() => setActiveCategory(cat)}
               className={activeCategory === cat 
                 ? 'bg-teal-500/20 text-teal-400 border border-teal-500/30' 
-                : 'text-slate-400 hover:text-white'
+                : 'text-muted-foreground hover:text-white'
               }
             >
               {cat}
@@ -160,7 +160,7 @@ const CannedResponses = () => {
                   size="sm" 
                   variant="ghost"
                   onClick={() => handleToggleFavorite(response.id)}
-                  className={response.isFavorite ? 'text-yellow-400' : 'text-slate-400'}
+                  className={response.isFavorite ? 'text-yellow-400' : 'text-muted-foreground'}
                 >
                   <Star className={`w-4 h-4 ${response.isFavorite ? 'fill-current' : ''}`} />
                 </Button>
@@ -168,7 +168,7 @@ const CannedResponses = () => {
                   <h4 className="font-semibold text-white">{response.title}</h4>
                   <div className="flex items-center gap-2 mt-1">
                     <Badge className="bg-slate-700/50 text-slate-300 text-xs">{response.category}</Badge>
-                    <span className="text-xs text-slate-500">Used {response.usageCount} times</span>
+                    <span className="text-xs text-muted-foreground">Used {response.usageCount} times</span>
                   </div>
                 </div>
               </div>
@@ -181,7 +181,7 @@ const CannedResponses = () => {
                 >
                   <Copy className="w-4 h-4" />
                 </Button>
-                <Button size="sm" variant="ghost" className="text-slate-400 hover:text-white">
+                <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-white">
                   <Edit2 className="w-4 h-4" />
                 </Button>
                 <Button 
@@ -205,7 +205,7 @@ const CannedResponses = () => {
                   </Badge>
                 ))}
               </div>
-              <span className="text-xs text-slate-500">Last used: {response.lastUsed}</span>
+              <span className="text-xs text-muted-foreground">Last used: {response.lastUsed}</span>
             </div>
           </motion.div>
         ))}
@@ -230,7 +230,7 @@ const CannedResponses = () => {
           >
             <div className="flex items-center gap-2 mb-2">
               <stat.icon className={`w-4 h-4 ${stat.color}`} />
-              <span className="text-xs text-slate-400">{stat.label}</span>
+              <span className="text-xs text-muted-foreground">{stat.label}</span>
             </div>
             <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
           </div>

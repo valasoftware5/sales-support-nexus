@@ -66,7 +66,7 @@ const SalesTeamModule = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Sales Team Management</h2>
-          <p className="text-slate-400">Manage sales reps, territories, and targets</p>
+          <p className="text-muted-foreground">Manage sales reps, territories, and targets</p>
         </div>
         <Button onClick={handleAddRep} className="bg-emerald-500 hover:bg-emerald-600 text-white">
           <Plus className="w-4 h-4 mr-2" />
@@ -79,28 +79,28 @@ const SalesTeamModule = () => {
           <CardContent className="p-4 text-center">
             <Users className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{reps.filter((r) => r.status === "active").length}</div>
-            <div className="text-xs text-slate-400">Active Reps</div>
+            <div className="text-xs text-muted-foreground">Active Reps</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <Target className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">${(totalTarget / 1000).toFixed(0)}K</div>
-            <div className="text-xs text-slate-400">Total Target</div>
+            <div className="text-xs text-muted-foreground">Total Target</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <DollarSign className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">${(totalAchieved / 1000).toFixed(0)}K</div>
-            <div className="text-xs text-slate-400">Achieved</div>
+            <div className="text-xs text-muted-foreground">Achieved</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <TrendingUp className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{avgConversion}%</div>
-            <div className="text-xs text-slate-400">Avg Achievement</div>
+            <div className="text-xs text-muted-foreground">Avg Achievement</div>
           </CardContent>
         </Card>
       </div>
@@ -111,9 +111,9 @@ const SalesTeamModule = () => {
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <div className="text-slate-400 text-sm py-6 text-center">Loading reps…</div>
+            <div className="text-muted-foreground text-sm py-6 text-center">Loading reps…</div>
           ) : reps.length === 0 ? (
-            <div className="text-slate-400 text-sm py-6 text-center">No sales reps yet.</div>
+            <div className="text-muted-foreground text-sm py-6 text-center">No sales reps yet.</div>
           ) : (
             <div className="space-y-3">
               {reps.map((rep, index) => {
@@ -138,7 +138,7 @@ const SalesTeamModule = () => {
                           <span className="font-medium text-slate-100">{rep.full_name}</span>
                           <Badge className={rep.status === "active" ? "bg-emerald-500/20 text-emerald-300" : "bg-red-500/20 text-red-300"}>{rep.status}</Badge>
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-slate-400">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
                           {rep.role_title} • {rep.leads_handled} leads • CSAT {rep.csat}%
                         </div>
                       </div>
@@ -147,13 +147,13 @@ const SalesTeamModule = () => {
                     <div className="flex items-center gap-4">
                       <div className="w-48">
                         <div className="flex justify-between text-xs mb-1">
-                          <span className="text-slate-400">Target Progress</span>
+                          <span className="text-muted-foreground">Target Progress</span>
                           <span className="text-emerald-400">{pct}%</span>
                         </div>
                         <Progress value={pct} className="h-2" />
                         <div className="flex justify-between text-xs mt-1">
-                          <span className="text-slate-500">${achieved.toLocaleString()}</span>
-                          <span className="text-slate-500">${target.toLocaleString()}</span>
+                          <span className="text-muted-foreground">${achieved.toLocaleString()}</span>
+                          <span className="text-muted-foreground">${target.toLocaleString()}</span>
                         </div>
                       </div>
 

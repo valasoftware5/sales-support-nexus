@@ -72,7 +72,7 @@ const SupportMetrics = () => {
       {/* Header */}
       <div>
         <h2 className="text-2xl font-semibold text-white">Good afternoon, Support Team</h2>
-        <p className="text-slate-400 mt-1">Here's your overview for today</p>
+        <p className="text-muted-foreground mt-1">Here's your overview for today</p>
       </div>
 
       {/* Metrics Grid */}
@@ -91,7 +91,7 @@ const SupportMetrics = () => {
               <div className={`w-10 h-10 rounded-xl ${colorClasses.bg} flex items-center justify-center mb-4`}>
                 <metric.icon className={`w-5 h-5 ${colorClasses.text}`} />
               </div>
-              <p className="text-sm text-slate-500 mb-1">{metric.label}</p>
+              <p className="text-sm text-muted-foreground mb-1">{metric.label}</p>
               <div className="flex items-end gap-2">
                 <span className="text-2xl font-bold text-white">{metric.value}</span>
                 {metric.trend === 'up' && (
@@ -132,7 +132,7 @@ const SupportMetrics = () => {
                   activity.type === 'escalated' ? 'bg-amber-400' : 'bg-sky-400'
                 }`} />
                 <span className="text-sm text-slate-300 flex-1">{activity.action}</span>
-                <span className="text-xs text-slate-500">{activity.time}</span>
+                <span className="text-xs text-muted-foreground">{activity.time}</span>
               </motion.div>
             ))}
           </div>
@@ -170,7 +170,7 @@ const SupportMetrics = () => {
 
           {/* Response Time Chart */}
           <div className="mt-6 pt-6 border-t border-slate-700/30">
-            <p className="text-sm text-slate-400 mb-3">Response Time Today</p>
+            <p className="text-sm text-muted-foreground mb-3">Response Time Today</p>
             <div className="flex items-end gap-1 h-16">
               {[35, 45, 30, 60, 40, 55, 25, 50, 35, 45, 30, 40].map((height, i) => (
                 <motion.div
@@ -182,7 +182,7 @@ const SupportMetrics = () => {
                 />
               ))}
             </div>
-            <div className="flex justify-between text-xs text-slate-500 mt-2">
+            <div className="flex justify-between text-xs text-muted-foreground mt-2">
               <span>8 AM</span>
               <span>Now</span>
             </div>

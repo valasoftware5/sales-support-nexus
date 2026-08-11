@@ -87,7 +87,7 @@ const LiveChatModule = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Live Chat</h2>
-          <p className="text-slate-400">Real-time chat sessions with sentiment analysis</p>
+          <p className="text-muted-foreground">Real-time chat sessions with sentiment analysis</p>
         </div>
       </div>
 
@@ -97,28 +97,28 @@ const LiveChatModule = () => {
           <CardContent className="p-4 text-center">
             <MessageCircle className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{chats.length}</div>
-            <div className="text-xs text-slate-400">Total Chats</div>
+            <div className="text-xs text-muted-foreground">Total Chats</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{waitingCount}</div>
-            <div className="text-xs text-slate-400">Waiting</div>
+            <div className="text-xs text-muted-foreground">Waiting</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <CheckCircle className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{activeCount}</div>
-            <div className="text-xs text-slate-400">Active</div>
+            <div className="text-xs text-muted-foreground">Active</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{negativeCount}</div>
-            <div className="text-xs text-slate-400">Negative Sentiment</div>
+            <div className="text-xs text-muted-foreground">Negative Sentiment</div>
           </CardContent>
         </Card>
       </div>
@@ -130,8 +130,8 @@ const LiveChatModule = () => {
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
-            {isLoading && <p className="text-slate-400 text-sm">Loading chats…</p>}
-            {!isLoading && chats.length === 0 && <p className="text-slate-400 text-sm">No chat sessions.</p>}
+            {isLoading && <p className="text-muted-foreground text-sm">Loading chats…</p>}
+            {!isLoading && chats.length === 0 && <p className="text-muted-foreground text-sm">No chat sessions.</p>}
             {chats.map((chat, index) => (
               <motion.div
                 key={chat.id}
@@ -152,7 +152,7 @@ const LiveChatModule = () => {
                         <Badge className={getStatusColor(chat.status)}>{chat.status}</Badge>
                         <Badge className={getSentimentColor(chat.sentiment)}>{chat.sentiment}</Badge>
                       </div>
-                      <p className="text-sm text-slate-400">{chat.visitor_email ?? "-"} • Started {relativeTime(chat.started_at)}</p>
+                      <p className="text-sm text-muted-foreground">{chat.visitor_email ?? "-"} • Started {relativeTime(chat.started_at)}</p>
                     </div>
                   </div>
                 </div>

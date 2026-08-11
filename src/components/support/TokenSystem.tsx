@@ -217,7 +217,7 @@ const TokenSystem = () => {
             <Hash className="w-6 h-6 text-teal-400" />
             Token Queue
           </h2>
-          <p className="text-slate-400 mt-1">Real-time token management with SLA tracking</p>
+          <p className="text-muted-foreground mt-1">Real-time token management with SLA tracking</p>
         </div>
         <div className="flex items-center gap-2">
           {selectedTokens.length >= 2 && (
@@ -239,28 +239,28 @@ const TokenSystem = () => {
           <CardContent className="p-4 text-center">
             <Ticket className="w-8 h-8 text-teal-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-teal-100">{stats.total}</div>
-            <div className="text-xs text-slate-400">Total Tokens</div>
+            <div className="text-xs text-muted-foreground">Total Tokens</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{stats.open}</div>
-            <div className="text-xs text-slate-400">Pending</div>
+            <div className="text-xs text-muted-foreground">Pending</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <Play className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{stats.inProgress}</div>
-            <div className="text-xs text-slate-400">In Progress</div>
+            <div className="text-xs text-muted-foreground">In Progress</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{stats.slaBreach}</div>
-            <div className="text-xs text-slate-400">SLA Risk</div>
+            <div className="text-xs text-muted-foreground">SLA Risk</div>
           </CardContent>
         </Card>
       </div>
@@ -268,7 +268,7 @@ const TokenSystem = () => {
       {/* Filters */}
       <div className="flex items-center gap-4">
         <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -343,7 +343,7 @@ const TokenSystem = () => {
                         {getChannelIcon(token.channel)}
                         <Badge className={getPriorityColor(token.priority)}>{token.priority}</Badge>
                         <Badge className={getStatusColor(token.status)}>{token.status.replace('_', ' ')}</Badge>
-                        <Badge variant="outline" className="text-slate-400">{token.escalationLevel}</Badge>
+                        <Badge variant="outline" className="text-muted-foreground">{token.escalationLevel}</Badge>
                       </div>
                       {token.status !== 'closed' && (
                         <div className="flex items-center gap-2">
@@ -357,7 +357,7 @@ const TokenSystem = () => {
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-medium text-slate-100">{token.subject}</h4>
-                        <p className="text-sm text-slate-400">
+                        <p className="text-sm text-muted-foreground">
                           {token.customerName} • {token.ticketId} • {token.assignedAgent || 'Unassigned'} • {token.createdAt}
                         </p>
                       </div>

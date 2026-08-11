@@ -97,7 +97,7 @@ const FraudDetection = () => {
       case 'high': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
       case 'low': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
-      default: return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-muted-foreground border-slate-500/30';
     }
   };
 
@@ -121,11 +121,11 @@ const FraudDetection = () => {
             <Shield className="w-6 h-6 text-red-400" />
             Fraud & Abuse Detection
           </h2>
-          <p className="text-slate-400 text-sm">Monitor and respond to suspicious activities</p>
+          <p className="text-muted-foreground text-sm">Monitor and respond to suspicious activities</p>
         </div>
         <div className="flex items-center gap-3">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input 
               placeholder="Search alerts..." 
               className="pl-10 bg-slate-800/50 border-slate-700 w-64"
@@ -155,7 +155,7 @@ const FraudDetection = () => {
             whileHover={{ scale: 1.02 }}
             className={`${stat.bgColor} border border-opacity-20 rounded-xl p-4`}
           >
-            <p className="text-xs text-slate-400 mb-1">{stat.label}</p>
+            <p className="text-xs text-muted-foreground mb-1">{stat.label}</p>
             <div className="flex items-end justify-between">
               <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
               <span className={`text-xs ${stat.change.startsWith('+') ? 'text-emerald-400' : 'text-red-400'}`}>
@@ -201,8 +201,8 @@ const FraudDetection = () => {
                         </Badge>
                         <Badge className="bg-slate-700/50 text-slate-300 capitalize">{alert.type}</Badge>
                       </div>
-                      <p className="text-sm text-slate-400 mb-1">{alert.description}</p>
-                      <div className="flex items-center gap-4 text-xs text-slate-500">
+                      <p className="text-sm text-muted-foreground mb-1">{alert.description}</p>
+                      <div className="flex items-center gap-4 text-xs text-muted-foreground">
                         <span>ID: {alert.customerId}</span>
                         <span>Detected: {alert.detectedAt}</span>
                         <span>Risk Score: <span className={alert.riskScore >= 80 ? 'text-red-400' : 'text-yellow-400'}>{alert.riskScore}%</span></span>
@@ -248,7 +248,7 @@ const FraudDetection = () => {
                       size="sm" 
                       variant="ghost"
                       onClick={() => handleDismiss(alert.id)}
-                      className="text-slate-400 hover:text-white"
+                      className="text-muted-foreground hover:text-white"
                     >
                       <XCircle className="w-4 h-4" />
                     </Button>
@@ -289,7 +289,7 @@ const FraudDetection = () => {
                   <Badge className="bg-red-500/20 text-red-400">Anomaly</Badge>
                 )}
               </div>
-              <div className="flex items-center justify-between text-xs text-slate-400">
+              <div className="flex items-center justify-between text-xs text-muted-foreground">
                 <span>{pattern.occurrences} occurrences</span>
                 <span>Last seen: {pattern.lastSeen}</span>
               </div>

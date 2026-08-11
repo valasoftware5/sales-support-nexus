@@ -309,7 +309,7 @@ const SalesSupportDashboardContent = ({ activeSection }: SalesSupportDashboardCo
                             ? "bg-red-500/20 text-red-400"
                             : ticket.priority === "medium"
                             ? "bg-amber-500/20 text-amber-400"
-                            : "bg-slate-500/20 text-slate-400"
+                            : "bg-slate-500/20 text-muted-foreground"
                         )}
                       >
                         {ticket.priority}
@@ -571,7 +571,7 @@ const SalesSupportDashboardContent = ({ activeSection }: SalesSupportDashboardCo
       <Card className="bg-card/50 backdrop-blur border-border/50">
         <CardContent className="p-6">
           <div className="flex items-center gap-3 mb-6">
-            <History className="w-6 h-6 text-slate-400" />
+            <History className="w-6 h-6 text-muted-foreground" />
             <div>
               <h2 className="text-xl font-bold text-foreground">Activity Log</h2>
               <p className="text-sm text-muted-foreground">Recent activity</p>

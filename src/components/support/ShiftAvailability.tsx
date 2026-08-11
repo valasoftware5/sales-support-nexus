@@ -112,11 +112,11 @@ const ShiftAvailability = () => {
             <Calendar className="w-6 h-6 text-teal-400" />
             Shift & Availability
           </h2>
-          <p className="text-slate-400 text-sm">Manage agent schedules and workload distribution</p>
+          <p className="text-muted-foreground text-sm">Manage agent schedules and workload distribution</p>
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2 bg-slate-800/50 rounded-lg px-3 py-2">
-            <Zap className={`w-4 h-4 ${loadBalancerEnabled ? 'text-emerald-400' : 'text-slate-400'}`} />
+            <Zap className={`w-4 h-4 ${loadBalancerEnabled ? 'text-emerald-400' : 'text-muted-foreground'}`} />
             <span className="text-sm text-white">Load Balancer</span>
             <Switch checked={loadBalancerEnabled} onCheckedChange={handleToggleLoadBalancer} />
           </div>
@@ -148,7 +148,7 @@ const ShiftAvailability = () => {
                   </div>
                   <div>
                     <p className="font-semibold text-white">{shift.name}</p>
-                    <p className="text-xs text-slate-400">{shift.startTime} - {shift.endTime}</p>
+                    <p className="text-xs text-muted-foreground">{shift.startTime} - {shift.endTime}</p>
                   </div>
                 </div>
                 <Badge className={shift.coverage >= 90 ? 'bg-emerald-500/20 text-emerald-400' : shift.coverage >= 75 ? 'bg-yellow-500/20 text-yellow-400' : 'bg-red-500/20 text-red-400'}>
@@ -157,7 +157,7 @@ const ShiftAvailability = () => {
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-slate-400" />
+                  <Users className="w-4 h-4 text-muted-foreground" />
                   <span className="text-sm text-slate-300">{shift.agents} agents</span>
                 </div>
                 <Button size="sm" variant="ghost" className="text-teal-400 hover:bg-teal-500/10">
@@ -181,19 +181,19 @@ const ShiftAvailability = () => {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 text-xs">
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span className="text-slate-400">Available</span>
+              <span className="text-muted-foreground">Available</span>
             </div>
             <div className="flex items-center gap-2 text-xs">
               <span className="w-2 h-2 rounded-full bg-orange-500"></span>
-              <span className="text-slate-400">Busy</span>
+              <span className="text-muted-foreground">Busy</span>
             </div>
             <div className="flex items-center gap-2 text-xs">
               <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
-              <span className="text-slate-400">Break</span>
+              <span className="text-muted-foreground">Break</span>
             </div>
             <div className="flex items-center gap-2 text-xs">
               <span className="w-2 h-2 rounded-full bg-slate-500"></span>
-              <span className="text-slate-400">Offline</span>
+              <span className="text-muted-foreground">Offline</span>
             </div>
           </div>
         </div>
@@ -214,13 +214,13 @@ const ShiftAvailability = () => {
                 </div>
                 <div className="flex-1">
                   <p className="font-medium text-white">{agent.name}</p>
-                  <p className="text-xs text-slate-400">{agent.shift} Shift</p>
+                  <p className="text-xs text-muted-foreground">{agent.shift} Shift</p>
                 </div>
                 <Badge className={`capitalize ${
                   agent.status === 'available' ? 'bg-emerald-500/20 text-emerald-400' :
                   agent.status === 'busy' ? 'bg-orange-500/20 text-orange-400' :
                   agent.status === 'break' ? 'bg-yellow-500/20 text-yellow-400' :
-                  'bg-slate-700/50 text-slate-400'
+                  'bg-slate-700/50 text-muted-foreground'
                 }`}>
                   {agent.status}
                 </Badge>
@@ -229,7 +229,7 @@ const ShiftAvailability = () => {
               {/* Load Bar */}
               <div className="mb-3">
                 <div className="flex items-center justify-between text-xs mb-1">
-                  <span className="text-slate-400">Current Load</span>
+                  <span className="text-muted-foreground">Current Load</span>
                   <span className="text-white">{agent.currentLoad}/{agent.maxLoad}</span>
                 </div>
                 <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
@@ -247,7 +247,7 @@ const ShiftAvailability = () => {
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-muted-foreground">
                   {agent.ticketsToday} tickets today
                 </span>
                 <div className="flex gap-1">
@@ -284,11 +284,11 @@ const ShiftAvailability = () => {
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold text-white">Weekly Schedule</h3>
           <div className="flex items-center gap-2">
-            <Button size="sm" variant="ghost" className="text-slate-400 hover:text-white">
+            <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-white">
               <ChevronLeft className="w-4 h-4" />
             </Button>
             <span className="text-sm text-white">Jan 13 - Jan 19, 2025</span>
-            <Button size="sm" variant="ghost" className="text-slate-400 hover:text-white">
+            <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-white">
               <ChevronRight className="w-4 h-4" />
             </Button>
           </div>
@@ -297,10 +297,10 @@ const ShiftAvailability = () => {
         <div className="grid grid-cols-7 gap-2">
           {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, idx) => (
             <div key={day} className="text-center">
-              <p className="text-xs text-slate-400 mb-2">{day}</p>
+              <p className="text-xs text-muted-foreground mb-2">{day}</p>
               <div className={`p-3 rounded-lg ${idx === 4 ? 'bg-teal-500/20 border border-teal-500/30' : 'bg-slate-800/30 border border-slate-700/30'}`}>
                 <p className="text-lg font-bold text-white">{13 + idx}</p>
-                <p className="text-xs text-slate-400">{idx < 5 ? '8 agents' : '4 agents'}</p>
+                <p className="text-xs text-muted-foreground">{idx < 5 ? '8 agents' : '4 agents'}</p>
               </div>
             </div>
           ))}

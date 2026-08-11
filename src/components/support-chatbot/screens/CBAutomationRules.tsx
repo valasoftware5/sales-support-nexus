@@ -62,8 +62,8 @@ export const CBAutomationRules: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Automation Rules</h1>
-          <p className="text-slate-500 text-sm mt-1">Set up automatic responses and triggers</p>
+          <h1 className="text-2xl font-bold text-foreground">Automation Rules</h1>
+          <p className="text-muted-foreground text-sm mt-1">Set up automatic responses and triggers</p>
         </div>
         <Button className="bg-blue-600 hover:bg-blue-700" onClick={handleCreate}>
           <Plus className="w-4 h-4 mr-2" />
@@ -73,7 +73,7 @@ export const CBAutomationRules: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Auto-Reply Rules */}
-        <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+        <Card className="bg-card border-border shadow-sm rounded-xl">
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
               <MessageSquare className="w-5 h-5 text-blue-600" />
@@ -83,25 +83,25 @@ export const CBAutomationRules: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-3">
             {isLoading ? (
-              <p className="text-sm text-slate-400 py-6 text-center">Loading rules…</p>
+              <p className="text-sm text-muted-foreground py-6 text-center">Loading rules…</p>
             ) : rulesList.length === 0 ? (
-              <p className="text-sm text-slate-400 py-6 text-center">No automation rules yet.</p>
+              <p className="text-sm text-muted-foreground py-6 text-center">No automation rules yet.</p>
             ) : (
               rulesList.map((rule) => (
                 <div
                   key={rule.id}
                   className={`p-4 rounded-xl border ${
-                    rule.is_enabled ? 'bg-white border-slate-200' : 'bg-slate-50 border-slate-100'
+                    rule.is_enabled ? 'bg-card border-border' : 'bg-surface border-border'
                   }`}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="font-medium text-slate-800">{rule.name}</span>
+                        <span className="font-medium text-foreground">{rule.name}</span>
                         {rule.is_enabled && (
                           <Badge className="bg-emerald-100 text-emerald-700 text-[10px]">Active</Badge>
                         )}
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-muted-foreground">
                           {rule.runs_count} runs • last {relativeTime(rule.last_run_at)}
                         </span>
                       </div>
@@ -109,7 +109,7 @@ export const CBAutomationRules: React.FC = () => {
                         <Badge variant="outline" className="bg-amber-50 text-amber-700 text-xs">
                           When: {rule.trigger_event}
                         </Badge>
-                        <ArrowRight className="w-4 h-4 text-slate-400" />
+                        <ArrowRight className="w-4 h-4 text-muted-foreground" />
                         <Badge variant="outline" className="bg-blue-50 text-blue-700 text-xs">
                           Then: {rule.action_text}
                         </Badge>
@@ -127,7 +127,7 @@ export const CBAutomationRules: React.FC = () => {
         </Card>
 
         {/* Human Handover */}
-        <Card className="bg-white border-slate-200 shadow-sm rounded-xl">
+        <Card className="bg-card border-border shadow-sm rounded-xl">
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
               <ArrowRight className="w-5 h-5 text-blue-600" />
@@ -136,14 +136,14 @@ export const CBAutomationRules: React.FC = () => {
             <CardDescription>When should bot transfer to human?</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+            <div className="flex items-center justify-between p-4 bg-surface rounded-xl">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center">
                   <AlertTriangle className="w-5 h-5 text-orange-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-slate-800">Auto Handover</p>
-                  <p className="text-xs text-slate-500">Transfer when bot can't help</p>
+                  <p className="font-medium text-foreground">Auto Handover</p>
+                  <p className="text-xs text-muted-foreground">Transfer when bot can't help</p>
                 </div>
               </div>
               <Badge variant="outline" className="text-xs">
@@ -152,15 +152,15 @@ export const CBAutomationRules: React.FC = () => {
             </div>
 
             <div className="space-y-3">
-              <p className="text-sm font-medium text-slate-700">Active rules:</p>
+              <p className="text-sm font-medium text-foreground">Active rules:</p>
               <div className="space-y-2">
                 {rulesList.length === 0 ? (
-                  <p className="text-sm text-slate-400">No rules configured.</p>
+                  <p className="text-sm text-muted-foreground">No rules configured.</p>
                 ) : (
                   rulesList.map((rule) => (
                     <div key={rule.id} className="flex items-center gap-3 text-sm">
                       <Switch checked={rule.is_enabled} className="scale-75" disabled />
-                      <span className="text-slate-600">{rule.name}: {rule.condition_text ?? rule.trigger_event}</span>
+                      <span className="text-muted-foreground">{rule.name}: {rule.condition_text ?? rule.trigger_event}</span>
                     </div>
                   ))
                 )}
@@ -170,7 +170,7 @@ export const CBAutomationRules: React.FC = () => {
         </Card>
 
         {/* Escalation Logic */}
-        <Card className="bg-white border-slate-200 shadow-sm rounded-xl lg:col-span-2">
+        <Card className="bg-card border-border shadow-sm rounded-xl lg:col-span-2">
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
               <Zap className="w-5 h-5 text-blue-600" />
@@ -181,12 +181,12 @@ export const CBAutomationRules: React.FC = () => {
           <CardContent className="space-y-4">
             <div className="space-y-3">
               {escalationRules.map((level, idx) => (
-                <div key={idx} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                <div key={idx} className="flex items-center justify-between p-3 bg-surface rounded-lg">
                   <div className="flex items-center gap-3">
                     <Badge className={`bg-${level.color}-100 text-${level.color}-700 text-xs`}>
                       {level.priority}
                     </Badge>
-                    <span className="text-sm text-slate-600">{level.action}</span>
+                    <span className="text-sm text-muted-foreground">{level.action}</span>
                   </div>
                   <Badge variant="outline" className="text-xs">
                     {level.time}

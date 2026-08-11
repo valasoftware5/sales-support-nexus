@@ -122,7 +122,7 @@ const DemoDispatchCenter = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Demo Dispatch Center</h2>
-          <p className="text-slate-400">One-click demo sharing with tracking</p>
+          <p className="text-muted-foreground">One-click demo sharing with tracking</p>
         </div>
         <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white" onClick={handleGenerate}>
           <Send className="w-4 h-4 mr-2" />
@@ -135,28 +135,28 @@ const DemoDispatchCenter = () => {
           <CardContent className="p-4 text-center">
             <Send className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{totalDemos}</div>
-            <div className="text-xs text-slate-400">Demos Sent</div>
+            <div className="text-xs text-muted-foreground">Demos Sent</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <Eye className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{viewRate}%</div>
-            <div className="text-xs text-slate-400">View Rate</div>
+            <div className="text-xs text-muted-foreground">View Rate</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{pending}</div>
-            <div className="text-xs text-slate-400">Pending Demos</div>
+            <div className="text-xs text-muted-foreground">Pending Demos</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <CheckCircle className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{conversionRate}%</div>
-            <div className="text-xs text-slate-400">Conversion Rate</div>
+            <div className="text-xs text-muted-foreground">Conversion Rate</div>
           </CardContent>
         </Card>
       </div>
@@ -173,7 +173,7 @@ const DemoDispatchCenter = () => {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm text-slate-400 mb-2 block">Select Product</label>
+                  <label className="text-sm text-muted-foreground mb-2 block">Select Product</label>
                   <Select value={product} onValueChange={setProduct}>
                     <SelectTrigger className="bg-slate-800 border-slate-700">
                       <SelectValue placeholder="Choose product..." />
@@ -187,7 +187,7 @@ const DemoDispatchCenter = () => {
                   </Select>
                 </div>
                 <div>
-                  <label className="text-sm text-slate-400 mb-2 block">Lead Name</label>
+                  <label className="text-sm text-muted-foreground mb-2 block">Lead Name</label>
                   <Input
                     placeholder="Enter lead name..."
                     className="bg-slate-800 border-slate-700"
@@ -205,7 +205,7 @@ const DemoDispatchCenter = () => {
 
               <div className="p-4 bg-slate-800/50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-slate-400">Generated Link</span>
+                  <span className="text-sm text-muted-foreground">Generated Link</span>
                   <div className="flex gap-2">
                     <Button
                       size="sm"
@@ -240,7 +240,7 @@ const DemoDispatchCenter = () => {
             <CardContent>
               <div className="space-y-3">
                 {recentDemos.length === 0 && (
-                  <p className="text-sm text-slate-500">No demo activity yet.</p>
+                  <p className="text-sm text-muted-foreground">No demo activity yet.</p>
                 )}
                 {recentDemos.map((demo, index) => (
                   <motion.div
@@ -254,13 +254,13 @@ const DemoDispatchCenter = () => {
                       <span className="font-mono text-cyan-400 text-sm">{demo.reference}</span>
                       <div>
                         <p className="text-cyan-100 font-medium">{demo.lead}</p>
-                        <p className="text-xs text-slate-400">{demo.product}</p>
+                        <p className="text-xs text-muted-foreground">{demo.product}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
                       <div className="text-right">
                         <Badge className={getStatusBadge(demo.status)}>{demo.status}</Badge>
-                        <p className="text-xs text-slate-500 mt-1">{demo.sent}</p>
+                        <p className="text-xs text-muted-foreground mt-1">{demo.sent}</p>
                       </div>
                       {(demo.status === "pending" || demo.status === "scheduled") && (
                         <Button size="sm" variant="outline" className="border-amber-500/30 text-amber-300" onClick={() => handleRemind(demo.id)}>
@@ -282,7 +282,7 @@ const DemoDispatchCenter = () => {
             </CardHeader>
             <CardContent className="space-y-3">
               {demoLeads.length === 0 && (
-                <p className="text-sm text-slate-500">No demo requests yet.</p>
+                <p className="text-sm text-muted-foreground">No demo requests yet.</p>
               )}
               {demoLeads.slice(0, 5).map((lead, index) => (
                 <motion.div
@@ -297,7 +297,7 @@ const DemoDispatchCenter = () => {
                     <span className="font-medium text-cyan-100">{lead.company}</span>
                     <Badge className="bg-emerald-500/20 text-emerald-300">{Math.round(lead.ai_win_probability * 100)}% match</Badge>
                   </div>
-                  <span className="text-xs text-slate-400">{lead.category ?? lead.stage}</span>
+                  <span className="text-xs text-muted-foreground">{lead.category ?? lead.stage}</span>
                 </motion.div>
               ))}
             </CardContent>

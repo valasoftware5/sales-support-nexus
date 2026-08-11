@@ -116,7 +116,7 @@ const TokenCommandCenter = () => {
             <Layers className="w-6 h-6 text-teal-400" />
             Token Command Center
           </h2>
-          <p className="text-slate-400 text-sm">Global token lifecycle monitoring</p>
+          <p className="text-muted-foreground text-sm">Global token lifecycle monitoring</p>
         </div>
         <div className="flex items-center gap-3">
           <Badge className="bg-teal-500/20 text-teal-400 text-lg px-4 py-1">
@@ -153,7 +153,7 @@ const TokenCommandCenter = () => {
                   <span className="font-mono text-sm text-white">{token.ticketId}</span>
                   <Badge className="bg-red-500/20 text-red-400 text-xs animate-pulse">{token.timeLeft}</Badge>
                 </div>
-                <p className="text-xs text-slate-400">{token.customer}</p>
+                <p className="text-xs text-muted-foreground">{token.customer}</p>
                 <Button 
                   size="sm" 
                   onClick={(e) => { e.stopPropagation(); handleEscalateBreaching(token.id, token.ticketId); }}
@@ -260,7 +260,7 @@ const TokenCommandCenter = () => {
               >
                 <span className="text-2xl">{channel.icon}</span>
                 <p className="text-lg font-bold text-white mt-1">{channel.count}</p>
-                <p className="text-xs text-slate-400">{channel.channel}</p>
+                <p className="text-xs text-muted-foreground">{channel.channel}</p>
               </motion.div>
             ))}
           </div>
@@ -297,7 +297,7 @@ const TokenCommandCenter = () => {
                       {token.status}
                     </Badge>
                   </div>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-muted-foreground">
                     Last activity: {token.lastActivity} • Assigned: {token.assignee}
                   </p>
                 </div>

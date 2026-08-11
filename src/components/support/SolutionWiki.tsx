@@ -94,7 +94,7 @@ const SolutionWiki = () => {
             <BookOpen className="w-6 h-6 text-teal-400" />
             Solution Wiki
           </h2>
-          <p className="text-slate-400 mt-1">Knowledge base and solution templates</p>
+          <p className="text-muted-foreground mt-1">Knowledge base and solution templates</p>
         </div>
       </div>
 
@@ -104,7 +104,7 @@ const SolutionWiki = () => {
         animate={{ opacity: 1, y: 0 }}
         className="relative"
       >
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
         <input
           type="text"
           placeholder="Search solutions, scripts, tutorials..."
@@ -125,7 +125,7 @@ const SolutionWiki = () => {
             className={`px-4 py-2 rounded-lg whitespace-nowrap transition-all ${
               selectedCategory === category.id
                 ? 'bg-teal-500/20 border border-teal-500/30 text-teal-400'
-                : 'bg-slate-800/30 border border-slate-700/30 text-slate-400 hover:text-white'
+                : 'bg-slate-800/30 border border-slate-700/30 text-muted-foreground hover:text-white'
             }`}
           >
             {category.label}
@@ -157,7 +157,7 @@ const SolutionWiki = () => {
             <h4 className="text-white font-medium mb-2 group-hover:text-teal-400 transition-colors">
               {article.title}
             </h4>
-            <div className="flex items-center gap-3 text-xs text-slate-500">
+            <div className="flex items-center gap-3 text-xs text-muted-foreground">
               <span className="flex items-center gap-1">
                 {article.type === 'video' ? <Video className="w-3 h-3" /> : <FileText className="w-3 h-3" />}
                 {article.type}
@@ -198,7 +198,7 @@ const SolutionWiki = () => {
                   <h4 className="text-white font-medium group-hover:text-teal-400 transition-colors">
                     {article.title}
                   </h4>
-                  <div className="flex items-center gap-4 mt-1 text-xs text-slate-500">
+                  <div className="flex items-center gap-4 mt-1 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1">
                       <Tag className="w-3 h-3" />
                       {article.category}
@@ -219,7 +219,7 @@ const SolutionWiki = () => {
                   <p className="text-sm text-slate-300">{article.views} views</p>
                   <p className="text-xs text-emerald-400">{article.helpful}% helpful</p>
                 </div>
-                <ChevronRight className="w-5 h-5 text-slate-600 group-hover:text-teal-400 transition-colors" />
+                <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-teal-400 transition-colors" />
               </div>
             </div>
           </motion.div>

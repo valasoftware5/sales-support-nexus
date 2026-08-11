@@ -46,7 +46,7 @@ const CommissionBoard = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Commission Board</h2>
-          <p className="text-slate-400">Track earnings, payouts, and incentive milestones</p>
+          <p className="text-muted-foreground">Track earnings, payouts, and incentive milestones</p>
         </div>
       </div>
 
@@ -59,7 +59,7 @@ const CommissionBoard = () => {
               </div>
               <div>
                 <div className="text-2xl font-bold text-emerald-100">{currency(totalEarned)}</div>
-                <div className="text-xs text-slate-400">Total Earned</div>
+                <div className="text-xs text-muted-foreground">Total Earned</div>
               </div>
             </div>
           </CardContent>
@@ -72,7 +72,7 @@ const CommissionBoard = () => {
               </div>
               <div>
                 <div className="text-2xl font-bold text-cyan-100">{currency(totalPending)}</div>
-                <div className="text-xs text-slate-400">Pending Payout</div>
+                <div className="text-xs text-muted-foreground">Pending Payout</div>
               </div>
             </div>
           </CardContent>
@@ -85,7 +85,7 @@ const CommissionBoard = () => {
               </div>
               <div>
                 <div className="text-2xl font-bold text-amber-100">{totalDeals}</div>
-                <div className="text-xs text-slate-400">Deals Closed</div>
+                <div className="text-xs text-muted-foreground">Deals Closed</div>
               </div>
             </div>
           </CardContent>
@@ -98,7 +98,7 @@ const CommissionBoard = () => {
               </div>
               <div>
                 <div className="text-2xl font-bold text-purple-100">{avgRate.toFixed(1)}%</div>
-                <div className="text-xs text-slate-400">Avg Commission Rate</div>
+                <div className="text-xs text-muted-foreground">Avg Commission Rate</div>
               </div>
             </div>
           </CardContent>
@@ -115,8 +115,8 @@ const CommissionBoard = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {isLoading && <p className="text-slate-400 text-sm">Loading commissions…</p>}
-              {!isLoading && commissions.length === 0 && <p className="text-slate-400 text-sm">No commission records.</p>}
+              {isLoading && <p className="text-muted-foreground text-sm">Loading commissions…</p>}
+              {!isLoading && commissions.length === 0 && <p className="text-muted-foreground text-sm">No commission records.</p>}
               {commissions.map((commission, index) => (
                 <motion.div
                   key={commission.id}
@@ -130,7 +130,7 @@ const CommissionBoard = () => {
                       <span className="font-mono text-cyan-400 text-sm">{commission.id.slice(0, 8)}</span>
                       <span className="font-medium text-slate-200">{memberName(team, commission.member_id) ?? "Unassigned"}</span>
                     </div>
-                    <span className="text-xs text-slate-500">{commission.period}</span>
+                    <span className="text-xs text-muted-foreground">{commission.period}</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="text-lg font-bold text-emerald-400">{currency(commission.earned)}</span>
@@ -163,7 +163,7 @@ const CommissionBoard = () => {
                     {milestone.achieved ? (
                       <CheckCircle className="w-5 h-5 text-emerald-400" />
                     ) : (
-                      <Clock className="w-5 h-5 text-slate-500" />
+                      <Clock className="w-5 h-5 text-muted-foreground" />
                     )}
                     <span className={`font-medium ${milestone.achieved ? "text-emerald-300" : "text-slate-200"}`}>
                       {milestone.name}
@@ -175,7 +175,7 @@ const CommissionBoard = () => {
                 </div>
                 <Progress value={milestone.progress} className="h-2 bg-slate-800" />
                 <div className="flex justify-between text-xs mt-1">
-                  <span className="text-slate-500">Progress</span>
+                  <span className="text-muted-foreground">Progress</span>
                   <span className={milestone.achieved ? "text-emerald-400" : "text-cyan-400"}>{milestone.progress}%</span>
                 </div>
               </motion.div>

@@ -195,8 +195,8 @@ export function SafeAssistActiveBanner() {
             className={`
               font-medium
               ${riskLevel === 'high' 
-                ? 'bg-white/20 hover:bg-white/30 text-white border-white/50' 
-                : 'bg-white/20 hover:bg-white/30 text-current border-current/30'
+                ? 'bg-card/20 hover:bg-card/30 text-white border-white/50' 
+                : 'bg-card/20 hover:bg-card/30 text-current border-current/30'
               }
             `}
           >

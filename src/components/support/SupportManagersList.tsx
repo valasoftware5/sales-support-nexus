@@ -68,9 +68,9 @@ const SupportManagersList = () => {
   const getStatusConfig = (status: string) => {
     switch (status) {
       case 'active': return { color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30', dot: 'bg-emerald-400' };
-      case 'inactive': return { color: 'bg-slate-500/20 text-slate-400 border-slate-500/30', dot: 'bg-slate-400' };
+      case 'inactive': return { color: 'bg-slate-500/20 text-muted-foreground border-slate-500/30', dot: 'bg-slate-400' };
       case 'on_leave': return { color: 'bg-amber-500/20 text-amber-400 border-amber-500/30', dot: 'bg-amber-400' };
-      default: return { color: 'bg-slate-500/20 text-slate-400', dot: 'bg-slate-400' };
+      default: return { color: 'bg-slate-500/20 text-muted-foreground', dot: 'bg-slate-400' };
     }
   };
 
@@ -79,7 +79,7 @@ const SupportManagersList = () => {
       case 'Global Admin': return 'bg-purple-500/20 text-purple-400 border-purple-500/30';
       case 'Country Head': return 'bg-teal-500/20 text-teal-400 border-teal-500/30';
       case 'Support Manager': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
-      default: return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
+      default: return 'bg-slate-500/20 text-muted-foreground border-slate-500/30';
     }
   };
 
@@ -110,7 +110,7 @@ const SupportManagersList = () => {
             <User className="w-6 h-6 text-teal-400" />
             All Support Managers
           </h2>
-          <p className="text-slate-400 text-sm">Manage support team members and performance</p>
+          <p className="text-muted-foreground text-sm">Manage support team members and performance</p>
         </div>
         <Button className="bg-teal-500/20 text-teal-400 border border-teal-500/30 hover:bg-teal-500/30">
           <UserPlus className="w-4 h-4 mr-2" />
@@ -124,28 +124,28 @@ const SupportManagersList = () => {
           <CardContent className="p-4 text-center">
             <User className="w-6 h-6 text-teal-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-teal-100">{stats.total}</div>
-            <div className="text-xs text-slate-400">Total Managers</div>
+            <div className="text-xs text-muted-foreground">Total Managers</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <CheckCircle2 className="w-6 h-6 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{stats.active}</div>
-            <div className="text-xs text-slate-400">Active Now</div>
+            <div className="text-xs text-muted-foreground">Active Now</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Star className="w-6 h-6 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{stats.avgCsat}%</div>
-            <div className="text-xs text-slate-400">Avg CSAT</div>
+            <div className="text-xs text-muted-foreground">Avg CSAT</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <Activity className="w-6 h-6 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{stats.totalTickets}</div>
-            <div className="text-xs text-slate-400">Active Tickets</div>
+            <div className="text-xs text-muted-foreground">Active Tickets</div>
           </CardContent>
         </Card>
       </div>
@@ -153,7 +153,7 @@ const SupportManagersList = () => {
       {/* Filters */}
       <div className="flex items-center gap-4">
         <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -220,7 +220,7 @@ const SupportManagersList = () => {
                       <div className="relative">
                         {/* PII MASKED: No avatar/DP - using generic icon */}
                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-700 to-slate-600 border-2 border-slate-700 flex items-center justify-center">
-                          <User className="w-6 h-6 text-slate-400" />
+                          <User className="w-6 h-6 text-muted-foreground" />
                         </div>
                         <div className={`absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-slate-900 ${statusConfig.dot}`} />
                       </div>
@@ -228,11 +228,11 @@ const SupportManagersList = () => {
                         <div className="flex items-center gap-2">
                           {/* PII MASKED: Show masked alias + ID */}
                           <h4 className="font-medium text-white">{manager.name}</h4>
-                          <span className="text-xs font-mono text-slate-500">{manager.id}</span>
+                          <span className="text-xs font-mono text-muted-foreground">{manager.id}</span>
                           <Badge className={getRoleColor(manager.role)}>{manager.role}</Badge>
                           <Badge className={statusConfig.color}>{manager.status.replace('_', ' ')}</Badge>
                         </div>
-                        <div className="flex items-center gap-4 text-xs text-slate-400 mt-1">
+                        <div className="flex items-center gap-4 text-xs text-muted-foreground mt-1">
                           {/* PII MASKED: Email removed, only region/timing shown */}
                           <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{manager.country}</span>
                           <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{manager.lastActive}</span>
@@ -242,19 +242,19 @@ const SupportManagersList = () => {
                     <div className="flex items-center gap-6">
                       <div className="text-center">
                         <div className="text-lg font-bold text-white">{manager.ticketsHandled}</div>
-                        <div className="text-xs text-slate-400">Tickets</div>
+                        <div className="text-xs text-muted-foreground">Tickets</div>
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-teal-400">{manager.avgResolutionTime}</div>
-                        <div className="text-xs text-slate-400">Avg Time</div>
+                        <div className="text-xs text-muted-foreground">Avg Time</div>
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-amber-400">{manager.csat}%</div>
-                        <div className="text-xs text-slate-400">CSAT</div>
+                        <div className="text-xs text-muted-foreground">CSAT</div>
                       </div>
                       <div className="text-center">
                         <div className="text-lg font-bold text-purple-400">{manager.activeTickets}</div>
-                        <div className="text-xs text-slate-400">Active</div>
+                        <div className="text-xs text-muted-foreground">Active</div>
                       </div>
                       <div className="flex gap-2">
                         <Button 
@@ -269,7 +269,7 @@ const SupportManagersList = () => {
                           size="sm" 
                           variant="ghost" 
                           onClick={(e) => { e.stopPropagation(); handleToggleStatus(manager.id, manager.status); }}
-                          className="text-slate-400 hover:text-white"
+                          className="text-muted-foreground hover:text-white"
                         >
                           <MoreVertical className="w-4 h-4" />
                         </Button>
@@ -287,15 +287,15 @@ const SupportManagersList = () => {
                       {/* PII MASKED: Phone hidden, only non-PII data shown */}
                       <div className="grid grid-cols-3 gap-4">
                         <div className="p-3 rounded-lg bg-slate-800/50">
-                          <p className="text-xs text-slate-400 mb-1">Region</p>
+                          <p className="text-xs text-muted-foreground mb-1">Region</p>
                           <p className="text-sm text-white">{manager.region}</p>
                         </div>
                         <div className="p-3 rounded-lg bg-slate-800/50">
-                          <p className="text-xs text-slate-400 mb-1">Joined</p>
+                          <p className="text-xs text-muted-foreground mb-1">Joined</p>
                           <p className="text-sm text-white">{manager.joinedAt}</p>
                         </div>
                         <div className="p-3 rounded-lg bg-slate-800/50">
-                          <p className="text-xs text-slate-400 mb-1">Skills</p>
+                          <p className="text-xs text-muted-foreground mb-1">Skills</p>
                           <div className="flex flex-wrap gap-1">
                             {manager.skills.map(skill => (
                               <Badge key={skill} variant="outline" className="text-xs text-teal-400 border-teal-500/30">

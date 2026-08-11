@@ -96,8 +96,8 @@ const CustomerManagement = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Customer Management</h1>
-          <p className="text-slate-500 mt-1">Manage your customer relationships</p>
+          <h1 className="text-2xl font-bold text-foreground">Customer Management</h1>
+          <p className="text-muted-foreground mt-1">Manage your customer relationships</p>
         </div>
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
@@ -141,10 +141,10 @@ const CustomerManagement = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Customer List */}
-        <Card className="border-slate-200">
+        <Card className="border-border">
           <CardHeader className="pb-3">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
                 placeholder="Search customers..."
                 className="pl-10"
@@ -155,9 +155,9 @@ const CustomerManagement = () => {
           </CardHeader>
           <CardContent className="p-0">
             {isLoading ? (
-              <p className="text-slate-500 text-sm py-6 text-center">Loading customers...</p>
+              <p className="text-muted-foreground text-sm py-6 text-center">Loading customers...</p>
             ) : filteredCustomers.length === 0 ? (
-              <p className="text-slate-500 text-sm py-6 text-center">No customers found.</p>
+              <p className="text-muted-foreground text-sm py-6 text-center">No customers found.</p>
             ) : (
               <div className="divide-y divide-slate-100">
                 {filteredCustomers.map((customer, index) => (
@@ -170,7 +170,7 @@ const CustomerManagement = () => {
                     className={`p-4 cursor-pointer transition-colors ${
                       selectedCustomer?.id === customer.id
                         ? 'bg-blue-50 border-l-4 border-l-blue-500'
-                        : 'hover:bg-slate-50'
+                        : 'hover:bg-surface'
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -180,8 +180,8 @@ const CustomerManagement = () => {
                         </AvatarFallback>
                       </Avatar>
                       <div className="flex-1 min-w-0">
-                        <p className="font-medium text-slate-800 truncate">{customer.company_name}</p>
-                        <p className="text-sm text-slate-500 truncate">{customer.contact_name}</p>
+                        <p className="font-medium text-foreground truncate">{customer.company_name}</p>
+                        <p className="text-sm text-muted-foreground truncate">{customer.contact_name}</p>
                       </div>
                       <div className="flex items-center gap-1">
                         {Array.from({ length: ratingFor(customer) }).map((_, i) => (
@@ -197,12 +197,12 @@ const CustomerManagement = () => {
         </Card>
 
         {/* Customer Details */}
-        <Card className="lg:col-span-2 border-slate-200">
+        <Card className="lg:col-span-2 border-border">
           {!selectedCustomer ? (
-            <CardContent className="p-10 text-center text-slate-500">Select a customer to view details</CardContent>
+            <CardContent className="p-10 text-center text-muted-foreground">Select a customer to view details</CardContent>
           ) : (
             <>
-              <CardHeader className="border-b border-slate-100">
+              <CardHeader className="border-b border-border">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <Avatar className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500">
@@ -211,8 +211,8 @@ const CustomerManagement = () => {
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <h2 className="text-xl font-bold text-slate-800">{selectedCustomer.company_name}</h2>
-                      <p className="text-slate-500">{selectedCustomer.contact_name}</p>
+                      <h2 className="text-xl font-bold text-foreground">{selectedCustomer.company_name}</h2>
+                      <p className="text-muted-foreground">{selectedCustomer.contact_name}</p>
                       <div className="flex items-center gap-1 mt-1">
                         {Array.from({ length: ratingFor(selectedCustomer) }).map((_, i) => (
                           <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
@@ -248,47 +248,47 @@ const CustomerManagement = () => {
                   <TabsContent value="details" className="space-y-6">
                     {/* Contact Info */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="p-4 rounded-xl bg-slate-50">
+                      <div className="p-4 rounded-xl bg-surface">
                         <div className="flex items-center gap-3">
                           <div className="p-2 rounded-lg bg-blue-100">
                             <Mail className="w-5 h-5 text-blue-600" />
                           </div>
                           <div>
-                            <p className="text-sm text-slate-500">Email</p>
-                            <p className="font-medium text-slate-800">{selectedCustomer.email}</p>
+                            <p className="text-sm text-muted-foreground">Email</p>
+                            <p className="font-medium text-foreground">{selectedCustomer.email}</p>
                           </div>
                         </div>
                       </div>
-                      <div className="p-4 rounded-xl bg-slate-50">
+                      <div className="p-4 rounded-xl bg-surface">
                         <div className="flex items-center gap-3">
                           <div className="p-2 rounded-lg bg-green-100">
                             <Phone className="w-5 h-5 text-green-600" />
                           </div>
                           <div>
-                            <p className="text-sm text-slate-500">Phone</p>
-                            <p className="font-medium text-slate-800">{selectedCustomer.phone ?? "—"}</p>
+                            <p className="text-sm text-muted-foreground">Phone</p>
+                            <p className="font-medium text-foreground">{selectedCustomer.phone ?? "—"}</p>
                           </div>
                         </div>
                       </div>
-                      <div className="p-4 rounded-xl bg-slate-50">
+                      <div className="p-4 rounded-xl bg-surface">
                         <div className="flex items-center gap-3">
                           <div className="p-2 rounded-lg bg-purple-100">
                             <MapPin className="w-5 h-5 text-purple-600" />
                           </div>
                           <div>
-                            <p className="text-sm text-slate-500">Location</p>
-                            <p className="font-medium text-slate-800">{selectedCustomer.country ?? "—"}</p>
+                            <p className="text-sm text-muted-foreground">Location</p>
+                            <p className="font-medium text-foreground">{selectedCustomer.country ?? "—"}</p>
                           </div>
                         </div>
                       </div>
-                      <div className="p-4 rounded-xl bg-slate-50">
+                      <div className="p-4 rounded-xl bg-surface">
                         <div className="flex items-center gap-3">
                           <div className="p-2 rounded-lg bg-orange-100">
                             <Calendar className="w-5 h-5 text-orange-600" />
                           </div>
                           <div>
-                            <p className="text-sm text-slate-500">Last Contact</p>
-                            <p className="font-medium text-slate-800">{relativeTime(selectedCustomer.last_contact_at)}</p>
+                            <p className="text-sm text-muted-foreground">Last Contact</p>
+                            <p className="font-medium text-foreground">{relativeTime(selectedCustomer.last_contact_at)}</p>
                           </div>
                         </div>
                       </div>
@@ -296,16 +296,16 @@ const CustomerManagement = () => {
 
                     {/* Stats */}
                     <div className="grid grid-cols-2 gap-4">
-                      <Card className="border-slate-200">
+                      <Card className="border-border">
                         <CardContent className="p-6 text-center">
                           <p className="text-3xl font-bold text-blue-600">{customerDeals(selectedCustomer.id).length}</p>
-                          <p className="text-sm text-slate-500 mt-1">Total Deals</p>
+                          <p className="text-sm text-muted-foreground mt-1">Total Deals</p>
                         </CardContent>
                       </Card>
-                      <Card className="border-slate-200">
+                      <Card className="border-border">
                         <CardContent className="p-6 text-center">
                           <p className="text-3xl font-bold text-green-600">{currency(selectedCustomer.lifetime_value)}</p>
-                          <p className="text-sm text-slate-500 mt-1">Total Value</p>
+                          <p className="text-sm text-muted-foreground mt-1">Total Value</p>
                         </CardContent>
                       </Card>
                     </div>
@@ -314,7 +314,7 @@ const CustomerManagement = () => {
                   <TabsContent value="history">
                     <div className="space-y-4">
                       {customerDeals(selectedCustomer.id).length === 0 ? (
-                        <p className="text-slate-500 text-sm py-6 text-center">No activity recorded yet.</p>
+                        <p className="text-muted-foreground text-sm py-6 text-center">No activity recorded yet.</p>
                       ) : (
                         customerDeals(selectedCustomer.id).map((deal, index) => (
                           <motion.div
@@ -322,14 +322,14 @@ const CustomerManagement = () => {
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 }}
-                            className="flex gap-4 p-4 rounded-xl bg-slate-50"
+                            className="flex gap-4 p-4 rounded-xl bg-surface"
                           >
                             <div className="p-2 rounded-lg bg-purple-100">
                               <MessageSquare className="w-5 h-5 text-purple-600" />
                             </div>
                             <div className="flex-1">
-                              <p className="font-medium text-slate-800">{deal.title} — {deal.stage}</p>
-                              <p className="text-sm text-slate-500">{relativeTime(deal.updated_at)}</p>
+                              <p className="font-medium text-foreground">{deal.title} — {deal.stage}</p>
+                              <p className="text-sm text-muted-foreground">{relativeTime(deal.updated_at)}</p>
                             </div>
                           </motion.div>
                         ))
@@ -341,7 +341,7 @@ const CustomerManagement = () => {
                     <div className="space-y-4">
                       <textarea
                         placeholder="Add a note about this customer..."
-                        className="w-full h-32 p-4 rounded-xl border border-slate-200 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full h-32 p-4 rounded-xl border border-border resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                       <Button
                         className="bg-blue-500 hover:bg-blue-600"

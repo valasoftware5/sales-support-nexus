@@ -96,8 +96,8 @@ const SystemLogs = () => {
       case 'escalation': return 'text-red-400 bg-red-500/20';
       case 'agent': return 'text-blue-400 bg-blue-500/20';
       case 'ai': return 'text-yellow-400 bg-yellow-500/20';
-      case 'system': return 'text-slate-400 bg-slate-500/20';
-      default: return 'text-slate-400 bg-slate-500/20';
+      case 'system': return 'text-muted-foreground bg-slate-500/20';
+      default: return 'text-muted-foreground bg-slate-500/20';
     }
   };
 
@@ -106,7 +106,7 @@ const SystemLogs = () => {
       case 'critical': return <Badge className="bg-red-500/20 text-red-400"><AlertTriangle className="w-3 h-3 mr-1" />Critical</Badge>;
       case 'error': return <Badge className="bg-orange-500/20 text-orange-400"><XCircle className="w-3 h-3 mr-1" />Error</Badge>;
       case 'warning': return <Badge className="bg-yellow-500/20 text-yellow-400"><AlertTriangle className="w-3 h-3 mr-1" />Warning</Badge>;
-      case 'info': return <Badge className="bg-slate-500/20 text-slate-400"><CheckCircle className="w-3 h-3 mr-1" />Info</Badge>;
+      case 'info': return <Badge className="bg-slate-500/20 text-muted-foreground"><CheckCircle className="w-3 h-3 mr-1" />Info</Badge>;
       default: return null;
     }
   };
@@ -129,7 +129,7 @@ const SystemLogs = () => {
             <Database className="w-6 h-6 text-teal-400" />
             System Logs & Audit Trail
           </h2>
-          <p className="text-slate-400 text-sm">Complete audit trail for disaster recovery and compliance</p>
+          <p className="text-muted-foreground text-sm">Complete audit trail for disaster recovery and compliance</p>
         </div>
         <div className="flex items-center gap-2">
           <Button onClick={handleRefresh} variant="outline" className="border-slate-700">
@@ -156,7 +156,7 @@ const SystemLogs = () => {
         className="flex items-center gap-4"
       >
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input 
             placeholder="Search logs..." 
             value={searchQuery}
@@ -207,7 +207,7 @@ const SystemLogs = () => {
           { label: 'AI Events', value: logs.filter(l => l.eventType === 'ai').length, color: 'text-purple-400' },
         ].map((stat, idx) => (
           <div key={idx} className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4">
-            <p className="text-xs text-slate-400">{stat.label}</p>
+            <p className="text-xs text-muted-foreground">{stat.label}</p>
             <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
           </div>
         ))}
@@ -249,13 +249,13 @@ const SystemLogs = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-mono text-xs text-slate-500">{log.timestamp}</span>
+                      <span className="font-mono text-xs text-muted-foreground">{log.timestamp}</span>
                       <Badge className={getEventColor(log.eventType)}>{log.eventType}</Badge>
-                      <span className="text-xs text-slate-400">{log.action}</span>
+                      <span className="text-xs text-muted-foreground">{log.action}</span>
                       {getSeverityBadge(log.severity)}
                     </div>
                     <p className="text-sm text-white mt-1">{log.details}</p>
-                    <div className="flex items-center gap-3 text-xs text-slate-500 mt-1">
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1">
                       <span>Actor: {log.actor} ({log.actorRole})</span>
                       <span>Target: {log.targetId}</span>
                     </div>

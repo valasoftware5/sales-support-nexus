@@ -90,7 +90,7 @@ const CallCenterModule = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-100">Call Center</h2>
-          <p className="text-slate-400">Call logs, recordings, and AI summaries</p>
+          <p className="text-muted-foreground">Call logs, recordings, and AI summaries</p>
         </div>
       </div>
 
@@ -100,28 +100,28 @@ const CallCenterModule = () => {
           <CardContent className="p-4 text-center">
             <Phone className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{calls.length}</div>
-            <div className="text-xs text-slate-400">Total Calls Today</div>
+            <div className="text-xs text-muted-foreground">Total Calls Today</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-red-500/20">
           <CardContent className="p-4 text-center">
             <PhoneMissed className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{missedCalls}</div>
-            <div className="text-xs text-slate-400">Missed Calls</div>
+            <div className="text-xs text-muted-foreground">Missed Calls</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{avgWait}s</div>
-            <div className="text-xs text-slate-400">Avg Wait Time</div>
+            <div className="text-xs text-muted-foreground">Avg Wait Time</div>
           </CardContent>
         </Card>
         <Card className="bg-slate-900/50 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <ArrowUp className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{formatDuration(avgDuration)}</div>
-            <div className="text-xs text-slate-400">Avg Duration</div>
+            <div className="text-xs text-muted-foreground">Avg Duration</div>
           </CardContent>
         </Card>
       </div>
@@ -133,8 +133,8 @@ const CallCenterModule = () => {
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
-            {isLoading && <p className="text-slate-400 text-sm">Loading calls…</p>}
-            {!isLoading && calls.length === 0 && <p className="text-slate-400 text-sm">No calls recorded.</p>}
+            {isLoading && <p className="text-muted-foreground text-sm">Loading calls…</p>}
+            {!isLoading && calls.length === 0 && <p className="text-muted-foreground text-sm">No calls recorded.</p>}
             {calls.map((call, index) => {
               const TypeIcon = getTypeIcon(call.direction ?? call.status);
               const agentName = memberName(agents, call.agent_id);
@@ -156,7 +156,7 @@ const CallCenterModule = () => {
                         <Badge className={`ml-2 ${getStatusColor(call.status)}`}>{call.status.replace('_', ' ')}</Badge>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       {call.duration_seconds > 0 && <span className="font-mono">{formatDuration(call.duration_seconds)}</span>}
                       <span>•</span>
                       <span>{relativeTime(call.started_at)}</span>
@@ -166,7 +166,7 @@ const CallCenterModule = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <h4 className="font-medium text-slate-100">{call.caller_name}</h4>
-                      <p className="text-sm text-slate-400">{call.phone} {agentName && `• Agent: ${agentName}`}</p>
+                      <p className="text-sm text-muted-foreground">{call.phone} {agentName && `• Agent: ${agentName}`}</p>
                       {call.notes && <p className="text-sm text-cyan-400/80 mt-1 italic">AI: {call.notes}</p>}
                     </div>
 

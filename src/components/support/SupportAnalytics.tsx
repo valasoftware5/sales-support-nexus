@@ -82,7 +82,7 @@ const SupportAnalytics = () => {
             <BarChart3 className="w-6 h-6 text-teal-400" />
             Support Analytics
           </h2>
-          <p className="text-slate-400 text-sm">Real-time performance metrics and insights</p>
+          <p className="text-muted-foreground text-sm">Real-time performance metrics and insights</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline" className="border-slate-700 text-slate-300">
@@ -120,7 +120,7 @@ const SupportAnalytics = () => {
               </div>
             </div>
             <p className={`text-2xl font-bold ${metric.color}`}>{metric.value}</p>
-            <p className="text-xs text-slate-400">{metric.label}</p>
+            <p className="text-xs text-muted-foreground">{metric.label}</p>
           </motion.div>
         ))}
       </motion.div>
@@ -153,7 +153,7 @@ const SupportAnalytics = () => {
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
                 style={{ minHeight: 4 }}
               />
-              <span className="text-xs text-slate-400 mt-2">{data.hour}</span>
+              <span className="text-xs text-muted-foreground mt-2">{data.hour}</span>
             </motion.div>
           ))}
         </div>
@@ -193,7 +193,7 @@ const SupportAnalytics = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-4 text-xs">
-                  <span className="text-slate-400 w-16">{channel.tickets} tickets</span>
+                  <span className="text-muted-foreground w-16">{channel.tickets} tickets</span>
                   <span className="text-teal-400 w-16">{channel.avgResponse}</span>
                   <Badge className={channel.satisfaction >= 95 ? 'bg-emerald-500/20 text-emerald-400' : channel.satisfaction >= 90 ? 'bg-teal-500/20 text-teal-400' : 'bg-yellow-500/20 text-yellow-400'}>
                     {channel.satisfaction}%
@@ -234,9 +234,9 @@ const SupportAnalytics = () => {
               >
                 <span className="text-2xl font-bold text-white">{stage.count}</span>
               </div>
-              <span className="text-xs text-slate-400 text-center">{stage.stage}</span>
+              <span className="text-xs text-muted-foreground text-center">{stage.stage}</span>
               {idx < 3 && (
-                <ArrowUpRight className="w-4 h-4 text-slate-500 absolute right-0 top-1/2 -translate-y-1/2" />
+                <ArrowUpRight className="w-4 h-4 text-muted-foreground absolute right-0 top-1/2 -translate-y-1/2" />
               )}
             </motion.div>
           ))}

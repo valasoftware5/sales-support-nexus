@@ -4,7 +4,6 @@
 
 export { SupportChatbotDashboard } from './SupportChatbotDashboard';
 export type { ChatbotSection } from './types';
-export { ChatbotCommandBar } from './ChatbotCommandBar';
 
 // Screens
 export { CBOverview } from './screens/CBOverview';

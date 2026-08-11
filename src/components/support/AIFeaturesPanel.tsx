@@ -176,7 +176,7 @@ const AIFeaturesPanel = () => {
             <Sparkles className="w-6 h-6 text-purple-400" />
             AI Support Features
           </h2>
-          <p className="text-slate-400 text-sm">Intelligent automation for faster, smarter support</p>
+          <p className="text-muted-foreground text-sm">Intelligent automation for faster, smarter support</p>
         </div>
         <Button onClick={handleTrainModel} className="bg-purple-500/20 text-purple-400 border border-purple-500/30 hover:bg-purple-500/30">
           <Brain className="w-4 h-4 mr-2" />
@@ -203,7 +203,7 @@ const AIFeaturesPanel = () => {
           >
             <div className="flex items-center gap-2 mb-2">
               <stat.icon className={`w-4 h-4 ${stat.color}`} />
-              <span className="text-xs text-slate-400">{stat.label}</span>
+              <span className="text-xs text-muted-foreground">{stat.label}</span>
             </div>
             <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
           </motion.div>
@@ -234,11 +234,11 @@ const AIFeaturesPanel = () => {
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
                     module.enabled ? 'bg-purple-500/20' : 'bg-slate-700/50'
                   }`}>
-                    <module.icon className={`w-4 h-4 ${module.enabled ? 'text-purple-400' : 'text-slate-500'}`} />
+                    <module.icon className={`w-4 h-4 ${module.enabled ? 'text-purple-400' : 'text-muted-foreground'}`} />
                   </div>
                   <div>
                     <p className="font-medium text-white text-sm">{module.name}</p>
-                    <p className="text-xs text-slate-400">{module.lastRun}</p>
+                    <p className="text-xs text-muted-foreground">{module.lastRun}</p>
                   </div>
                 </div>
                 <Switch 
@@ -246,14 +246,14 @@ const AIFeaturesPanel = () => {
                   onCheckedChange={() => handleToggleModule(module.id)}
                 />
               </div>
-              <p className="text-xs text-slate-400 mb-3">{module.description}</p>
+              <p className="text-xs text-muted-foreground mb-3">{module.description}</p>
               <div className="flex items-center justify-between">
-                <Badge className={module.enabled ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-700/50 text-slate-400'}>
+                <Badge className={module.enabled ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-700/50 text-muted-foreground'}>
                   {module.accuracy}% accuracy
                 </Badge>
                 <div className="flex gap-2 text-xs">
                   {module.stats.map((stat, idx) => (
-                    <span key={idx} className="text-slate-400">
+                    <span key={idx} className="text-muted-foreground">
                       {stat.label}: <span className="text-white">{stat.value}</span>
                     </span>
                   ))}
@@ -299,7 +299,7 @@ const AIFeaturesPanel = () => {
                 >
                   <CheckCircle className="w-3 h-3 mr-1" /> Use Suggestion
                 </Button>
-                <Button size="sm" variant="ghost" className="text-slate-400 hover:text-white">
+                <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-white">
                   <Settings className="w-3 h-3 mr-1" /> Customize
                 </Button>
               </div>
@@ -333,7 +333,7 @@ const AIFeaturesPanel = () => {
               <p className="font-medium text-white text-sm mb-2">{region.region}</p>
               <div className="flex items-center justify-center gap-2">
                 <Switch checked={region.aiEnabled} />
-                <span className={`text-xs ${region.aiEnabled ? 'text-emerald-400' : 'text-slate-400'}`}>
+                <span className={`text-xs ${region.aiEnabled ? 'text-emerald-400' : 'text-muted-foreground'}`}>
                   {region.aiEnabled ? 'ON' : 'OFF'}
                 </span>
               </div>

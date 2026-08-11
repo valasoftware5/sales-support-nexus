@@ -3,9 +3,9 @@
  * Routes between all support modules
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { InternalSupportAISidebar } from './InternalSupportAISidebar';
+import { useSearch } from '@tanstack/react-router';
 import { InternalSupportAIHeader } from './InternalSupportAIHeader';
 import { SupportDashboard } from './sections/SupportDashboard';
 import { AutoIssueDetection } from './sections/AutoIssueDetection';
@@ -20,7 +20,8 @@ interface InternalSupportAIContainerProps {
 }
 
 export const InternalSupportAIContainer: React.FC<InternalSupportAIContainerProps> = ({ onBack }) => {
-  const [activeSection, setActiveSection] = useState<SupportAISection>('dashboard');
+  const { section } = useSearch({ from: '/internal-support-ai' });
+  const activeSection = (section ?? 'dashboard') as SupportAISection;
 
   const renderContent = () => {
     switch (activeSection) {

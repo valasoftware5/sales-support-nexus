@@ -107,9 +107,9 @@ const TicketInbox = () => {
                 className="p-5 cursor-pointer"
                 onClick={() => setSelectedTicket(isSelected ? null : ticket.id)}
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-3 mb-2">
                       <span className="text-sm font-mono text-muted-foreground">{ticket.reference}</span>
                       <span className={`px-2 py-0.5 rounded text-xs font-medium bg-${urgencyConfig.color}-500/10 text-${urgencyConfig.color}-400 border border-${urgencyConfig.color}-500/20`}>
                         {urgencyConfig.label}
@@ -118,8 +118,8 @@ const TicketInbox = () => {
                         {ticket.category}
                       </span>
                     </div>
-                    <p className="text-white font-medium mb-2">{ticket.subject}</p>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <p className="text-foreground font-medium mb-2">{ticket.subject}</p>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
                       <span className="flex items-center gap-1.5">
                         <User className="w-3.5 h-3.5" />
                         {ticket.customer_name}
@@ -182,7 +182,7 @@ const TicketInbox = () => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex items-center gap-3 pt-2">
+                    <div className="flex flex-wrap items-center gap-3 pt-2">
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}

@@ -59,14 +59,8 @@ export const InternalSupportAIContainer: React.FC<InternalSupportAIContainerProp
       onCut={(e) => e.preventDefault()}
       onPaste={(e) => e.preventDefault()}
     >
-      {/* Sidebar */}
-      <InternalSupportAISidebar
-        activeSection={activeSection}
-        onSectionChange={setActiveSection}
-      />
-
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col ml-64">
+      <div className="flex-1 flex flex-col min-w-0">
         {/* Header */}
         <InternalSupportAIHeader
           systemStatus="LIVE"

@@ -4,7 +4,7 @@
  */
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useSearch } from '@tanstack/react-router';
+import { useNavigate, useSearch } from '@tanstack/react-router';
 import { ChatbotTopBar } from './ChatbotTopBar';
 import { SCDashboard } from './screens/SCDashboard';
 import { SCChatbotList } from './screens/SCChatbotList';
@@ -34,11 +34,14 @@ interface SupportChatbotWireframeProps {
 export const SupportChatbotWireframe: React.FC<SupportChatbotWireframeProps> = ({ onBack }) => {
   const { section } = useSearch({ from: '/support-chatbot-blueprint' });
   const activeScreen = (section ?? 'dashboard') as ChatbotScreen;
+  const navigate = useNavigate();
+  const goTo = (screen: ChatbotScreen) =>
+    navigate({ to: '/support-chatbot-blueprint', search: { section: screen } });
 
   const renderScreen = () => {
     switch (activeScreen) {
       case 'dashboard':
-        return <SCDashboard />;
+        return <SCDashboard onNavigate={goTo} />;
       case 'chatbots':
         return <SCChatbotList />;
       case 'live-chats':
@@ -56,7 +59,7 @@ export const SupportChatbotWireframe: React.FC<SupportChatbotWireframeProps> = (
       case 'settings':
         return <SCSettings />;
       default:
-        return <SCDashboard />;
+        return <SCDashboard onNavigate={goTo} />;
     }
   };
 

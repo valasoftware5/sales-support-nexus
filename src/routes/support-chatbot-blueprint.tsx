@@ -5,6 +5,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 export const Route = createFileRoute("/support-chatbot-blueprint")({
   // Dashboard UI is live/interactive; skip SSR so timers and live data hydrate cleanly.
   ssr: false,
+  validateSearch: (search: Record<string, unknown>) => ({
+    section: typeof search.section === "string" ? search.section : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Support Chatbot Blueprint | Software Vala" },

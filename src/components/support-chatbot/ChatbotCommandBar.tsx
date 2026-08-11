@@ -18,24 +18,11 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { toast } from '@/hooks/use-toast';
 
-interface ChatbotCommandBarProps {
-  onToggleSidebar: () => void;
-}
-
-export const ChatbotCommandBar: React.FC<ChatbotCommandBarProps> = ({ onToggleSidebar }) => {
+export const ChatbotCommandBar: React.FC = () => {
   return (
     <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 shadow-sm">
       {/* Left Section */}
       <div className="flex items-center gap-4">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={onToggleSidebar}
-          className="lg:hidden text-slate-600"
-        >
-          <Menu className="w-5 h-5" />
-        </Button>
-
         {/* Search */}
         <div className="relative hidden sm:block">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />

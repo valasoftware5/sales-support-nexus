@@ -3,7 +3,7 @@
  */
 
 export { SupportChatbotDashboard } from './SupportChatbotDashboard';
-export { ChatbotSidebar } from './ChatbotSidebar';
+export type { ChatbotSection } from './types';
 export { ChatbotCommandBar } from './ChatbotCommandBar';
 
 // Screens

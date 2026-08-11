@@ -2,9 +2,9 @@
  * SUPPORT CHATBOT WIREFRAME
  * Low-fidelity enterprise SaaS dashboard
  */
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChatbotSidebar } from './ChatbotSidebar';
+import { useNavigate, useSearch } from '@tanstack/react-router';
 import { ChatbotTopBar } from './ChatbotTopBar';
 import { SCDashboard } from './screens/SCDashboard';
 import { SCChatbotList } from './screens/SCChatbotList';
@@ -32,13 +32,16 @@ interface SupportChatbotWireframeProps {
 }
 
 export const SupportChatbotWireframe: React.FC<SupportChatbotWireframeProps> = ({ onBack }) => {
-  const [activeScreen, setActiveScreen] = useState<ChatbotScreen>('dashboard');
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const { section } = useSearch({ from: '/support-chatbot-blueprint' });
+  const activeScreen = (section ?? 'dashboard') as ChatbotScreen;
+  const navigate = useNavigate();
+  const goTo = (screen: ChatbotScreen) =>
+    navigate({ to: '/support-chatbot-blueprint', search: { section: screen } });
 
   const renderScreen = () => {
     switch (activeScreen) {
       case 'dashboard':
-        return <SCDashboard onNavigate={setActiveScreen} />;
+        return <SCDashboard onNavigate={goTo} />;
       case 'chatbots':
         return <SCChatbotList />;
       case 'live-chats':
@@ -56,21 +59,13 @@ export const SupportChatbotWireframe: React.FC<SupportChatbotWireframeProps> = (
       case 'settings':
         return <SCSettings />;
       default:
-        return <SCDashboard onNavigate={setActiveScreen} />;
+        return <SCDashboard onNavigate={goTo} />;
     }
   };
 
   return (
     <div className="min-h-screen bg-muted/30 flex">
-      <ChatbotSidebar 
-        activeScreen={activeScreen}
-        onScreenChange={setActiveScreen}
-        collapsed={sidebarCollapsed}
-        onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
-        onBack={onBack}
-      />
-
-      <div className={`flex-1 flex flex-col transition-all duration-300 ${sidebarCollapsed ? 'ml-16' : 'ml-56'}`}>
+      <div className="flex-1 flex flex-col min-w-0">
         <ChatbotTopBar />
 
         <main className="flex-1 p-6 overflow-auto">

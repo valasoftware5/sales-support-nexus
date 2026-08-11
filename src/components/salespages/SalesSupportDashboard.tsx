@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate, useSearch } from "@tanstack/react-router";
-import SalesSupportSidebar from "@/components/sales-support/SalesSupportSidebar";
 import SalesSupportTopBar from "@/components/sales-support/SalesSupportTopBar";
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertTriangle, Ticket, Phone, TrendingUp } from "lucide-react";
@@ -29,7 +27,6 @@ const SalesSupportDashboard = () => {
   const navigate = useNavigate();
   const { section } = useSearch({ from: "/" });
   const activeSection = section ?? "overview";
-  const [collapsed, setCollapsed] = useState(false);
   const reduceMotion = useReducedMotion();
 
   // Live KPI data
@@ -131,7 +128,6 @@ const SalesSupportDashboard = () => {
       transition={reduceMotion ? { duration: 0 } : { duration: 0.5 }}
       className="min-h-dvh bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950/20 flex"
     >
-      <SalesSupportSidebar activeSection={activeSection as any} onSectionChange={(s) => setSection(s)} collapsed={collapsed} onToggleCollapse={() => setCollapsed(!collapsed)} />
       <div className="flex-1 flex flex-col min-w-0">
         <SalesSupportTopBar />
         <main className="flex-1 p-6 overflow-auto">

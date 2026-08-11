@@ -3,9 +3,9 @@
  * Routes between all support modules
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { InternalSupportAISidebar } from './InternalSupportAISidebar';
+import { useSearch } from '@tanstack/react-router';
 import { InternalSupportAIHeader } from './InternalSupportAIHeader';
 import { SupportDashboard } from './sections/SupportDashboard';
 import { AutoIssueDetection } from './sections/AutoIssueDetection';
@@ -20,7 +20,8 @@ interface InternalSupportAIContainerProps {
 }
 
 export const InternalSupportAIContainer: React.FC<InternalSupportAIContainerProps> = ({ onBack }) => {
-  const [activeSection, setActiveSection] = useState<SupportAISection>('dashboard');
+  const { section } = useSearch({ from: '/internal-support-ai' });
+  const activeSection = (section ?? 'dashboard') as SupportAISection;
 
   const renderContent = () => {
     switch (activeSection) {
@@ -58,14 +59,8 @@ export const InternalSupportAIContainer: React.FC<InternalSupportAIContainerProp
       onCut={(e) => e.preventDefault()}
       onPaste={(e) => e.preventDefault()}
     >
-      {/* Sidebar */}
-      <InternalSupportAISidebar
-        activeSection={activeSection}
-        onSectionChange={setActiveSection}
-      />
-
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col ml-64">
+      <div className="flex-1 flex flex-col min-w-0">
         {/* Header */}
         <InternalSupportAIHeader
           systemStatus="LIVE"
@@ -76,7 +71,7 @@ export const InternalSupportAIContainer: React.FC<InternalSupportAIContainerProp
         />
 
         {/* Content */}
-        <main className="flex-1 p-4 overflow-auto mt-14">
+        <main className="flex-1 p-4 overflow-auto">
           <motion.div
             key={activeSection}
             initial={{ opacity: 0, y: 20 }}

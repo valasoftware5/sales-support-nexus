@@ -51,7 +51,6 @@ vi.mock("@tanstack/react-router", () => ({
 }));
 
 // Shell + heavy section modules are out of scope for this KPI test.
-vi.mock("@/components/sales-support/SalesSupportSidebar", () => ({ default: () => null }));
 vi.mock("@/components/sales-support/SalesSupportTopBar", () => ({ default: () => null }));
 vi.mock("@/components/sales-support/SalesPerformanceDashboard", () => ({ default: () => null }));
 vi.mock("@/components/sales-support/LeadInbox", () => ({

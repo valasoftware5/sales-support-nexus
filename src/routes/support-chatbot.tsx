@@ -4,6 +4,9 @@ import { SupportChatbotDashboard } from "@/components/support-chatbot/SupportCha
 export const Route = createFileRoute("/support-chatbot")({
   // Dashboard UI is live/interactive; skip SSR so timers and live data hydrate cleanly.
   ssr: false,
+  validateSearch: (search: Record<string, unknown>) => ({
+    section: typeof search.section === "string" ? search.section : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Support Chatbot Console | Software Vala" },

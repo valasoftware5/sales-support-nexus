@@ -3,8 +3,9 @@
  * User-friendly, production-ready SaaS interface
  */
 
-import React, { useState } from 'react';
-import { ChatbotSidebar, ChatbotSection } from './ChatbotSidebar';
+import React from 'react';
+import type { ChatbotSection } from './types';
+import { useSearch } from '@tanstack/react-router';
 import { ChatbotCommandBar } from './ChatbotCommandBar';
 import { CBOverview } from './screens/CBOverview';
 import { CBChatbotManagement } from './screens/CBChatbotManagement';
@@ -16,8 +17,8 @@ import { CBAndroidIntegration } from './screens/CBAndroidIntegration';
 import { CBAnalyticsLogs } from './screens/CBAnalyticsLogs';
 
 export const SupportChatbotDashboard: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<ChatbotSection>('overview');
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const { section } = useSearch({ from: '/support-chatbot' });
+  const activeSection = (section ?? 'overview') as ChatbotSection;
 
   const renderContent = () => {
     switch (activeSection) {
@@ -44,16 +45,8 @@ export const SupportChatbotDashboard: React.FC = () => {
 
   return (
     <div className="flex h-screen w-full bg-slate-50">
-      <ChatbotSidebar
-        activeSection={activeSection}
-        onSectionChange={setActiveSection}
-        collapsed={sidebarCollapsed}
-        onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
-      />
       <div className="flex-1 flex flex-col overflow-hidden">
-        <ChatbotCommandBar 
-          onToggleSidebar={() => setSidebarCollapsed(!sidebarCollapsed)}
-        />
+        <ChatbotCommandBar />
         <main className="flex-1 overflow-y-auto p-6">
           {renderContent()}
         </main>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useSearch } from "@tanstack/react-router";
 import { CRMAuthProvider, useCRMAuth } from "@/hooks/useCRMAuth";
 import SalesCRMLayout from "@/components/sales-crm/SalesCRMLayout";
 import SalesCRMDashboard from "./SalesCRMDashboard";
@@ -11,7 +11,8 @@ import SalesCRMSettings from "./SalesCRMSettings";
 import { Loader2 } from "lucide-react";
 
 const SalesCRMContent = () => {
-  const [activeSection, setActiveSection] = useState("dashboard");
+  const { section } = useSearch({ from: "/sales-crm" });
+  const activeSection = section ?? "dashboard";
   const { isLoading } = useCRMAuth();
 
   if (isLoading) {
@@ -44,10 +45,7 @@ const SalesCRMContent = () => {
   };
 
   return (
-    <SalesCRMLayout 
-      activeSection={activeSection} 
-      onSectionChange={setActiveSection}
-    >
+    <SalesCRMLayout>
       {renderContent()}
     </SalesCRMLayout>
   );

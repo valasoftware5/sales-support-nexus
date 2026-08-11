@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { 
   LayoutDashboard, 
@@ -27,22 +26,9 @@ import { toast } from "sonner";
 
 interface SalesCRMLayoutProps {
   children: React.ReactNode;
-  activeSection: string;
-  onSectionChange: (section: string) => void;
 }
 
-const menuItems = [
-  { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { id: "leads", label: "Leads", icon: Users, badge: 12 },
-  { id: "customers", label: "Customers", icon: UserCheck },
-  { id: "deals", label: "Deals", icon: Handshake, badge: 5 },
-  { id: "tasks", label: "Tasks", icon: CheckSquare, badge: 8 },
-  { id: "reports", label: "Reports", icon: BarChart3 },
-  { id: "settings", label: "Settings", icon: Settings },
-];
-
-const SalesCRMLayout = ({ children, activeSection, onSectionChange }: SalesCRMLayoutProps) => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+const SalesCRMLayout = ({ children }: SalesCRMLayoutProps) => {
   const { user, signOut } = useCRMAuth();
   const navigate = useNavigate();
 
@@ -56,88 +42,11 @@ const SalesCRMLayout = ({ children, activeSection, onSectionChange }: SalesCRMLa
 
   return (
     <div className="min-h-screen bg-[hsl(225,30%,96%)]">
-      {/* Sidebar with Blue Gradient */}
-      <motion.aside
-        initial={{ x: -280 }}
-        animate={{ x: sidebarOpen ? 0 : -280 }}
-        className="fixed left-0 top-0 h-screen w-64 flex flex-col z-50"
-        style={{
-          background: 'linear-gradient(180deg, hsl(225, 70%, 50%) 0%, hsl(235, 75%, 55%) 50%, hsl(250, 80%, 58%) 100%)'
-        }}
-      >
-        {/* Logo */}
-        <div className="p-6 border-b border-white/10">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur flex items-center justify-center">
-              <Handshake className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <h1 className="text-lg font-bold text-white">Sales CRM</h1>
-              <p className="text-xs text-white/70">by Software Vala</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Navigation */}
-        <nav className="flex-1 p-4 space-y-1">
-          {menuItems.map((item) => {
-            const isActive = activeSection === item.id;
-            return (
-              <motion.button
-                key={item.id}
-                onClick={() => onSectionChange(item.id)}
-                whileHover={{ x: 4 }}
-                whileTap={{ scale: 0.98 }}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
-                  isActive
-                    ? "bg-white text-[hsl(225,85%,50%)] shadow-lg"
-                    : "text-white/80 hover:bg-white/10 hover:text-white"
-                }`}
-              >
-                <item.icon className="w-5 h-5" />
-                <span className="font-medium">{item.label}</span>
-                {item.badge && (
-                  <Badge className={`ml-auto ${
-                    isActive 
-                      ? "bg-[hsl(225,85%,55%)] text-white" 
-                      : "bg-white/20 text-white"
-                  }`}>
-                    {item.badge}
-                  </Badge>
-                )}
-              </motion.button>
-            );
-          })}
-        </nav>
-
-        {/* Footer */}
-        <div className="p-4 border-t border-white/10">
-          <div className="p-4 rounded-xl bg-white/10 backdrop-blur">
-            <div className="flex items-center gap-3">
-              <Zap className="w-5 h-5 text-yellow-300" />
-              <div>
-                <p className="text-sm font-medium text-white">Need Help?</p>
-                <p className="text-xs text-white/70">Contact support</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.aside>
-
       {/* Main Content */}
-      <div className={`transition-all duration-300 ${sidebarOpen ? "ml-64" : "ml-0"}`}>
+      <div>
         {/* Top Bar */}
         <header className="sticky top-0 z-40 h-16 bg-white border-b border-[hsl(225,20%,90%)] flex items-center justify-between px-6 shadow-sm">
           <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="text-[hsl(225,30%,40%)]"
-            >
-              {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </Button>
-            
             <div className="relative w-80">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[hsl(225,15%,50%)]" />
               <Input 

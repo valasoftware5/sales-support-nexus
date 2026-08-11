@@ -179,7 +179,7 @@
   --sidebar-primary-foreground: 211 47% 99%;
   --sidebar-accent: 214 40% 21%;
   --sidebar-accent-foreground: 211 47% 98%;
-  --sidebar-border: 216 30% 22%;
+  --sidebar-border: 0 0% 100% / 9%;
   --sidebar-ring: 209 98% 46%;
 
   --gradient-brand: linear-gradient(135deg, hsl(209 98% 46%), hsl(208 91% 56%));

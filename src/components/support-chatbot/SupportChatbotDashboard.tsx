@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import type { ChatbotSection } from './ChatbotSidebar';
+import type { ChatbotSection } from './types';
 import { useSearch } from '@tanstack/react-router';
 import { ChatbotCommandBar } from './ChatbotCommandBar';
 import { CBOverview } from './screens/CBOverview';

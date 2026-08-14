@@ -92,10 +92,10 @@ export const SecureSalesSupportManagerDashboard: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-full w-full">
       {/* Security Banner */}
       <div className="bg-primary/10 border-b border-primary/20 px-4 py-2">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-4">
             <Badge variant="outline" className="bg-primary/20 text-primary border-primary/30">
               <Shield className="h-3 w-3 mr-1" />
@@ -129,7 +129,7 @@ export const SecureSalesSupportManagerDashboard: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto p-6">
+      <div className="mx-auto w-full max-w-[1600px] px-4 py-6 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

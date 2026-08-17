@@ -134,6 +134,30 @@ const SupportDashboard = () => {
       <div className="flex">
         {/* Main Content */}
         <main className="mx-auto w-full max-w-[1600px] flex-1 px-4 py-6 sm:px-6">
+          <div className="mb-4 flex flex-wrap items-center justify-end gap-2">
+            <button
+              onClick={() => setShowAIPanel(true)}
+              className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/15 px-3.5 py-2 text-xs font-medium text-foreground transition-colors hover:bg-primary/25"
+            >
+              <Brain className="h-3.5 w-3.5" />
+              AI Troubleshooter
+            </button>
+            <button
+              onClick={() => setShowCustomer360(true)}
+              className="inline-flex items-center gap-2 rounded-full border border-border px-3.5 py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground"
+            >
+              <Users className="h-3.5 w-3.5" />
+              Customer 360
+            </button>
+            <button
+              onClick={() => setShowNotifications(true)}
+              className="inline-flex items-center gap-2 rounded-full border border-border px-3.5 py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground"
+            >
+              <Activity className="h-3.5 w-3.5" />
+              Alerts
+            </button>
+          </div>
+
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSection}

@@ -63,6 +63,13 @@ export const InternalSupportAIContainer: React.FC<InternalSupportAIContainerProp
 
         {/* Content */}
         <main className="mx-auto w-full max-w-[1600px] flex-1 overflow-auto px-4 py-6 sm:px-6">
+          <AIStatusStrip
+            systemStatus="LIVE"
+            pendingIssues={12}
+            autoFixSuccessRate={91.3}
+            escalationQueue={3}
+            userRole="SUPER_ADMIN"
+          />
           <motion.div
             key={activeSection}
             initial={{ opacity: 0, y: 20 }}

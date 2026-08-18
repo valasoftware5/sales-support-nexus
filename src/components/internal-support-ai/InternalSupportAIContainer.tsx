@@ -13,6 +13,7 @@ import { EscalationManager } from './sections/EscalationManager';
 import { AITransparencyLog } from './sections/AITransparencyLog';
 import { SecurityPrivacy } from './sections/SecurityPrivacy';
 import { SupportAISection } from './types';
+import { AIStatusStrip } from './AIStatusStrip';
 
 interface InternalSupportAIContainerProps {
   onBack?: () => void;

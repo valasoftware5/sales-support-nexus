@@ -46,6 +46,22 @@ export const SupportChatbotDashboard: React.FC = () => {
     <div className="flex min-h-full w-full">
       <div className="flex-1 flex flex-col overflow-hidden">
         <main className="mx-auto w-full max-w-[1600px] flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+          <div className="mb-4 flex flex-wrap items-center justify-end gap-2">
+            <button
+              onClick={() => toast.success('New chatbot draft created')}
+              className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/15 px-3.5 py-2 text-xs font-medium text-foreground transition-colors hover:bg-primary/25"
+            >
+              <Plus className="h-3.5 w-3.5" />
+              New Chatbot
+            </button>
+            <button
+              onClick={() => toast.info('Chatbot guide: build, train, then publish to a channel.')}
+              className="inline-flex items-center gap-2 rounded-full border border-border px-3.5 py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground"
+            >
+              <HelpCircle className="h-3.5 w-3.5" />
+              Help
+            </button>
+          </div>
           {renderContent()}
         </main>
       </div>

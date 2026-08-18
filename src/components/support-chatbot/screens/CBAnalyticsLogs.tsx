@@ -6,6 +6,7 @@
 import React, { useMemo, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -70,7 +71,7 @@ export const CBAnalyticsLogs: React.FC = () => {
           <h1 className="text-2xl font-bold text-foreground">Analytics & Logs</h1>
           <p className="text-muted-foreground text-sm mt-1">Review conversations and monitor performance</p>
         </div>
-        <Button variant="outline">
+        <Button variant="outline" onClick={() => toast.success('Report export started — you will get a download link shortly')}>
           <Download className="w-4 h-4 mr-2" />
           Export Report
         </Button>

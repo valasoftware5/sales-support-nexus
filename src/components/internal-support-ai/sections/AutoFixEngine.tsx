@@ -24,6 +24,7 @@ import {
   Clock,
   Shield
 } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface AutoFixEngineProps {
   activeView: string;
@@ -48,6 +49,28 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
     { id: 'FIX-004', type: 'API Reconnect', description: 'Re-establishing API connection', status: 'success', issueId: 'ISS-022', startedAt: '12:40:00', completedAt: '12:40:15', rollbackAvailable: true },
     { id: 'FIX-005', type: 'State Reset', description: 'Resetting corrupted UI state', status: 'success', issueId: 'ISS-021', startedAt: '12:38:00', completedAt: '12:38:08', rollbackAvailable: true }
   ]);
+
+  const [queuePaused, setQueuePaused] = useState(false);
+
+  const handleToggleQueue = () => {
+    setQueuePaused((prev) => {
+      const next = !prev;
+      toast[next ? 'warning' : 'success'](next ? 'Safe fix queue paused' : 'Safe fix queue resumed');
+      return next;
+    });
+  };
+
+  const handleRollback = (fix: FixAction) => {
+    setFixQueue((prev) =>
+      prev.map((f) =>
+        f.id === fix.id
+          ? { ...f, status: 'queued', startedAt: null, completedAt: null, rollbackAvailable: false }
+          : f,
+      ),
+    );
+    setEngineStats((prev) => ({ ...prev, rollbacksUsed: prev.rollbacksUsed + 1, queueDepth: prev.queueDepth + 1 }));
+    toast.success(`${fix.id} rolled back — re-queued for review`);
+  };
 
   const [engineStats, setEngineStats] = useState({
     totalFixes: 142,
@@ -170,12 +193,19 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
                 Safe Fix Queue
               </CardTitle>
               <div className="flex items-center gap-2">
-                <Button size="sm" variant="outline" className="h-7 text-xs border-slate-600">
-                  <Pause className="w-3 h-3 mr-1" />
-                  Pause Queue
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="h-7 text-xs border-slate-600"
+                  onClick={handleToggleQueue}
+                >
+                  {queuePaused ? <Play className="w-3 h-3 mr-1" /> : <Pause className="w-3 h-3 mr-1" />}
+                  {queuePaused ? 'Resume Queue' : 'Pause Queue'}
                 </Button>
-                <Badge className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px]">
-                  ENGINE ACTIVE
+                <Badge
+                  className={`${queuePaused ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' : 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30'} border text-[10px]`}
+                >
+                  {queuePaused ? 'ENGINE PAUSED' : 'ENGINE ACTIVE'}
                 </Badge>
               </div>
             </div>
@@ -212,7 +242,12 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
                       {fix.status.toUpperCase()}
                     </Badge>
                     {fix.rollbackAvailable && fix.status === 'success' && (
-                      <Button size="sm" variant="ghost" className="h-6 text-[10px] text-orange-400 hover:text-orange-300">
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-6 text-[10px] text-orange-400 hover:text-orange-300"
+                        onClick={() => handleRollback(fix)}
+                      >
                         <RotateCcw className="w-3 h-3 mr-1" />
                         Rollback
                       </Button>

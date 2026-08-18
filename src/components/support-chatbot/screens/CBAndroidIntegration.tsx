@@ -45,7 +45,10 @@ export const CBAndroidIntegration: React.FC = () => {
           <h1 className="text-2xl font-bold text-foreground">Android App Integration</h1>
           <p className="text-muted-foreground text-sm mt-1">Configure chat widget for your Android app</p>
         </div>
-        <Button className="bg-blue-600 hover:bg-blue-700">
+        <Button
+          className="bg-blue-600 hover:bg-blue-700"
+          onClick={() => toast({ title: 'SDK download started', description: 'Android chat widget SDK v2.4.1' })}
+        >
           <Download className="w-4 h-4 mr-2" />
           Download SDK
         </Button>

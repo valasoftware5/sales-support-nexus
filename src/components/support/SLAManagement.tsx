@@ -110,7 +110,7 @@ const SLAManagement = () => {
       case 'high': return 'text-orange-400 bg-orange-500/10 border-orange-500/30';
       case 'medium': return 'text-yellow-400 bg-yellow-500/10 border-yellow-500/30';
       case 'low': return 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30';
-      default: return 'text-muted-foreground bg-slate-500/10 border-slate-500/30';
+      default: return 'text-muted-foreground bg-muted/40 border-border';
     }
   };
 
@@ -119,7 +119,7 @@ const SLAManagement = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white">SLA Management</h2>
+          <h2 className="text-2xl font-bold text-foreground">SLA Management</h2>
           <p className="text-muted-foreground text-sm">Configure SLA templates, escalation rules, and breach alerts</p>
         </div>
         <Button onClick={handleCreateTemplate} className="bg-teal-500/20 text-teal-400 border border-teal-500/30 hover:bg-teal-500/30">
@@ -132,11 +132,11 @@ const SLAManagement = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-red-500/20 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-red-500/20 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
           <AlertTriangle className="w-5 h-5 text-red-400" />
-          <h3 className="text-lg font-semibold text-white">Active Alerts</h3>
+          <h3 className="text-lg font-semibold text-foreground">Active Alerts</h3>
           <Badge className="bg-red-500/20 text-red-400">{breachAlerts.length} Active</Badge>
         </div>
 
@@ -158,7 +158,7 @@ const SLAManagement = () => {
                 )}
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-sm text-white">{alert.ticketId}</span>
+                    <span className="font-mono text-sm text-foreground">{alert.ticketId}</span>
                     <Badge className={alert.type === 'breach' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'}>
                       {alert.type === 'breach' ? 'BREACHED' : 'WARNING'}
                     </Badge>
@@ -199,11 +199,11 @@ const SLAManagement = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
           <Timer className="w-5 h-5 text-teal-400" />
-          <h3 className="text-lg font-semibold text-white">SLA Templates</h3>
+          <h3 className="text-lg font-semibold text-foreground">SLA Templates</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -216,7 +216,7 @@ const SLAManagement = () => {
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4" />
-                  <span className="font-semibold text-white">{template.name}</span>
+                  <span className="font-semibold text-foreground">{template.name}</span>
                 </div>
                 <Switch 
                   checked={template.isActive}
@@ -224,17 +224,17 @@ const SLAManagement = () => {
                 />
               </div>
               <div className="grid grid-cols-3 gap-2 text-xs">
-                <div className="bg-slate-800/50 rounded-lg p-2 text-center">
+                <div className="bg-card/60 rounded-lg p-2 text-center">
                   <p className="text-muted-foreground">Response</p>
-                  <p className="text-white font-mono">{template.responseTime}m</p>
+                  <p className="text-foreground font-mono">{template.responseTime}m</p>
                 </div>
-                <div className="bg-slate-800/50 rounded-lg p-2 text-center">
+                <div className="bg-card/60 rounded-lg p-2 text-center">
                   <p className="text-muted-foreground">Resolution</p>
-                  <p className="text-white font-mono">{template.resolutionTime}m</p>
+                  <p className="text-foreground font-mono">{template.resolutionTime}m</p>
                 </div>
-                <div className="bg-slate-800/50 rounded-lg p-2 text-center">
+                <div className="bg-card/60 rounded-lg p-2 text-center">
                   <p className="text-muted-foreground">Levels</p>
-                  <p className="text-white font-mono">L{template.escalationLevels}</p>
+                  <p className="text-foreground font-mono">L{template.escalationLevels}</p>
                 </div>
               </div>
               <div className="flex gap-2 mt-3">
@@ -255,12 +255,12 @@ const SLAManagement = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <ArrowUpRight className="w-5 h-5 text-orange-400" />
-            <h3 className="text-lg font-semibold text-white">Escalation Rules</h3>
+            <h3 className="text-lg font-semibold text-foreground">Escalation Rules</h3>
           </div>
           <Button size="sm" className="bg-orange-500/20 text-orange-400 border border-orange-500/30 hover:bg-orange-500/30">
             <Plus className="w-4 h-4 mr-2" />
@@ -272,27 +272,27 @@ const SLAManagement = () => {
           {escalationRules.map((rule) => (
             <div
               key={rule.id}
-              className="p-4 rounded-xl bg-slate-800/30 border border-slate-700/50 flex items-center justify-between"
+              className="p-4 rounded-xl bg-card/60 border border-border flex items-center justify-between"
             >
               <div className="flex items-center gap-4">
                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                  rule.isAutomatic ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-700/50 text-muted-foreground'
+                  rule.isAutomatic ? 'bg-emerald-500/20 text-emerald-400' : 'bg-muted/40 text-muted-foreground'
                 }`}>
                   L{rule.level}
                 </div>
                 <div>
-                  <p className="font-medium text-white">{rule.name}</p>
+                  <p className="font-medium text-foreground">{rule.name}</p>
                   <p className="text-xs text-muted-foreground">
                     Trigger: {rule.trigger} → {rule.action}
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <Badge className={rule.isAutomatic ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-700/50 text-muted-foreground'}>
+                <Badge className={rule.isAutomatic ? 'bg-emerald-500/20 text-emerald-400' : 'bg-muted/40 text-muted-foreground'}>
                   {rule.isAutomatic ? 'Auto' : 'Manual'}
                 </Badge>
                 <Switch checked={rule.isAutomatic} />
-                <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-white">
+                <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-foreground">
                   <Settings className="w-4 h-4" />
                 </Button>
               </div>

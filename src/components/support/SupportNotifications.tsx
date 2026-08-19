@@ -77,27 +77,27 @@ const SupportNotifications = ({ onClose }: SupportNotificationsProps) => {
       initial={{ opacity: 0, x: 400 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 400 }}
-      className="fixed right-0 top-16 bottom-0 w-96 bg-slate-900/95 backdrop-blur-2xl border-l border-teal-500/10 z-50"
+      className="fixed right-0 top-16 bottom-0 w-96 bg-card/60 backdrop-blur-2xl border-l border-teal-500/10 z-50"
     >
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-slate-700/30">
+      <div className="flex items-center justify-between p-4 border-b border-border">
         <div className="flex items-center gap-3">
           <Bell className="w-5 h-5 text-teal-400" />
-          <h3 className="font-medium text-white">Notifications</h3>
+          <h3 className="font-medium text-foreground">Notifications</h3>
           <span className="px-2 py-0.5 rounded bg-teal-500/20 text-teal-400 text-xs font-medium">
             {notifications.filter(n => !n.read).length} new
           </span>
         </div>
         <button
           onClick={onClose}
-          className="p-2 rounded-lg hover:bg-slate-800/50 transition-colors"
+          className="p-2 rounded-lg hover:bg-card/60 transition-colors"
         >
           <X className="w-5 h-5 text-muted-foreground" />
         </button>
       </div>
 
       {/* Sound Settings */}
-      <div className="p-4 border-b border-slate-700/20 bg-slate-800/20">
+      <div className="p-4 border-b border-border bg-card/60">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Volume2 className="w-4 h-4 text-muted-foreground" />
@@ -119,7 +119,7 @@ const SupportNotifications = ({ onClose }: SupportNotificationsProps) => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.05 }}
-              className={`p-4 border-b border-slate-700/20 hover:bg-slate-800/20 transition-colors cursor-pointer ${
+              className={`p-4 border-b border-border hover:bg-card/60 transition-colors cursor-pointer ${
                 !notification.read ? 'bg-teal-500/5' : ''
               }`}
             >
@@ -129,7 +129,7 @@ const SupportNotifications = ({ onClose }: SupportNotificationsProps) => {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-start justify-between">
-                    <h4 className={`text-sm font-medium ${!notification.read ? 'text-white' : 'text-slate-300'}`}>
+                    <h4 className={`text-sm font-medium ${!notification.read ? 'text-foreground' : 'text-muted-foreground'}`}>
                       {notification.title}
                     </h4>
                     {!notification.read && (
@@ -150,8 +150,8 @@ const SupportNotifications = ({ onClose }: SupportNotificationsProps) => {
       </div>
 
       {/* Footer */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-slate-700/20 bg-slate-900/95">
-        <button className="w-full py-2.5 rounded-xl bg-slate-800/30 border border-slate-700/30 text-muted-foreground text-sm hover:border-teal-500/20 hover:text-teal-400 transition-all">
+      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border bg-card/60">
+        <button className="w-full py-2.5 rounded-xl bg-card/60 border border-border text-muted-foreground text-sm hover:border-teal-500/20 hover:text-teal-400 transition-all">
           Mark all as read
         </button>
       </div>

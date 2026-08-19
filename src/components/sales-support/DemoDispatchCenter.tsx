@@ -26,7 +26,7 @@ const getStatusBadge = (status: string) => {
     case "expired":
       return "bg-red-500/20 text-red-300 border-red-500/30";
     default:
-      return "bg-slate-500/20 text-slate-300";
+      return "bg-muted/40 text-muted-foreground";
   }
 };
 
@@ -124,35 +124,35 @@ const DemoDispatchCenter = () => {
           <h2 className="text-2xl font-bold text-cyan-100">Demo Dispatch Center</h2>
           <p className="text-muted-foreground">One-click demo sharing with tracking</p>
         </div>
-        <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white" onClick={handleGenerate}>
+        <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-foreground" onClick={handleGenerate}>
           <Send className="w-4 h-4 mr-2" />
           Send New Demo
         </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <Send className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{totalDemos}</div>
             <div className="text-xs text-muted-foreground">Demos Sent</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-emerald-500/20">
+        <Card className="bg-card/60 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <Eye className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{viewRate}%</div>
             <div className="text-xs text-muted-foreground">View Rate</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-amber-500/20">
+        <Card className="bg-card/60 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{pending}</div>
             <div className="text-xs text-muted-foreground">Pending Demos</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <CheckCircle className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{conversionRate}%</div>
@@ -163,7 +163,7 @@ const DemoDispatchCenter = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
-          <Card className="bg-slate-900/50 border-cyan-500/20">
+          <Card className="bg-card/60 border-cyan-500/20">
             <CardHeader>
               <CardTitle className="text-cyan-100 flex items-center gap-2">
                 <Link className="w-5 h-5 text-cyan-400" />
@@ -175,7 +175,7 @@ const DemoDispatchCenter = () => {
                 <div>
                   <label className="text-sm text-muted-foreground mb-2 block">Select Product</label>
                   <Select value={product} onValueChange={setProduct}>
-                    <SelectTrigger className="bg-slate-800 border-slate-700">
+                    <SelectTrigger className="bg-card/60 border-border">
                       <SelectValue placeholder="Choose product..." />
                     </SelectTrigger>
                     <SelectContent>
@@ -190,7 +190,7 @@ const DemoDispatchCenter = () => {
                   <label className="text-sm text-muted-foreground mb-2 block">Lead Name</label>
                   <Input
                     placeholder="Enter lead name..."
-                    className="bg-slate-800 border-slate-700"
+                    className="bg-card/60 border-border"
                     value={leadName}
                     onChange={(e) => setLeadName(e.target.value)}
                     list="demo-lead-companies"
@@ -203,7 +203,7 @@ const DemoDispatchCenter = () => {
                 </div>
               </div>
 
-              <div className="p-4 bg-slate-800/50 rounded-lg">
+              <div className="p-4 bg-card/60 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm text-muted-foreground">Generated Link</span>
                   <div className="flex gap-2">
@@ -226,14 +226,14 @@ const DemoDispatchCenter = () => {
                 <code className="text-cyan-300 text-sm break-all">{generatedLink}</code>
               </div>
 
-              <Button className="w-full bg-cyan-500 hover:bg-cyan-600 text-white" onClick={handleGenerate}>
+              <Button className="w-full bg-cyan-500 hover:bg-cyan-600 text-foreground" onClick={handleGenerate}>
                 <Send className="w-4 h-4 mr-2" />
                 Generate & Send Demo Link
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-cyan-500/20 mt-6">
+          <Card className="bg-card/60 border-cyan-500/20 mt-6">
             <CardHeader>
               <CardTitle className="text-cyan-100">Recent Demo Activity</CardTitle>
             </CardHeader>
@@ -248,7 +248,7 @@ const DemoDispatchCenter = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg"
+                    className="flex items-center justify-between p-3 bg-card/60 rounded-lg"
                   >
                     <div className="flex items-center gap-3">
                       <span className="font-mono text-cyan-400 text-sm">{demo.reference}</span>
@@ -276,7 +276,7 @@ const DemoDispatchCenter = () => {
         </div>
 
         <div className="space-y-6">
-          <Card className="bg-slate-900/50 border-cyan-500/20">
+          <Card className="bg-card/60 border-cyan-500/20">
             <CardHeader>
               <CardTitle className="text-cyan-100 text-lg">Open Demo Requests</CardTitle>
             </CardHeader>
@@ -290,7 +290,7 @@ const DemoDispatchCenter = () => {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="p-3 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"
+                  className="p-3 bg-card/60 rounded-lg hover:bg-card/60 transition-colors cursor-pointer"
                   onClick={() => setLeadName(lead.company)}
                 >
                   <div className="flex items-center justify-between mb-1">
@@ -309,8 +309,8 @@ const DemoDispatchCenter = () => {
                 <AlertCircle className="w-5 h-5 text-amber-400" />
                 <span className="font-medium text-amber-100">Follow-Up Required</span>
               </div>
-              <p className="text-sm text-slate-300 mb-3">{staleDemos.length} demos haven't been viewed in 48+ hours</p>
-              <Button size="sm" className="w-full bg-amber-500 hover:bg-amber-600 text-white" onClick={handleBulkRemind} disabled={staleDemos.length === 0}>
+              <p className="text-sm text-muted-foreground mb-3">{staleDemos.length} demos haven't been viewed in 48+ hours</p>
+              <Button size="sm" className="w-full bg-amber-500 hover:bg-amber-600 text-foreground" onClick={handleBulkRemind} disabled={staleDemos.length === 0}>
                 Send Bulk Reminder
               </Button>
             </CardContent>

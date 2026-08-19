@@ -101,13 +101,13 @@ const ConversionPipeline = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: stageIndex * 0.1 }}
             >
-              <Card className={`bg-slate-900/50 ${colorClasses.border} h-full`}>
+              <Card className={`bg-card/60 ${colorClasses.border} h-full`}>
                 <CardHeader className="pb-2">
                   <div className="flex items-center justify-between">
                     <CardTitle className={`text-sm ${colorClasses.text}`}>{stage.name}</CardTitle>
-                    <Badge className={`${colorClasses.badge} text-white`}>{stage.count}</Badge>
+                    <Badge className={`${colorClasses.badge} text-foreground`}>{stage.count}</Badge>
                   </div>
-                  <div className="text-lg font-bold text-slate-100">{stage.value}</div>
+                  <div className="text-lg font-bold text-foreground">{stage.value}</div>
                 </CardHeader>
                 <CardContent className="space-y-2">
                   {stage.leads.length === 0 && (
@@ -124,7 +124,7 @@ const ConversionPipeline = () => {
                     >
                       <div className="flex items-center gap-2 mb-1">
                         <User className={`w-3 h-3 ${colorClasses.text}`} />
-                        <span className="text-sm font-medium text-slate-200">{lead.name}</span>
+                        <span className="text-sm font-medium text-foreground">{lead.name}</span>
                       </div>
                       <div className="flex items-center justify-between text-xs">
                         <span className={colorClasses.text}>
@@ -151,7 +151,7 @@ const ConversionPipeline = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               <GitBranch className="w-8 h-8 text-cyan-400" />
@@ -162,7 +162,7 @@ const ConversionPipeline = () => {
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-emerald-500/20">
+        <Card className="bg-card/60 border-emerald-500/20">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               <TrendingUp className="w-8 h-8 text-emerald-400" />
@@ -173,7 +173,7 @@ const ConversionPipeline = () => {
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-amber-500/20">
+        <Card className="bg-card/60 border-amber-500/20">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               <Clock className="w-8 h-8 text-amber-400" />
@@ -184,7 +184,7 @@ const ConversionPipeline = () => {
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               <DollarSign className="w-8 h-8 text-purple-400" />

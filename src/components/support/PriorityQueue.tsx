@@ -61,7 +61,7 @@ const PriorityQueue = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-white flex items-center gap-3">
+          <h2 className="text-2xl font-semibold text-foreground flex items-center gap-3">
             <AlertTriangle className="w-6 h-6 text-amber-400" />
             Priority Queue
           </h2>
@@ -93,7 +93,7 @@ const PriorityQueue = () => {
       {/* Priority Tickets */}
       <div className="space-y-4">
         {!isLoading && priorityTickets.length === 0 && (
-          <div className="p-8 text-center text-muted-foreground rounded-2xl border border-slate-700/30 bg-slate-900/40">
+          <div className="p-8 text-center text-muted-foreground rounded-2xl border border-border bg-card/60">
             No high-priority tickets waiting. 🎉
           </div>
         )}
@@ -124,11 +124,11 @@ const PriorityQueue = () => {
                     <span className={`px-2 py-0.5 rounded text-xs font-medium border ${styles.badge}`}>
                       {ticket.priority === 'critical' ? 'CRITICAL' : 'HIGH PRIORITY'}
                     </span>
-                    <span className="px-2 py-0.5 rounded text-xs bg-slate-700/30 text-muted-foreground">
+                    <span className="px-2 py-0.5 rounded text-xs bg-muted/40 text-muted-foreground">
                       {ticket.category}
                     </span>
                   </div>
-                  <p className="text-white font-medium text-lg mb-3">{ticket.subject}</p>
+                  <p className="text-foreground font-medium text-lg mb-3">{ticket.subject}</p>
                   <div className="flex items-center gap-6 text-sm">
                     <span className="flex items-center gap-1.5 text-muted-foreground">
                       <User className="w-4 h-4" />
@@ -162,7 +162,7 @@ const PriorityQueue = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => toast.info('AI quick fix suggestions coming soon')}
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800/30 border border-slate-700/30 text-slate-300 hover:text-sky-400 hover:border-sky-500/20 transition-all text-sm font-medium"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-card/60 border border-border text-muted-foreground hover:text-sky-400 hover:border-sky-500/20 transition-all text-sm font-medium"
                   >
                     <Zap className="w-4 h-4" />
                     AI Quick Fix
@@ -171,7 +171,7 @@ const PriorityQueue = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => handleEscalate(ticket.id)}
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800/30 border border-slate-700/30 text-slate-300 hover:text-amber-400 hover:border-amber-500/20 transition-all text-sm font-medium"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-card/60 border border-border text-muted-foreground hover:text-amber-400 hover:border-amber-500/20 transition-all text-sm font-medium"
                   >
                     <ArrowUpRight className="w-4 h-4" />
                     Escalate
@@ -188,14 +188,14 @@ const PriorityQueue = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="p-5 rounded-2xl bg-slate-900/40 border border-slate-700/30"
+        className="p-5 rounded-2xl bg-card/60 border border-border"
       >
         <h3 className="text-sm font-medium text-muted-foreground mb-4">Escalation Flow</h3>
         <div className="flex items-center justify-between">
           {['Support', 'Developer', 'R&D', 'Boss'].map((step, i) => (
             <div key={step} className="flex items-center">
               <div className={`px-4 py-2 rounded-lg ${
-                i === 0 ? 'bg-teal-500/20 text-teal-400 border border-teal-500/30' : 'bg-slate-800/30 text-muted-foreground'
+                i === 0 ? 'bg-teal-500/20 text-teal-400 border border-teal-500/30' : 'bg-card/60 text-muted-foreground'
               }`}>
                 {step}
               </div>

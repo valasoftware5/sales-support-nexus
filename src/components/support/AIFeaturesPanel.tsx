@@ -172,7 +172,7 @@ const AIFeaturesPanel = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Sparkles className="w-6 h-6 text-purple-400" />
             AI Support Features
           </h2>
@@ -199,7 +199,7 @@ const AIFeaturesPanel = () => {
           <motion.div
             key={idx}
             whileHover={{ scale: 1.02 }}
-            className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4"
+            className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4"
           >
             <div className="flex items-center gap-2 mb-2">
               <stat.icon className={`w-4 h-4 ${stat.color}`} />
@@ -215,9 +215,9 @@ const AIFeaturesPanel = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
-        <h3 className="text-lg font-semibold text-white mb-4">AI Modules</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-4">AI Modules</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {aiModules.map((module) => (
             <motion.div
@@ -226,18 +226,18 @@ const AIFeaturesPanel = () => {
               className={`p-4 rounded-xl border transition-all ${
                 module.enabled 
                   ? 'bg-purple-500/5 border-purple-500/20' 
-                  : 'bg-slate-800/30 border-slate-700/30'
+                  : 'bg-card/60 border-border'
               }`}
             >
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                    module.enabled ? 'bg-purple-500/20' : 'bg-slate-700/50'
+                    module.enabled ? 'bg-purple-500/20' : 'bg-muted/40'
                   }`}>
                     <module.icon className={`w-4 h-4 ${module.enabled ? 'text-purple-400' : 'text-muted-foreground'}`} />
                   </div>
                   <div>
-                    <p className="font-medium text-white text-sm">{module.name}</p>
+                    <p className="font-medium text-foreground text-sm">{module.name}</p>
                     <p className="text-xs text-muted-foreground">{module.lastRun}</p>
                   </div>
                 </div>
@@ -248,13 +248,13 @@ const AIFeaturesPanel = () => {
               </div>
               <p className="text-xs text-muted-foreground mb-3">{module.description}</p>
               <div className="flex items-center justify-between">
-                <Badge className={module.enabled ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-700/50 text-muted-foreground'}>
+                <Badge className={module.enabled ? 'bg-emerald-500/20 text-emerald-400' : 'bg-muted/40 text-muted-foreground'}>
                   {module.accuracy}% accuracy
                 </Badge>
                 <div className="flex gap-2 text-xs">
                   {module.stats.map((stat, idx) => (
                     <span key={idx} className="text-muted-foreground">
-                      {stat.label}: <span className="text-white">{stat.value}</span>
+                      {stat.label}: <span className="text-foreground">{stat.value}</span>
                     </span>
                   ))}
                 </div>
@@ -269,11 +269,11 @@ const AIFeaturesPanel = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
           <MessageSquare className="w-5 h-5 text-teal-400" />
-          <h3 className="text-lg font-semibold text-white">Pending AI Suggestions</h3>
+          <h3 className="text-lg font-semibold text-foreground">Pending AI Suggestions</h3>
           <Badge className="bg-teal-500/20 text-teal-400">{suggestedReplies.length} Ready</Badge>
         </div>
 
@@ -281,16 +281,16 @@ const AIFeaturesPanel = () => {
           {suggestedReplies.map((reply) => (
             <div
               key={reply.id}
-              className="p-4 rounded-xl bg-slate-800/30 border border-slate-700/50"
+              className="p-4 rounded-xl bg-card/60 border border-border"
             >
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-sm text-teal-400">{reply.ticketId}</span>
-                  <Badge className="bg-slate-700/50 text-slate-300">{reply.category}</Badge>
+                  <Badge className="bg-muted/40 text-muted-foreground">{reply.category}</Badge>
                 </div>
                 <Badge className="bg-purple-500/20 text-purple-400">{reply.confidence}% match</Badge>
               </div>
-              <p className="text-sm text-slate-300 mb-3 line-clamp-2">{reply.suggestion}</p>
+              <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{reply.suggestion}</p>
               <div className="flex gap-2">
                 <Button 
                   size="sm" 
@@ -299,7 +299,7 @@ const AIFeaturesPanel = () => {
                 >
                   <CheckCircle className="w-3 h-3 mr-1" /> Use Suggestion
                 </Button>
-                <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-white">
+                <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-foreground">
                   <Settings className="w-3 h-3 mr-1" /> Customize
                 </Button>
               </div>
@@ -313,11 +313,11 @@ const AIFeaturesPanel = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
           <ToggleLeft className="w-5 h-5 text-orange-400" />
-          <h3 className="text-lg font-semibold text-white">Regional AI Settings</h3>
+          <h3 className="text-lg font-semibold text-foreground">Regional AI Settings</h3>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -327,10 +327,10 @@ const AIFeaturesPanel = () => {
               className={`p-4 rounded-xl border text-center ${
                 region.aiEnabled 
                   ? 'bg-emerald-500/5 border-emerald-500/20' 
-                  : 'bg-slate-800/30 border-slate-700/30'
+                  : 'bg-card/60 border-border'
               }`}
             >
-              <p className="font-medium text-white text-sm mb-2">{region.region}</p>
+              <p className="font-medium text-foreground text-sm mb-2">{region.region}</p>
               <div className="flex items-center justify-center gap-2">
                 <Switch checked={region.aiEnabled} />
                 <span className={`text-xs ${region.aiEnabled ? 'text-emerald-400' : 'text-muted-foreground'}`}>

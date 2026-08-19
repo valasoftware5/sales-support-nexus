@@ -66,7 +66,7 @@ const SalesLeadsModule = () => {
       case "proposal": return "bg-amber-500/20 text-amber-300";
       case "won": return "bg-emerald-500/20 text-emerald-300";
       case "lost": return "bg-red-500/20 text-red-300";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -87,28 +87,28 @@ const SalesLeadsModule = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <Inbox className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{activeLeads.length}</div>
             <div className="text-xs text-muted-foreground">Active Leads</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-red-500/20">
+        <Card className="bg-card/60 border-red-500/20">
           <CardContent className="p-4 text-center">
             <Flame className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{hotLeads}</div>
             <div className="text-xs text-muted-foreground">Hot Leads</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-emerald-500/20">
+        <Card className="bg-card/60 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <DollarSign className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">${(totalPipeline / 1000).toFixed(0)}K</div>
             <div className="text-xs text-muted-foreground">Pipeline Value</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <TrendingUp className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{avgWinProb}%</div>
@@ -117,7 +117,7 @@ const SalesLeadsModule = () => {
         </Card>
       </div>
 
-      <Card className="bg-slate-900/50 border-cyan-500/20">
+      <Card className="bg-card/60 border-cyan-500/20">
         <CardHeader>
           <CardTitle className="text-cyan-100">Lead Pipeline</CardTitle>
         </CardHeader>
@@ -138,7 +138,7 @@ const SalesLeadsModule = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className="p-4 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition-colors"
+                    className="p-4 bg-card/60 rounded-lg hover:bg-card/60 transition-colors"
                   >
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-3">
@@ -157,7 +157,7 @@ const SalesLeadsModule = () => {
 
                     <div className="flex items-center justify-between">
                       <div>
-                        <h4 className="font-medium text-slate-100">{lead.company}</h4>
+                        <h4 className="font-medium text-foreground">{lead.company}</h4>
                         <p className="text-sm text-muted-foreground">{lead.contact_name} • {lead.email ?? "—"} • {lead.source} • {relativeTime(lead.created_at)}</p>
                         {assignedName && <p className="text-sm text-cyan-400">Assigned: {assignedName}</p>}
                       </div>
@@ -165,7 +165,7 @@ const SalesLeadsModule = () => {
                       <div className="flex items-center gap-2">
                         {!lead.assigned_to && (
                           <Select onValueChange={(rep) => handleAssignRep(lead.id, rep)}>
-                            <SelectTrigger className="w-36 bg-slate-700/50 border-slate-600">
+                            <SelectTrigger className="w-36 bg-muted/40 border-border">
                               <SelectValue placeholder="Assign rep..." />
                             </SelectTrigger>
                             <SelectContent>
@@ -178,7 +178,7 @@ const SalesLeadsModule = () => {
 
                         {!["won", "lost"].includes(lead.stage) && (
                           <Select value={lead.stage} onValueChange={(stage) => handleChangeStage(lead.id, stage as LeadStage)}>
-                            <SelectTrigger className="w-32 bg-slate-700/50 border-slate-600">
+                            <SelectTrigger className="w-32 bg-muted/40 border-border">
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>

@@ -90,7 +90,7 @@ const SolutionWiki = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-white flex items-center gap-3">
+          <h2 className="text-2xl font-semibold text-foreground flex items-center gap-3">
             <BookOpen className="w-6 h-6 text-teal-400" />
             Solution Wiki
           </h2>
@@ -110,7 +110,7 @@ const SolutionWiki = () => {
           placeholder="Search solutions, scripts, tutorials..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-900/40 border border-slate-700/30 text-white placeholder-slate-500 focus:outline-none focus:border-teal-500/30 transition-colors"
+          className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-card/60 border border-border text-foreground placeholder-slate-500 focus:outline-none focus:border-teal-500/30 transition-colors"
         />
       </motion.div>
 
@@ -125,7 +125,7 @@ const SolutionWiki = () => {
             className={`px-4 py-2 rounded-lg whitespace-nowrap transition-all ${
               selectedCategory === category.id
                 ? 'bg-teal-500/20 border border-teal-500/30 text-teal-400'
-                : 'bg-slate-800/30 border border-slate-700/30 text-muted-foreground hover:text-white'
+                : 'bg-card/60 border border-border text-muted-foreground hover:text-foreground'
             }`}
           >
             {category.label}
@@ -154,7 +154,7 @@ const SolutionWiki = () => {
               <Star className="w-4 h-4 text-amber-400" />
               <span className="text-xs text-amber-400">Featured</span>
             </div>
-            <h4 className="text-white font-medium mb-2 group-hover:text-teal-400 transition-colors">
+            <h4 className="text-foreground font-medium mb-2 group-hover:text-teal-400 transition-colors">
               {article.title}
             </h4>
             <div className="flex items-center gap-3 text-xs text-muted-foreground">
@@ -181,7 +181,7 @@ const SolutionWiki = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 + index * 0.05 }}
-            className="p-4 rounded-xl bg-slate-900/40 border border-slate-700/30 hover:border-teal-500/20 transition-all cursor-pointer group"
+            className="p-4 rounded-xl bg-card/60 border border-border hover:border-teal-500/20 transition-all cursor-pointer group"
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
@@ -195,7 +195,7 @@ const SolutionWiki = () => {
                   )}
                 </div>
                 <div>
-                  <h4 className="text-white font-medium group-hover:text-teal-400 transition-colors">
+                  <h4 className="text-foreground font-medium group-hover:text-teal-400 transition-colors">
                     {article.title}
                   </h4>
                   <div className="flex items-center gap-4 mt-1 text-xs text-muted-foreground">
@@ -216,7 +216,7 @@ const SolutionWiki = () => {
               </div>
               <div className="flex items-center gap-4">
                 <div className="text-right">
-                  <p className="text-sm text-slate-300">{article.views} views</p>
+                  <p className="text-sm text-muted-foreground">{article.views} views</p>
                   <p className="text-xs text-emerald-400">{article.helpful}% helpful</p>
                 </div>
                 <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-teal-400 transition-colors" />

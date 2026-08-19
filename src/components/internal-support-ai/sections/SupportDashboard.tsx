@@ -53,7 +53,7 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
       case 'auto_fixing': return 'bg-amber-500/20 text-amber-400 border-amber-500/30';
       case 'escalated': return 'bg-red-500/20 text-red-400 border-red-500/30';
       case 'resolved': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
-      default: return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
+      default: return 'bg-muted/40 text-muted-foreground border-border';
     }
   };
 
@@ -62,8 +62,8 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
       case 'critical': return 'bg-red-500/20 text-red-400';
       case 'high': return 'bg-orange-500/20 text-orange-400';
       case 'medium': return 'bg-amber-500/20 text-amber-400';
-      case 'low': return 'bg-slate-500/20 text-slate-400';
-      default: return 'bg-slate-500/20 text-slate-400';
+      case 'low': return 'bg-muted/40 text-muted-foreground';
+      default: return 'bg-muted/40 text-muted-foreground';
     }
   };
 
@@ -80,7 +80,7 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[10px] text-slate-400 uppercase tracking-wider">Active Issues</p>
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Active Issues</p>
                   <p className="text-2xl font-bold text-cyan-400 mt-1">{metrics.activeIssues}</p>
                 </div>
                 <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
@@ -104,7 +104,7 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[10px] text-slate-400 uppercase tracking-wider">Auto-Fixed Today</p>
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Auto-Fixed Today</p>
                   <p className="text-2xl font-bold text-emerald-400 mt-1">{metrics.autoFixedToday}</p>
                 </div>
                 <div className="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
@@ -128,7 +128,7 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[10px] text-slate-400 uppercase tracking-wider">Escalated</p>
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Escalated</p>
                   <p className="text-2xl font-bold text-red-400 mt-1">{metrics.escalatedIssues}</p>
                 </div>
                 <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
@@ -152,7 +152,7 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[10px] text-slate-400 uppercase tracking-wider">Avg Resolution</p>
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Avg Resolution</p>
                   <p className="text-2xl font-bold text-purple-400 mt-1">{metrics.avgResolutionTime}m</p>
                 </div>
                 <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
@@ -177,10 +177,10 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
           transition={{ delay: 0.5 }}
           className="col-span-2"
         >
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-card/60 border-border">
             <CardHeader className="pb-2">
               <div className="flex items-center justify-between">
-                <CardTitle className="text-sm text-white flex items-center gap-2">
+                <CardTitle className="text-sm text-foreground flex items-center gap-2">
                   <Activity className="w-4 h-4 text-cyan-400" />
                   Live Issue Overview
                 </CardTitle>
@@ -194,21 +194,21 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
                 {liveIssues.map((issue, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700/30 hover:border-cyan-500/30 transition-all"
+                    className="flex items-center justify-between p-3 bg-card/60 rounded-lg border border-border hover:border-cyan-500/30 transition-all"
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-xs font-mono text-cyan-400">{issue.id}</span>
-                      <span className="text-xs text-white">{issue.type}</span>
+                      <span className="text-xs text-foreground">{issue.type}</span>
                       <Badge className={`${getPriorityBadge(issue.priority)} text-[9px] px-1.5`}>
                         {issue.priority.toUpperCase()}
                       </Badge>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-[10px] text-slate-400">{issue.user}</span>
+                      <span className="text-[10px] text-muted-foreground">{issue.user}</span>
                       <Badge className={`${getStatusBadge(issue.status)} border text-[9px] px-1.5`}>
                         {issue.status.replace('_', ' ').toUpperCase()}
                       </Badge>
-                      <span className="text-[10px] text-slate-500">{issue.time}</span>
+                      <span className="text-[10px] text-muted-foreground">{issue.time}</span>
                     </div>
                   </div>
                 ))}
@@ -224,9 +224,9 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
           transition={{ delay: 0.6 }}
           className="space-y-4"
         >
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-card/60 border-border">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-white flex items-center gap-2">
+              <CardTitle className="text-sm text-foreground flex items-center gap-2">
                 <Brain className="w-4 h-4 text-purple-400" />
                 AI Confidence Score
               </CardTitle>
@@ -236,7 +236,7 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
                 <div className="relative w-24 h-24 mx-auto">
                   <svg className="w-24 h-24 transform -rotate-90">
                     <circle
-                      className="text-slate-700"
+                      className="text-foreground"
                       strokeWidth="8"
                       stroke="currentColor"
                       fill="transparent"
@@ -260,14 +260,14 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
                     <span className="text-xl font-bold text-purple-400">{metrics.aiConfidenceScore}%</span>
                   </div>
                 </div>
-                <p className="text-[10px] text-slate-400 mt-2">Based on pattern matching accuracy</p>
+                <p className="text-[10px] text-muted-foreground mt-2">Based on pattern matching accuracy</p>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-card/60 border-border">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-white flex items-center gap-2">
+              <CardTitle className="text-sm text-foreground flex items-center gap-2">
                 <Shield className="w-4 h-4 text-emerald-400" />
                 System Trust Index
               </CardTitle>
@@ -275,17 +275,17 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
             <CardContent>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-slate-300">Overall Trust</span>
+                  <span className="text-xs text-muted-foreground">Overall Trust</span>
                   <span className="text-sm font-bold text-emerald-400">{metrics.systemTrustIndex}%</span>
                 </div>
                 <Progress value={metrics.systemTrustIndex} className="h-2" />
                 <div className="grid grid-cols-2 gap-2 text-[10px]">
-                  <div className="bg-slate-800/50 rounded p-2">
-                    <p className="text-slate-400">Uptime</p>
+                  <div className="bg-card/60 rounded p-2">
+                    <p className="text-muted-foreground">Uptime</p>
                     <p className="text-emerald-400 font-bold">99.9%</p>
                   </div>
-                  <div className="bg-slate-800/50 rounded p-2">
-                    <p className="text-slate-400">Accuracy</p>
+                  <div className="bg-card/60 rounded p-2">
+                    <p className="text-muted-foreground">Accuracy</p>
                     <p className="text-cyan-400 font-bold">94.5%</p>
                   </div>
                 </div>
@@ -301,21 +301,21 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7 }}
       >
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-sm text-white flex items-center gap-2">
+              <CardTitle className="text-sm text-foreground flex items-center gap-2">
                 <BarChart3 className="w-4 h-4 text-cyan-400" />
                 Auto-Fix Success Trend (Last 7 Days)
               </CardTitle>
               <div className="flex items-center gap-4 text-[10px]">
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                  <span className="text-slate-400">Success</span>
+                  <span className="text-muted-foreground">Success</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 rounded-full bg-red-500" />
-                  <span className="text-slate-400">Failed</span>
+                  <span className="text-muted-foreground">Failed</span>
                 </div>
               </div>
             </div>
@@ -334,7 +334,7 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
                       style={{ height: `${100 - value}px` }}
                     />
                   </div>
-                  <span className="text-[9px] text-slate-500">
+                  <span className="text-[9px] text-muted-foreground">
                     {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][idx]}
                   </span>
                 </div>
@@ -351,9 +351,9 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-card/60 border-border">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-white flex items-center gap-2">
+              <CardTitle className="text-sm text-foreground flex items-center gap-2">
                 <Users className="w-4 h-4 text-amber-400" />
                 User Frustration Index (AI-Calculated)
               </CardTitle>
@@ -362,16 +362,16 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
               <div className="flex items-center gap-4">
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-slate-300">Current Level</span>
+                    <span className="text-xs text-muted-foreground">Current Level</span>
                     <span className="text-sm font-bold text-emerald-400">Low (2.3/10)</span>
                   </div>
-                  <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
+                  <div className="h-3 bg-card/60 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-gradient-to-r from-emerald-500 via-amber-500 to-red-500"
                       style={{ width: '23%' }}
                     />
                   </div>
-                  <div className="flex justify-between mt-1 text-[9px] text-slate-500">
+                  <div className="flex justify-between mt-1 text-[9px] text-muted-foreground">
                     <span>Happy</span>
                     <span>Neutral</span>
                     <span>Frustrated</span>
@@ -390,9 +390,9 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9 }}
         >
-          <Card className="bg-slate-900/50 border-slate-700/50">
+          <Card className="bg-card/60 border-border">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-white flex items-center gap-2">
+              <CardTitle className="text-sm text-foreground flex items-center gap-2">
                 <Clock className="w-4 h-4 text-cyan-400" />
                 SLA Breach Predictor
               </CardTitle>
@@ -400,15 +400,15 @@ export const SupportDashboard: React.FC<SupportDashboardProps> = ({ activeView }
             <CardContent>
               <div className="space-y-2">
                 <div className="flex items-center justify-between p-2 bg-emerald-500/10 rounded border border-emerald-500/20">
-                  <span className="text-xs text-slate-300">On Track</span>
+                  <span className="text-xs text-muted-foreground">On Track</span>
                   <span className="text-xs font-bold text-emerald-400">8 issues</span>
                 </div>
                 <div className="flex items-center justify-between p-2 bg-amber-500/10 rounded border border-amber-500/20">
-                  <span className="text-xs text-slate-300">At Risk (30min)</span>
+                  <span className="text-xs text-muted-foreground">At Risk (30min)</span>
                   <span className="text-xs font-bold text-amber-400">2 issues</span>
                 </div>
                 <div className="flex items-center justify-between p-2 bg-red-500/10 rounded border border-red-500/20">
-                  <span className="text-xs text-slate-300">Breaching Soon</span>
+                  <span className="text-xs text-muted-foreground">Breaching Soon</span>
                   <span className="text-xs font-bold text-red-400">0 issues</span>
                 </div>
               </div>

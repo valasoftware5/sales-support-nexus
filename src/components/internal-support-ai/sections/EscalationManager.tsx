@@ -68,7 +68,7 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
       case 'critical': return 'bg-red-500/20 text-red-400 border-red-500/30';
       case 'high': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
       case 'medium': return 'bg-amber-500/20 text-amber-400 border-amber-500/30';
-      default: return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
+      default: return 'bg-muted/40 text-muted-foreground border-border';
     }
   };
 
@@ -78,7 +78,7 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
       case 'assigned': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
       case 'pending': return 'bg-amber-500/20 text-amber-400 border-amber-500/30';
       case 'resolved': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
-      default: return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
+      default: return 'bg-muted/40 text-muted-foreground border-border';
     }
   };
 
@@ -91,7 +91,7 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
             <CardContent className="p-4 text-center">
               <ArrowUpCircle className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-cyan-400">{escalationStats.totalEscalated}</p>
-              <p className="text-[10px] text-slate-400">Total Escalated</p>
+              <p className="text-[10px] text-muted-foreground">Total Escalated</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -101,7 +101,7 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
             <CardContent className="p-4 text-center">
               <CheckCircle2 className="w-6 h-6 text-emerald-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-emerald-400">{escalationStats.resolved}</p>
-              <p className="text-[10px] text-slate-400">Resolved</p>
+              <p className="text-[10px] text-muted-foreground">Resolved</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -111,7 +111,7 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
             <CardContent className="p-4 text-center">
               <Clock className="w-6 h-6 text-amber-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-amber-400">{escalationStats.pending}</p>
-              <p className="text-[10px] text-slate-400">Pending</p>
+              <p className="text-[10px] text-muted-foreground">Pending</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -121,7 +121,7 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
             <CardContent className="p-4 text-center">
               <Activity className="w-6 h-6 text-blue-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-blue-400">{escalationStats.inProgress}</p>
-              <p className="text-[10px] text-slate-400">In Progress</p>
+              <p className="text-[10px] text-muted-foreground">In Progress</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -131,7 +131,7 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
             <CardContent className="p-4 text-center">
               <Zap className="w-6 h-6 text-purple-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-purple-400">{escalationStats.avgResolutionTime}m</p>
-              <p className="text-[10px] text-slate-400">Avg Resolution</p>
+              <p className="text-[10px] text-muted-foreground">Avg Resolution</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -141,7 +141,7 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
             <CardContent className="p-4 text-center">
               <Target className="w-6 h-6 text-teal-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-teal-400">{escalationStats.slaCompliance}%</p>
-              <p className="text-[10px] text-slate-400">SLA Compliance</p>
+              <p className="text-[10px] text-muted-foreground">SLA Compliance</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -149,9 +149,9 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
 
       {/* Team Routing Overview */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm text-white flex items-center gap-2">
+            <CardTitle className="text-sm text-foreground flex items-center gap-2">
               <Users className="w-4 h-4 text-cyan-400" />
               Team Routing & Capacity
             </CardTitle>
@@ -161,22 +161,22 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
               {teamRouting.map((team) => (
                 <div
                   key={team.team}
-                  className="p-3 bg-slate-800/50 rounded-lg border border-slate-700/30"
+                  className="p-3 bg-card/60 rounded-lg border border-border"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-white font-medium">{team.team}</span>
+                    <span className="text-xs text-foreground font-medium">{team.team}</span>
                     <Badge className="bg-cyan-500/20 text-cyan-400 text-[9px]">
                       {team.activeCount} active
                     </Badge>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-[10px]">
-                      <span className="text-slate-400">Avg Response</span>
+                      <span className="text-muted-foreground">Avg Response</span>
                       <span className="text-emerald-400">{team.avgResponse}</span>
                     </div>
                     <div>
                       <div className="flex items-center justify-between text-[10px] mb-1">
-                        <span className="text-slate-400">Capacity</span>
+                        <span className="text-muted-foreground">Capacity</span>
                         <span className="text-cyan-400">{team.capacity}%</span>
                       </div>
                       <Progress value={team.capacity} className="h-1.5" />
@@ -191,10 +191,10 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
 
       {/* Active Escalations */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-sm text-white flex items-center gap-2">
+              <CardTitle className="text-sm text-foreground flex items-center gap-2">
                 <AlertTriangle className="w-4 h-4 text-amber-400" />
                 Active Escalations
               </CardTitle>
@@ -211,7 +211,7 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className="p-4 bg-slate-800/50 rounded-lg border border-slate-700/30"
+                  className="p-4 bg-card/60 rounded-lg border border-border"
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
@@ -219,7 +219,7 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
                       <Badge className={`${getPriorityBadge(issue.priority)} border text-[9px]`}>
                         {issue.priority.toUpperCase()}
                       </Badge>
-                      <span className="text-xs text-slate-400">→ {issue.escalatedTo}</span>
+                      <span className="text-xs text-muted-foreground">→ {issue.escalatedTo}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className={`flex items-center gap-1 ${
@@ -238,12 +238,12 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
                   
                   <div className="grid grid-cols-2 gap-4">
                     {/* User Visible Status */}
-                    <div className="p-2 bg-slate-900/50 rounded border border-slate-700/20">
-                      <div className="flex items-center gap-1 text-[10px] text-slate-500 mb-1">
+                    <div className="p-2 bg-card/60 rounded border border-border">
+                      <div className="flex items-center gap-1 text-[10px] text-muted-foreground mb-1">
                         <Activity className="w-3 h-3" />
                         User-visible Progress
                       </div>
-                      <p className="text-xs text-white">{issue.userVisibleStatus}</p>
+                      <p className="text-xs text-foreground">{issue.userVisibleStatus}</p>
                     </div>
                     
                     {/* Internal Notes (Hidden from user) */}
@@ -252,7 +252,7 @@ export const EscalationManager: React.FC<EscalationManagerProps> = ({ activeView
                         <FileText className="w-3 h-3" />
                         Internal Notes (Hidden)
                       </div>
-                      <p className="text-xs text-slate-300">{issue.internalNotes}</p>
+                      <p className="text-xs text-muted-foreground">{issue.internalNotes}</p>
                     </div>
                   </div>
                 </motion.div>

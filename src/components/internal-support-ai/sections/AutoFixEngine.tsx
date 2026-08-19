@@ -96,7 +96,7 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
       case 'queued': return 'bg-amber-500/20 text-amber-400 border-amber-500/30';
       case 'success': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
       case 'failed': return 'bg-red-500/20 text-red-400 border-red-500/30';
-      default: return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
+      default: return 'bg-muted/40 text-muted-foreground border-border';
     }
   };
 
@@ -109,7 +109,7 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
             <CardContent className="p-4 text-center">
               <Wrench className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-cyan-400">{engineStats.totalFixes}</p>
-              <p className="text-[10px] text-slate-400">Total Fixes</p>
+              <p className="text-[10px] text-muted-foreground">Total Fixes</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -119,7 +119,7 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
             <CardContent className="p-4 text-center">
               <CheckCircle2 className="w-6 h-6 text-emerald-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-emerald-400">{engineStats.successRate}%</p>
-              <p className="text-[10px] text-slate-400">Success Rate</p>
+              <p className="text-[10px] text-muted-foreground">Success Rate</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -129,7 +129,7 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
             <CardContent className="p-4 text-center">
               <Clock className="w-6 h-6 text-purple-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-purple-400">{engineStats.avgFixTime}s</p>
-              <p className="text-[10px] text-slate-400">Avg Fix Time</p>
+              <p className="text-[10px] text-muted-foreground">Avg Fix Time</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -139,7 +139,7 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
             <CardContent className="p-4 text-center">
               <RotateCcw className="w-6 h-6 text-orange-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-orange-400">{engineStats.rollbacksUsed}</p>
-              <p className="text-[10px] text-slate-400">Rollbacks Used</p>
+              <p className="text-[10px] text-muted-foreground">Rollbacks Used</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -149,7 +149,7 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
             <CardContent className="p-4 text-center">
               <Shield className="w-6 h-6 text-amber-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-amber-400">{engineStats.queueDepth}</p>
-              <p className="text-[10px] text-slate-400">Queue Depth</p>
+              <p className="text-[10px] text-muted-foreground">Queue Depth</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -157,9 +157,9 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
 
       {/* Fix Types Overview */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm text-white flex items-center gap-2">
+            <CardTitle className="text-sm text-foreground flex items-center gap-2">
               <Wrench className="w-4 h-4 text-cyan-400" />
               Fix Type Distribution
             </CardTitle>
@@ -174,8 +174,8 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
                   <div className={`w-8 h-8 rounded-lg bg-${type.color}-500/20 flex items-center justify-center mx-auto mb-2 text-${type.color}-400`}>
                     {type.icon}
                   </div>
-                  <p className="text-xs text-white font-medium">{type.count}</p>
-                  <p className="text-[9px] text-slate-400 mt-0.5">{type.label}</p>
+                  <p className="text-xs text-foreground font-medium">{type.count}</p>
+                  <p className="text-[9px] text-muted-foreground mt-0.5">{type.label}</p>
                 </div>
               ))}
             </div>
@@ -185,10 +185,10 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
 
       {/* Active Fix Queue */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-sm text-white flex items-center gap-2">
+              <CardTitle className="text-sm text-foreground flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400" />
                 Safe Fix Queue
               </CardTitle>
@@ -196,7 +196,7 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="h-7 text-xs border-slate-600"
+                  className="h-7 text-xs border-border"
                   onClick={handleToggleQueue}
                 >
                   {queuePaused ? <Play className="w-3 h-3 mr-1" /> : <Pause className="w-3 h-3 mr-1" />}
@@ -218,11 +218,11 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700/30"
+                  className="flex items-center justify-between p-3 bg-card/60 rounded-lg border border-border"
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-xs font-mono text-cyan-400">{fix.id}</span>
-                    <div className="w-8 h-8 rounded-lg bg-slate-700/50 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-muted/40 flex items-center justify-center">
                       {fix.status === 'running' ? (
                         <RefreshCw className="w-4 h-4 text-cyan-400 animate-spin" />
                       ) : fix.status === 'success' ? (
@@ -232,12 +232,12 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
                       )}
                     </div>
                     <div>
-                      <p className="text-xs text-white">{fix.type}</p>
-                      <p className="text-[10px] text-slate-400">{fix.description}</p>
+                      <p className="text-xs text-foreground">{fix.type}</p>
+                      <p className="text-[10px] text-muted-foreground">{fix.description}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-[10px] text-slate-500">Issue: {fix.issueId}</span>
+                    <span className="text-[10px] text-muted-foreground">Issue: {fix.issueId}</span>
                     <Badge className={`${getStatusBadge(fix.status)} border text-[9px]`}>
                       {fix.status.toUpperCase()}
                     </Badge>
@@ -262,9 +262,9 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
 
       {/* Engine Health */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}>
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm text-white flex items-center gap-2">
+            <CardTitle className="text-sm text-foreground flex items-center gap-2">
               <Shield className="w-4 h-4 text-emerald-400" />
               Engine Health & Safety
             </CardTitle>
@@ -273,24 +273,24 @@ export const AutoFixEngine: React.FC<AutoFixEngineProps> = ({ activeView }) => {
             <div className="grid grid-cols-3 gap-4">
               <div className="p-4 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs text-slate-300">Safety Mode</span>
+                  <span className="text-xs text-muted-foreground">Safety Mode</span>
                   <Badge className="bg-emerald-500/20 text-emerald-400 text-[9px]">ENABLED</Badge>
                 </div>
-                <p className="text-[10px] text-slate-400">All fixes are scoped and reversible</p>
+                <p className="text-[10px] text-muted-foreground">All fixes are scoped and reversible</p>
               </div>
               <div className="p-4 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs text-slate-300">Auto-Rollback</span>
+                  <span className="text-xs text-muted-foreground">Auto-Rollback</span>
                   <Badge className="bg-cyan-500/20 text-cyan-400 text-[9px]">ACTIVE</Badge>
                 </div>
-                <p className="text-[10px] text-slate-400">Automatic rollback on failure detection</p>
+                <p className="text-[10px] text-muted-foreground">Automatic rollback on failure detection</p>
               </div>
               <div className="p-4 bg-purple-500/10 rounded-lg border border-purple-500/20">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs text-slate-300">Stable State</span>
+                  <span className="text-xs text-muted-foreground">Stable State</span>
                   <Badge className="bg-purple-500/20 text-purple-400 text-[9px]">SAVED</Badge>
                 </div>
-                <p className="text-[10px] text-slate-400">Last stable state: 2 minutes ago</p>
+                <p className="text-[10px] text-muted-foreground">Last stable state: 2 minutes ago</p>
               </div>
             </div>
           </CardContent>

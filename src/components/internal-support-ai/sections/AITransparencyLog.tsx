@@ -94,7 +94,7 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
       case 'partial': return 'bg-amber-500/20 text-amber-400 border-amber-500/30';
       case 'escalated': return 'bg-purple-500/20 text-purple-400 border-purple-500/30';
       case 'pending': return 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30';
-      default: return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
+      default: return 'bg-muted/40 text-muted-foreground border-border';
     }
   };
 
@@ -102,7 +102,7 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
     <div className="space-y-4">
       {/* Header Info */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -110,8 +110,8 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
                   <Eye className="w-5 h-5 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-white">AI Transparency Log</h3>
-                  <p className="text-[10px] text-slate-400">Read-only audit trail of all AI decisions and actions</p>
+                  <h3 className="text-sm font-medium text-foreground">AI Transparency Log</h3>
+                  <p className="text-[10px] text-muted-foreground">Read-only audit trail of all AI decisions and actions</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -119,7 +119,7 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
                   <Lock className="w-3 h-3 mr-1" />
                   READ-ONLY
                 </Badge>
-                <Badge className="bg-slate-500/20 text-slate-400 border border-slate-500/30 text-[10px]">
+                <Badge className="bg-muted/40 text-muted-foreground border border-border text-[10px]">
                   {entries.length} Entries
                 </Badge>
               </div>
@@ -130,9 +130,9 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
 
       {/* Log Entries */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm text-white flex items-center gap-2">
+            <CardTitle className="text-sm text-foreground flex items-center gap-2">
               <FileText className="w-4 h-4 text-cyan-400" />
               Transparency Entries
             </CardTitle>
@@ -145,14 +145,14 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className="p-4 bg-slate-800/50 rounded-lg border border-slate-700/30"
+                  className="p-4 bg-card/60 rounded-lg border border-border"
                 >
                   {/* Header */}
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
-                      <span className="text-xs font-mono text-slate-500">{entry.timestamp}</span>
+                      <span className="text-xs font-mono text-muted-foreground">{entry.timestamp}</span>
                       <span className="text-xs font-mono text-cyan-400">{entry.id}</span>
-                      <span className="text-[10px] text-slate-400">Issue: {entry.issueId}</span>
+                      <span className="text-[10px] text-muted-foreground">Issue: {entry.issueId}</span>
                     </div>
                     <Badge className={`${getOutcomeBadge(entry.outcome)} border text-[9px]`}>
                       {entry.outcome.toUpperCase()}
@@ -167,7 +167,7 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
                         <AlertTriangle className="w-3 h-3" />
                         Issue Detected
                       </div>
-                      <p className="text-[11px] text-slate-300">{entry.issueDetected}</p>
+                      <p className="text-[11px] text-muted-foreground">{entry.issueDetected}</p>
                     </div>
 
                     {/* Action Taken */}
@@ -176,7 +176,7 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
                         <Wrench className="w-3 h-3" />
                         Action Taken
                       </div>
-                      <p className="text-[11px] text-slate-300">{entry.actionTaken}</p>
+                      <p className="text-[11px] text-muted-foreground">{entry.actionTaken}</p>
                     </div>
 
                     {/* Reason */}
@@ -185,7 +185,7 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
                         <MessageCircleQuestion className="w-3 h-3" />
                         Reason
                       </div>
-                      <p className="text-[11px] text-slate-300">{entry.reason}</p>
+                      <p className="text-[11px] text-muted-foreground">{entry.reason}</p>
                     </div>
 
                     {/* Outcome */}
@@ -206,16 +206,16 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
                         <CheckCircle2 className="w-3 h-3" />
                         Outcome
                       </div>
-                      <p className="text-[11px] text-slate-300 capitalize">{entry.outcome}</p>
+                      <p className="text-[11px] text-muted-foreground capitalize">{entry.outcome}</p>
                     </div>
 
                     {/* Next Step */}
-                    <div className="p-3 bg-slate-700/30 rounded border border-slate-600/20">
-                      <div className="flex items-center gap-1 text-[10px] text-slate-400 mb-1">
+                    <div className="p-3 bg-muted/40 rounded border border-border">
+                      <div className="flex items-center gap-1 text-[10px] text-muted-foreground mb-1">
                         <ArrowRight className="w-3 h-3" />
                         Next Step
                       </div>
-                      <p className="text-[11px] text-slate-300">
+                      <p className="text-[11px] text-muted-foreground">
                         {entry.nextStep || 'No further action required'}
                       </p>
                     </div>
@@ -229,9 +229,9 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
 
       {/* Response Rules Reminder */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm text-white flex items-center gap-2">
+            <CardTitle className="text-sm text-foreground flex items-center gap-2">
               <Lock className="w-4 h-4 text-emerald-400" />
               AI Response Rules (Enforced)
             </CardTitle>
@@ -240,8 +240,8 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
             <div className="grid grid-cols-3 gap-3">
               <div className="p-3 bg-emerald-500/10 rounded border border-emerald-500/20">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 mb-2" />
-                <p className="text-xs text-white font-medium mb-1">Always Show</p>
-                <ul className="text-[10px] text-slate-300 space-y-1">
+                <p className="text-xs text-foreground font-medium mb-1">Always Show</p>
+                <ul className="text-[10px] text-muted-foreground space-y-1">
                   <li>• What happened</li>
                   <li>• What was done</li>
                   <li>• Next step</li>
@@ -249,8 +249,8 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
               </div>
               <div className="p-3 bg-red-500/10 rounded border border-red-500/20">
                 <AlertTriangle className="w-4 h-4 text-red-400 mb-2" />
-                <p className="text-xs text-white font-medium mb-1">Never Say</p>
-                <ul className="text-[10px] text-slate-300 space-y-1">
+                <p className="text-xs text-foreground font-medium mb-1">Never Say</p>
+                <ul className="text-[10px] text-muted-foreground space-y-1">
                   <li>• "Sorry for inconvenience"</li>
                   <li>• "Please explain"</li>
                   <li>• Fake waiting messages</li>
@@ -258,8 +258,8 @@ export const AITransparencyLog: React.FC<AITransparencyLogProps> = ({ activeView
               </div>
               <div className="p-3 bg-cyan-500/10 rounded border border-cyan-500/20">
                 <Clock className="w-4 h-4 text-cyan-400 mb-2" />
-                <p className="text-xs text-white font-medium mb-1">Performance</p>
-                <ul className="text-[10px] text-slate-300 space-y-1">
+                <p className="text-xs text-foreground font-medium mb-1">Performance</p>
+                <ul className="text-[10px] text-muted-foreground space-y-1">
                   <li>• Response &lt; 300ms</li>
                   <li>• 80-90% auto-resolution</li>
                   <li>• Human for complex only</li>

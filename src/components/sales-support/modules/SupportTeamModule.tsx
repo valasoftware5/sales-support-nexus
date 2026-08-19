@@ -70,7 +70,7 @@ const SupportTeamModule = () => {
       case "online": return "bg-emerald-500/20 text-emerald-300";
       case "busy": return "bg-amber-500/20 text-amber-300";
       case "break": return "bg-blue-500/20 text-blue-300";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -81,35 +81,35 @@ const SupportTeamModule = () => {
           <h2 className="text-2xl font-bold text-cyan-100">Support Team Management</h2>
           <p className="text-muted-foreground">Manage agents, roles, shifts and workload distribution</p>
         </div>
-        <Button onClick={handleAddAgent} className="bg-cyan-500 hover:bg-cyan-600 text-white">
+        <Button onClick={handleAddAgent} className="bg-cyan-500 hover:bg-cyan-600 text-foreground">
           <Plus className="w-4 h-4 mr-2" />
           Add Agent
         </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-emerald-500/20">
+        <Card className="bg-card/60 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <Users className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{agents.filter((a) => a.status === "online").length}</div>
             <div className="text-xs text-muted-foreground">Online Agents</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-amber-500/20">
+        <Card className="bg-card/60 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{agents.reduce((sum, a) => sum + (a.tickets_handled ?? 0), 0)}</div>
             <div className="text-xs text-muted-foreground">Active Tickets</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <CheckCircle className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{agents.reduce((sum, a) => sum + (a.tickets_handled ?? 0), 0)}</div>
             <div className="text-xs text-muted-foreground">Resolved Today</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <UserCog className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{agents.length}</div>
@@ -118,7 +118,7 @@ const SupportTeamModule = () => {
         </Card>
       </div>
 
-      <Card className="bg-slate-900/50 border-cyan-500/20">
+      <Card className="bg-card/60 border-cyan-500/20">
         <CardHeader>
           <CardTitle className="text-cyan-100">Agent Roster</CardTitle>
         </CardHeader>
@@ -135,7 +135,7 @@ const SupportTeamModule = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="flex items-center justify-between p-4 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition-colors"
+                  className="flex items-center justify-between p-4 bg-card/60 rounded-lg hover:bg-card/60 transition-colors"
                 >
                   <div className="flex items-center gap-4">
                     <Avatar className="h-10 w-10">
@@ -144,7 +144,7 @@ const SupportTeamModule = () => {
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="font-mono text-cyan-400 text-sm">{agent.id.slice(0, 8)}</span>
-                        <span className="font-medium text-slate-100">{agent.full_name}</span>
+                        <span className="font-medium text-foreground">{agent.full_name}</span>
                         <Badge className={getStatusColor(agent.status)}>{agent.status}</Badge>
                       </div>
                       <div className="text-sm text-muted-foreground">{agent.email} • {agent.role_title} • {agent.shift} Shift</div>
@@ -153,12 +153,12 @@ const SupportTeamModule = () => {
 
                   <div className="flex items-center gap-4">
                     <div className="text-right mr-4">
-                      <div className="text-sm text-slate-300">{agent.tickets_handled} tickets • CSAT {agent.csat}%</div>
+                      <div className="text-sm text-muted-foreground">{agent.tickets_handled} tickets • CSAT {agent.csat}%</div>
                       <div className="text-xs text-muted-foreground">Avg: {agent.avg_response_minutes} min</div>
                     </div>
 
                     <Select value={agent.role_title} onValueChange={(v) => handleAssignRole(agent.id, v)}>
-                      <SelectTrigger className="w-32 bg-slate-700/50 border-slate-600">
+                      <SelectTrigger className="w-32 bg-muted/40 border-border">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -170,7 +170,7 @@ const SupportTeamModule = () => {
                     </Select>
 
                     <Select value={agent.shift} onValueChange={(v) => handleChangeShift(agent.id, v)}>
-                      <SelectTrigger className="w-28 bg-slate-700/50 border-slate-600">
+                      <SelectTrigger className="w-28 bg-muted/40 border-border">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>

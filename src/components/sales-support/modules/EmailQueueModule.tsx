@@ -58,7 +58,7 @@ const EmailQueueModule = () => {
       case "urgent": return "bg-red-500/20 text-red-300 border-red-500/30";
       case "high": return "bg-amber-500/20 text-amber-300 border-amber-500/30";
       case "medium": return "bg-blue-500/20 text-blue-300 border-blue-500/30";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -81,28 +81,28 @@ const EmailQueueModule = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <Mail className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{emails.length}</div>
             <div className="text-xs text-muted-foreground">Total Emails</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <MailOpen className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{unreadCount}</div>
             <div className="text-xs text-muted-foreground">Unread</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-red-500/20">
+        <Card className="bg-card/60 border-red-500/20">
           <CardContent className="p-4 text-center">
             <Tag className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{urgentCount}</div>
             <div className="text-xs text-muted-foreground">Urgent</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-amber-500/20">
+        <Card className="bg-card/60 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{slaRisk}</div>
@@ -112,7 +112,7 @@ const EmailQueueModule = () => {
       </div>
 
       {/* Emails List */}
-      <Card className="bg-slate-900/50 border-cyan-500/20">
+      <Card className="bg-card/60 border-cyan-500/20">
         <CardHeader>
           <CardTitle className="text-cyan-100">Inbox</CardTitle>
         </CardHeader>
@@ -129,7 +129,7 @@ const EmailQueueModule = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className={`p-4 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition-colors ${email.status === "unread" ? "border-l-4 border-cyan-500" : ""}`}
+                  className={`p-4 bg-card/60 rounded-lg hover:bg-card/60 transition-colors ${email.status === "unread" ? "border-l-4 border-cyan-500" : ""}`}
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
@@ -146,7 +146,7 @@ const EmailQueueModule = () => {
                   </div>
 
                   <div className="mb-2">
-                    <h4 className="font-medium text-slate-100">{email.subject}</h4>
+                    <h4 className="font-medium text-foreground">{email.subject}</h4>
                     <p className="text-sm text-muted-foreground">{email.from_name ?? email.from_email} &lt;{email.from_email}&gt; {assignedName && `• Assigned: ${assignedName}`}</p>
                     {email.preview && <p className="text-sm text-muted-foreground truncate">{email.preview}</p>}
                   </div>
@@ -162,7 +162,7 @@ const EmailQueueModule = () => {
                     <div className="flex items-center gap-2">
                       {!email.assigned_to && (
                         <Select onValueChange={(agent) => handleAssign(email.id, agent)}>
-                          <SelectTrigger className="w-32 bg-slate-700/50 border-slate-600">
+                          <SelectTrigger className="w-32 bg-muted/40 border-border">
                             <SelectValue placeholder="Assign" />
                           </SelectTrigger>
                           <SelectContent>

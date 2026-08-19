@@ -57,7 +57,7 @@ const EscalationsModule = () => {
       case 1: return "bg-cyan-500/20 text-cyan-300 border-cyan-500/30";
       case 2: return "bg-amber-500/20 text-amber-300 border-amber-500/30";
       case 3: return "bg-red-500/20 text-red-300 border-red-500/30";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -86,28 +86,28 @@ const EscalationsModule = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <AlertCircle className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{escalations.filter(e => e.status !== "resolved").length}</div>
             <div className="text-xs text-muted-foreground">Active Escalations</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-amber-500/20">
+        <Card className="bg-card/60 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{pendingCount}</div>
             <div className="text-xs text-muted-foreground">Pending Assignment</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-red-500/20">
+        <Card className="bg-card/60 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{criticalCount}</div>
             <div className="text-xs text-muted-foreground">Critical</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <Shield className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{level3Count}</div>
@@ -117,7 +117,7 @@ const EscalationsModule = () => {
       </div>
 
       {/* Escalations List */}
-      <Card className="bg-slate-900/50 border-cyan-500/20">
+      <Card className="bg-card/60 border-cyan-500/20">
         <CardHeader>
           <CardTitle className="text-cyan-100">Escalation Queue</CardTitle>
         </CardHeader>
@@ -135,7 +135,7 @@ const EscalationsModule = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className={`p-4 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition-colors ${priority === "critical" ? "border-l-4 border-red-500" : ""}`}
+                  className={`p-4 bg-card/60 rounded-lg hover:bg-card/60 transition-colors ${priority === "critical" ? "border-l-4 border-red-500" : ""}`}
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
@@ -147,7 +147,7 @@ const EscalationsModule = () => {
                   </div>
 
                   <div className="mb-3">
-                    <h4 className="font-medium text-slate-100">{ticket?.subject ?? esc.reason}</h4>
+                    <h4 className="font-medium text-foreground">{ticket?.subject ?? esc.reason}</h4>
                     <p className="text-sm text-muted-foreground">{ticket?.customer_name ?? "-"} • {relativeTime(esc.created_at)} • {assignedName || "Unassigned"}</p>
                     <p className="text-sm text-amber-400/80 mt-1">Reason: {esc.reason}</p>
                   </div>
@@ -160,7 +160,7 @@ const EscalationsModule = () => {
                     <div className="flex items-center gap-2">
                       {esc.status !== "resolved" && !esc.assigned_to && (
                         <Select onValueChange={(handler) => handleAssign(esc.id, handler)}>
-                          <SelectTrigger className="w-40 bg-slate-700/50 border-slate-600">
+                          <SelectTrigger className="w-40 bg-muted/40 border-border">
                             <SelectValue placeholder="Assign handler" />
                           </SelectTrigger>
                           <SelectContent>

@@ -68,35 +68,35 @@ const SalesTeamModule = () => {
           <h2 className="text-2xl font-bold text-cyan-100">Sales Team Management</h2>
           <p className="text-muted-foreground">Manage sales reps, territories, and targets</p>
         </div>
-        <Button onClick={handleAddRep} className="bg-emerald-500 hover:bg-emerald-600 text-white">
+        <Button onClick={handleAddRep} className="bg-emerald-500 hover:bg-emerald-600 text-foreground">
           <Plus className="w-4 h-4 mr-2" />
           Add Sales Rep
         </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-emerald-500/20">
+        <Card className="bg-card/60 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <Users className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{reps.filter((r) => r.status === "active").length}</div>
             <div className="text-xs text-muted-foreground">Active Reps</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <Target className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">${(totalTarget / 1000).toFixed(0)}K</div>
             <div className="text-xs text-muted-foreground">Total Target</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-amber-500/20">
+        <Card className="bg-card/60 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <DollarSign className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">${(totalAchieved / 1000).toFixed(0)}K</div>
             <div className="text-xs text-muted-foreground">Achieved</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <TrendingUp className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{avgConversion}%</div>
@@ -105,7 +105,7 @@ const SalesTeamModule = () => {
         </Card>
       </div>
 
-      <Card className="bg-slate-900/50 border-cyan-500/20">
+      <Card className="bg-card/60 border-cyan-500/20">
         <CardHeader>
           <CardTitle className="text-cyan-100">Sales Team Roster</CardTitle>
         </CardHeader>
@@ -126,7 +126,7 @@ const SalesTeamModule = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className={`flex items-center justify-between p-4 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition-colors ${rep.status === "suspended" ? "opacity-60" : ""}`}
+                    className={`flex items-center justify-between p-4 bg-card/60 rounded-lg hover:bg-card/60 transition-colors ${rep.status === "suspended" ? "opacity-60" : ""}`}
                   >
                     <div className="flex items-center gap-4">
                       <Avatar className="h-10 w-10">
@@ -135,7 +135,7 @@ const SalesTeamModule = () => {
                       <div>
                         <div className="flex items-center gap-2">
                           <span className="font-mono text-cyan-400 text-sm">{rep.id.slice(0, 8)}</span>
-                          <span className="font-medium text-slate-100">{rep.full_name}</span>
+                          <span className="font-medium text-foreground">{rep.full_name}</span>
                           <Badge className={rep.status === "active" ? "bg-emerald-500/20 text-emerald-300" : "bg-red-500/20 text-red-300"}>{rep.status}</Badge>
                         </div>
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -160,7 +160,7 @@ const SalesTeamModule = () => {
                       <Input
                         type="number"
                         defaultValue={target}
-                        className="w-28 bg-slate-700/50 border-slate-600"
+                        className="w-28 bg-muted/40 border-border"
                         onBlur={(e) => handleSetTarget(rep.id, parseInt(e.target.value) || target)}
                       />
 

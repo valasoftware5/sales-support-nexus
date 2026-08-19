@@ -253,7 +253,7 @@ const DealTracking = () => {
                       transition={{ delay: index * 0.05 }}
                       className="flex items-center gap-4 p-4 rounded-xl bg-surface hover:bg-surface-2 transition-colors cursor-pointer"
                     >
-                      <div className={`w-1 h-16 rounded-full ${stageInfo?.color ?? "bg-slate-400"}`} />
+                      <div className={`w-1 h-16 rounded-full ${stageInfo?.color ?? "bg-muted/40"}`} />
 
                       <div className="flex-1">
                         <p className="font-semibold text-foreground">{deal.title}</p>

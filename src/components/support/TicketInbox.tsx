@@ -66,7 +66,7 @@ const TicketInbox = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-white">Ticket Inbox</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Ticket Inbox</h2>
           <p className="text-muted-foreground mt-1">Manage and respond to support requests</p>
         </div>
         <div className="flex gap-2">
@@ -82,7 +82,7 @@ const TicketInbox = () => {
       {/* Tickets List */}
       <div className="space-y-4">
         {!isLoading && openTickets.length === 0 && (
-          <div className="p-8 text-center text-muted-foreground rounded-2xl border border-slate-700/30 bg-slate-900/40">
+          <div className="p-8 text-center text-muted-foreground rounded-2xl border border-border bg-card/60">
             No open tickets right now.
           </div>
         )}
@@ -96,10 +96,10 @@ const TicketInbox = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.08 }}
-              className={`rounded-2xl bg-slate-900/40 backdrop-blur-xl border transition-all duration-300 ${
+              className={`rounded-2xl bg-card/60 backdrop-blur-xl border transition-all duration-300 ${
                 isSelected
                   ? 'border-teal-500/30 shadow-lg shadow-teal-500/5'
-                  : 'border-slate-700/30 hover:border-slate-600/40'
+                  : 'border-border hover:border-border'
               }`}
             >
               {/* Ticket Header */}
@@ -114,7 +114,7 @@ const TicketInbox = () => {
                       <span className={`px-2 py-0.5 rounded text-xs font-medium bg-${urgencyConfig.color}-500/10 text-${urgencyConfig.color}-400 border border-${urgencyConfig.color}-500/20`}>
                         {urgencyConfig.label}
                       </span>
-                      <span className="px-2 py-0.5 rounded text-xs bg-slate-700/30 text-muted-foreground">
+                      <span className="px-2 py-0.5 rounded text-xs bg-muted/40 text-muted-foreground">
                         {ticket.category}
                       </span>
                     </div>
@@ -143,7 +143,7 @@ const TicketInbox = () => {
 
                   {/* Sentiment & Quick Actions */}
                   <div className="flex flex-col items-end gap-2">
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/30">
+                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-card/60">
                       {getSentimentIcon(ticket.csat)}
                       <span className="text-xs text-muted-foreground capitalize">{ticket.status}</span>
                     </div>
@@ -157,7 +157,7 @@ const TicketInbox = () => {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="px-5 pb-5 border-t border-slate-700/30"
+                  className="px-5 pb-5 border-t border-border"
                 >
                   <div className="pt-4 space-y-4">
                     {/* Canned Responses */}
@@ -196,7 +196,7 @@ const TicketInbox = () => {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => handleEscalate(ticket.id, ticket.priority)}
-                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800/30 border border-slate-700/30 text-slate-300 hover:border-amber-500/20 hover:text-amber-400 transition-all text-sm font-medium"
+                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-card/60 border border-border text-muted-foreground hover:border-amber-500/20 hover:text-amber-400 transition-all text-sm font-medium"
                       >
                         <ArrowUpRight className="w-4 h-4" />
                         Escalate
@@ -205,7 +205,7 @@ const TicketInbox = () => {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => toast.info('AI assist suggestions coming soon')}
-                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800/30 border border-slate-700/30 text-slate-300 hover:border-sky-500/20 hover:text-sky-400 transition-all text-sm font-medium"
+                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-card/60 border border-border text-muted-foreground hover:border-sky-500/20 hover:text-sky-400 transition-all text-sm font-medium"
                       >
                         <Zap className="w-4 h-4" />
                         AI Assist

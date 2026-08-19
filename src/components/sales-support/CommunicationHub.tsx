@@ -101,7 +101,7 @@ const CommunicationHub = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardHeader className="pb-3">
             <CardTitle className="text-cyan-100 text-lg">Conversations</CardTitle>
           </CardHeader>
@@ -119,7 +119,7 @@ const CommunicationHub = () => {
                     className={`p-3 rounded-lg cursor-pointer transition-colors ${
                       conv.id === activeId
                         ? "bg-cyan-500/20 border border-cyan-500/30"
-                        : "bg-slate-800/50 hover:bg-slate-800"
+                        : "bg-card/60 hover:bg-card/60"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
@@ -130,7 +130,7 @@ const CommunicationHub = () => {
                         <span className="font-medium text-cyan-100 text-sm">{conv.client}</span>
                       </div>
                       {conv.unread > 0 && (
-                        <span className="w-5 h-5 bg-cyan-500 rounded-full text-[10px] text-white flex items-center justify-center">
+                        <span className="w-5 h-5 bg-cyan-500 rounded-full text-[10px] text-foreground flex items-center justify-center">
                           {conv.unread}
                         </span>
                       )}
@@ -149,12 +149,12 @@ const CommunicationHub = () => {
           </CardContent>
         </Card>
 
-        <Card className="lg:col-span-2 bg-slate-900/50 border-cyan-500/20 flex flex-col">
+        <Card className="lg:col-span-2 bg-card/60 border-cyan-500/20 flex flex-col">
           <CardHeader className="border-b border-cyan-500/20">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center">
-                  <User className="w-5 h-5 text-white" />
+                  <User className="w-5 h-5 text-foreground" />
                 </div>
                 <div>
                   <CardTitle className="text-cyan-100">{active?.client ?? "No conversation selected"}</CardTitle>
@@ -162,7 +162,7 @@ const CommunicationHub = () => {
                 </div>
               </div>
               {active && (
-                <Badge className="bg-slate-700 text-slate-300">
+                <Badge className="bg-muted/40 text-muted-foreground">
                   <Clock className="w-3 h-3 mr-1" />
                   {active.time}
                 </Badge>
@@ -183,16 +183,16 @@ const CommunicationHub = () => {
                       animate={{ opacity: 1, y: 0 }}
                       className={`flex ${msg.sender_type === "visitor" ? "justify-start" : "justify-end"}`}
                     >
-                      <div className={`max-w-[70%] ${msg.sender_type === "visitor" ? "bg-slate-800 border-slate-700" : "bg-cyan-500/20 border-cyan-500/30"} border rounded-lg p-3`}>
-                        <p className={`text-sm ${msg.sender_type === "visitor" ? "text-slate-200" : "text-cyan-100"}`}>{msg.body}</p>
+                      <div className={`max-w-[70%] ${msg.sender_type === "visitor" ? "bg-card/60 border-border" : "bg-cyan-500/20 border-cyan-500/30"} border rounded-lg p-3`}>
+                        <p className={`text-sm ${msg.sender_type === "visitor" ? "text-foreground" : "text-cyan-100"}`}>{msg.body}</p>
                         <span className="text-xs text-muted-foreground mt-1 block">{relativeTime(msg.created_at)}</span>
                       </div>
                     </motion.div>
                   ))
                 )
               ) : active ? (
-                <div className="bg-slate-800 border border-slate-700 rounded-lg p-3">
-                  <p className="text-sm text-slate-200">{active.lastMessage}</p>
+                <div className="bg-card/60 border border-border rounded-lg p-3">
+                  <p className="text-sm text-foreground">{active.lastMessage}</p>
                   <span className="text-xs text-muted-foreground mt-1 block">{active.time}</span>
                 </div>
               ) : (
@@ -207,9 +207,9 @@ const CommunicationHub = () => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Type your message..."
-                className="bg-slate-800 border-slate-700 text-slate-100 placeholder:text-muted-foreground"
+                className="bg-card/60 border-border text-foreground placeholder:text-muted-foreground"
               />
-              <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
+              <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-foreground">
                 <Send className="w-4 h-4" />
               </Button>
             </div>
@@ -217,7 +217,7 @@ const CommunicationHub = () => {
         </Card>
 
         <div className="space-y-4">
-          <Card className="bg-slate-900/50 border-cyan-500/20">
+          <Card className="bg-card/60 border-cyan-500/20">
             <CardHeader className="pb-2">
               <CardTitle className="text-cyan-100 text-sm flex items-center gap-2">
                 <FileText className="w-4 h-4 text-cyan-400" />
@@ -242,7 +242,7 @@ const CommunicationHub = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/50 border-cyan-500/20">
+          <Card className="bg-card/60 border-cyan-500/20">
             <CardHeader className="pb-2">
               <CardTitle className="text-cyan-100 text-sm flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-cyan-400" />

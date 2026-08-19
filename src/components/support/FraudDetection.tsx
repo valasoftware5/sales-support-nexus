@@ -97,7 +97,7 @@ const FraudDetection = () => {
       case 'high': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
       case 'medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
       case 'low': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
-      default: return 'bg-slate-500/20 text-muted-foreground border-slate-500/30';
+      default: return 'bg-muted/40 text-muted-foreground border-border';
     }
   };
 
@@ -117,7 +117,7 @@ const FraudDetection = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Shield className="w-6 h-6 text-red-400" />
             Fraud & Abuse Detection
           </h2>
@@ -128,10 +128,10 @@ const FraudDetection = () => {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input 
               placeholder="Search alerts..." 
-              className="pl-10 bg-slate-800/50 border-slate-700 w-64"
+              className="pl-10 bg-card/60 border-border w-64"
             />
           </div>
-          <Button variant="outline" className="border-slate-700 text-slate-300">
+          <Button variant="outline" className="border-border text-muted-foreground">
             <Filter className="w-4 h-4 mr-2" />
             Filter
           </Button>
@@ -171,11 +171,11 @@ const FraudDetection = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-red-500/20 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-red-500/20 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
           <AlertTriangle className="w-5 h-5 text-red-400" />
-          <h3 className="text-lg font-semibold text-white">Active Fraud Alerts</h3>
+          <h3 className="text-lg font-semibold text-foreground">Active Fraud Alerts</h3>
           <Badge className="bg-red-500/20 text-red-400">{alerts.filter(a => a.status === 'pending').length} Pending</Badge>
         </div>
 
@@ -195,11 +195,11 @@ const FraudDetection = () => {
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="font-medium text-white">{alert.customerName}</span>
+                        <span className="font-medium text-foreground">{alert.customerName}</span>
                         <Badge className={getSeverityColor(alert.severity)}>
                           {alert.severity.toUpperCase()}
                         </Badge>
-                        <Badge className="bg-slate-700/50 text-slate-300 capitalize">{alert.type}</Badge>
+                        <Badge className="bg-muted/40 text-muted-foreground capitalize">{alert.type}</Badge>
                       </div>
                       <p className="text-sm text-muted-foreground mb-1">{alert.description}</p>
                       <div className="flex items-center gap-4 text-xs text-muted-foreground">
@@ -248,7 +248,7 @@ const FraudDetection = () => {
                       size="sm" 
                       variant="ghost"
                       onClick={() => handleDismiss(alert.id)}
-                      className="text-muted-foreground hover:text-white"
+                      className="text-muted-foreground hover:text-foreground"
                     >
                       <XCircle className="w-4 h-4" />
                     </Button>
@@ -265,11 +265,11 @@ const FraudDetection = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
           <Activity className="w-5 h-5 text-teal-400" />
-          <h3 className="text-lg font-semibold text-white">Behavior Patterns</h3>
+          <h3 className="text-lg font-semibold text-foreground">Behavior Patterns</h3>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
@@ -284,7 +284,7 @@ const FraudDetection = () => {
               }`}
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="font-medium text-white">{pattern.pattern}</span>
+                <span className="font-medium text-foreground">{pattern.pattern}</span>
                 {pattern.isAnomaly && (
                   <Badge className="bg-red-500/20 text-red-400">Anomaly</Badge>
                 )}

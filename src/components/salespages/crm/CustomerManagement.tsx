@@ -175,7 +175,7 @@ const CustomerManagement = () => {
                   >
                     <div className="flex items-center gap-3">
                       <Avatar className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-500">
-                        <AvatarFallback className="text-white font-medium">
+                        <AvatarFallback className="text-foreground font-medium">
                           {customer.company_name.charAt(0)}
                         </AvatarFallback>
                       </Avatar>
@@ -206,7 +206,7 @@ const CustomerManagement = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <Avatar className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500">
-                      <AvatarFallback className="text-white text-xl font-bold">
+                      <AvatarFallback className="text-foreground text-xl font-bold">
                         {selectedCustomer.company_name.charAt(0)}
                       </AvatarFallback>
                     </Avatar>

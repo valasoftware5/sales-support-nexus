@@ -78,18 +78,18 @@ const SupportAnalytics = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <BarChart3 className="w-6 h-6 text-teal-400" />
             Support Analytics
           </h2>
           <p className="text-muted-foreground text-sm">Real-time performance metrics and insights</p>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="outline" className="border-slate-700 text-slate-300">
+          <Button variant="outline" className="border-border text-muted-foreground">
             <Calendar className="w-4 h-4 mr-2" />
             Last 7 Days
           </Button>
-          <Button variant="outline" onClick={handleRefresh} className="border-slate-700 text-slate-300">
+          <Button variant="outline" onClick={handleRefresh} className="border-border text-muted-foreground">
             <RefreshCw className="w-4 h-4 mr-2" />
             Refresh
           </Button>
@@ -110,7 +110,7 @@ const SupportAnalytics = () => {
           <motion.div
             key={metric.id}
             whileHover={{ scale: 1.02 }}
-            className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4"
+            className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4"
           >
             <div className="flex items-center justify-between mb-2">
               <metric.icon className={`w-5 h-5 ${metric.color}`} />
@@ -130,10 +130,10 @@ const SupportAnalytics = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-white">Ticket Volume (24h)</h3>
+          <h3 className="text-lg font-semibold text-foreground">Ticket Volume (24h)</h3>
           <Badge className="bg-teal-500/20 text-teal-400">Live</Badge>
         </div>
         
@@ -164,9 +164,9 @@ const SupportAnalytics = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
-        <h3 className="text-lg font-semibold text-white mb-4">Channel Performance</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-4">Channel Performance</h3>
         
         <div className="space-y-4">
           {channelStats.map((channel, idx) => {
@@ -181,9 +181,9 @@ const SupportAnalytics = () => {
                 transition={{ delay: idx * 0.1 }}
                 className="flex items-center gap-4"
               >
-                <div className="w-24 text-sm text-white font-medium">{channel.channel}</div>
+                <div className="w-24 text-sm text-foreground font-medium">{channel.channel}</div>
                 <div className="flex-1">
-                  <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
+                  <div className="h-3 bg-card/60 rounded-full overflow-hidden">
                     <motion.div
                       className="h-full bg-gradient-to-r from-teal-500 to-sky-500"
                       initial={{ width: 0 }}
@@ -210,9 +210,9 @@ const SupportAnalytics = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
-        <h3 className="text-lg font-semibold text-white mb-4">Resolution Funnel</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-4">Resolution Funnel</h3>
         
         <div className="flex items-center justify-between">
           {[
@@ -232,7 +232,7 @@ const SupportAnalytics = () => {
                 className={`w-24 h-24 rounded-xl bg-gradient-to-br ${stage.color} flex items-center justify-center mb-2`}
                 style={{ transform: `scale(${1 - idx * 0.1})` }}
               >
-                <span className="text-2xl font-bold text-white">{stage.count}</span>
+                <span className="text-2xl font-bold text-foreground">{stage.count}</span>
               </div>
               <span className="text-xs text-muted-foreground text-center">{stage.stage}</span>
               {idx < 3 && (

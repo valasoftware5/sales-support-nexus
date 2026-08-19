@@ -147,7 +147,7 @@ const AutomationRules = () => {
       case 'set_sla': return 'bg-amber-500/20 text-amber-400';
       case 'notify': return 'bg-purple-500/20 text-purple-400';
       case 'send_ai_reply': return 'bg-emerald-500/20 text-emerald-400';
-      default: return 'bg-slate-500/20 text-muted-foreground';
+      default: return 'bg-muted/40 text-muted-foreground';
     }
   };
 
@@ -162,7 +162,7 @@ const AutomationRules = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Zap className="w-6 h-6 text-amber-400" />
             Automation Rules
           </h2>
@@ -176,21 +176,21 @@ const AutomationRules = () => {
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4">
-        <Card className="bg-slate-900/50 border-amber-500/20">
+        <Card className="bg-card/60 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Zap className="w-6 h-6 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{stats.total}</div>
             <div className="text-xs text-muted-foreground">Total Rules</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-emerald-500/20">
+        <Card className="bg-card/60 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <Play className="w-6 h-6 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{stats.active}</div>
             <div className="text-xs text-muted-foreground">Active</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <CheckCircle className="w-6 h-6 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{stats.triggered}</div>
@@ -211,8 +211,8 @@ const AutomationRules = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
             >
-              <Card className={`bg-slate-900/50 transition-all ${
-                rule.isActive ? 'border-amber-500/20' : 'border-slate-700/50 opacity-70'
+              <Card className={`bg-card/60 transition-all ${
+                rule.isActive ? 'border-amber-500/20' : 'border-border opacity-70'
               }`}>
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-3">
@@ -222,7 +222,7 @@ const AutomationRules = () => {
                         onCheckedChange={() => handleToggleRule(rule.id)}
                       />
                       <div>
-                        <h4 className="font-medium text-white">{rule.name}</h4>
+                        <h4 className="font-medium text-foreground">{rule.name}</h4>
                         <p className="text-xs text-muted-foreground">{rule.description}</p>
                       </div>
                     </div>
@@ -239,7 +239,7 @@ const AutomationRules = () => {
                           size="sm" 
                           variant="ghost"
                           onClick={() => setSelectedRule(isSelected ? null : rule.id)}
-                          className="text-muted-foreground hover:text-white"
+                          className="text-muted-foreground hover:text-foreground"
                         >
                           <Settings className="w-4 h-4" />
                         </Button>
@@ -255,7 +255,7 @@ const AutomationRules = () => {
                           size="sm" 
                           variant="ghost"
                           onClick={() => handleDuplicateRule(rule.id)}
-                          className="text-muted-foreground hover:text-white"
+                          className="text-muted-foreground hover:text-foreground"
                         >
                           <Copy className="w-4 h-4" />
                         </Button>
@@ -279,7 +279,7 @@ const AutomationRules = () => {
                         {rule.conditions.map((cond, idx) => {
                           const Icon = getConditionIcon(cond.field);
                           return (
-                            <Badge key={idx} variant="outline" className="text-slate-300 border-slate-600">
+                            <Badge key={idx} variant="outline" className="text-muted-foreground border-border">
                               <Icon className="w-3 h-3 mr-1" />
                               {cond.field} {cond.operator} {cond.value}
                             </Badge>
@@ -305,14 +305,14 @@ const AutomationRules = () => {
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
-                      className="mt-4 pt-4 border-t border-slate-800"
+                      className="mt-4 pt-4 border-t border-border"
                     >
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="p-3 rounded-lg bg-slate-800/50">
+                        <div className="p-3 rounded-lg bg-card/60">
                           <p className="text-xs text-muted-foreground mb-2">Conditions (IF)</p>
                           <div className="space-y-2">
                             {rule.conditions.map((cond, idx) => (
-                              <div key={idx} className="flex items-center gap-2 text-sm text-white">
+                              <div key={idx} className="flex items-center gap-2 text-sm text-foreground">
                                 <span className="text-teal-400">{cond.field}</span>
                                 <span className="text-muted-foreground">{cond.operator}</span>
                                 <span className="text-amber-400">"{cond.value}"</span>
@@ -320,13 +320,13 @@ const AutomationRules = () => {
                             ))}
                           </div>
                         </div>
-                        <div className="p-3 rounded-lg bg-slate-800/50">
+                        <div className="p-3 rounded-lg bg-card/60">
                           <p className="text-xs text-muted-foreground mb-2">Actions (THEN)</p>
                           <div className="space-y-2">
                             {rule.actions.map((action, idx) => (
-                              <div key={idx} className="flex items-center gap-2 text-sm text-white">
+                              <div key={idx} className="flex items-center gap-2 text-sm text-foreground">
                                 <Badge className={getActionColor(action.type)}>{action.type}</Badge>
-                                <span className="text-slate-300">{action.target}</span>
+                                <span className="text-muted-foreground">{action.target}</span>
                                 {action.value && <span className="text-teal-400">= {action.value}</span>}
                               </div>
                             ))}

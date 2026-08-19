@@ -81,13 +81,13 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
           animate={{ x: 0 }}
           exit={{ x: '100%' }}
           transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-          className="fixed right-0 top-0 bottom-0 w-[480px] bg-slate-900/95 backdrop-blur-xl border-l border-teal-500/20 z-50 shadow-2xl"
+          className="fixed right-0 top-0 bottom-0 w-[480px] bg-card/60 backdrop-blur-xl border-l border-teal-500/20 z-50 shadow-2xl"
         >
           <div className="h-full flex flex-col">
             {/* Header */}
-            <div className="p-6 border-b border-slate-700/50">
+            <div className="p-6 border-b border-border">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-white flex items-center gap-2">
+                <h2 className="text-xl font-semibold text-foreground flex items-center gap-2">
                   <User className="w-5 h-5 text-teal-400" />
                   Customer 360°
                 </h2>
@@ -97,11 +97,11 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white text-2xl font-bold">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-foreground text-2xl font-bold">
                   {customerData.name.charAt(0)}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-white">{customerData.name}</h3>
+                  <h3 className="text-lg font-semibold text-foreground">{customerData.name}</h3>
                   <p className="text-sm text-muted-foreground">{customerData.email}</p>
                   <div className="flex items-center gap-2 mt-2">
                     <Badge className="bg-teal-500/20 text-teal-300">{customerData.segment}</Badge>
@@ -115,27 +115,27 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
             </div>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-3 p-4 border-b border-slate-700/50">
-              <div className="text-center p-3 rounded-lg bg-slate-800/50">
+            <div className="grid grid-cols-3 gap-3 p-4 border-b border-border">
+              <div className="text-center p-3 rounded-lg bg-card/60">
                 <TrendingUp className="w-5 h-5 text-emerald-400 mx-auto mb-1" />
-                <div className="text-lg font-bold text-white">${(customerData.lifetimeValue / 1000).toFixed(0)}K</div>
+                <div className="text-lg font-bold text-foreground">${(customerData.lifetimeValue / 1000).toFixed(0)}K</div>
                 <div className="text-xs text-muted-foreground">LTV</div>
               </div>
-              <div className="text-center p-3 rounded-lg bg-slate-800/50">
+              <div className="text-center p-3 rounded-lg bg-card/60">
                 <Ticket className="w-5 h-5 text-cyan-400 mx-auto mb-1" />
-                <div className="text-lg font-bold text-white">{pastTickets.length}</div>
+                <div className="text-lg font-bold text-foreground">{pastTickets.length}</div>
                 <div className="text-xs text-muted-foreground">Total Tickets</div>
               </div>
-              <div className="text-center p-3 rounded-lg bg-slate-800/50">
+              <div className="text-center p-3 rounded-lg bg-card/60">
                 <Star className="w-5 h-5 text-amber-400 mx-auto mb-1" />
-                <div className="text-lg font-bold text-white">4.8</div>
+                <div className="text-lg font-bold text-foreground">4.8</div>
                 <div className="text-xs text-muted-foreground">Avg CSAT</div>
               </div>
             </div>
 
             {/* Tabs */}
             <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col">
-              <TabsList className="grid grid-cols-5 mx-4 mt-4 bg-slate-800/50">
+              <TabsList className="grid grid-cols-5 mx-4 mt-4 bg-card/60">
                 <TabsTrigger value="overview" className="text-xs">Overview</TabsTrigger>
                 <TabsTrigger value="tickets" className="text-xs">Tickets</TabsTrigger>
                 <TabsTrigger value="products" className="text-xs">Products</TabsTrigger>
@@ -146,34 +146,34 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
               <ScrollArea className="flex-1 p-4">
                 <TabsContent value="overview" className="mt-0 space-y-4">
                   {/* Contact Info */}
-                  <Card className="bg-slate-800/50 border-slate-700/50">
+                  <Card className="bg-card/60 border-border">
                     <CardHeader className="pb-2">
-                      <CardTitle className="text-sm text-slate-300">Contact Information</CardTitle>
+                      <CardTitle className="text-sm text-muted-foreground">Contact Information</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-2">
                       <div className="flex items-center gap-2 text-sm">
                         <Mail className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-slate-300">{customerData.email}</span>
+                        <span className="text-muted-foreground">{customerData.email}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm">
                         <Phone className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-slate-300">{customerData.phone}</span>
+                        <span className="text-muted-foreground">{customerData.phone}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm">
                         <Building className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-slate-300">{customerData.company}</span>
+                        <span className="text-muted-foreground">{customerData.company}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm">
                         <MapPin className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-slate-300">{customerData.location}</span>
+                        <span className="text-muted-foreground">{customerData.location}</span>
                       </div>
                     </CardContent>
                   </Card>
 
                   {/* Account Status */}
-                  <Card className="bg-slate-800/50 border-slate-700/50">
+                  <Card className="bg-card/60 border-border">
                     <CardHeader className="pb-2">
-                      <CardTitle className="text-sm text-slate-300">Account Status</CardTitle>
+                      <CardTitle className="text-sm text-muted-foreground">Account Status</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-2">
                       <div className="flex justify-between text-sm">
@@ -182,22 +182,22 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-muted-foreground">Customer Since</span>
-                        <span className="text-slate-300">{customerData.joinedDate}</span>
+                        <span className="text-muted-foreground">{customerData.joinedDate}</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-muted-foreground">Last Activity</span>
-                        <span className="text-slate-300">{customerData.lastActivity}</span>
+                        <span className="text-muted-foreground">{customerData.lastActivity}</span>
                       </div>
                     </CardContent>
                   </Card>
 
                   {/* Franchise/Reseller Link */}
-                  <Card className="bg-slate-800/50 border-slate-700/50">
+                  <Card className="bg-card/60 border-border">
                     <CardHeader className="pb-2">
-                      <CardTitle className="text-sm text-slate-300">Linked Accounts</CardTitle>
+                      <CardTitle className="text-sm text-muted-foreground">Linked Accounts</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <Button variant="outline" className="w-full justify-between border-slate-600 text-slate-300">
+                      <Button variant="outline" className="w-full justify-between border-border text-muted-foreground">
                         <span className="flex items-center gap-2">
                           <Building className="w-4 h-4" />
                           West Coast Franchise
@@ -210,15 +210,15 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
 
                 <TabsContent value="tickets" className="mt-0 space-y-3">
                   {pastTickets.map((ticket) => (
-                    <Card key={ticket.id} className="bg-slate-800/50 border-slate-700/50">
+                    <Card key={ticket.id} className="bg-card/60 border-border">
                       <CardContent className="p-4">
                         <div className="flex items-center justify-between mb-2">
                           <span className="font-mono text-teal-400 text-sm">{ticket.id}</span>
-                          <Badge className={ticket.status === 'resolved' ? 'bg-emerald-500/20 text-emerald-300' : 'bg-slate-500/20 text-slate-300'}>
+                          <Badge className={ticket.status === 'resolved' ? 'bg-emerald-500/20 text-emerald-300' : 'bg-muted/40 text-muted-foreground'}>
                             {ticket.status}
                           </Badge>
                         </div>
-                        <p className="text-sm text-slate-300 mb-2">{ticket.subject}</p>
+                        <p className="text-sm text-muted-foreground mb-2">{ticket.subject}</p>
                         <div className="flex items-center justify-between text-xs text-muted-foreground">
                           <span>{ticket.date}</span>
                           <div className="flex items-center gap-1">
@@ -233,10 +233,10 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
 
                 <TabsContent value="products" className="mt-0 space-y-3">
                   {products.map((product) => (
-                    <Card key={product.name} className="bg-slate-800/50 border-slate-700/50">
+                    <Card key={product.name} className="bg-card/60 border-border">
                       <CardContent className="p-4">
                         <div className="flex items-center justify-between mb-2">
-                          <span className="font-medium text-slate-200">{product.name}</span>
+                          <span className="font-medium text-foreground">{product.name}</span>
                           <Badge className={product.status === 'active' ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300'}>
                             {product.status}
                           </Badge>
@@ -245,7 +245,7 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
                           <span>Since: {product.since}</span>
                           <span>Usage: {product.usage}%</span>
                         </div>
-                        <div className="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                        <div className="w-full h-1.5 bg-muted/40 rounded-full overflow-hidden">
                           <div 
                             className="h-full bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full"
                             style={{ width: `${product.usage}%` }}
@@ -258,12 +258,12 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
 
                 <TabsContent value="payments" className="mt-0 space-y-3">
                   {paymentHistory.map((payment) => (
-                    <Card key={payment.id} className="bg-slate-800/50 border-slate-700/50">
+                    <Card key={payment.id} className="bg-card/60 border-border">
                       <CardContent className="p-4">
                         <div className="flex items-center justify-between">
                           <div>
                             <span className="font-mono text-muted-foreground text-sm">{payment.id}</span>
-                            <p className="text-lg font-semibold text-white">${payment.amount.toLocaleString()}</p>
+                            <p className="text-lg font-semibold text-foreground">${payment.amount.toLocaleString()}</p>
                             <span className="text-xs text-muted-foreground">{payment.date}</span>
                           </div>
                           <Badge className="bg-emerald-500/20 text-emerald-300">{payment.status}</Badge>
@@ -275,17 +275,17 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
 
                 <TabsContent value="notes" className="mt-0 space-y-3">
                   {internalNotes.map((note, idx) => (
-                    <Card key={idx} className="bg-slate-800/50 border-slate-700/50">
+                    <Card key={idx} className="bg-card/60 border-border">
                       <CardContent className="p-4">
                         <div className="flex items-center justify-between mb-2">
                           <span className="font-medium text-teal-400">{note.author}</span>
                           <span className="text-xs text-muted-foreground">{note.date}</span>
                         </div>
-                        <p className="text-sm text-slate-300">{note.note}</p>
+                        <p className="text-sm text-muted-foreground">{note.note}</p>
                       </CardContent>
                     </Card>
                   ))}
-                  <Button variant="outline" className="w-full border-dashed border-slate-600 text-muted-foreground">
+                  <Button variant="outline" className="w-full border-dashed border-border text-muted-foreground">
                     + Add Internal Note
                   </Button>
                 </TabsContent>
@@ -293,13 +293,13 @@ const Customer360Panel = ({ customerId, isOpen, onClose }: Customer360PanelProps
             </Tabs>
 
             {/* Footer Actions */}
-            <div className="p-4 border-t border-slate-700/50">
+            <div className="p-4 border-t border-border">
               <div className="flex gap-2">
                 <Button className="flex-1 bg-teal-500 hover:bg-teal-600">
                   <MessageCircle className="w-4 h-4 mr-2" />
                   Contact Customer
                 </Button>
-                <Button variant="outline" className="flex-1 border-slate-600">
+                <Button variant="outline" className="flex-1 border-border">
                   <FileText className="w-4 h-4 mr-2" />
                   View Full Profile
                 </Button>

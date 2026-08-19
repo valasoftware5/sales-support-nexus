@@ -154,7 +154,7 @@ export const CBLiveChatInbox: React.FC = () => {
                 >
                   <div className="flex items-start gap-3">
                     <Avatar className="w-10 h-10">
-                      <AvatarFallback className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white text-sm">
+                      <AvatarFallback className="bg-gradient-to-br from-blue-500 to-indigo-600 text-foreground text-sm">
                         {conv.userName.split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
@@ -171,7 +171,7 @@ export const CBLiveChatInbox: React.FC = () => {
                           {statusLabels[conv.status]}
                         </Badge>
                         {conv.unread > 0 && (
-                          <span className="w-5 h-5 bg-blue-600 rounded-full text-[10px] text-white flex items-center justify-center">
+                          <span className="w-5 h-5 bg-blue-600 rounded-full text-[10px] text-foreground flex items-center justify-center">
                             {conv.unread}
                           </span>
                         )}
@@ -190,7 +190,7 @@ export const CBLiveChatInbox: React.FC = () => {
           <div className="p-4 border-b border-border flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Avatar className="w-10 h-10">
-                <AvatarFallback className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
+                <AvatarFallback className="bg-gradient-to-br from-blue-500 to-indigo-600 text-foreground">
                   {selectedChat.userName.split(' ').map(n => n[0]).join('')}
                 </AvatarFallback>
               </Avatar>
@@ -217,7 +217,7 @@ export const CBLiveChatInbox: React.FC = () => {
                 >
                   <div className={`max-w-[80%] ${
                     msg.sender === 'user' 
-                      ? 'bg-blue-600 text-white rounded-2xl rounded-br-md' 
+                      ? 'bg-blue-600 text-foreground rounded-2xl rounded-br-md' 
                       : 'bg-surface-2 text-foreground rounded-2xl rounded-bl-md'
                   } px-4 py-2.5`}>
                     {msg.sender !== 'user' && (
@@ -258,7 +258,7 @@ export const CBLiveChatInbox: React.FC = () => {
           <div className="p-4 border-b border-border bg-gradient-to-br from-blue-50 to-indigo-50">
             <div className="text-center">
               <Avatar className="w-16 h-16 mx-auto mb-3">
-                <AvatarFallback className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white text-xl">
+                <AvatarFallback className="bg-gradient-to-br from-blue-500 to-indigo-600 text-foreground text-xl">
                   {userProfile.name.split(' ').map(n => n[0]).join('')}
                 </AvatarFallback>
               </Avatar>

@@ -37,7 +37,7 @@ const LeadInbox = () => {
       case "hot": return { icon: Flame, color: "bg-red-500/20 text-red-300 border-red-500/30", label: "HOT" };
       case "warm": return { icon: Sun, color: "bg-amber-500/20 text-amber-300 border-amber-500/30", label: "WARM" };
       case "cold": return { icon: Snowflake, color: "bg-blue-500/20 text-blue-300 border-blue-500/30", label: "COLD" };
-      default: return { icon: Sun, color: "bg-slate-500/20 text-slate-300", label: "NEW" };
+      default: return { icon: Sun, color: "bg-muted/40 text-muted-foreground", label: "NEW" };
     }
   };
 
@@ -68,28 +68,28 @@ const LeadInbox = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <Inbox className="w-8 h-8 text-cyan-400 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-cyan-100">{rows.length}</div>
             <div className="text-xs text-muted-foreground">Total Leads</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-emerald-500/20">
+        <Card className="bg-card/60 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <User className="w-8 h-8 text-emerald-400 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-emerald-100">{qualifiedCount}</div>
             <div className="text-xs text-muted-foreground">Qualified</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-amber-500/20">
+        <Card className="bg-card/60 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-amber-100">{avgWinProbability}%</div>
             <div className="text-xs text-muted-foreground">Avg Win Probability</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <Flame className="w-8 h-8 text-purple-400 mx-auto mb-2" aria-hidden="true" />
             <div className="text-2xl font-bold text-purple-100">{conversionRate}%</div>
@@ -98,7 +98,7 @@ const LeadInbox = () => {
         </Card>
       </div>
 
-      <Card className="bg-slate-900/50 border-cyan-500/20">
+      <Card className="bg-card/60 border-cyan-500/20">
         <CardHeader>
           <CardTitle className="text-cyan-100">Incoming Queue</CardTitle>
         </CardHeader>
@@ -106,7 +106,7 @@ const LeadInbox = () => {
           {isLoading ? (
             <div className="space-y-3" aria-busy="true">
               {[0, 1, 2, 3].map((i) => (
-                <Skeleton key={i} className="h-20 w-full bg-slate-800/60" />
+                <Skeleton key={i} className="h-20 w-full bg-card/60" />
               ))}
             </div>
           ) : error ? (
@@ -127,7 +127,7 @@ const LeadInbox = () => {
                     initial={reduceMotion ? false : { opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={reduceMotion ? { duration: 0 } : { delay: index * 0.05 }}
-                    className="flex flex-wrap items-center justify-between gap-3 p-4 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition-colors"
+                    className="flex flex-wrap items-center justify-between gap-3 p-4 bg-card/60 rounded-lg hover:bg-card/60 transition-colors"
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
@@ -191,7 +191,7 @@ const LeadInbox = () => {
                       <Button
                         size="sm"
                         aria-label={`Advance ${lead.company} to the next pipeline stage`}
-                        className="bg-cyan-500 hover:bg-cyan-600 text-white min-h-11 min-w-11"
+                        className="bg-cyan-500 hover:bg-cyan-600 text-foreground min-h-11 min-w-11"
                         disabled={updateLead.isPending}
                         onClick={() => advanceStage(lead.id, lead.stage)}
                       >

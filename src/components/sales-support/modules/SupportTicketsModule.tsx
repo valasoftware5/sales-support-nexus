@@ -99,7 +99,7 @@ const SupportTicketsModule = () => {
       case "critical": return "bg-red-500/20 text-red-300 border-red-500/30";
       case "high": return "bg-amber-500/20 text-amber-300 border-amber-500/30";
       case "medium": return "bg-blue-500/20 text-blue-300 border-blue-500/30";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -108,10 +108,10 @@ const SupportTicketsModule = () => {
       case "new": return "bg-purple-500/20 text-purple-300";
       case "assigned": return "bg-blue-500/20 text-blue-300";
       case "in_progress": return "bg-amber-500/20 text-amber-300";
-      case "waiting": return "bg-slate-500/20 text-slate-300";
+      case "waiting": return "bg-muted/40 text-muted-foreground";
       case "resolved": return "bg-emerald-500/20 text-emerald-300";
-      case "closed": return "bg-slate-500/20 text-muted-foreground";
-      default: return "bg-slate-500/20 text-slate-300";
+      case "closed": return "bg-muted/40 text-muted-foreground";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -126,35 +126,35 @@ const SupportTicketsModule = () => {
           <h2 className="text-2xl font-bold text-cyan-100">Support Tickets</h2>
           <p className="text-muted-foreground">Manage ticket lifecycle with SLA tracking</p>
         </div>
-        <Button onClick={handleCreateTicket} className="bg-cyan-500 hover:bg-cyan-600 text-white">
+        <Button onClick={handleCreateTicket} className="bg-cyan-500 hover:bg-cyan-600 text-foreground">
           <Plus className="w-4 h-4 mr-2" />
           Create Ticket
         </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <Ticket className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{openTickets.length}</div>
             <div className="text-xs text-muted-foreground">Open Tickets</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-red-500/20">
+        <Card className="bg-card/60 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{criticalCount}</div>
             <div className="text-xs text-muted-foreground">Critical</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-amber-500/20">
+        <Card className="bg-card/60 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{slaBreach}</div>
             <div className="text-xs text-muted-foreground">SLA Risk</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-emerald-500/20">
+        <Card className="bg-card/60 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <CheckCircle className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{tickets.filter((t) => t.status === "resolved").length}</div>
@@ -163,7 +163,7 @@ const SupportTicketsModule = () => {
         </Card>
       </div>
 
-      <Card className="bg-slate-900/50 border-cyan-500/20">
+      <Card className="bg-card/60 border-cyan-500/20">
         <CardHeader>
           <CardTitle className="text-cyan-100">Ticket Queue</CardTitle>
         </CardHeader>
@@ -180,7 +180,7 @@ const SupportTicketsModule = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="p-4 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition-colors"
+                  className="p-4 bg-card/60 rounded-lg hover:bg-card/60 transition-colors"
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
@@ -199,14 +199,14 @@ const SupportTicketsModule = () => {
 
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="font-medium text-slate-100">{ticket.subject}</h4>
+                      <h4 className="font-medium text-foreground">{ticket.subject}</h4>
                       <p className="text-sm text-muted-foreground">{ticket.customer_name} • {relativeTime(ticket.created_at)} • {memberName(agents, ticket.assigned_to) || "Unassigned"}</p>
                     </div>
 
                     <div className="flex items-center gap-2">
                       {ticket.status === "new" && (
                         <Select onValueChange={(agent) => handleAssign(ticket.id, agent)}>
-                          <SelectTrigger className="w-36 bg-slate-700/50 border-slate-600">
+                          <SelectTrigger className="w-36 bg-muted/40 border-border">
                             <SelectValue placeholder="Assign to..." />
                           </SelectTrigger>
                           <SelectContent>
@@ -219,7 +219,7 @@ const SupportTicketsModule = () => {
 
                       {ticket.assigned_to && ticket.status !== "resolved" && (
                         <Select onValueChange={(agent) => handleReassign(ticket.id, agent)}>
-                          <SelectTrigger className="w-36 bg-slate-700/50 border-slate-600">
+                          <SelectTrigger className="w-36 bg-muted/40 border-border">
                             <SelectValue placeholder="Reassign..." />
                           </SelectTrigger>
                           <SelectContent>

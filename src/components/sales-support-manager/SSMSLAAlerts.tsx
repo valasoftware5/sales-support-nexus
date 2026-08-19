@@ -79,7 +79,7 @@ export const SSMSLAAlerts: React.FC = () => {
           </CardTitle>
           <div className="flex items-center gap-2">
             {breachCount > 0 && (
-              <Badge className="bg-red-500 text-white animate-pulse">
+              <Badge className="bg-red-500 text-foreground animate-pulse">
                 {breachCount} BREACHED
               </Badge>
             )}
@@ -114,7 +114,7 @@ export const SSMSLAAlerts: React.FC = () => {
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <Badge className={
-                        severity === 'critical' ? 'bg-red-500 text-white' :
+                        severity === 'critical' ? 'bg-red-500 text-foreground' :
                         severity === 'high' ? 'bg-orange-500/10 text-orange-500' :
                         'bg-yellow-500/10 text-yellow-500'
                       }>

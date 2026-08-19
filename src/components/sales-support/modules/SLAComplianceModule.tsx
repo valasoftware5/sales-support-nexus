@@ -38,7 +38,7 @@ const SLAComplianceModule = () => {
       case "critical": return "bg-red-500/20 text-red-300";
       case "high": return "bg-amber-500/20 text-amber-300";
       case "medium": return "bg-blue-500/20 text-blue-300";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -75,7 +75,7 @@ const SLAComplianceModule = () => {
           <h2 className="text-2xl font-bold text-cyan-100">SLA & Compliance</h2>
           <p className="text-muted-foreground">Live SLA compliance derived from ticket data</p>
         </div>
-        <Button onClick={handleGenerateReport} className="bg-cyan-500 hover:bg-cyan-600 text-white">
+        <Button onClick={handleGenerateReport} className="bg-cyan-500 hover:bg-cyan-600 text-foreground">
           <FileText className="w-4 h-4 mr-2" />
           Generate Report
         </Button>
@@ -83,28 +83,28 @@ const SLAComplianceModule = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-emerald-500/20">
+        <Card className="bg-card/60 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <TrendingUp className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className={`text-2xl font-bold ${getComplianceColor(overallCompliance)}`}>{overallCompliance}%</div>
             <div className="text-xs text-muted-foreground">Overall Compliance</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <Shield className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{atRisk.length}</div>
             <div className="text-xs text-muted-foreground">At-Risk Tickets</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-red-500/20">
+        <Card className="bg-card/60 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{totalBreaches}</div>
             <div className="text-xs text-muted-foreground">Total Breaches</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{tickets.length}</div>
@@ -114,7 +114,7 @@ const SLAComplianceModule = () => {
       </div>
 
       {/* SLA Rules List (derived per priority) */}
-      <Card className="bg-slate-900/50 border-cyan-500/20">
+      <Card className="bg-card/60 border-cyan-500/20">
         <CardHeader>
           <CardTitle className="text-cyan-100">SLA Compliance by Priority</CardTitle>
         </CardHeader>
@@ -127,11 +127,11 @@ const SLAComplianceModule = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="p-4 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition-colors"
+                className="p-4 bg-card/60 rounded-lg hover:bg-card/60 transition-colors"
               >
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-3">
-                    <span className="font-medium text-slate-100 capitalize">{rule.priority} Priority</span>
+                    <span className="font-medium text-foreground capitalize">{rule.priority} Priority</span>
                     <Badge className={getPriorityColor(rule.priority)}>{rule.priority}</Badge>
                   </div>
                 </div>
@@ -143,7 +143,7 @@ const SLAComplianceModule = () => {
                   </div>
                   <div>
                     <span className="text-muted-foreground">Breaches / Total</span>
-                    <div className="text-slate-300">{rule.breaches} / {rule.total}</div>
+                    <div className="text-muted-foreground">{rule.breaches} / {rule.total}</div>
                   </div>
                 </div>
 
@@ -157,7 +157,7 @@ const SLAComplianceModule = () => {
       </Card>
 
       {/* At-Risk Tickets */}
-      <Card className="bg-slate-900/50 border-amber-500/20">
+      <Card className="bg-card/60 border-amber-500/20">
         <CardHeader>
           <CardTitle className="text-cyan-100">At-Risk Tickets</CardTitle>
         </CardHeader>
@@ -165,10 +165,10 @@ const SLAComplianceModule = () => {
           <div className="space-y-2">
             {atRisk.length === 0 && <p className="text-muted-foreground text-sm">No tickets currently at risk.</p>}
             {atRisk.map((t) => (
-              <div key={t.id} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg text-sm">
+              <div key={t.id} className="flex items-center justify-between p-3 bg-card/60 rounded-lg text-sm">
                 <div>
                   <span className="font-mono text-cyan-400">{t.reference}</span>
-                  <span className="text-slate-300 ml-2">{t.subject}</span>
+                  <span className="text-muted-foreground ml-2">{t.subject}</span>
                   <span className="text-muted-foreground ml-2">• {t.customer_name}</span>
                 </div>
                 <Badge className="bg-red-500/20 text-red-300">{t.sla_minutes_remaining} min left</Badge>

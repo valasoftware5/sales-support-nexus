@@ -123,7 +123,7 @@ const SupportStaffSection: React.FC = () => {
                 <h4 className="font-medium text-sm truncate">{member.name}</h4>
                 <p className="text-xs text-muted-foreground truncate">{member.role}</p>
                 <div className="flex items-center justify-center gap-1 mt-2">
-                  <span className={`w-2 h-2 rounded-full ${member.isOnline ? 'bg-green-500' : 'bg-gray-400'}`} />
+                  <span className={`w-2 h-2 rounded-full ${member.isOnline ? 'bg-green-500' : 'bg-muted/40'}`} />
                   <span className="text-[10px] text-muted-foreground">
                     {member.isOnline ? 'Online' : 'Away'}
                   </span>

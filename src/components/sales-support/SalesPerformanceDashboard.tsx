@@ -97,19 +97,19 @@ const SalesPerformanceDashboard = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className={`bg-slate-900/50 border-${metric.color}-500/20`}>
+              <Card className={`bg-card/60 border-${metric.color}-500/20`}>
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-2">
                     <Icon className={`w-5 h-5 text-${metric.color}-400`} />
-                    <Badge className={percentage >= 100 ? "bg-emerald-500/20 text-emerald-300" : "bg-slate-700 text-slate-300"}>
+                    <Badge className={percentage >= 100 ? "bg-emerald-500/20 text-emerald-300" : "bg-muted/40 text-muted-foreground"}>
                       {percentage >= 100 ? "Target Met" : `${Math.round(percentage)}%`}
                     </Badge>
                   </div>
-                  <div className="text-2xl font-bold text-slate-100">
+                  <div className="text-2xl font-bold text-foreground">
                     {metric.unit === "$" ? `$${metric.value.toLocaleString()}` : `${metric.value}${metric.unit}`}
                   </div>
                   <div className="text-xs text-muted-foreground">{metric.label}</div>
-                  <Progress value={Math.min(percentage, 100)} className="h-1.5 mt-2 bg-slate-800" />
+                  <Progress value={Math.min(percentage, 100)} className="h-1.5 mt-2 bg-card/60" />
                   <div className="text-xs text-muted-foreground mt-1">
                     Target: {metric.unit === "$" ? `$${metric.target.toLocaleString()}` : `${metric.target}${metric.unit}`}
                   </div>
@@ -121,7 +121,7 @@ const SalesPerformanceDashboard = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardHeader>
             <CardTitle className="text-cyan-100 flex items-center gap-2">
               <BarChart3 className="w-5 h-5 text-cyan-400" />
@@ -140,14 +140,14 @@ const SalesPerformanceDashboard = () => {
                 >
                   <span className="w-10 text-muted-foreground text-sm">{day.day}</span>
                   <div className="flex-1 flex gap-2">
-                    <div className="flex-1 bg-slate-800 rounded-full h-6 overflow-hidden">
+                    <div className="flex-1 bg-card/60 rounded-full h-6 overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${(day.conversions / maxConversions) * 100}%` }}
                         transition={{ delay: index * 0.1, duration: 0.5 }}
                         className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-end pr-2"
                       >
-                        <span className="text-xs text-white font-medium">{day.conversions}</span>
+                        <span className="text-xs text-foreground font-medium">{day.conversions}</span>
                       </motion.div>
                     </div>
                   </div>
@@ -161,7 +161,7 @@ const SalesPerformanceDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardHeader>
             <CardTitle className="text-cyan-100 flex items-center gap-2">
               <Users className="w-5 h-5 text-cyan-400" />
@@ -178,15 +178,15 @@ const SalesPerformanceDashboard = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   className={`flex items-center justify-between p-3 rounded-lg ${
-                    member.rank === 1 ? "bg-cyan-500/20 border border-cyan-500/30" : "bg-slate-800/50"
+                    member.rank === 1 ? "bg-cyan-500/20 border border-cyan-500/30" : "bg-card/60"
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
-                      member.rank === 1 ? "bg-amber-500 text-white" :
-                      member.rank === 2 ? "bg-slate-400 text-white" :
-                      member.rank === 3 ? "bg-amber-700 text-white" :
-                      "bg-slate-700 text-slate-300"
+                      member.rank === 1 ? "bg-amber-500 text-foreground" :
+                      member.rank === 2 ? "bg-muted/40 text-foreground" :
+                      member.rank === 3 ? "bg-amber-700 text-foreground" :
+                      "bg-muted/40 text-muted-foreground"
                     }`}>
                       {member.rank}
                     </div>
@@ -194,7 +194,7 @@ const SalesPerformanceDashboard = () => {
                       {member.avatar}
                     </div>
                     <div>
-                      <span className="font-medium text-slate-200">
+                      <span className="font-medium text-foreground">
                         {member.name}
                       </span>
                     </div>

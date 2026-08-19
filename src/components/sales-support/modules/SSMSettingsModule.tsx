@@ -62,11 +62,11 @@ const SSMSettingsModule = () => {
           <p className="text-muted-foreground">Configure notifications, SLA, working hours, and escalation rules</p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" onClick={handleReset} className="border-slate-600">
+          <Button variant="outline" onClick={handleReset} className="border-border">
             <RefreshCw className="w-4 h-4 mr-2" />
             Reset
           </Button>
-          <Button onClick={handleSave} className="bg-cyan-500 hover:bg-cyan-600 text-white">
+          <Button onClick={handleSave} className="bg-cyan-500 hover:bg-cyan-600 text-foreground">
             <Save className="w-4 h-4 mr-2" />
             Save Changes
           </Button>
@@ -75,7 +75,7 @@ const SSMSettingsModule = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Notification Settings */}
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardHeader>
             <CardTitle className="text-cyan-100 flex items-center gap-2">
               <Bell className="w-5 h-5 text-cyan-400" />
@@ -84,31 +84,31 @@ const SSMSettingsModule = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
-              <Label className="text-slate-300">Email Notifications</Label>
+              <Label className="text-muted-foreground">Email Notifications</Label>
               <Switch checked={settings.emailNotifications} onCheckedChange={(v) => updateSetting("emailNotifications", v)} />
             </div>
             <div className="flex items-center justify-between">
-              <Label className="text-slate-300">Push Notifications</Label>
+              <Label className="text-muted-foreground">Push Notifications</Label>
               <Switch checked={settings.pushNotifications} onCheckedChange={(v) => updateSetting("pushNotifications", v)} />
             </div>
-            <Separator className="bg-slate-700" />
+            <Separator className="bg-muted/40" />
             <div className="flex items-center justify-between">
-              <Label className="text-slate-300">SLA Breach Alerts</Label>
+              <Label className="text-muted-foreground">SLA Breach Alerts</Label>
               <Switch checked={settings.slaBreachAlerts} onCheckedChange={(v) => updateSetting("slaBreachAlerts", v)} />
             </div>
             <div className="flex items-center justify-between">
-              <Label className="text-slate-300">Escalation Alerts</Label>
+              <Label className="text-muted-foreground">Escalation Alerts</Label>
               <Switch checked={settings.escalationAlerts} onCheckedChange={(v) => updateSetting("escalationAlerts", v)} />
             </div>
             <div className="flex items-center justify-between">
-              <Label className="text-slate-300">Daily Digest Email</Label>
+              <Label className="text-muted-foreground">Daily Digest Email</Label>
               <Switch checked={settings.dailyDigest} onCheckedChange={(v) => updateSetting("dailyDigest", v)} />
             </div>
           </CardContent>
         </Card>
 
         {/* Working Hours */}
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardHeader>
             <CardTitle className="text-cyan-100 flex items-center gap-2">
               <Clock className="w-5 h-5 text-cyan-400" />
@@ -118,28 +118,28 @@ const SSMSettingsModule = () => {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label className="text-slate-300 mb-2 block">Start Time</Label>
+                <Label className="text-muted-foreground mb-2 block">Start Time</Label>
                 <Input 
                   type="time" 
                   value={settings.workStartHour} 
                   onChange={(e) => updateSetting("workStartHour", e.target.value)}
-                  className="bg-slate-800/50 border-slate-600"
+                  className="bg-card/60 border-border"
                 />
               </div>
               <div>
-                <Label className="text-slate-300 mb-2 block">End Time</Label>
+                <Label className="text-muted-foreground mb-2 block">End Time</Label>
                 <Input 
                   type="time" 
                   value={settings.workEndHour} 
                   onChange={(e) => updateSetting("workEndHour", e.target.value)}
-                  className="bg-slate-800/50 border-slate-600"
+                  className="bg-card/60 border-border"
                 />
               </div>
             </div>
             <div>
-              <Label className="text-slate-300 mb-2 block">Timezone</Label>
+              <Label className="text-muted-foreground mb-2 block">Timezone</Label>
               <Select value={settings.timezone} onValueChange={(v) => updateSetting("timezone", v)}>
-                <SelectTrigger className="bg-slate-800/50 border-slate-600">
+                <SelectTrigger className="bg-card/60 border-border">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -152,12 +152,12 @@ const SSMSettingsModule = () => {
               </Select>
             </div>
             <div>
-              <Label className="text-slate-300 mb-2 block">Working Days</Label>
+              <Label className="text-muted-foreground mb-2 block">Working Days</Label>
               <div className="flex gap-2">
                 {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(day => (
                   <Badge 
                     key={day}
-                    className={`cursor-pointer ${settings.workDays.includes(day) ? "bg-cyan-500/20 text-cyan-300" : "bg-slate-700 text-muted-foreground"}`}
+                    className={`cursor-pointer ${settings.workDays.includes(day) ? "bg-cyan-500/20 text-cyan-300" : "bg-muted/40 text-muted-foreground"}`}
                     onClick={() => {
                       const newDays = settings.workDays.includes(day) 
                         ? settings.workDays.filter(d => d !== day)
@@ -174,7 +174,7 @@ const SSMSettingsModule = () => {
         </Card>
 
         {/* SLA Configs */}
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardHeader>
             <CardTitle className="text-cyan-100 flex items-center gap-2">
               <Shield className="w-5 h-5 text-cyan-400" />
@@ -183,35 +183,35 @@ const SSMSettingsModule = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label className="text-slate-300 mb-2 block">Default Response Time (minutes)</Label>
+              <Label className="text-muted-foreground mb-2 block">Default Response Time (minutes)</Label>
               <Input 
                 type="number" 
                 value={settings.defaultResponseTime} 
                 onChange={(e) => updateSetting("defaultResponseTime", parseInt(e.target.value))}
-                className="bg-slate-800/50 border-slate-600"
+                className="bg-card/60 border-border"
               />
             </div>
             <div>
-              <Label className="text-slate-300 mb-2 block">Critical Response Time (minutes)</Label>
+              <Label className="text-muted-foreground mb-2 block">Critical Response Time (minutes)</Label>
               <Input 
                 type="number" 
                 value={settings.criticalResponseTime} 
                 onChange={(e) => updateSetting("criticalResponseTime", parseInt(e.target.value))}
-                className="bg-slate-800/50 border-slate-600"
+                className="bg-card/60 border-border"
               />
             </div>
-            <Separator className="bg-slate-700" />
+            <Separator className="bg-muted/40" />
             <div className="flex items-center justify-between">
-              <Label className="text-slate-300">Auto-Escalation</Label>
+              <Label className="text-muted-foreground">Auto-Escalation</Label>
               <Switch checked={settings.autoEscalationEnabled} onCheckedChange={(v) => updateSetting("autoEscalationEnabled", v)} />
             </div>
             <div>
-              <Label className="text-slate-300 mb-2 block">Auto-Escalation Threshold (minutes)</Label>
+              <Label className="text-muted-foreground mb-2 block">Auto-Escalation Threshold (minutes)</Label>
               <Input 
                 type="number" 
                 value={settings.autoEscalationThreshold} 
                 onChange={(e) => updateSetting("autoEscalationThreshold", parseInt(e.target.value))}
-                className="bg-slate-800/50 border-slate-600"
+                className="bg-card/60 border-border"
                 disabled={!settings.autoEscalationEnabled}
               />
             </div>
@@ -219,7 +219,7 @@ const SSMSettingsModule = () => {
         </Card>
 
         {/* Escalation Rules */}
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardHeader>
             <CardTitle className="text-cyan-100 flex items-center gap-2">
               <AlertTriangle className="w-5 h-5 text-cyan-400" />
@@ -228,35 +228,35 @@ const SSMSettingsModule = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label className="text-slate-300 mb-2 block">Level 1 → 2 Timeout (minutes)</Label>
+              <Label className="text-muted-foreground mb-2 block">Level 1 → 2 Timeout (minutes)</Label>
               <Input 
                 type="number" 
                 value={settings.level1Timeout} 
                 onChange={(e) => updateSetting("level1Timeout", parseInt(e.target.value))}
-                className="bg-slate-800/50 border-slate-600"
+                className="bg-card/60 border-border"
               />
             </div>
             <div>
-              <Label className="text-slate-300 mb-2 block">Level 2 → 3 Timeout (minutes)</Label>
+              <Label className="text-muted-foreground mb-2 block">Level 2 → 3 Timeout (minutes)</Label>
               <Input 
                 type="number" 
                 value={settings.level2Timeout} 
                 onChange={(e) => updateSetting("level2Timeout", parseInt(e.target.value))}
-                className="bg-slate-800/50 border-slate-600"
+                className="bg-card/60 border-border"
               />
             </div>
             <div>
-              <Label className="text-slate-300 mb-2 block">Level 3 Alert Timeout (minutes)</Label>
+              <Label className="text-muted-foreground mb-2 block">Level 3 Alert Timeout (minutes)</Label>
               <Input 
                 type="number" 
                 value={settings.level3Timeout} 
                 onChange={(e) => updateSetting("level3Timeout", parseInt(e.target.value))}
-                className="bg-slate-800/50 border-slate-600"
+                className="bg-card/60 border-border"
               />
             </div>
-            <Separator className="bg-slate-700" />
+            <Separator className="bg-muted/40" />
             <div className="flex items-center justify-between">
-              <Label className="text-slate-300">Manager Override Enabled</Label>
+              <Label className="text-muted-foreground">Manager Override Enabled</Label>
               <Switch checked={settings.managerOverrideEnabled} onCheckedChange={(v) => updateSetting("managerOverrideEnabled", v)} />
             </div>
           </CardContent>

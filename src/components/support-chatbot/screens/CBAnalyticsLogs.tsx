@@ -134,7 +134,7 @@ export const CBAnalyticsLogs: React.FC = () => {
                       <div key={log.id} className="p-4 hover:bg-surface transition-colors">
                         <div className="flex items-start justify-between">
                           <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-medium text-sm">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-foreground font-medium text-sm">
                               {(session?.visitor_name ?? 'NA').split(' ').map((n) => n[0]).join('').slice(0, 2)}
                             </div>
                             <div>

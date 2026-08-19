@@ -91,7 +91,7 @@ const CRMCustomersModule = () => {
       case "active": return "bg-emerald-500/20 text-emerald-300";
       case "at_risk": return "bg-amber-500/20 text-amber-300";
       case "churned": return "bg-red-500/20 text-red-300";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -122,33 +122,33 @@ const CRMCustomersModule = () => {
           placeholder="Search customers..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-64 bg-slate-800/50 border-slate-600"
+          className="w-64 bg-card/60 border-border"
         />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <Users className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{customers.length}</div>
             <div className="text-xs text-muted-foreground">Total Customers</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-emerald-500/20">
+        <Card className="bg-card/60 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <Star className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{activeCustomers}</div>
             <div className="text-xs text-muted-foreground">Active</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-amber-500/20">
+        <Card className="bg-card/60 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <DollarSign className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">${(totalRevenue / 1000).toFixed(0)}K</div>
             <div className="text-xs text-muted-foreground">Total Revenue</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-red-500/20">
+        <Card className="bg-card/60 border-red-500/20">
           <CardContent className="p-4 text-center">
             <History className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{atRiskCount}</div>
@@ -157,7 +157,7 @@ const CRMCustomersModule = () => {
         </Card>
       </div>
 
-      <Card className="bg-slate-900/50 border-cyan-500/20">
+      <Card className="bg-card/60 border-cyan-500/20">
         <CardHeader>
           <CardTitle className="text-cyan-100">Customer Directory</CardTitle>
         </CardHeader>
@@ -174,7 +174,7 @@ const CRMCustomersModule = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="p-4 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition-colors"
+                  className="p-4 bg-card/60 rounded-lg hover:bg-card/60 transition-colors"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
@@ -184,7 +184,7 @@ const CRMCustomersModule = () => {
                       <div>
                         <div className="flex items-center gap-2">
                           <span className="font-mono text-cyan-400 text-sm">{customer.id.slice(0, 8)}</span>
-                          <span className="font-medium text-slate-100">{customer.company_name}</span>
+                          <span className="font-medium text-foreground">{customer.company_name}</span>
                           <Badge className={getStatusColor(customer.status)}>{customer.status.replace('_', ' ')}</Badge>
                           <Badge variant="outline" className="text-muted-foreground">{customer.industry ?? "—"}</Badge>
                         </div>
@@ -205,7 +205,7 @@ const CRMCustomersModule = () => {
                       <Button size="sm" variant="ghost" onClick={() => handleEmail(customer.email)} className="text-cyan-400">
                         <Mail className="w-4 h-4" />
                       </Button>
-                      <Button size="sm" variant="outline" onClick={() => handleEditProfile(customer.id)} className="border-slate-600 text-slate-300">
+                      <Button size="sm" variant="outline" onClick={() => handleEditProfile(customer.id)} className="border-border text-muted-foreground">
                         <Edit className="w-3 h-3 mr-1" />
                         Edit
                       </Button>
@@ -228,7 +228,7 @@ const CRMCustomersModule = () => {
 
       {/* Edit Profile Drawer */}
       <Sheet open={editDrawerOpen} onOpenChange={setEditDrawerOpen}>
-        <SheetContent className="bg-slate-900 border-slate-700">
+        <SheetContent className="bg-card/60 border-border">
           <SheetHeader>
             <SheetTitle className="text-cyan-100">Edit Customer Profile</SheetTitle>
             <SheetDescription className="text-muted-foreground">
@@ -238,42 +238,42 @@ const CRMCustomersModule = () => {
           {selectedCustomer && (
             <div className="space-y-4 mt-6">
               <div className="space-y-2">
-                <Label className="text-slate-300">Company Name</Label>
+                <Label className="text-muted-foreground">Company Name</Label>
                 <Input
                   value={selectedCustomer.company_name}
                   onChange={(e) => setSelectedCustomer({ ...selectedCustomer, company_name: e.target.value })}
-                  className="bg-slate-800 border-slate-600"
+                  className="bg-card/60 border-border"
                 />
               </div>
               <div className="space-y-2">
-                <Label className="text-slate-300">Contact Person</Label>
+                <Label className="text-muted-foreground">Contact Person</Label>
                 <Input
                   value={selectedCustomer.contact_name}
                   onChange={(e) => setSelectedCustomer({ ...selectedCustomer, contact_name: e.target.value })}
-                  className="bg-slate-800 border-slate-600"
+                  className="bg-card/60 border-border"
                 />
               </div>
               <div className="space-y-2">
-                <Label className="text-slate-300">Email</Label>
+                <Label className="text-muted-foreground">Email</Label>
                 <Input
                   value={selectedCustomer.email}
                   onChange={(e) => setSelectedCustomer({ ...selectedCustomer, email: e.target.value })}
-                  className="bg-slate-800 border-slate-600"
+                  className="bg-card/60 border-border"
                 />
               </div>
               <div className="space-y-2">
-                <Label className="text-slate-300">Phone</Label>
+                <Label className="text-muted-foreground">Phone</Label>
                 <Input
                   value={selectedCustomer.phone ?? ""}
                   onChange={(e) => setSelectedCustomer({ ...selectedCustomer, phone: e.target.value })}
-                  className="bg-slate-800 border-slate-600"
+                  className="bg-card/60 border-border"
                 />
               </div>
               <div className="flex gap-2 pt-4">
                 <Button onClick={handleSaveProfile} className="flex-1 bg-cyan-500 hover:bg-cyan-600">
                   Save Changes
                 </Button>
-                <Button variant="outline" onClick={() => setEditDrawerOpen(false)} className="border-slate-600">
+                <Button variant="outline" onClick={() => setEditDrawerOpen(false)} className="border-border">
                   Cancel
                 </Button>
               </div>
@@ -284,7 +284,7 @@ const CRMCustomersModule = () => {
 
       {/* History Drawer */}
       <Sheet open={historyDrawerOpen} onOpenChange={setHistoryDrawerOpen}>
-        <SheetContent className="bg-slate-900 border-slate-700">
+        <SheetContent className="bg-card/60 border-border">
           <SheetHeader>
             <SheetTitle className="text-cyan-100">Customer History</SheetTitle>
             <SheetDescription className="text-muted-foreground">
@@ -294,22 +294,22 @@ const CRMCustomersModule = () => {
           {selectedCustomer && (
             <ScrollArea className="h-[calc(100vh-150px)] mt-6">
               <div className="space-y-4">
-                <Card className="bg-slate-800/50 border-slate-700">
+                <Card className="bg-card/60 border-border">
                   <CardContent className="p-4">
                     <h4 className="text-cyan-300 font-medium mb-2">Summary</h4>
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       <div className="text-muted-foreground">Total Purchases:</div>
-                      <div className="text-slate-100">{currency(selectedCustomer.lifetime_value)}</div>
+                      <div className="text-foreground">{currency(selectedCustomer.lifetime_value)}</div>
                       <div className="text-muted-foreground">Support Tickets:</div>
-                      <div className="text-slate-100">{selectedCustomer.open_tickets}</div>
+                      <div className="text-foreground">{selectedCustomer.open_tickets}</div>
                       <div className="text-muted-foreground">Support Score:</div>
-                      <div className="text-slate-100">{selectedCustomer.health_score}%</div>
+                      <div className="text-foreground">{selectedCustomer.health_score}%</div>
                       <div className="text-muted-foreground">Last Contact:</div>
-                      <div className="text-slate-100">{relativeTime(selectedCustomer.last_contact_at)}</div>
+                      <div className="text-foreground">{relativeTime(selectedCustomer.last_contact_at)}</div>
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="bg-slate-800/50 border-slate-700">
+                <Card className="bg-card/60 border-border">
                   <CardContent className="p-4">
                     <h4 className="text-cyan-300 font-medium mb-2">Recent Activity</h4>
                     <div className="space-y-2 text-sm text-muted-foreground">

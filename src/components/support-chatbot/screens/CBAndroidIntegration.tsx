@@ -214,12 +214,12 @@ export const CBAndroidIntegration: React.FC = () => {
           </CardHeader>
           <CardContent>
             <div className="flex justify-center">
-              <div className="relative w-64 h-[480px] bg-surface-2 rounded-[2.5rem] border-4 border-slate-800 overflow-hidden shadow-xl">
+              <div className="relative w-64 h-[480px] bg-surface-2 rounded-[2.5rem] border-4 border-border overflow-hidden shadow-xl">
                 {/* Phone screen */}
                 <div className="absolute inset-2 bg-card rounded-[2rem] overflow-hidden">
                   {/* Status bar */}
-                  <div className="h-6 bg-slate-800 flex items-center justify-center">
-                    <div className="w-16 h-1 bg-slate-600 rounded-full"></div>
+                  <div className="h-6 bg-card/60 flex items-center justify-center">
+                    <div className="w-16 h-1 bg-muted/40 rounded-full"></div>
                   </div>
                   
                   {/* App content */}
@@ -238,7 +238,7 @@ export const CBAndroidIntegration: React.FC = () => {
                       'top-12 right-4'
                     }`}>
                       <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center shadow-lg animate-bounce">
-                        <MessageCircle className="w-6 h-6 text-white" />
+                        <MessageCircle className="w-6 h-6 text-foreground" />
                       </div>
                     </div>
                   )}

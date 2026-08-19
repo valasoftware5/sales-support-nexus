@@ -111,7 +111,7 @@ const OmniChannelInbox = () => {
       case 'chat': return 'text-emerald-400 bg-emerald-500/20';
       case 'call': return 'text-amber-400 bg-amber-500/20';
       case 'ticket': return 'text-purple-400 bg-purple-500/20';
-      default: return 'text-muted-foreground bg-slate-500/20';
+      default: return 'text-muted-foreground bg-muted/40';
     }
   };
 
@@ -119,7 +119,7 @@ const OmniChannelInbox = () => {
     switch (priority) {
       case 'high': return 'bg-red-500/20 text-red-300';
       case 'medium': return 'bg-amber-500/20 text-amber-300';
-      default: return 'bg-slate-500/20 text-slate-300';
+      default: return 'bg-muted/40 text-muted-foreground';
     }
   };
 
@@ -164,7 +164,7 @@ const OmniChannelInbox = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-semibold text-foreground flex items-center gap-2">
             <MessageSquare className="w-6 h-6 text-teal-400" />
             Omni-Channel Inbox
           </h2>
@@ -174,7 +174,7 @@ const OmniChannelInbox = () => {
           <Badge className="bg-red-500/20 text-red-300">
             {messages.filter((m) => m.unread).length} Unread
           </Badge>
-          <Button onClick={handleRefresh} variant="outline" className="border-slate-600">
+          <Button onClick={handleRefresh} variant="outline" className="border-border">
             <RefreshCw className="w-4 h-4 mr-2" />
             Refresh
           </Button>
@@ -182,7 +182,7 @@ const OmniChannelInbox = () => {
       </div>
 
       {/* Channel Tabs */}
-      <div className="flex items-center gap-2 p-1 bg-slate-900/50 rounded-lg border border-slate-700/50">
+      <div className="flex items-center gap-2 p-1 bg-card/60 rounded-lg border border-border">
         {(['all', 'email', 'chat', 'call', 'ticket'] as Channel[]).map((channel) => (
           <Button
             key={channel}
@@ -204,8 +204,8 @@ const OmniChannelInbox = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Message List */}
-        <Card className="bg-slate-900/50 border-teal-500/20">
-          <CardHeader className="border-b border-slate-700/50">
+        <Card className="bg-card/60 border-teal-500/20">
+          <CardHeader className="border-b border-border">
             <div className="flex items-center gap-3">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -213,10 +213,10 @@ const OmniChannelInbox = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search messages..."
-                  className="pl-10 bg-slate-800/50 border-slate-700"
+                  className="pl-10 bg-card/60 border-border"
                 />
               </div>
-              <Button variant="outline" size="icon" className="border-slate-600">
+              <Button variant="outline" size="icon" className="border-border">
                 <Filter className="w-4 h-4" />
               </Button>
             </div>
@@ -235,7 +235,7 @@ const OmniChannelInbox = () => {
                     className={`p-4 cursor-pointer transition-colors ${
                       selectedMessage?.id === msg.id
                         ? 'bg-teal-900/30'
-                        : 'hover:bg-slate-800/50'
+                        : 'hover:bg-card/60'
                     } ${msg.unread ? 'border-l-2 border-teal-500' : ''}`}
                     onClick={() => setSelectedMessage(msg)}
                   >
@@ -245,12 +245,12 @@ const OmniChannelInbox = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between mb-1">
-                          <span className={`font-medium ${msg.unread ? 'text-white' : 'text-slate-300'}`}>
+                          <span className={`font-medium ${msg.unread ? 'text-foreground' : 'text-muted-foreground'}`}>
                             {msg.customer}
                           </span>
                           <span className="text-xs text-muted-foreground">{msg.time}</span>
                         </div>
-                        <p className={`text-sm truncate ${msg.unread ? 'text-slate-200' : 'text-muted-foreground'}`}>
+                        <p className={`text-sm truncate ${msg.unread ? 'text-foreground' : 'text-muted-foreground'}`}>
                           {msg.preview}
                         </p>
                         <div className="flex items-center gap-2 mt-2">
@@ -271,26 +271,26 @@ const OmniChannelInbox = () => {
         </Card>
 
         {/* Conversation View */}
-        <Card className="bg-slate-900/50 border-teal-500/20">
+        <Card className="bg-card/60 border-teal-500/20">
           {selectedMessage ? (
             <>
-              <CardHeader className="border-b border-slate-700/50">
+              <CardHeader className="border-b border-border">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center ${getChannelColor(selectedMessage.channel)}`}>
                       {getChannelIcon(selectedMessage.channel)}
                     </div>
                     <div>
-                      <h3 className="font-medium text-white">{selectedMessage.customer}</h3>
+                      <h3 className="font-medium text-foreground">{selectedMessage.customer}</h3>
                       <p className="text-xs text-muted-foreground">via {selectedMessage.channel} • {selectedMessage.time}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Button variant="outline" size="sm" className="border-slate-600">
+                    <Button variant="outline" size="sm" className="border-border">
                       <User className="w-4 h-4 mr-1" />
                       View Profile
                     </Button>
-                    <Button variant="outline" size="sm" className="border-slate-600">
+                    <Button variant="outline" size="sm" className="border-border">
                       <Star className="w-4 h-4" />
                     </Button>
                   </div>
@@ -309,7 +309,7 @@ const OmniChannelInbox = () => {
                           <div className={`max-w-[80%] p-3 rounded-2xl ${
                             msg.sender_type === 'agent'
                               ? 'bg-teal-500/20 text-teal-100 rounded-br-sm'
-                              : 'bg-slate-800 text-slate-200 rounded-bl-sm'
+                              : 'bg-card/60 text-foreground rounded-bl-sm'
                           }`}>
                             <p className="text-sm">{msg.body}</p>
                             <p className="text-xs text-muted-foreground mt-1">{relativeTime(msg.created_at)}</p>
@@ -317,7 +317,7 @@ const OmniChannelInbox = () => {
                         </div>
                       ))
                     ) : (
-                      <div className="p-3 rounded-2xl bg-slate-800 text-slate-200">
+                      <div className="p-3 rounded-2xl bg-card/60 text-foreground">
                         <p className="text-sm">{selectedMessage.preview}</p>
                       </div>
                     )}
@@ -325,14 +325,14 @@ const OmniChannelInbox = () => {
                 </ScrollArea>
 
                 {/* Reply Box */}
-                <div className="p-4 border-t border-slate-700/50">
+                <div className="p-4 border-t border-border">
                   <div className="flex items-end gap-2">
                     <div className="flex-1 relative">
                       <Textarea
                         value={replyText}
                         onChange={(e) => setReplyText(e.target.value)}
                         placeholder="Type your reply..."
-                        className="bg-slate-800/50 border-slate-700 min-h-[60px] resize-none pr-20"
+                        className="bg-card/60 border-border min-h-[60px] resize-none pr-20"
                       />
                       <div className="absolute bottom-2 right-2 flex items-center gap-1">
                         <Button variant="ghost" size="icon" className="h-8 w-8">

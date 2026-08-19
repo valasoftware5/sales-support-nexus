@@ -96,8 +96,8 @@ const SystemLogs = () => {
       case 'escalation': return 'text-red-400 bg-red-500/20';
       case 'agent': return 'text-blue-400 bg-blue-500/20';
       case 'ai': return 'text-yellow-400 bg-yellow-500/20';
-      case 'system': return 'text-muted-foreground bg-slate-500/20';
-      default: return 'text-muted-foreground bg-slate-500/20';
+      case 'system': return 'text-muted-foreground bg-muted/40';
+      default: return 'text-muted-foreground bg-muted/40';
     }
   };
 
@@ -106,7 +106,7 @@ const SystemLogs = () => {
       case 'critical': return <Badge className="bg-red-500/20 text-red-400"><AlertTriangle className="w-3 h-3 mr-1" />Critical</Badge>;
       case 'error': return <Badge className="bg-orange-500/20 text-orange-400"><XCircle className="w-3 h-3 mr-1" />Error</Badge>;
       case 'warning': return <Badge className="bg-yellow-500/20 text-yellow-400"><AlertTriangle className="w-3 h-3 mr-1" />Warning</Badge>;
-      case 'info': return <Badge className="bg-slate-500/20 text-muted-foreground"><CheckCircle className="w-3 h-3 mr-1" />Info</Badge>;
+      case 'info': return <Badge className="bg-muted/40 text-muted-foreground"><CheckCircle className="w-3 h-3 mr-1" />Info</Badge>;
       default: return null;
     }
   };
@@ -125,21 +125,21 @@ const SystemLogs = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Database className="w-6 h-6 text-teal-400" />
             System Logs & Audit Trail
           </h2>
           <p className="text-muted-foreground text-sm">Complete audit trail for disaster recovery and compliance</p>
         </div>
         <div className="flex items-center gap-2">
-          <Button onClick={handleRefresh} variant="outline" className="border-slate-700">
+          <Button onClick={handleRefresh} variant="outline" className="border-border">
             <RefreshCw className="w-4 h-4 mr-2" />
             Refresh
           </Button>
-          <Button onClick={() => handleExport('csv')} variant="outline" className="border-slate-700">
+          <Button onClick={() => handleExport('csv')} variant="outline" className="border-border">
             CSV
           </Button>
-          <Button onClick={() => handleExport('json')} variant="outline" className="border-slate-700">
+          <Button onClick={() => handleExport('json')} variant="outline" className="border-border">
             JSON
           </Button>
           <Button onClick={() => handleExport('pdf')} className="bg-teal-500/20 text-teal-400 border border-teal-500/30">
@@ -161,11 +161,11 @@ const SystemLogs = () => {
             placeholder="Search logs..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 bg-slate-800/50 border-slate-700"
+            className="pl-10 bg-card/60 border-border"
           />
         </div>
         <Select value={filterType} onValueChange={setFilterType}>
-          <SelectTrigger className="w-40 bg-slate-800/50 border-slate-700">
+          <SelectTrigger className="w-40 bg-card/60 border-border">
             <SelectValue placeholder="Event Type" />
           </SelectTrigger>
           <SelectContent>
@@ -180,7 +180,7 @@ const SystemLogs = () => {
           </SelectContent>
         </Select>
         <Select value={filterSeverity} onValueChange={setFilterSeverity}>
-          <SelectTrigger className="w-40 bg-slate-800/50 border-slate-700">
+          <SelectTrigger className="w-40 bg-card/60 border-border">
             <SelectValue placeholder="Severity" />
           </SelectTrigger>
           <SelectContent>
@@ -206,7 +206,7 @@ const SystemLogs = () => {
           { label: 'Warnings', value: logs.filter(l => l.severity === 'warning').length, color: 'text-yellow-400' },
           { label: 'AI Events', value: logs.filter(l => l.eventType === 'ai').length, color: 'text-purple-400' },
         ].map((stat, idx) => (
-          <div key={idx} className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4">
+          <div key={idx} className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4">
             <p className="text-xs text-muted-foreground">{stat.label}</p>
             <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
           </div>
@@ -218,10 +218,10 @@ const SystemLogs = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-white">Event Log</h3>
+          <h3 className="text-lg font-semibold text-foreground">Event Log</h3>
           <Badge className="bg-teal-500/20 text-teal-400">{filteredLogs.length} entries</Badge>
         </div>
 
@@ -240,7 +240,7 @@ const SystemLogs = () => {
                   log.severity === 'critical' ? 'bg-red-500/5 border-red-500/20 hover:border-red-500/40' :
                   log.severity === 'error' ? 'bg-orange-500/5 border-orange-500/20 hover:border-orange-500/40' :
                   log.severity === 'warning' ? 'bg-yellow-500/5 border-yellow-500/20 hover:border-yellow-500/40' :
-                  'bg-slate-800/30 border-slate-700/50 hover:border-slate-600/50'
+                  'bg-card/60 border-border hover:border-border'
                 }`}
               >
                 <div className="flex items-start gap-3">
@@ -254,7 +254,7 @@ const SystemLogs = () => {
                       <span className="text-xs text-muted-foreground">{log.action}</span>
                       {getSeverityBadge(log.severity)}
                     </div>
-                    <p className="text-sm text-white mt-1">{log.details}</p>
+                    <p className="text-sm text-foreground mt-1">{log.details}</p>
                     <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1">
                       <span>Actor: {log.actor} ({log.actorRole})</span>
                       <span>Target: {log.targetId}</span>

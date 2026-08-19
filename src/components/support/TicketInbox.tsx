@@ -170,7 +170,7 @@ const TicketInbox = () => {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => toast.info(response.body)}
-                            className="px-3 py-2 rounded-lg bg-slate-800/30 border border-slate-700/30 text-xs text-slate-300 hover:border-teal-500/20 hover:text-teal-400 transition-all text-left"
+                            className="px-3 py-2 rounded-lg bg-muted/40 border border-border text-xs text-muted-foreground hover:border-teal-500/20 hover:text-teal-400 transition-all text-left"
                           >
                             {response.title}
                           </motion.button>

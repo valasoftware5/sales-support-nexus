@@ -23,7 +23,7 @@ const getStatusBadge = (status: string) => {
     active: 'bg-green-500/10 text-green-600 border-green-500/20',
     training: 'bg-blue-500/10 text-blue-600 border-blue-500/20',
     paused: 'bg-yellow-500/10 text-yellow-600 border-yellow-500/20',
-    inactive: 'bg-gray-500/10 text-gray-600 border-gray-500/20',
+    inactive: 'bg-muted/40 text-muted-foreground border-border',
   };
   return styles[status] || styles.inactive;
 };

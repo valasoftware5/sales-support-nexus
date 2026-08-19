@@ -51,7 +51,7 @@ const PerformancePanel = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-white">Performance Overview</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Performance Overview</h2>
           <p className="text-muted-foreground mt-1">Your support metrics and achievements</p>
         </div>
         <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
@@ -68,18 +68,18 @@ const PerformancePanel = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="p-6 rounded-2xl bg-slate-900/40 backdrop-blur-xl border border-slate-700/30"
+            className="p-6 rounded-2xl bg-card/60 backdrop-blur-xl border border-border"
           >
             <div className="flex items-start justify-between mb-4">
               <div className={`w-12 h-12 rounded-xl bg-${metric.color}-500/10 flex items-center justify-center`}>
                 <metric.icon className={`w-6 h-6 text-${metric.color}-400`} />
               </div>
               <div className="text-right">
-                <span className="text-3xl font-bold text-white">{metric.score}</span>
+                <span className="text-3xl font-bold text-foreground">{metric.score}</span>
                 <span className="text-lg text-muted-foreground">%</span>
               </div>
             </div>
-            <h4 className="text-white font-medium mb-1">{metric.label}</h4>
+            <h4 className="text-foreground font-medium mb-1">{metric.label}</h4>
             <p className="text-sm text-muted-foreground mb-4">{metric.description}</p>
             
             {/* Progress Bar */}
@@ -88,7 +88,7 @@ const PerformancePanel = () => {
                 <span className="text-muted-foreground">Progress</span>
                 <span className={`text-${metric.color}-400`}>Target: {metric.target}%</span>
               </div>
-              <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
+              <div className="h-2 bg-card/60 rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${metric.score}%` }}
@@ -116,12 +116,12 @@ const PerformancePanel = () => {
       >
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-white mb-1">Overall Performance Score</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-1">Overall Performance Score</h3>
             <p className="text-sm text-muted-foreground">Combined score across all metrics</p>
           </div>
           <div className="flex items-center gap-4">
             <div className="text-center">
-              <div className="text-4xl font-bold text-white">93.2</div>
+              <div className="text-4xl font-bold text-foreground">93.2</div>
               <div className="text-xs text-muted-foreground">out of 100</div>
             </div>
             <div className="flex items-center gap-1 text-emerald-400">
@@ -137,9 +137,9 @@ const PerformancePanel = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="p-6 rounded-2xl bg-slate-900/40 border border-slate-700/30"
+        className="p-6 rounded-2xl bg-card/60 border border-border"
       >
-        <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+        <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
           <Star className="w-5 h-5 text-amber-400" />
           Recent Achievements
         </h3>
@@ -150,10 +150,10 @@ const PerformancePanel = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.6 + index * 0.1 }}
-              className="p-4 rounded-xl bg-slate-800/30 border border-slate-700/20 text-center"
+              className="p-4 rounded-xl bg-card/60 border border-border text-center"
             >
               <div className="text-3xl mb-2">{achievement.icon}</div>
-              <h4 className="font-medium text-white">{achievement.title}</h4>
+              <h4 className="font-medium text-foreground">{achievement.title}</h4>
               <p className="text-xs text-muted-foreground mt-1">{achievement.description}</p>
             </motion.div>
           ))}
@@ -161,7 +161,7 @@ const PerformancePanel = () => {
       </motion.div>
 
       {/* Visibility Notice */}
-      <div className="p-4 rounded-xl bg-slate-800/20 border border-slate-700/20">
+      <div className="p-4 rounded-xl bg-card/60 border border-border">
         <p className="text-xs text-muted-foreground text-center">
           📊 Performance metrics are visible only to you and your team lead. These help track progress and identify areas for growth.
         </p>

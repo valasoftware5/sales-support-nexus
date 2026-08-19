@@ -68,8 +68,8 @@ export const AutoIssueDetection: React.FC<AutoIssueDetectionProps> = ({ activeVi
       case 'critical': return 'bg-red-500/20 text-red-400 border-red-500/30';
       case 'high': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
       case 'medium': return 'bg-amber-500/20 text-amber-400 border-amber-500/30';
-      case 'low': return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
-      default: return 'bg-slate-500/20 text-slate-400 border-slate-500/30';
+      case 'low': return 'bg-muted/40 text-muted-foreground border-border';
+      default: return 'bg-muted/40 text-muted-foreground border-border';
     }
   };
 
@@ -82,7 +82,7 @@ export const AutoIssueDetection: React.FC<AutoIssueDetectionProps> = ({ activeVi
             <CardContent className="p-4 text-center">
               <Radar className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-cyan-400">{detectionStats.totalDetected}</p>
-              <p className="text-[10px] text-slate-400">Total Detected</p>
+              <p className="text-[10px] text-muted-foreground">Total Detected</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -92,7 +92,7 @@ export const AutoIssueDetection: React.FC<AutoIssueDetectionProps> = ({ activeVi
             <CardContent className="p-4 text-center">
               <CheckCircle2 className="w-6 h-6 text-emerald-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-emerald-400">{detectionStats.autoResolved}</p>
-              <p className="text-[10px] text-slate-400">Auto-Resolved</p>
+              <p className="text-[10px] text-muted-foreground">Auto-Resolved</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -102,7 +102,7 @@ export const AutoIssueDetection: React.FC<AutoIssueDetectionProps> = ({ activeVi
             <CardContent className="p-4 text-center">
               <Clock className="w-6 h-6 text-amber-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-amber-400">{detectionStats.pendingReview}</p>
-              <p className="text-[10px] text-slate-400">Pending Review</p>
+              <p className="text-[10px] text-muted-foreground">Pending Review</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -112,7 +112,7 @@ export const AutoIssueDetection: React.FC<AutoIssueDetectionProps> = ({ activeVi
             <CardContent className="p-4 text-center">
               <AlertTriangle className="w-6 h-6 text-red-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-red-400">{detectionStats.escalated}</p>
-              <p className="text-[10px] text-slate-400">Escalated</p>
+              <p className="text-[10px] text-muted-foreground">Escalated</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -122,7 +122,7 @@ export const AutoIssueDetection: React.FC<AutoIssueDetectionProps> = ({ activeVi
             <CardContent className="p-4 text-center">
               <Activity className="w-6 h-6 text-purple-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-purple-400">{detectionStats.avgDetectionTime}ms</p>
-              <p className="text-[10px] text-slate-400">Avg Detection</p>
+              <p className="text-[10px] text-muted-foreground">Avg Detection</p>
             </CardContent>
           </Card>
         </motion.div>
@@ -130,9 +130,9 @@ export const AutoIssueDetection: React.FC<AutoIssueDetectionProps> = ({ activeVi
 
       {/* Detector Status Grid */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm text-white flex items-center gap-2">
+            <CardTitle className="text-sm text-foreground flex items-center gap-2">
               <Radar className="w-4 h-4 text-cyan-400 animate-pulse" />
               Active Detectors
             </CardTitle>
@@ -142,7 +142,7 @@ export const AutoIssueDetection: React.FC<AutoIssueDetectionProps> = ({ activeVi
               {detectorTypes.map((detector) => (
                 <div
                   key={detector.id}
-                  className="p-3 bg-slate-800/50 rounded-lg border border-slate-700/30 hover:border-cyan-500/30 transition-all"
+                  className="p-3 bg-card/60 rounded-lg border border-border hover:border-cyan-500/30 transition-all"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400">
@@ -153,8 +153,8 @@ export const AutoIssueDetection: React.FC<AutoIssueDetectionProps> = ({ activeVi
                       <span className="text-[9px] text-emerald-400">ACTIVE</span>
                     </div>
                   </div>
-                  <p className="text-xs text-white font-medium">{detector.label}</p>
-                  <p className="text-[10px] text-slate-400 mt-1">{detector.events} events today</p>
+                  <p className="text-xs text-foreground font-medium">{detector.label}</p>
+                  <p className="text-[10px] text-muted-foreground mt-1">{detector.events} events today</p>
                 </div>
               ))}
             </div>
@@ -164,10 +164,10 @@ export const AutoIssueDetection: React.FC<AutoIssueDetectionProps> = ({ activeVi
 
       {/* Real-time Detection Feed */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-sm text-white flex items-center gap-2">
+              <CardTitle className="text-sm text-foreground flex items-center gap-2">
                 <Activity className="w-4 h-4 text-cyan-400" />
                 Real-time Detection Feed
               </CardTitle>
@@ -185,17 +185,17 @@ export const AutoIssueDetection: React.FC<AutoIssueDetectionProps> = ({ activeVi
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700/30"
+                  className="flex items-center justify-between p-3 bg-card/60 rounded-lg border border-border"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono text-slate-500">{event.timestamp}</span>
+                    <span className="text-xs font-mono text-muted-foreground">{event.timestamp}</span>
                     <Badge className={`${getSeverityBadge(event.severity)} border text-[9px]`}>
                       {event.severity.toUpperCase()}
                     </Badge>
-                    <span className="text-xs text-white">{event.type}</span>
+                    <span className="text-xs text-foreground">{event.type}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-[10px] text-slate-400 max-w-48 truncate">{event.context}</span>
+                    <span className="text-[10px] text-muted-foreground max-w-48 truncate">{event.context}</span>
                     {event.autoResolved ? (
                       <div className="flex items-center gap-1 text-emerald-400">
                         <CheckCircle2 className="w-3 h-3" />

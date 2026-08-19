@@ -298,14 +298,14 @@ const LeadManagement = () => {
                     transition={{ delay: index * 0.05 }}
                     className="flex items-center gap-4 p-4 rounded-xl bg-surface hover:bg-surface-2 transition-colors cursor-pointer group"
                   >
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-white font-bold text-lg">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-foreground font-bold text-lg">
                       {lead.contact_name.charAt(0)}
                     </div>
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
                         <p className="font-semibold text-foreground">{lead.contact_name}</p>
-                        <Badge className={`${statusInfo?.color ?? "bg-slate-400"} text-white`}>
+                        <Badge className={`${statusInfo?.color ?? "bg-muted/40"} text-foreground`}>
                           {statusInfo?.label ?? lead.stage}
                         </Badge>
                         {owner && <span className="text-xs text-muted-foreground">• {owner}</span>}

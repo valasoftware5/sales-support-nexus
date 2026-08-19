@@ -273,7 +273,7 @@ const TasksFollowups = () => {
           className="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200"
         >
           <div className="p-3 rounded-full bg-blue-500">
-            <Bell className="w-5 h-5 text-white" />
+            <Bell className="w-5 h-5 text-foreground" />
           </div>
           <div className="flex-1">
             <p className="font-medium text-foreground">You have {todayTasks.length} tasks due today</p>

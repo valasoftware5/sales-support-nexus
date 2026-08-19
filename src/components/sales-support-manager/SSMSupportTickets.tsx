@@ -39,7 +39,7 @@ export const SSMSupportTickets: React.FC = () => {
 
   const getPriorityBadge = (priority: string) => {
     const colors: Record<string, string> = {
-      critical: 'bg-red-500 text-white animate-pulse',
+      critical: 'bg-red-500 text-foreground animate-pulse',
       high: 'bg-orange-500/10 text-orange-500 border-orange-500/30',
       medium: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/30',
       low: 'bg-blue-500/10 text-blue-500 border-blue-500/30'

@@ -58,7 +58,8 @@ export function AppSidebar({
   const [query, setQuery] = useState("");
   const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({});
 
-  const isActive = (to: string) => (to === "/" ? pathname === "/" : pathname.startsWith(to));
+  const isActive = (to: string) =>
+    to === "/" ? pathname === "/" : pathname === to || pathname.startsWith(`${to}/`);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

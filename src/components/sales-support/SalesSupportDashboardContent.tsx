@@ -309,7 +309,7 @@ const SalesSupportDashboardContent = ({ activeSection }: SalesSupportDashboardCo
                             ? "bg-red-500/20 text-red-400"
                             : ticket.priority === "medium"
                             ? "bg-amber-500/20 text-amber-400"
-                            : "bg-slate-500/20 text-muted-foreground"
+                            : "bg-muted/40 text-muted-foreground"
                         )}
                       >
                         {ticket.priority}
@@ -628,7 +628,7 @@ const SalesSupportDashboardContent = ({ activeSection }: SalesSupportDashboardCo
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-teal-500/20">
-              <Headset className="w-7 h-7 text-white" />
+              <Headset className="w-7 h-7 text-foreground" />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-foreground">Sales & Support</h1>

@@ -43,7 +43,7 @@ const AISalesCopilot = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Card className="lg:col-span-2 bg-slate-900/50 border-cyan-500/20">
+        <Card className="lg:col-span-2 bg-card/60 border-cyan-500/20">
           <CardHeader>
             <CardTitle className="text-cyan-100 flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-cyan-400" />
@@ -55,12 +55,12 @@ const AISalesCopilot = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask anything... e.g., 'How should I handle this pricing objection?' or 'What's the best approach for Tech Solutions Ltd?'"
-              className="min-h-[100px] bg-slate-800 border-slate-700 text-slate-100 placeholder:text-muted-foreground"
+              className="min-h-[100px] bg-card/60 border-border text-foreground placeholder:text-muted-foreground"
             />
             <Button 
               onClick={handleAskCopilot}
               disabled={isProcessing}
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 text-foreground"
             >
               {isProcessing ? (
                 <>
@@ -83,7 +83,7 @@ const AISalesCopilot = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="p-4 bg-slate-800/50 rounded-lg border border-slate-700/50"
+                  className="p-4 bg-card/60 rounded-lg border border-border"
                 >
                   <div className="flex items-start gap-3">
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
@@ -101,7 +101,7 @@ const AISalesCopilot = () => {
                       }`}>
                         {suggestion.type.charAt(0).toUpperCase() + suggestion.type.slice(1)}
                       </Badge>
-                      <p className="text-slate-300 text-sm">{suggestion.content}</p>
+                      <p className="text-muted-foreground text-sm">{suggestion.content}</p>
                     </div>
                     <Button size="sm" variant="ghost" className="text-cyan-400 hover:text-cyan-300">
                       <ArrowRight className="w-4 h-4" />
@@ -114,7 +114,7 @@ const AISalesCopilot = () => {
         </Card>
 
         <div className="space-y-6">
-          <Card className="bg-slate-900/50 border-cyan-500/20">
+          <Card className="bg-card/60 border-cyan-500/20">
             <CardHeader>
               <CardTitle className="text-cyan-100 text-lg flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-cyan-400" />
@@ -143,7 +143,7 @@ const AISalesCopilot = () => {
                       }`} />
                     </div>
                   </div>
-                  <Progress value={lead.score} className="h-2 bg-slate-800" />
+                  <Progress value={lead.score} className="h-2 bg-card/60" />
                   <p className="text-xs text-muted-foreground">{lead.recommendation}</p>
                 </motion.div>
               ))}

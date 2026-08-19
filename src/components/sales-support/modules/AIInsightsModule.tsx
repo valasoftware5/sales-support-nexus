@@ -69,7 +69,7 @@ const AIInsightsModule = () => {
       case "alert": return "bg-red-500/20 text-red-300";
       case "suggestion": return "bg-cyan-500/20 text-cyan-300";
       case "pattern": return "bg-amber-500/20 text-amber-300";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -78,7 +78,7 @@ const AIInsightsModule = () => {
       case "critical": return "bg-red-500/20 text-red-300";
       case "high": return "bg-amber-500/20 text-amber-300";
       case "medium": return "bg-blue-500/20 text-blue-300";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -101,28 +101,28 @@ const AIInsightsModule = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <Bot className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{insights.length}</div>
             <div className="text-xs text-muted-foreground">Total Insights</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-red-500/20">
+        <Card className="bg-card/60 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{criticalInsights}</div>
             <div className="text-xs text-muted-foreground">Critical Unread</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-emerald-500/20">
+        <Card className="bg-card/60 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <Lightbulb className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{actionableInsights}</div>
             <div className="text-xs text-muted-foreground">Actionable</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <Target className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{avgConfidence}%</div>
@@ -132,7 +132,7 @@ const AIInsightsModule = () => {
       </div>
 
       {/* Insights List */}
-      <Card className="bg-slate-900/50 border-cyan-500/20">
+      <Card className="bg-card/60 border-cyan-500/20">
         <CardHeader>
           <CardTitle className="text-cyan-100 flex items-center gap-2">
             <Bot className="w-5 h-5 text-purple-400" />
@@ -149,7 +149,7 @@ const AIInsightsModule = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className={`p-4 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition-colors ${!insight.acknowledged && insight.impact === "critical" ? "border-l-4 border-red-500" : ""} ${insight.acknowledged ? "opacity-70" : ""}`}
+                  className={`p-4 bg-card/60 rounded-lg hover:bg-card/60 transition-colors ${!insight.acknowledged && insight.impact === "critical" ? "border-l-4 border-red-500" : ""} ${insight.acknowledged ? "opacity-70" : ""}`}
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
@@ -170,7 +170,7 @@ const AIInsightsModule = () => {
                   </div>
 
                   <div className="mb-3">
-                    <h4 className="font-medium text-slate-100">{insight.title}</h4>
+                    <h4 className="font-medium text-foreground">{insight.title}</h4>
                     <p className="text-sm text-muted-foreground">{insight.description}</p>
                     <div className="flex items-center gap-4 mt-2">
                       <span className="text-sm text-muted-foreground">Related: <span className="text-cyan-400">{insight.relatedEntity}</span></span>
@@ -193,7 +193,7 @@ const AIInsightsModule = () => {
                         <Button size="sm" variant="ghost" onClick={() => handleDismiss(insight.id)} className="text-muted-foreground">
                           Dismiss
                         </Button>
-                        <Button size="sm" variant="outline" onClick={() => handleAcknowledge(insight.id)} className="border-slate-600">
+                        <Button size="sm" variant="outline" onClick={() => handleAcknowledge(insight.id)} className="border-border">
                           <CheckCircle className="w-3 h-3 mr-1" />
                           Acknowledge
                         </Button>

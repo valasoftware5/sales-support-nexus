@@ -148,7 +148,7 @@ export function SafeAssistActiveBanner() {
             ? 'bg-destructive/90 text-destructive-foreground' 
             : riskLevel === 'medium'
             ? 'bg-yellow-500/90 text-yellow-950'
-            : 'bg-green-600/90 text-white'
+            : 'bg-green-600/90 text-foreground'
           }
           backdrop-blur-sm border-b
         `}>
@@ -195,7 +195,7 @@ export function SafeAssistActiveBanner() {
             className={`
               font-medium
               ${riskLevel === 'high' 
-                ? 'bg-card/20 hover:bg-card/30 text-white border-white/50' 
+                ? 'bg-card/20 hover:bg-card/30 text-foreground border-white/50' 
                 : 'bg-card/20 hover:bg-card/30 text-current border-current/30'
               }
             `}

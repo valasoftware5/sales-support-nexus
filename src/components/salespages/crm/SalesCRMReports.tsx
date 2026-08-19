@@ -253,10 +253,10 @@ const SalesCRMReports = () => {
                   transition={{ delay: index * 0.1 }}
                   className="flex items-center gap-4 p-4 rounded-xl bg-surface"
                 >
-                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold text-sm">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-foreground font-bold text-sm">
                     {index + 1}
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-white font-medium">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-foreground font-medium">
                     {performer.avatar}
                   </div>
                   <div className="flex-1">

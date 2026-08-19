@@ -48,7 +48,7 @@ const EscalationTree = () => {
       case "in_progress": return "bg-amber-500/20 text-amber-300";
       case "pending": return "bg-blue-500/20 text-blue-300";
       case "resolved": return "bg-emerald-500/20 text-emerald-300";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -57,7 +57,7 @@ const EscalationTree = () => {
       case 1: return "bg-cyan-500/20 text-cyan-300 border-cyan-500/30";
       case 2: return "bg-amber-500/20 text-amber-300 border-amber-500/30";
       case 3: return "bg-red-500/20 text-red-300 border-red-500/30";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -81,7 +81,7 @@ const EscalationTree = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className={`bg-slate-900/50 border-${level.color}-500/30 relative overflow-hidden`}>
+              <Card className={`bg-card/60 border-${level.color}-500/30 relative overflow-hidden`}>
                 <div className={`absolute top-0 left-0 w-1 h-full bg-${level.color}-500`} />
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-3">
@@ -93,7 +93,7 @@ const EscalationTree = () => {
                       <Icon className={`w-5 h-5 text-${level.color}-400`} />
                     </div>
                     <div>
-                      <h3 className="font-medium text-slate-100">{level.name}</h3>
+                      <h3 className="font-medium text-foreground">{level.name}</h3>
                       <p className="text-xs text-muted-foreground">{level.handler}</p>
                     </div>
                   </div>
@@ -107,7 +107,7 @@ const EscalationTree = () => {
         })}
       </div>
 
-      <Card className="bg-slate-900/50 border-cyan-500/20">
+      <Card className="bg-card/60 border-cyan-500/20">
         <CardHeader>
           <CardTitle className="text-cyan-100 flex items-center gap-2">
             <AlertCircle className="w-5 h-5 text-cyan-400" />
@@ -126,7 +126,7 @@ const EscalationTree = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="p-4 bg-slate-800/50 rounded-lg"
+                  className="p-4 bg-card/60 rounded-lg"
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
@@ -142,12 +142,12 @@ const EscalationTree = () => {
                     )}
                   </div>
 
-                  <p className="text-slate-200 mb-3">{ticket?.subject ?? escalation.reason}</p>
+                  <p className="text-foreground mb-3">{ticket?.subject ?? escalation.reason}</p>
 
                   {escalation.status !== "resolved" && (
                     <div className="flex items-center justify-between">
                       <div className="flex-1 mr-4">
-                        <Progress value={escalation.status === "in_progress" ? 60 : 30} className="h-2 bg-slate-700" />
+                        <Progress value={escalation.status === "in_progress" ? 60 : 30} className="h-2 bg-muted/40" />
                       </div>
                       <div className="flex gap-2">
                         {escalation.level < 3 && (
@@ -156,7 +156,7 @@ const EscalationTree = () => {
                             Escalate
                           </Button>
                         )}
-                        <Button size="sm" onClick={() => handleResolve(escalation.id)} className="bg-emerald-500 hover:bg-emerald-600 text-white">
+                        <Button size="sm" onClick={() => handleResolve(escalation.id)} className="bg-emerald-500 hover:bg-emerald-600 text-foreground">
                           <CheckCircle className="w-3 h-3 mr-1" />
                           Resolve
                         </Button>

@@ -152,7 +152,7 @@ const SalesCRMDashboard = () => {
                         transition={{ duration: 0.8, delay: index * 0.1 }}
                         className={`h-full ${item.color} flex items-center justify-end pr-3`}
                       >
-                        <span className="text-xs font-medium text-white">{item.count}</span>
+                        <span className="text-xs font-medium text-foreground">{item.count}</span>
                       </motion.div>
                     </div>
                   </motion.div>
@@ -185,7 +185,7 @@ const SalesCRMDashboard = () => {
                   transition={{ delay: index * 0.1 }}
                   className="flex items-center gap-3 p-3 rounded-xl bg-surface hover:bg-surface-2 transition-colors cursor-pointer"
                 >
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-white font-medium">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-foreground font-medium">
                     {lead.contact_name.charAt(0)}
                   </div>
                   <div className="flex-1 min-w-0">

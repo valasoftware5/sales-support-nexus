@@ -71,7 +71,7 @@ const SupportMetrics = () => {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-semibold text-white">Good afternoon, Support Team</h2>
+        <h2 className="text-2xl font-semibold text-foreground">Good afternoon, Support Team</h2>
         <p className="text-muted-foreground mt-1">Here's your overview for today</p>
       </div>
 
@@ -86,14 +86,14 @@ const SupportMetrics = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.08 }}
               whileHover={{ y: -2 }}
-              className={`p-5 rounded-2xl bg-slate-900/40 backdrop-blur-xl border ${colorClasses.border} transition-all duration-300`}
+              className={`p-5 rounded-2xl bg-card/60 backdrop-blur-xl border ${colorClasses.border} transition-all duration-300`}
             >
               <div className={`w-10 h-10 rounded-xl ${colorClasses.bg} flex items-center justify-center mb-4`}>
                 <metric.icon className={`w-5 h-5 ${colorClasses.text}`} />
               </div>
               <p className="text-sm text-muted-foreground mb-1">{metric.label}</p>
               <div className="flex items-end gap-2">
-                <span className="text-2xl font-bold text-white">{metric.value}</span>
+                <span className="text-2xl font-bold text-foreground">{metric.value}</span>
                 {metric.trend === 'up' && (
                   <TrendingUp className="w-4 h-4 text-emerald-400 mb-1" />
                 )}
@@ -111,9 +111,9 @@ const SupportMetrics = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="p-6 rounded-2xl bg-slate-900/40 backdrop-blur-xl border border-slate-700/30"
+          className="p-6 rounded-2xl bg-card/60 backdrop-blur-xl border border-border"
         >
-          <h3 className="text-lg font-semibold text-white mb-5 flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-foreground mb-5 flex items-center gap-2">
             <Clock className="w-5 h-5 text-teal-400" />
             Recent Activity
           </h3>
@@ -124,14 +124,14 @@ const SupportMetrics = () => {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 + index * 0.08 }}
-                className="flex items-center gap-4 p-3 rounded-xl bg-slate-800/20 hover:bg-slate-800/40 transition-colors"
+                className="flex items-center gap-4 p-3 rounded-xl bg-card/60 hover:bg-card/60 transition-colors"
               >
                 <div className={`w-2 h-2 rounded-full ${
                   activity.type === 'resolved' ? 'bg-emerald-400' :
                   activity.type === 'new' ? 'bg-teal-400' :
                   activity.type === 'escalated' ? 'bg-amber-400' : 'bg-sky-400'
                 }`} />
-                <span className="text-sm text-slate-300 flex-1">{activity.action}</span>
+                <span className="text-sm text-muted-foreground flex-1">{activity.action}</span>
                 <span className="text-xs text-muted-foreground">{activity.time}</span>
               </motion.div>
             ))}
@@ -143,9 +143,9 @@ const SupportMetrics = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="p-6 rounded-2xl bg-slate-900/40 backdrop-blur-xl border border-slate-700/30"
+          className="p-6 rounded-2xl bg-card/60 backdrop-blur-xl border border-border"
         >
-          <h3 className="text-lg font-semibold text-white mb-5 flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-foreground mb-5 flex items-center gap-2">
             <Users className="w-5 h-5 text-sky-400" />
             Team Status
           </h3>
@@ -155,21 +155,21 @@ const SupportMetrics = () => {
               { name: 'In Call', count: 2, status: 'busy' },
               { name: 'On Break', count: 1, status: 'away' },
             ].map((item, index) => (
-              <div key={index} className="flex items-center justify-between p-3 rounded-xl bg-slate-800/20">
+              <div key={index} className="flex items-center justify-between p-3 rounded-xl bg-card/60">
                 <div className="flex items-center gap-3">
                   <div className={`w-2 h-2 rounded-full ${
                     item.status === 'online' ? 'bg-emerald-400' :
-                    item.status === 'busy' ? 'bg-amber-400' : 'bg-slate-400'
+                    item.status === 'busy' ? 'bg-amber-400' : 'bg-muted/40'
                   }`} />
-                  <span className="text-sm text-slate-300">{item.name}</span>
+                  <span className="text-sm text-muted-foreground">{item.name}</span>
                 </div>
-                <span className="text-lg font-semibold text-white">{item.count}</span>
+                <span className="text-lg font-semibold text-foreground">{item.count}</span>
               </div>
             ))}
           </div>
 
           {/* Response Time Chart */}
-          <div className="mt-6 pt-6 border-t border-slate-700/30">
+          <div className="mt-6 pt-6 border-t border-border">
             <p className="text-sm text-muted-foreground mb-3">Response Time Today</p>
             <div className="flex items-end gap-1 h-16">
               {[35, 45, 30, 60, 40, 55, 25, 50, 35, 45, 30, 40].map((height, i) => (

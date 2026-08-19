@@ -63,7 +63,7 @@ const UsersPartnersPanel = () => {
       case 'client': return { icon: User, color: 'bg-blue-500/20 text-blue-400 border-blue-500/30', label: 'Client' };
       case 'franchise': return { icon: Building2, color: 'bg-purple-500/20 text-purple-400 border-purple-500/30', label: 'Franchise' };
       case 'reseller': return { icon: Store, color: 'bg-teal-500/20 text-teal-400 border-teal-500/30', label: 'Reseller' };
-      default: return { icon: User, color: 'bg-slate-500/20 text-muted-foreground', label: 'Unknown' };
+      default: return { icon: User, color: 'bg-muted/40 text-muted-foreground', label: 'Unknown' };
     }
   };
 
@@ -72,7 +72,7 @@ const UsersPartnersPanel = () => {
       case 'low': return { color: 'bg-emerald-500/20 text-emerald-400', icon: CheckCircle };
       case 'medium': return { color: 'bg-amber-500/20 text-amber-400', icon: AlertTriangle };
       case 'high': return { color: 'bg-red-500/20 text-red-400', icon: XCircle };
-      default: return { color: 'bg-slate-500/20 text-muted-foreground', icon: CheckCircle };
+      default: return { color: 'bg-muted/40 text-muted-foreground', icon: CheckCircle };
     }
   };
 
@@ -97,7 +97,7 @@ const UsersPartnersPanel = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Users className="w-6 h-6 text-teal-400" />
             Users & Partners
           </h2>
@@ -107,35 +107,35 @@ const UsersPartnersPanel = () => {
 
       {/* Stats */}
       <div className="grid grid-cols-5 gap-4">
-        <Card className="bg-slate-900/50 border-teal-500/20">
+        <Card className="bg-card/60 border-teal-500/20">
           <CardContent className="p-4 text-center">
             <Users className="w-6 h-6 text-teal-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-teal-100">{stats.total}</div>
             <div className="text-xs text-muted-foreground">Total</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-blue-500/20">
+        <Card className="bg-card/60 border-blue-500/20">
           <CardContent className="p-4 text-center">
             <User className="w-6 h-6 text-blue-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-blue-100">{stats.clients}</div>
             <div className="text-xs text-muted-foreground">Clients</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <Building2 className="w-6 h-6 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{stats.franchises}</div>
             <div className="text-xs text-muted-foreground">Franchises</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-teal-500/20">
+        <Card className="bg-card/60 border-teal-500/20">
           <CardContent className="p-4 text-center">
             <Store className="w-6 h-6 text-teal-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-teal-100">{stats.resellers}</div>
             <div className="text-xs text-muted-foreground">Resellers</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-red-500/20">
+        <Card className="bg-card/60 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-6 h-6 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{stats.highRisk}</div>
@@ -147,7 +147,7 @@ const UsersPartnersPanel = () => {
       {/* Tabs & Filters */}
       <div className="flex items-center justify-between">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="bg-slate-800/50">
+          <TabsList className="bg-card/60">
             <TabsTrigger value="all">All</TabsTrigger>
             <TabsTrigger value="client">Clients</TabsTrigger>
             <TabsTrigger value="franchise">Franchises</TabsTrigger>
@@ -162,11 +162,11 @@ const UsersPartnersPanel = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search..."
-              className="pl-10 w-64 bg-slate-900/50 border-slate-700"
+              className="pl-10 w-64 bg-card/60 border-border"
             />
           </div>
           <Select value={filterRisk} onValueChange={setFilterRisk}>
-            <SelectTrigger className="w-32 bg-slate-900/50 border-slate-700">
+            <SelectTrigger className="w-32 bg-card/60 border-border">
               <SelectValue placeholder="Risk" />
             </SelectTrigger>
             <SelectContent>
@@ -180,7 +180,7 @@ const UsersPartnersPanel = () => {
       </div>
 
       {/* Customer List */}
-      <Card className="bg-slate-900/50 border-teal-500/20">
+      <Card className="bg-card/60 border-teal-500/20">
         <CardContent className="p-0">
           <div className="divide-y divide-slate-800">
             {filteredCustomers.map((customer, index) => {
@@ -194,19 +194,19 @@ const UsersPartnersPanel = () => {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className={`p-4 hover:bg-slate-800/30 transition-colors cursor-pointer ${isSelected ? 'bg-slate-800/50' : ''}`}
+                  className={`p-4 hover:bg-card/60 transition-colors cursor-pointer ${isSelected ? 'bg-card/60' : ''}`}
                   onClick={() => handleViewCustomer(customer.id)}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <Avatar className="w-12 h-12 border-2 border-slate-700">
-                        <AvatarFallback className="bg-gradient-to-br from-teal-500 to-blue-500 text-white">
+                      <Avatar className="w-12 h-12 border-2 border-border">
+                        <AvatarFallback className="bg-gradient-to-br from-teal-500 to-blue-500 text-foreground">
                           {customer.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
                         </AvatarFallback>
                       </Avatar>
                       <div>
                         <div className="flex items-center gap-2">
-                          <h4 className="font-medium text-white">{customer.name}</h4>
+                          <h4 className="font-medium text-foreground">{customer.name}</h4>
                           <Badge className={typeConfig.color}>{typeConfig.label}</Badge>
                           <Badge className={riskConfig.color}>
                             <riskConfig.icon className="w-3 h-3 mr-1" />
@@ -222,7 +222,7 @@ const UsersPartnersPanel = () => {
                     </div>
                     <div className="flex items-center gap-6">
                       <div className="text-center">
-                        <div className="text-lg font-bold text-white">{customer.totalTickets}</div>
+                        <div className="text-lg font-bold text-foreground">{customer.totalTickets}</div>
                         <div className="text-xs text-muted-foreground">Total Tickets</div>
                       </div>
                       <div className="text-center">
@@ -246,7 +246,7 @@ const UsersPartnersPanel = () => {
                           size="sm" 
                           variant="ghost" 
                           onClick={(e) => { e.stopPropagation(); handleViewHistory(customer.id); }}
-                          className="text-muted-foreground hover:text-white"
+                          className="text-muted-foreground hover:text-foreground"
                         >
                           <History className="w-4 h-4" />
                         </Button>
@@ -258,7 +258,7 @@ const UsersPartnersPanel = () => {
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
-                      className="mt-4 pt-4 border-t border-slate-800"
+                      className="mt-4 pt-4 border-t border-border"
                     >
                       <div className="flex flex-wrap gap-2">
                         <span className="text-xs text-muted-foreground mr-2">Products:</span>

@@ -34,7 +34,7 @@ export const SSMTeamPerformance: React.FC = () => {
       case 'away':
         return 'bg-yellow-500';
       default:
-        return 'bg-gray-500';
+        return 'bg-muted/40';
     }
   };
 

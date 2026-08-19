@@ -78,7 +78,7 @@ const SalesSupportDashboard = () => {
                     aria-label={`${kpi.label}: ${kpi.value}. Open ${kpi.label} view`}
                     className="text-left rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
-                    <Card className={`bg-slate-900/50 ${tone.border} hover:bg-slate-800/50 transition-colors h-full`}>
+                    <Card className={`bg-card/60 ${tone.border} hover:bg-card/60 transition-colors h-full`}>
                       <CardContent className="p-4">
                         <div className="flex items-center gap-3">
                           <div className={`w-10 h-10 rounded-lg ${tone.chip} flex items-center justify-center`}>
@@ -86,7 +86,7 @@ const SalesSupportDashboard = () => {
                           </div>
                           <div>
                             <div className={`text-2xl font-bold ${tone.value}`}>{kpi.value}</div>
-                            <div className="text-xs text-slate-400">{kpi.label}</div>
+                            <div className="text-xs text-muted-foreground">{kpi.label}</div>
                           </div>
                         </div>
                       </CardContent>

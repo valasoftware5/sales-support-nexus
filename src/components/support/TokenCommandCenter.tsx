@@ -112,7 +112,7 @@ const TokenCommandCenter = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Layers className="w-6 h-6 text-teal-400" />
             Token Command Center
           </h2>
@@ -122,7 +122,7 @@ const TokenCommandCenter = () => {
           <Badge className="bg-teal-500/20 text-teal-400 text-lg px-4 py-1">
             {totalTokens} Active Tokens
           </Badge>
-          <Button onClick={handleRefreshData} variant="outline" className="border-slate-700">
+          <Button onClick={handleRefreshData} variant="outline" className="border-border">
             <RefreshCw className="w-4 h-4 mr-2" />
             Refresh
           </Button>
@@ -146,11 +146,11 @@ const TokenCommandCenter = () => {
               <motion.div
                 key={token.id}
                 whileHover={{ scale: 1.02 }}
-                className="bg-slate-900/50 border border-red-500/20 rounded-lg p-3 cursor-pointer"
+                className="bg-card/60 border border-red-500/20 rounded-lg p-3 cursor-pointer"
                 onClick={() => handleViewToken(token.id, token.ticketId)}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-mono text-sm text-white">{token.ticketId}</span>
+                  <span className="font-mono text-sm text-foreground">{token.ticketId}</span>
                   <Badge className="bg-red-500/20 text-red-400 text-xs animate-pulse">{token.timeLeft}</Badge>
                 </div>
                 <p className="text-xs text-muted-foreground">{token.customer}</p>
@@ -171,11 +171,11 @@ const TokenCommandCenter = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
           <Globe className="w-5 h-5 text-teal-400" />
-          <h3 className="text-lg font-semibold text-white">Token Heatmap by Region</h3>
+          <h3 className="text-lg font-semibold text-foreground">Token Heatmap by Region</h3>
         </div>
         <div className="grid grid-cols-3 gap-4">
           {heatmapData.map((region) => {
@@ -190,7 +190,7 @@ const TokenCommandCenter = () => {
                 }}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-medium text-white">{region.region}</span>
+                  <span className="font-medium text-foreground">{region.region}</span>
                   <span className="text-2xl font-bold text-teal-400">{region.count}</span>
                 </div>
                 <div className="flex items-center gap-3 text-xs">
@@ -210,11 +210,11 @@ const TokenCommandCenter = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+          className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
         >
           <div className="flex items-center gap-3 mb-4">
             <TrendingUp className="w-5 h-5 text-orange-400" />
-            <h3 className="text-lg font-semibold text-white">By Priority</h3>
+            <h3 className="text-lg font-semibold text-foreground">By Priority</h3>
           </div>
           <div className="space-y-3">
             {tokensByPriority.map((item) => {
@@ -223,10 +223,10 @@ const TokenCommandCenter = () => {
               return (
                 <div key={item.priority}>
                   <div className="flex items-center justify-between text-sm mb-1">
-                    <span className="text-slate-300">{item.priority}</span>
-                    <span className="text-white font-medium">{item.count}</span>
+                    <span className="text-muted-foreground">{item.priority}</span>
+                    <span className="text-foreground font-medium">{item.count}</span>
                   </div>
-                  <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
+                  <div className="h-2 bg-card/60 rounded-full overflow-hidden">
                     <motion.div
                       className={`h-full ${item.color}`}
                       initial={{ width: 0 }}
@@ -245,21 +245,21 @@ const TokenCommandCenter = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+          className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
         >
           <div className="flex items-center gap-3 mb-4">
             <Hash className="w-5 h-5 text-purple-400" />
-            <h3 className="text-lg font-semibold text-white">By Channel</h3>
+            <h3 className="text-lg font-semibold text-foreground">By Channel</h3>
           </div>
           <div className="grid grid-cols-5 gap-2">
             {tokensByChannel.map((channel) => (
               <motion.div
                 key={channel.channel}
                 whileHover={{ scale: 1.05 }}
-                className="text-center p-3 rounded-xl bg-slate-800/50 border border-slate-700/50"
+                className="text-center p-3 rounded-xl bg-card/60 border border-border"
               >
                 <span className="text-2xl">{channel.icon}</span>
-                <p className="text-lg font-bold text-white mt-1">{channel.count}</p>
+                <p className="text-lg font-bold text-foreground mt-1">{channel.count}</p>
                 <p className="text-xs text-muted-foreground">{channel.channel}</p>
               </motion.div>
             ))}
@@ -272,11 +272,11 @@ const TokenCommandCenter = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-yellow-500/20 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-yellow-500/20 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
           <Clock className="w-5 h-5 text-yellow-400" />
-          <h3 className="text-lg font-semibold text-white">Zombie Tokens</h3>
+          <h3 className="text-lg font-semibold text-foreground">Zombie Tokens</h3>
           <Badge className="bg-yellow-500/20 text-yellow-400">{zombieTokens.length} inactive</Badge>
         </div>
         <div className="space-y-3">
@@ -284,7 +284,7 @@ const TokenCommandCenter = () => {
             <motion.div
               key={token.id}
               whileHover={{ x: 4 }}
-              className="flex items-center justify-between p-3 rounded-xl bg-slate-800/30 border border-slate-700/50"
+              className="flex items-center justify-between p-3 rounded-xl bg-card/60 border border-border"
             >
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center">
@@ -292,7 +292,7 @@ const TokenCommandCenter = () => {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-sm text-white">{token.ticketId}</span>
+                    <span className="font-mono text-sm text-foreground">{token.ticketId}</span>
                     <Badge className={token.status === 'zombie' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'}>
                       {token.status}
                     </Badge>

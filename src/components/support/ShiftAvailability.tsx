@@ -89,8 +89,8 @@ const ShiftAvailability = () => {
       case 'available': return 'bg-emerald-500';
       case 'busy': return 'bg-orange-500';
       case 'break': return 'bg-yellow-500';
-      case 'offline': return 'bg-slate-500';
-      default: return 'bg-slate-500';
+      case 'offline': return 'bg-muted/40';
+      default: return 'bg-muted/40';
     }
   };
 
@@ -108,16 +108,16 @@ const ShiftAvailability = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Calendar className="w-6 h-6 text-teal-400" />
             Shift & Availability
           </h2>
           <p className="text-muted-foreground text-sm">Manage agent schedules and workload distribution</p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 bg-slate-800/50 rounded-lg px-3 py-2">
+          <div className="flex items-center gap-2 bg-card/60 rounded-lg px-3 py-2">
             <Zap className={`w-4 h-4 ${loadBalancerEnabled ? 'text-emerald-400' : 'text-muted-foreground'}`} />
-            <span className="text-sm text-white">Load Balancer</span>
+            <span className="text-sm text-foreground">Load Balancer</span>
             <Switch checked={loadBalancerEnabled} onCheckedChange={handleToggleLoadBalancer} />
           </div>
           <Button className="bg-teal-500/20 text-teal-400 border border-teal-500/30 hover:bg-teal-500/30">
@@ -139,7 +139,7 @@ const ShiftAvailability = () => {
             <motion.div
               key={shift.id}
               whileHover={{ scale: 1.02 }}
-              className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4"
+              className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4"
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
@@ -147,7 +147,7 @@ const ShiftAvailability = () => {
                     <ShiftIcon className="w-5 h-5 text-teal-400" />
                   </div>
                   <div>
-                    <p className="font-semibold text-white">{shift.name}</p>
+                    <p className="font-semibold text-foreground">{shift.name}</p>
                     <p className="text-xs text-muted-foreground">{shift.startTime} - {shift.endTime}</p>
                   </div>
                 </div>
@@ -158,7 +158,7 @@ const ShiftAvailability = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Users className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-sm text-slate-300">{shift.agents} agents</span>
+                  <span className="text-sm text-muted-foreground">{shift.agents} agents</span>
                 </div>
                 <Button size="sm" variant="ghost" className="text-teal-400 hover:bg-teal-500/10">
                   <Settings className="w-4 h-4" />
@@ -174,10 +174,10 @@ const ShiftAvailability = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-white">Active Agents</h3>
+          <h3 className="text-lg font-semibold text-foreground">Active Agents</h3>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 text-xs">
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
@@ -192,7 +192,7 @@ const ShiftAvailability = () => {
               <span className="text-muted-foreground">Break</span>
             </div>
             <div className="flex items-center gap-2 text-xs">
-              <span className="w-2 h-2 rounded-full bg-slate-500"></span>
+              <span className="w-2 h-2 rounded-full bg-muted/40"></span>
               <span className="text-muted-foreground">Offline</span>
             </div>
           </div>
@@ -203,24 +203,24 @@ const ShiftAvailability = () => {
             <motion.div
               key={agent.id}
               whileHover={{ scale: 1.01 }}
-              className="p-4 rounded-xl bg-slate-800/30 border border-slate-700/50"
+              className="p-4 rounded-xl bg-card/60 border border-border"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="relative">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-sky-500 flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-sky-500 flex items-center justify-center text-foreground font-bold text-sm">
                     {agent.avatar}
                   </div>
-                  <span className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-slate-800 ${getStatusColor(agent.status)}`}></span>
+                  <span className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-border ${getStatusColor(agent.status)}`}></span>
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-white">{agent.name}</p>
+                  <p className="font-medium text-foreground">{agent.name}</p>
                   <p className="text-xs text-muted-foreground">{agent.shift} Shift</p>
                 </div>
                 <Badge className={`capitalize ${
                   agent.status === 'available' ? 'bg-emerald-500/20 text-emerald-400' :
                   agent.status === 'busy' ? 'bg-orange-500/20 text-orange-400' :
                   agent.status === 'break' ? 'bg-yellow-500/20 text-yellow-400' :
-                  'bg-slate-700/50 text-muted-foreground'
+                  'bg-muted/40 text-muted-foreground'
                 }`}>
                   {agent.status}
                 </Badge>
@@ -230,9 +230,9 @@ const ShiftAvailability = () => {
               <div className="mb-3">
                 <div className="flex items-center justify-between text-xs mb-1">
                   <span className="text-muted-foreground">Current Load</span>
-                  <span className="text-white">{agent.currentLoad}/{agent.maxLoad}</span>
+                  <span className="text-foreground">{agent.currentLoad}/{agent.maxLoad}</span>
                 </div>
-                <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div className="h-2 bg-muted/40 rounded-full overflow-hidden">
                   <motion.div
                     className={`h-full ${
                       agent.currentLoad / agent.maxLoad >= 0.8 ? 'bg-red-500' :
@@ -279,16 +279,16 @@ const ShiftAvailability = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-white">Weekly Schedule</h3>
+          <h3 className="text-lg font-semibold text-foreground">Weekly Schedule</h3>
           <div className="flex items-center gap-2">
-            <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-white">
+            <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-foreground">
               <ChevronLeft className="w-4 h-4" />
             </Button>
-            <span className="text-sm text-white">Jan 13 - Jan 19, 2025</span>
-            <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-white">
+            <span className="text-sm text-foreground">Jan 13 - Jan 19, 2025</span>
+            <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-foreground">
               <ChevronRight className="w-4 h-4" />
             </Button>
           </div>
@@ -298,8 +298,8 @@ const ShiftAvailability = () => {
           {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, idx) => (
             <div key={day} className="text-center">
               <p className="text-xs text-muted-foreground mb-2">{day}</p>
-              <div className={`p-3 rounded-lg ${idx === 4 ? 'bg-teal-500/20 border border-teal-500/30' : 'bg-slate-800/30 border border-slate-700/30'}`}>
-                <p className="text-lg font-bold text-white">{13 + idx}</p>
+              <div className={`p-3 rounded-lg ${idx === 4 ? 'bg-teal-500/20 border border-teal-500/30' : 'bg-card/60 border border-border'}`}>
+                <p className="text-lg font-bold text-foreground">{13 + idx}</p>
                 <p className="text-xs text-muted-foreground">{idx < 5 ? '8 agents' : '4 agents'}</p>
               </div>
             </div>

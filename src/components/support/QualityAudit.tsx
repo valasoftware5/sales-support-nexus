@@ -121,7 +121,7 @@ const QualityAudit = () => {
       case 'critical': return 'bg-red-500/20 text-red-400';
       case 'warning': return 'bg-yellow-500/20 text-yellow-400';
       case 'info': return 'bg-blue-500/20 text-blue-400';
-      default: return 'bg-slate-500/20 text-muted-foreground';
+      default: return 'bg-muted/40 text-muted-foreground';
     }
   };
 
@@ -130,14 +130,14 @@ const QualityAudit = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Shield className="w-6 h-6 text-teal-400" />
             Quality & Audit
           </h2>
           <p className="text-muted-foreground text-sm">Supervisor-level quality assurance and compliance</p>
         </div>
         <div className="flex items-center gap-3">
-          <Button onClick={handleTriggerSampling} variant="outline" className="border-slate-700">
+          <Button onClick={handleTriggerSampling} variant="outline" className="border-border">
             <RefreshCw className="w-4 h-4 mr-2" />
             Random Sample
           </Button>
@@ -152,7 +152,7 @@ const QualityAudit = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4"
       >
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm text-muted-foreground">Daily Sampling Progress</span>
@@ -167,25 +167,25 @@ const QualityAudit = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
           <Users className="w-5 h-5 text-purple-400" />
-          <h3 className="text-lg font-semibold text-white">Agent Quality Scores</h3>
+          <h3 className="text-lg font-semibold text-foreground">Agent Quality Scores</h3>
         </div>
         <div className="grid grid-cols-2 gap-4">
           {qualityScores.map((agent) => (
             <motion.div
               key={agent.agentId}
               whileHover={{ scale: 1.01 }}
-              className="p-4 rounded-xl bg-slate-800/30 border border-slate-700/50"
+              className="p-4 rounded-xl bg-card/60 border border-border"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-sky-500 flex items-center justify-center text-white font-bold">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-sky-500 flex items-center justify-center text-foreground font-bold">
                   {agent.avatar}
                 </div>
                 <div className="flex-1">
-                  <p className="font-semibold text-white">{agent.agentName}</p>
+                  <p className="font-semibold text-foreground">{agent.agentName}</p>
                   <p className="text-xs text-muted-foreground">{agent.ticketsAudited} tickets audited</p>
                 </div>
                 <div className="text-right">
@@ -200,7 +200,7 @@ const QualityAudit = () => {
                   { label: 'Accuracy', value: agent.accuracy },
                   { label: 'SLA', value: agent.slaAdherence },
                 ].map((metric) => (
-                  <div key={metric.label} className="text-center p-2 rounded-lg bg-slate-900/50">
+                  <div key={metric.label} className="text-center p-2 rounded-lg bg-card/60">
                     <p className={`text-lg font-bold ${getScoreColor(metric.value)}`}>{metric.value}%</p>
                     <p className="text-xs text-muted-foreground">{metric.label}</p>
                   </div>
@@ -216,11 +216,11 @@ const QualityAudit = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
           <AlertTriangle className="w-5 h-5 text-orange-400" />
-          <h3 className="text-lg font-semibold text-white">Audit Findings</h3>
+          <h3 className="text-lg font-semibold text-foreground">Audit Findings</h3>
           <Badge className="bg-orange-500/20 text-orange-400">
             {auditItems.filter(a => a.status === 'pending').length} pending
           </Badge>
@@ -233,7 +233,7 @@ const QualityAudit = () => {
               className={`p-4 rounded-xl border ${
                 item.severity === 'critical' ? 'bg-red-500/5 border-red-500/20' :
                 item.severity === 'warning' ? 'bg-yellow-500/5 border-yellow-500/20' :
-                'bg-slate-800/30 border-slate-700/50'
+                'bg-card/60 border-border'
               }`}
             >
               <div className="flex items-start justify-between">
@@ -249,9 +249,9 @@ const QualityAudit = () => {
                     <div className="flex items-center gap-2 mb-1">
                       <span className="font-mono text-sm text-teal-400">{item.ticketId}</span>
                       <Badge className={getSeverityColor(item.severity)}>{item.severity}</Badge>
-                      <Badge className="bg-slate-700/50 text-slate-300">{item.category}</Badge>
+                      <Badge className="bg-muted/40 text-muted-foreground">{item.category}</Badge>
                     </div>
-                    <p className="text-sm text-white mb-1">{item.finding}</p>
+                    <p className="text-sm text-foreground mb-1">{item.finding}</p>
                     <p className="text-xs text-muted-foreground">Agent: {item.agentName} • {item.auditedAt}</p>
                   </div>
                 </div>
@@ -289,18 +289,18 @@ const QualityAudit = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-purple-500/20 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-purple-500/20 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
           <MessageSquare className="w-5 h-5 text-purple-400" />
-          <h3 className="text-lg font-semibold text-white">AI Misclassification Review</h3>
+          <h3 className="text-lg font-semibold text-foreground">AI Misclassification Review</h3>
           <Badge className="bg-purple-500/20 text-purple-400">{aiMisclassifications.length} corrections</Badge>
         </div>
         <div className="space-y-3">
           {aiMisclassifications.map((item) => (
             <div
               key={item.id}
-              className="p-4 rounded-xl bg-slate-800/30 border border-slate-700/50 flex items-center justify-between"
+              className="p-4 rounded-xl bg-card/60 border border-border flex items-center justify-between"
             >
               <div>
                 <div className="flex items-center gap-2 mb-1">

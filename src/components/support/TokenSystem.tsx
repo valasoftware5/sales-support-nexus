@@ -172,7 +172,7 @@ const TokenSystem = () => {
       case 'critical': return 'bg-red-500/20 text-red-300 border-red-500/30';
       case 'high': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
       case 'medium': return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
-      case 'low': return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+      case 'low': return 'bg-muted/40 text-muted-foreground border-border';
     }
   };
 
@@ -213,7 +213,7 @@ const TokenSystem = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-semibold text-foreground flex items-center gap-2">
             <Hash className="w-6 h-6 text-teal-400" />
             Token Queue
           </h2>
@@ -226,7 +226,7 @@ const TokenSystem = () => {
               Merge ({selectedTokens.length})
             </Button>
           )}
-          <Button onClick={() => executeAction({ module: 'customer_support', action: 'refresh', entityType: 'tokens' })} variant="outline" className="border-slate-600">
+          <Button onClick={() => executeAction({ module: 'customer_support', action: 'refresh', entityType: 'tokens' })} variant="outline" className="border-border">
             <RefreshCw className="w-4 h-4 mr-2" />
             Refresh
           </Button>
@@ -235,28 +235,28 @@ const TokenSystem = () => {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-teal-500/20">
+        <Card className="bg-card/60 border-teal-500/20">
           <CardContent className="p-4 text-center">
             <Ticket className="w-8 h-8 text-teal-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-teal-100">{stats.total}</div>
             <div className="text-xs text-muted-foreground">Total Tokens</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-100">{stats.open}</div>
             <div className="text-xs text-muted-foreground">Pending</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <Play className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{stats.inProgress}</div>
             <div className="text-xs text-muted-foreground">In Progress</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-red-500/20">
+        <Card className="bg-card/60 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{stats.slaBreach}</div>
@@ -273,11 +273,11 @@ const TokenSystem = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search tokens..."
-            className="pl-10 bg-slate-900/50 border-slate-700"
+            className="pl-10 bg-card/60 border-border"
           />
         </div>
         <Select value={filterStatus} onValueChange={setFilterStatus}>
-          <SelectTrigger className="w-40 bg-slate-900/50 border-slate-700">
+          <SelectTrigger className="w-40 bg-card/60 border-border">
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
@@ -289,7 +289,7 @@ const TokenSystem = () => {
           </SelectContent>
         </Select>
         <Select value={filterPriority} onValueChange={setFilterPriority}>
-          <SelectTrigger className="w-40 bg-slate-900/50 border-slate-700">
+          <SelectTrigger className="w-40 bg-card/60 border-border">
             <SelectValue placeholder="Priority" />
           </SelectTrigger>
           <SelectContent>
@@ -303,7 +303,7 @@ const TokenSystem = () => {
       </div>
 
       {/* Token List */}
-      <Card className="bg-slate-900/50 border-teal-500/20">
+      <Card className="bg-card/60 border-teal-500/20">
         <CardHeader>
           <CardTitle className="text-teal-100">Active Tokens</CardTitle>
         </CardHeader>
@@ -322,7 +322,7 @@ const TokenSystem = () => {
                     exit={{ opacity: 0, x: 20 }}
                     transition={{ delay: index * 0.05 }}
                     className={`p-4 rounded-lg transition-colors ${
-                      isSelected ? 'bg-teal-900/30 border border-teal-500/30' : 'bg-slate-800/50 hover:bg-slate-800 border border-transparent'
+                      isSelected ? 'bg-teal-900/30 border border-teal-500/30' : 'bg-card/60 hover:bg-card/60 border border-transparent'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-3">
@@ -337,7 +337,7 @@ const TokenSystem = () => {
                               setSelectedTokens(selectedTokens.filter(id => id !== token.id));
                             }
                           }}
-                          className="rounded border-slate-600"
+                          className="rounded border-border"
                         />
                         <span className="font-mono text-teal-400 text-sm">{token.id}</span>
                         {getChannelIcon(token.channel)}
@@ -356,7 +356,7 @@ const TokenSystem = () => {
 
                     <div className="flex items-center justify-between">
                       <div>
-                        <h4 className="font-medium text-slate-100">{token.subject}</h4>
+                        <h4 className="font-medium text-foreground">{token.subject}</h4>
                         <p className="text-sm text-muted-foreground">
                           {token.customerName} • {token.ticketId} • {token.assignedAgent || 'Unassigned'} • {token.createdAt}
                         </p>
@@ -365,7 +365,7 @@ const TokenSystem = () => {
                       <div className="flex items-center gap-2">
                         {!token.assignedAgent && token.status !== 'closed' && (
                           <Select onValueChange={(agent) => handleAssign(token.id, agent)}>
-                            <SelectTrigger className="w-32 h-8 bg-slate-700/50 border-slate-600 text-xs">
+                            <SelectTrigger className="w-32 h-8 bg-muted/40 border-border text-xs">
                               <SelectValue placeholder="Assign..." />
                             </SelectTrigger>
                             <SelectContent>
@@ -378,7 +378,7 @@ const TokenSystem = () => {
 
                         {token.assignedAgent && token.status !== 'closed' && (
                           <Select onValueChange={(agent) => handleReassign(token.id, agent)}>
-                            <SelectTrigger className="w-32 h-8 bg-slate-700/50 border-slate-600 text-xs">
+                            <SelectTrigger className="w-32 h-8 bg-muted/40 border-border text-xs">
                               <SelectValue placeholder="Reassign..." />
                             </SelectTrigger>
                             <SelectContent>

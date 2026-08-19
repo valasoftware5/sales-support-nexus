@@ -107,7 +107,7 @@ const ApprovalWorkflow = () => {
       case 'deletion': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
       case 'priority_override': return 'bg-purple-500/20 text-purple-400 border-purple-500/30';
       case 'sla_reset': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
-      default: return 'bg-slate-500/20 text-muted-foreground border-slate-500/30';
+      default: return 'bg-muted/40 text-muted-foreground border-border';
     }
   };
 
@@ -117,7 +117,7 @@ const ApprovalWorkflow = () => {
       case 'approved': return <Badge className="bg-emerald-500/20 text-emerald-400"><CheckCircle className="w-3 h-3 mr-1" />Approved</Badge>;
       case 'rejected': return <Badge className="bg-red-500/20 text-red-400"><XCircle className="w-3 h-3 mr-1" />Rejected</Badge>;
       case 'escalated': return <Badge className="bg-purple-500/20 text-purple-400"><ArrowUpRight className="w-3 h-3 mr-1" />Escalated</Badge>;
-      default: return <Badge className="bg-slate-500/20 text-muted-foreground">Unknown</Badge>;
+      default: return <Badge className="bg-muted/40 text-muted-foreground">Unknown</Badge>;
     }
   };
 
@@ -130,7 +130,7 @@ const ApprovalWorkflow = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Shield className="w-6 h-6 text-teal-400" />
             Approval Workflow
           </h2>
@@ -150,11 +150,11 @@ const ApprovalWorkflow = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-yellow-500/20 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-yellow-500/20 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
           <Clock className="w-5 h-5 text-yellow-400" />
-          <h3 className="text-lg font-semibold text-white">Pending Approvals</h3>
+          <h3 className="text-lg font-semibold text-foreground">Pending Approvals</h3>
         </div>
 
         <div className="space-y-4">
@@ -173,13 +173,13 @@ const ApprovalWorkflow = () => {
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="font-semibold text-white capitalize">{request.type.replace('_', ' ')}</span>
+                        <span className="font-semibold text-foreground capitalize">{request.type.replace('_', ' ')}</span>
                         <span className="font-mono text-sm text-teal-400">{request.ticketId}</span>
                         {request.priority === 'critical' && (
                           <Badge className="bg-red-500/20 text-red-400 animate-pulse">CRITICAL</Badge>
                         )}
                       </div>
-                      <p className="text-sm text-slate-300 mb-2">{request.reason}</p>
+                      <p className="text-sm text-muted-foreground mb-2">{request.reason}</p>
                       <div className="flex items-center gap-4 text-xs text-muted-foreground">
                         <span>Customer: {request.customerName}</span>
                         <span>Requested by: {request.requestedBy} ({request.requestedByRole})</span>
@@ -196,7 +196,7 @@ const ApprovalWorkflow = () => {
                         size="sm" 
                         onClick={() => handleViewDetails(request.id, request.ticketId)}
                         variant="ghost" 
-                        className="text-muted-foreground hover:text-white"
+                        className="text-muted-foreground hover:text-foreground"
                       >
                         <Eye className="w-4 h-4" />
                       </Button>
@@ -233,7 +233,7 @@ const ApprovalWorkflow = () => {
                           placeholder="Rejection reason (required)..."
                           value={rejectReason}
                           onChange={(e) => setRejectReason(e.target.value)}
-                          className="bg-slate-800/50 border-slate-700 text-sm mb-2"
+                          className="bg-card/60 border-border text-sm mb-2"
                           rows={2}
                         />
                         <Button 
@@ -265,21 +265,21 @@ const ApprovalWorkflow = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-slate-900/50 backdrop-blur-xl border border-purple-500/20 rounded-2xl p-6"
+          className="bg-card/60 backdrop-blur-xl border border-purple-500/20 rounded-2xl p-6"
         >
           <div className="flex items-center gap-3 mb-4">
             <ArrowUpRight className="w-5 h-5 text-purple-400" />
-            <h3 className="text-lg font-semibold text-white">Escalated to Admin</h3>
+            <h3 className="text-lg font-semibold text-foreground">Escalated to Admin</h3>
           </div>
           <div className="space-y-3">
             {escalatedRequests.map((request) => {
               const TypeIcon = getTypeIcon(request.type);
               return (
-                <div key={request.id} className="p-4 rounded-xl bg-slate-800/30 border border-purple-500/20 flex items-center justify-between">
+                <div key={request.id} className="p-4 rounded-xl bg-card/60 border border-purple-500/20 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <TypeIcon className="w-5 h-5 text-purple-400" />
                     <div>
-                      <span className="font-medium text-white capitalize">{request.type.replace('_', ' ')}</span>
+                      <span className="font-medium text-foreground capitalize">{request.type.replace('_', ' ')}</span>
                       <span className="text-muted-foreground ml-2">{request.ticketId}</span>
                       <p className="text-xs text-muted-foreground">{request.reason}</p>
                     </div>
@@ -297,20 +297,20 @@ const ApprovalWorkflow = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
+        className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
           <CheckCircle className="w-5 h-5 text-emerald-400" />
-          <h3 className="text-lg font-semibold text-white">Recent Decisions</h3>
+          <h3 className="text-lg font-semibold text-foreground">Recent Decisions</h3>
         </div>
         <div className="space-y-2">
           {completedRequests.map((request) => {
             const TypeIcon = getTypeIcon(request.type);
             return (
-              <div key={request.id} className="p-3 rounded-xl bg-slate-800/30 border border-slate-700/50 flex items-center justify-between">
+              <div key={request.id} className="p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <TypeIcon className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-sm text-white capitalize">{request.type.replace('_', ' ')}</span>
+                  <span className="text-sm text-foreground capitalize">{request.type.replace('_', ' ')}</span>
                   <span className="text-xs text-muted-foreground">{request.ticketId}</span>
                 </div>
                 <div className="flex items-center gap-2">

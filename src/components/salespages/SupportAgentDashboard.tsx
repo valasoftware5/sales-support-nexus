@@ -40,7 +40,7 @@ const SupportAgentDashboard = () => {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-mono font-bold text-foreground">Support Command</h1>
+            <h1 className="text-2xl font-bold text-foreground">Support Command</h1>
             <p className="text-muted-foreground">Ticket management & live chat</p>
           </div>
           <Badge className={`px-3 py-1 ${supportStats.queueSize > 5 ? 'bg-neon-orange/20 text-neon-orange' : 'bg-neon-green/20 text-neon-green'}`}>
@@ -67,7 +67,7 @@ const SupportAgentDashboard = () => {
               <Card className="glass-panel">
                 <CardContent className="p-4">
                   <stat.icon className={`w-5 h-5 ${stat.color} mb-2`} />
-                  <p className="text-2xl font-mono font-bold text-foreground">{stat.value}</p>
+                  <p className="text-2xl font-bold text-foreground">{stat.value}</p>
                   <p className="text-xs text-muted-foreground">{stat.label}</p>
                 </CardContent>
               </Card>
@@ -88,7 +88,7 @@ const SupportAgentDashboard = () => {
           {/* Active Tickets */}
           <Card className="glass-panel lg:col-span-2">
             <CardHeader>
-              <CardTitle className="text-lg font-mono flex items-center gap-2">
+              <CardTitle className="text-lg flex items-center gap-2">
                 <MessageSquare className="w-5 h-5 text-primary" />
                 Active Tickets
               </CardTitle>
@@ -113,7 +113,7 @@ const SupportAgentDashboard = () => {
                       }`} />
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-mono text-muted-foreground">{ticket.id}</span>
+                          <span className="text-xs text-muted-foreground">{ticket.id}</span>
                           {ticket.type === 'prime' && (
                             <Badge className="bg-neon-orange/20 text-neon-orange text-xs">VIP</Badge>
                           )}
@@ -137,7 +137,7 @@ const SupportAgentDashboard = () => {
           {/* Quick Responses */}
           <Card className="glass-panel">
             <CardHeader>
-              <CardTitle className="text-lg font-mono">Quick Responses</CardTitle>
+              <CardTitle className="text-lg">Quick Responses</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
@@ -145,7 +145,7 @@ const SupportAgentDashboard = () => {
                   <Button 
                     key={i}
                     variant="outline" 
-                    className="w-full h-auto py-3 text-left text-xs justify-start hover:bg-primary/10"
+                    className="w-full h-auto py-3 text-left text-xs justify-start whitespace-normal leading-snug hover:bg-primary/10"
                   >
                     {response}
                   </Button>
@@ -153,7 +153,7 @@ const SupportAgentDashboard = () => {
               </div>
 
               <div className="mt-6 pt-6 border-t border-border/30 space-y-3">
-                <h4 className="text-sm font-mono text-foreground">Contact Options</h4>
+                <h4 className="text-sm text-foreground">Contact Options</h4>
                 <Button variant="outline" className="w-full gap-2 justify-start">
                   <Phone className="w-4 h-4" />
                   Voice Call
@@ -171,7 +171,7 @@ const SupportAgentDashboard = () => {
         {supportStats.escalations > 0 && (
           <Card className="glass-panel border-neon-red/30">
             <CardHeader>
-              <CardTitle className="text-lg font-mono flex items-center gap-2 text-neon-red">
+              <CardTitle className="text-lg flex items-center gap-2 text-neon-red">
                 <AlertTriangle className="w-5 h-5" />
                 Escalated Tickets ({supportStats.escalations})
               </CardTitle>
@@ -188,7 +188,7 @@ const SupportAgentDashboard = () => {
                     className="p-3 rounded-lg bg-neon-red/10 border border-neon-red/30"
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-mono text-muted-foreground">{esc.id}</span>
+                      <span className="text-xs text-muted-foreground">{esc.id}</span>
                       <Badge variant="outline" className="text-xs border-neon-red/50 text-neon-red">{esc.time}</Badge>
                     </div>
                     <p className="text-sm font-medium text-foreground">{esc.reason}</p>

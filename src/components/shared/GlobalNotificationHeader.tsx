@@ -145,8 +145,8 @@ const GlobalNotificationHeader = ({
     <div className="flex items-center gap-2">
       {/* Role Badge - Compact */}
       <div className={`flex items-center gap-1.5 px-2 py-1 rounded-md bg-gradient-to-r ${getRoleBadgeColor(userRole)} shadow-md`}>
-        <Shield className="w-3 h-3 text-white" />
-        <span className="text-[10px] font-bold text-white uppercase tracking-wide">
+        <Shield className="w-3 h-3 text-foreground" />
+        <span className="text-[10px] font-bold text-foreground uppercase tracking-wide">
           {userRole.replace('_', ' ')}
         </span>
       </div>
@@ -161,7 +161,7 @@ const GlobalNotificationHeader = ({
             ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/50'
             : promiseState === 'pending'
             ? 'bg-amber-500/20 text-amber-400 border border-amber-500/50 animate-pulse'
-            : 'bg-slate-800/50 text-slate-300 border border-slate-700/50 hover:border-cyan-500/50'
+            : 'bg-card/60 text-muted-foreground border border-border hover:border-cyan-500/50'
         }`}
       >
         <Handshake className="w-3 h-3" />
@@ -171,13 +171,13 @@ const GlobalNotificationHeader = ({
       </motion.button>
 
       {/* Live Counter - Compact */}
-      <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-slate-800/50 border border-slate-700/50">
+      <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-card/60 border border-border">
         <motion.div
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 1.5, repeat: Infinity }}
           className="w-1.5 h-1.5 bg-emerald-400 rounded-full"
         />
-        <span className="text-[10px] font-medium text-slate-400">
+        <span className="text-[10px] font-medium text-muted-foreground">
           <span className="text-emerald-400 font-bold">{unresolvedCount}</span>
         </span>
       </div>
@@ -206,7 +206,7 @@ const GlobalNotificationHeader = ({
             >
               <Siren className="w-3.5 h-3.5 animate-pulse" />
               <span className="font-bold text-[10px]">BUZZER</span>
-              <Badge className="bg-red-500 text-white text-[9px] px-1 h-4">{buzzerNotifications.length}</Badge>
+              <Badge className="bg-red-500 text-foreground text-[9px] px-1 h-4">{buzzerNotifications.length}</Badge>
             </motion.button>
           </motion.div>
         )}
@@ -219,8 +219,8 @@ const GlobalNotificationHeader = ({
         onClick={() => setIsMuted(!isMuted)}
         className={`p-1.5 rounded-md transition-all ${
           isMuted 
-            ? 'bg-slate-700/50 text-slate-500' 
-            : 'bg-slate-800/50 text-slate-400 hover:text-white'
+            ? 'bg-muted/40 text-muted-foreground' 
+            : 'bg-card/60 text-muted-foreground hover:text-foreground'
         }`}
         title={isMuted ? 'Unmute alerts' : 'Mute alerts'}
       >
@@ -246,7 +246,7 @@ const GlobalNotificationHeader = ({
           <motion.span
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="absolute -top-1 -right-1 min-w-4 h-4 px-0.5 bg-emerald-500 rounded-full text-[9px] font-bold text-white flex items-center justify-center"
+            className="absolute -top-1 -right-1 min-w-4 h-4 px-0.5 bg-emerald-500 rounded-full text-[9px] font-bold text-foreground flex items-center justify-center"
           >
             {unreadChatCount > 9 ? '9+' : unreadChatCount}
           </motion.span>
@@ -259,14 +259,14 @@ const GlobalNotificationHeader = ({
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          className="relative p-1.5 rounded-md bg-slate-800/50 border border-slate-700/50 hover:border-cyan-500/30 transition-all"
+          className="relative p-1.5 rounded-md bg-card/60 border border-border hover:border-cyan-500/30 transition-all"
         >
-          <Bell className="w-4 h-4 text-slate-400" />
+          <Bell className="w-4 h-4 text-muted-foreground" />
           {unresolvedCount > 0 && (
             <motion.span
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-              className="absolute -top-1 -right-1 min-w-4 h-4 px-0.5 bg-cyan-500 rounded-full text-[9px] font-bold text-white flex items-center justify-center"
+              className="absolute -top-1 -right-1 min-w-4 h-4 px-0.5 bg-cyan-500 rounded-full text-[9px] font-bold text-foreground flex items-center justify-center"
             >
               {unresolvedCount > 99 ? '99+' : unresolvedCount}
             </motion.span>
@@ -285,20 +285,20 @@ const GlobalNotificationHeader = ({
                 initial={{ opacity: 0, y: -10, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                className="absolute right-0 top-full mt-2 w-96 max-h-[70vh] bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-xl shadow-2xl z-50 overflow-hidden"
+                className="absolute right-0 top-full mt-2 w-96 max-h-[70vh] bg-card/60 backdrop-blur-xl border border-border rounded-xl shadow-2xl z-50 overflow-hidden"
               >
                 {/* Header */}
-                <div className="flex items-center justify-between p-4 border-b border-slate-700/50">
+                <div className="flex items-center justify-between p-4 border-b border-border">
                   <div className="flex items-center gap-2">
                     <Bell className="w-4 h-4 text-cyan-400" />
-                    <span className="font-semibold text-white">Notifications</span>
+                    <span className="font-semibold text-foreground">Notifications</span>
                     <Badge className="bg-cyan-500/20 text-cyan-400 text-xs">{unresolvedCount}</Badge>
                   </div>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => setIsDropdownOpen(false)}
-                    className="text-slate-400 hover:text-white"
+                    className="text-muted-foreground hover:text-foreground"
                   >
                     <X className="w-4 h-4" />
                   </Button>
@@ -307,7 +307,7 @@ const GlobalNotificationHeader = ({
                 {/* Notifications List */}
                 <div className="max-h-96 overflow-y-auto">
                   {filteredNotifications.length === 0 ? (
-                    <div className="p-8 text-center text-slate-500">
+                    <div className="p-8 text-center text-muted-foreground">
                       <Bell className="w-8 h-8 mx-auto mb-2 opacity-50" />
                       <p>No notifications</p>
                     </div>
@@ -320,7 +320,7 @@ const GlobalNotificationHeader = ({
                             key={notification.id}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className={`p-4 ${config.bgColor} hover:bg-slate-800/50 transition-colors cursor-pointer group`}
+                            className={`p-4 ${config.bgColor} hover:bg-card/60 transition-colors cursor-pointer group`}
                           >
                             <div className="flex items-start gap-3">
                               <div className={`p-2 rounded-lg ${config.bgColor} ${config.color}`}>
@@ -337,10 +337,10 @@ const GlobalNotificationHeader = ({
                                     </Badge>
                                   )}
                                 </div>
-                                <p className="text-sm text-white truncate">{notification.message}</p>
+                                <p className="text-sm text-foreground truncate">{notification.message}</p>
                                 <div className="flex items-center gap-2 mt-2">
-                                  <Clock className="w-3 h-3 text-slate-500" />
-                                  <span className="text-xs text-slate-500">{formatTime(notification.timestamp)}</span>
+                                  <Clock className="w-3 h-3 text-muted-foreground" />
+                                  <span className="text-xs text-muted-foreground">{formatTime(notification.timestamp)}</span>
                                 </div>
                               </div>
                               <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -363,7 +363,7 @@ const GlobalNotificationHeader = ({
                                     e.stopPropagation();
                                     onDismiss(notification.id);
                                   }}
-                                  className="text-slate-500 hover:text-white p-1 h-auto"
+                                  className="text-muted-foreground hover:text-foreground p-1 h-auto"
                                 >
                                   <X className="w-3 h-3" />
                                 </Button>
@@ -377,11 +377,11 @@ const GlobalNotificationHeader = ({
                 </div>
 
                 {/* Footer */}
-                <div className="p-3 border-t border-slate-700/50 bg-slate-800/30">
+                <div className="p-3 border-t border-border bg-card/60">
                   <Button 
                     variant="ghost" 
                     size="sm" 
-                    className="w-full text-slate-400 hover:text-cyan-400"
+                    className="w-full text-muted-foreground hover:text-cyan-400"
                     onClick={() => setIsDropdownOpen(false)}
                   >
                     View All Notifications

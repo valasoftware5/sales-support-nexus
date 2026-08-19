@@ -98,7 +98,7 @@ const CannedResponses = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <MessageSquare className="w-6 h-6 text-teal-400" />
             Canned Responses
           </h2>
@@ -118,7 +118,7 @@ const CannedResponses = () => {
             placeholder="Search responses..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 bg-slate-800/50 border-slate-700"
+            className="pl-10 bg-card/60 border-border"
           />
         </div>
         <div className="flex items-center gap-2">
@@ -130,7 +130,7 @@ const CannedResponses = () => {
               onClick={() => setActiveCategory(cat)}
               className={activeCategory === cat 
                 ? 'bg-teal-500/20 text-teal-400 border border-teal-500/30' 
-                : 'text-muted-foreground hover:text-white'
+                : 'text-muted-foreground hover:text-foreground'
               }
             >
               {cat}
@@ -152,7 +152,7 @@ const CannedResponses = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.05 }}
             whileHover={{ scale: 1.01 }}
-            className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4"
+            className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4"
           >
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center gap-2">
@@ -165,9 +165,9 @@ const CannedResponses = () => {
                   <Star className={`w-4 h-4 ${response.isFavorite ? 'fill-current' : ''}`} />
                 </Button>
                 <div>
-                  <h4 className="font-semibold text-white">{response.title}</h4>
+                  <h4 className="font-semibold text-foreground">{response.title}</h4>
                   <div className="flex items-center gap-2 mt-1">
-                    <Badge className="bg-slate-700/50 text-slate-300 text-xs">{response.category}</Badge>
+                    <Badge className="bg-muted/40 text-muted-foreground text-xs">{response.category}</Badge>
                     <span className="text-xs text-muted-foreground">Used {response.usageCount} times</span>
                   </div>
                 </div>
@@ -181,7 +181,7 @@ const CannedResponses = () => {
                 >
                   <Copy className="w-4 h-4" />
                 </Button>
-                <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-white">
+                <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-foreground">
                   <Edit2 className="w-4 h-4" />
                 </Button>
                 <Button 
@@ -195,7 +195,7 @@ const CannedResponses = () => {
               </div>
             </div>
 
-            <p className="text-sm text-slate-300 mb-3 line-clamp-3">{response.content}</p>
+            <p className="text-sm text-muted-foreground mb-3 line-clamp-3">{response.content}</p>
 
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1 flex-wrap">
@@ -226,7 +226,7 @@ const CannedResponses = () => {
         ].map((stat, idx) => (
           <div
             key={idx}
-            className="bg-slate-900/50 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4"
+            className="bg-card/60 backdrop-blur-xl border border-teal-500/10 rounded-xl p-4"
           >
             <div className="flex items-center gap-2 mb-2">
               <stat.icon className={`w-4 h-4 ${stat.color}`} />

@@ -26,7 +26,7 @@ const CommissionBoard = () => {
       case "paid": return "bg-emerald-500/20 text-emerald-300 border-emerald-500/30";
       case "pending": return "bg-amber-500/20 text-amber-300 border-amber-500/30";
       case "processing": return "bg-blue-500/20 text-blue-300 border-blue-500/30";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -64,7 +64,7 @@ const CommissionBoard = () => {
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center">
@@ -77,7 +77,7 @@ const CommissionBoard = () => {
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-amber-500/20">
+        <Card className="bg-card/60 border-amber-500/20">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center">
@@ -90,7 +90,7 @@ const CommissionBoard = () => {
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-purple-500/20">
+        <Card className="bg-card/60 border-purple-500/20">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
@@ -106,7 +106,7 @@ const CommissionBoard = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardHeader>
             <CardTitle className="text-cyan-100 flex items-center gap-2">
               <DollarSign className="w-5 h-5 text-cyan-400" />
@@ -123,12 +123,12 @@ const CommissionBoard = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-center justify-between p-4 bg-slate-800/50 rounded-lg"
+                  className="flex items-center justify-between p-4 bg-card/60 rounded-lg"
                 >
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-cyan-400 text-sm">{commission.id.slice(0, 8)}</span>
-                      <span className="font-medium text-slate-200">{memberName(team, commission.member_id) ?? "Unassigned"}</span>
+                      <span className="font-medium text-foreground">{memberName(team, commission.member_id) ?? "Unassigned"}</span>
                     </div>
                     <span className="text-xs text-muted-foreground">{commission.period}</span>
                   </div>
@@ -142,7 +142,7 @@ const CommissionBoard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardHeader>
             <CardTitle className="text-cyan-100 flex items-center gap-2">
               <Award className="w-5 h-5 text-cyan-400" />
@@ -156,7 +156,7 @@ const CommissionBoard = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className={`p-4 rounded-lg ${milestone.achieved ? "bg-emerald-500/10 border border-emerald-500/30" : "bg-slate-800/50"}`}
+                className={`p-4 rounded-lg ${milestone.achieved ? "bg-emerald-500/10 border border-emerald-500/30" : "bg-card/60"}`}
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
@@ -165,15 +165,15 @@ const CommissionBoard = () => {
                     ) : (
                       <Clock className="w-5 h-5 text-muted-foreground" />
                     )}
-                    <span className={`font-medium ${milestone.achieved ? "text-emerald-300" : "text-slate-200"}`}>
+                    <span className={`font-medium ${milestone.achieved ? "text-emerald-300" : "text-foreground"}`}>
                       {milestone.name}
                     </span>
                   </div>
-                  <Badge className={milestone.achieved ? "bg-emerald-500/20 text-emerald-300" : "bg-slate-700 text-slate-300"}>
+                  <Badge className={milestone.achieved ? "bg-emerald-500/20 text-emerald-300" : "bg-muted/40 text-muted-foreground"}>
                     {milestone.reward}
                   </Badge>
                 </div>
-                <Progress value={milestone.progress} className="h-2 bg-slate-800" />
+                <Progress value={milestone.progress} className="h-2 bg-card/60" />
                 <div className="flex justify-between text-xs mt-1">
                   <span className="text-muted-foreground">Progress</span>
                   <span className={milestone.achieved ? "text-emerald-400" : "text-cyan-400"}>{milestone.progress}%</span>

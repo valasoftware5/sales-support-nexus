@@ -33,7 +33,7 @@ const SalesScriptConsole = () => {
         </div>
         <div className="flex items-center gap-3">
           <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-            <SelectTrigger className="w-40 bg-slate-800 border-slate-700">
+            <SelectTrigger className="w-40 bg-card/60 border-border">
               <Globe className="w-4 h-4 mr-2 text-cyan-400" />
               <SelectValue />
             </SelectTrigger>
@@ -45,7 +45,7 @@ const SalesScriptConsole = () => {
               <SelectItem value="hindi">Hindi</SelectItem>
             </SelectContent>
           </Select>
-          <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
+          <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-foreground">
             <Sparkles className="w-4 h-4 mr-2" />
             AI Improve
           </Button>
@@ -53,7 +53,7 @@ const SalesScriptConsole = () => {
       </div>
 
       <Tabs defaultValue="scripts" className="space-y-4">
-        <TabsList className="bg-slate-800/50">
+        <TabsList className="bg-card/60">
           <TabsTrigger value="scripts">Pitch Scripts</TabsTrigger>
           <TabsTrigger value="objections">Objection Handling</TabsTrigger>
           <TabsTrigger value="templates">Templates</TabsTrigger>
@@ -68,7 +68,7 @@ const SalesScriptConsole = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="bg-slate-900/50 border-cyan-500/20 hover:border-cyan-500/40 transition-colors cursor-pointer">
+                <Card className="bg-card/60 border-cyan-500/20 hover:border-cyan-500/40 transition-colors cursor-pointer">
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-3">
@@ -77,7 +77,7 @@ const SalesScriptConsole = () => {
                         </div>
                         <div>
                           <h4 className="font-medium text-cyan-100">{script.title}</h4>
-                          <Badge className="bg-slate-700 text-slate-300 mt-1">{script.category}</Badge>
+                          <Badge className="bg-muted/40 text-muted-foreground mt-1">{script.category}</Badge>
                         </div>
                       </div>
                       <Button size="sm" variant="ghost" className="text-muted-foreground hover:text-cyan-300">
@@ -94,7 +94,7 @@ const SalesScriptConsole = () => {
             ))}
           </div>
 
-          <Card className="bg-slate-900/50 border-cyan-500/20">
+          <Card className="bg-card/60 border-cyan-500/20">
             <CardHeader>
               <CardTitle className="text-cyan-100 flex items-center gap-2">
                 <MessageSquare className="w-5 h-5 text-cyan-400" />
@@ -102,14 +102,14 @@ const SalesScriptConsole = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-slate-800/50 rounded-lg p-4 space-y-3">
-                <p className="text-slate-300">
+              <div className="bg-card/60 rounded-lg p-4 space-y-3">
+                <p className="text-muted-foreground">
                   <span className="text-cyan-400 font-medium">Opening:</span> "Hello [Name], this is [Your Name] from Software Vala. I noticed you were interested in our [Product Category]. Do you have a moment to discuss how we can help streamline your operations?"
                 </p>
-                <p className="text-slate-300">
+                <p className="text-muted-foreground">
                   <span className="text-cyan-400 font-medium">Value Prop:</span> "Our solution has helped over 500 businesses reduce their operational costs by up to 40%. I'd love to show you a quick demo tailored to your industry."
                 </p>
-                <p className="text-slate-300">
+                <p className="text-muted-foreground">
                   <span className="text-cyan-400 font-medium">Close:</span> "Would you be available for a 15-minute demo this week? I can show you exactly how this would work for [Company Name]."
                 </p>
               </div>
@@ -118,7 +118,7 @@ const SalesScriptConsole = () => {
                   <Copy className="w-4 h-4 mr-2" />
                   Copy Script
                 </Button>
-                <Button className="bg-cyan-500 hover:bg-cyan-600 text-white">
+                <Button className="bg-cyan-500 hover:bg-cyan-600 text-foreground">
                   <Sparkles className="w-4 h-4 mr-2" />
                   Personalize with AI
                 </Button>
@@ -128,7 +128,7 @@ const SalesScriptConsole = () => {
         </TabsContent>
 
         <TabsContent value="objections" className="space-y-4">
-          <Card className="bg-slate-900/50 border-cyan-500/20">
+          <Card className="bg-card/60 border-cyan-500/20">
             <CardHeader>
               <CardTitle className="text-cyan-100">Common Objections & Responses</CardTitle>
             </CardHeader>
@@ -139,15 +139,15 @@ const SalesScriptConsole = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="p-4 bg-slate-800/50 rounded-lg"
+                  className="p-4 bg-card/60 rounded-lg"
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <Badge className="bg-red-500/20 text-red-300">Objection</Badge>
-                    <span className="font-medium text-slate-200">"{item.objection}"</span>
+                    <span className="font-medium text-foreground">"{item.objection}"</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-emerald-400 mt-1" />
-                    <p className="text-slate-300 text-sm">{item.response}</p>
+                    <p className="text-muted-foreground text-sm">{item.response}</p>
                   </div>
                 </motion.div>
               ))}
@@ -156,12 +156,12 @@ const SalesScriptConsole = () => {
         </TabsContent>
 
         <TabsContent value="templates">
-          <Card className="bg-slate-900/50 border-cyan-500/20">
+          <Card className="bg-card/60 border-cyan-500/20">
             <CardContent className="p-8 text-center">
               <FileText className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-cyan-100 mb-2">Email & Message Templates</h3>
               <p className="text-muted-foreground mb-4">Pre-written templates for follow-ups, introductions, and more</p>
-              <Button className="bg-cyan-500 hover:bg-cyan-600 text-white">
+              <Button className="bg-cyan-500 hover:bg-cyan-600 text-foreground">
                 Browse Templates
                 <ChevronRight className="w-4 h-4 ml-2" />
               </Button>

@@ -64,7 +64,7 @@ const LiveChatModule = () => {
     switch (sentiment) {
       case "positive": return "bg-emerald-500/20 text-emerald-300";
       case "negative": return "bg-red-500/20 text-red-300";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -72,9 +72,9 @@ const LiveChatModule = () => {
     switch (status) {
       case "waiting": return "bg-amber-500/20 text-amber-300";
       case "active": return "bg-emerald-500/20 text-emerald-300";
-      case "resolved": return "bg-slate-500/20 text-slate-300";
+      case "resolved": return "bg-muted/40 text-muted-foreground";
       case "transferred": return "bg-blue-500/20 text-blue-300";
-      default: return "bg-slate-500/20 text-slate-300";
+      default: return "bg-muted/40 text-muted-foreground";
     }
   };
 
@@ -93,28 +93,28 @@ const LiveChatModule = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-slate-900/50 border-cyan-500/20">
+        <Card className="bg-card/60 border-cyan-500/20">
           <CardContent className="p-4 text-center">
             <MessageCircle className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-cyan-100">{chats.length}</div>
             <div className="text-xs text-muted-foreground">Total Chats</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-amber-500/20">
+        <Card className="bg-card/60 border-amber-500/20">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-amber-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-amber-100">{waitingCount}</div>
             <div className="text-xs text-muted-foreground">Waiting</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-emerald-500/20">
+        <Card className="bg-card/60 border-emerald-500/20">
           <CardContent className="p-4 text-center">
             <CheckCircle className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-emerald-100">{activeCount}</div>
             <div className="text-xs text-muted-foreground">Active</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900/50 border-red-500/20">
+        <Card className="bg-card/60 border-red-500/20">
           <CardContent className="p-4 text-center">
             <AlertTriangle className="w-8 h-8 text-red-400 mx-auto mb-2" />
             <div className="text-2xl font-bold text-red-100">{negativeCount}</div>
@@ -124,7 +124,7 @@ const LiveChatModule = () => {
       </div>
 
       {/* Chats List */}
-      <Card className="bg-slate-900/50 border-cyan-500/20">
+      <Card className="bg-card/60 border-cyan-500/20">
         <CardHeader>
           <CardTitle className="text-cyan-100">Active Sessions</CardTitle>
         </CardHeader>
@@ -138,7 +138,7 @@ const LiveChatModule = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className={`p-4 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition-colors ${chat.status === "waiting" ? "border-l-4 border-amber-500" : ""} ${chat.sentiment === "negative" ? "border-l-4 border-red-500" : ""}`}
+                className={`p-4 bg-card/60 rounded-lg hover:bg-card/60 transition-colors ${chat.status === "waiting" ? "border-l-4 border-amber-500" : ""} ${chat.sentiment === "negative" ? "border-l-4 border-red-500" : ""}`}
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-3">
@@ -148,7 +148,7 @@ const LiveChatModule = () => {
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="font-mono text-cyan-400 text-sm">{chat.id.slice(0, 8)}</span>
-                        <span className="font-medium text-slate-100">{chat.visitor_name}</span>
+                        <span className="font-medium text-foreground">{chat.visitor_name}</span>
                         <Badge className={getStatusColor(chat.status)}>{chat.status}</Badge>
                         <Badge className={getSentimentColor(chat.sentiment)}>{chat.sentiment}</Badge>
                       </div>
@@ -162,7 +162,7 @@ const LiveChatModule = () => {
                   <div className="flex items-center gap-2">
                     {chat.status === "waiting" && (
                       <Select onValueChange={(agent) => handleAcceptChat(chat.id, agent)}>
-                        <SelectTrigger className="w-32 bg-slate-700/50 border-slate-600">
+                        <SelectTrigger className="w-32 bg-muted/40 border-border">
                           <SelectValue placeholder="Accept" />
                         </SelectTrigger>
                         <SelectContent>
@@ -176,7 +176,7 @@ const LiveChatModule = () => {
                     {chat.status === "active" && (
                       <>
                         <Select onValueChange={(agent) => handleTransfer(chat.id, agent)}>
-                          <SelectTrigger className="w-32 bg-slate-700/50 border-slate-600">
+                          <SelectTrigger className="w-32 bg-muted/40 border-border">
                             <SelectValue placeholder="Transfer" />
                           </SelectTrigger>
                           <SelectContent>

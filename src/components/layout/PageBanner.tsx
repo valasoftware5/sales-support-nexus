@@ -14,7 +14,9 @@ export function PageBanner() {
   const search = useRouterState({ select: (s) => s.location.search as { section?: string } });
 
   const module =
-    moduleNav.find((m) => (m.to === "/" ? pathname === "/" : pathname.startsWith(m.to))) ?? null;
+    moduleNav.find((m) =>
+      m.to === "/" ? pathname === "/" : pathname === m.to || pathname.startsWith(`${m.to}/`),
+    ) ?? null;
 
   if (!module) return null;
 

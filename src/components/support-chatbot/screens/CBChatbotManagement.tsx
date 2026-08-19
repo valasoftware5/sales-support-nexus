@@ -93,7 +93,7 @@ export const CBChatbotManagement: React.FC = () => {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
-                      <Bot className="w-6 h-6 text-white" />
+                      <Bot className="w-6 h-6 text-foreground" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">

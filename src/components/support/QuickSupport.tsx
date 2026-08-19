@@ -157,7 +157,7 @@ const QuickSupport: React.FC = () => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-primary to-neon-purple shadow-lg flex items-center justify-center text-white hover:opacity-90 transition-opacity"
+          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-primary to-neon-purple shadow-lg flex items-center justify-center text-foreground hover:opacity-90 transition-opacity"
         >
           <MessageSquare className="w-6 h-6" />
         </motion.button>

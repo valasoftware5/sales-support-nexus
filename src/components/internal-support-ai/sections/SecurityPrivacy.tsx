@@ -67,8 +67,8 @@ export const SecurityPrivacy: React.FC<SecurityPrivacyProps> = ({ activeView }) 
                   <Shield className="w-6 h-6 text-emerald-400" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-white">Security Status</h3>
-                  <p className="text-[10px] text-slate-400">All security measures are active and enforced</p>
+                  <h3 className="text-sm font-medium text-foreground">Security Status</h3>
+                  <p className="text-[10px] text-muted-foreground">All security measures are active and enforced</p>
                 </div>
               </div>
               <Badge className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs px-3 py-1">
@@ -82,9 +82,9 @@ export const SecurityPrivacy: React.FC<SecurityPrivacyProps> = ({ activeView }) 
 
       {/* Security Rules Grid */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm text-white flex items-center gap-2">
+            <CardTitle className="text-sm text-foreground flex items-center gap-2">
               <Lock className="w-4 h-4 text-cyan-400" />
               Security Rules (Enforced)
             </CardTitle>
@@ -94,7 +94,7 @@ export const SecurityPrivacy: React.FC<SecurityPrivacyProps> = ({ activeView }) 
               {securityRules.map((rule) => (
                 <div
                   key={rule.id}
-                  className="p-4 bg-slate-800/50 rounded-lg border border-emerald-500/20"
+                  className="p-4 bg-card/60 rounded-lg border border-emerald-500/20"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400">
@@ -105,8 +105,8 @@ export const SecurityPrivacy: React.FC<SecurityPrivacyProps> = ({ activeView }) 
                       ENFORCED
                     </Badge>
                   </div>
-                  <p className="text-xs text-white font-medium">{rule.label}</p>
-                  <p className="text-[10px] text-slate-400 mt-1">{rule.description}</p>
+                  <p className="text-xs text-foreground font-medium">{rule.label}</p>
+                  <p className="text-[10px] text-muted-foreground mt-1">{rule.description}</p>
                 </div>
               ))}
             </div>
@@ -116,9 +116,9 @@ export const SecurityPrivacy: React.FC<SecurityPrivacyProps> = ({ activeView }) 
 
       {/* Data Protection */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm text-white flex items-center gap-2">
+            <CardTitle className="text-sm text-foreground flex items-center gap-2">
               <EyeOff className="w-4 h-4 text-purple-400" />
               Data Protection
             </CardTitle>
@@ -133,7 +133,7 @@ export const SecurityPrivacy: React.FC<SecurityPrivacyProps> = ({ activeView }) 
                   <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center mx-auto mb-2 text-purple-400">
                     {item.icon}
                   </div>
-                  <p className="text-xs text-white font-medium">{item.label}</p>
+                  <p className="text-xs text-foreground font-medium">{item.label}</p>
                   <Badge className="bg-emerald-500/20 text-emerald-400 text-[9px] mt-2">
                     PROTECTED
                   </Badge>
@@ -146,10 +146,10 @@ export const SecurityPrivacy: React.FC<SecurityPrivacyProps> = ({ activeView }) 
 
       {/* Access Log */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-        <Card className="bg-slate-900/50 border-slate-700/50">
+        <Card className="bg-card/60 border-border">
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-sm text-white flex items-center gap-2">
+              <CardTitle className="text-sm text-foreground flex items-center gap-2">
                 <Eye className="w-4 h-4 text-cyan-400" />
                 Security Access Log
               </CardTitle>
@@ -169,14 +169,14 @@ export const SecurityPrivacy: React.FC<SecurityPrivacyProps> = ({ activeView }) 
                   transition={{ delay: idx * 0.05 }}
                   className={`flex items-center justify-between p-3 rounded-lg border ${
                     log.allowed 
-                      ? 'bg-slate-800/50 border-slate-700/30' 
+                      ? 'bg-card/60 border-border' 
                       : 'bg-red-500/5 border-red-500/20'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono text-slate-500">{log.timestamp}</span>
-                    <span className="text-xs text-slate-400">{log.userId}</span>
-                    <span className="text-xs text-white">{log.action}</span>
+                    <span className="text-xs font-mono text-muted-foreground">{log.timestamp}</span>
+                    <span className="text-xs text-muted-foreground">{log.userId}</span>
+                    <span className="text-xs text-foreground">{log.action}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     {log.allowed ? (
@@ -207,8 +207,8 @@ export const SecurityPrivacy: React.FC<SecurityPrivacyProps> = ({ activeView }) 
                 <AlertTriangle className="w-5 h-5 text-red-400" />
               </div>
               <div className="flex-1">
-                <h3 className="text-sm font-medium text-white">System Lock Status</h3>
-                <p className="text-[10px] text-slate-400">
+                <h3 className="text-sm font-medium text-foreground">System Lock Status</h3>
+                <p className="text-[10px] text-muted-foreground">
                   No UI changes, feature changes, theme changes, or behavior changes without explicit approval
                 </p>
               </div>
